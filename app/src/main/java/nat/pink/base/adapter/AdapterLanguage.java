@@ -1,0 +1,63 @@
+package nat.pink.base.adapter;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+
+import nat.pink.base.databinding.ItemLanguageBinding;
+import nat.pink.base.model.ObjectLanguage;
+
+public class AdapterLanguage extends RecyclerView.Adapter<AdapterLanguage.ViewHolder> {
+
+    private ArrayList<ObjectLanguage> objectLanguages = new ArrayList<>();
+    private Context context;
+
+    public AdapterLanguage(Context context) {
+        this.context = context;
+    }
+
+    public void setObjectLanguages(ArrayList<ObjectLanguage> objectLanguages) {
+        this.objectLanguages = objectLanguages;
+        notifyDataSetChanged();
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemLanguageBinding binding = ItemLanguageBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new AdapterLanguage.ViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ItemLanguageBinding binding = holder.binding;
+        ObjectLanguage objectLanguage = objectLanguages.get(position);
+        Glide.with(context).load(objectLanguage.getFlags()).into(binding.ivFlag);
+        binding.txtFlag.setText(objectLanguage.getLanguage());
+        binding.rb.setChecked(objectLanguage.getSelected());
+        binding.rb.setOnClickListener(view -> {
+
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return objectLanguages == null ? 0 : objectLanguages.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private final ItemLanguageBinding binding;
+
+        public ViewHolder(@NonNull ItemLanguageBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+    }
+}

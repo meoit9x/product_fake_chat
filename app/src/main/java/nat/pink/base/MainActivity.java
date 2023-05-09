@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.ui.home.HomeFragment;
+import nat.pink.base.ui.splah.SplashFragment;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        addFragment(new HomeFragment(), HomeFragment.TAG);
+        addFragment(new SplashFragment(), SplashFragment.TAG);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (fragmentStates.size() > 1) {
+        if (fragmentStates.size() > 1 && !fragmentStates.contains(SplashFragment.TAG)) {
             getSupportFragmentManager().popBackStack(fragmentStates.get(fragmentStates.size() - 1), FragmentManager.POP_BACK_STACK_INCLUSIVE);
             fragmentStates.remove(fragmentStates.size() - 1);
 

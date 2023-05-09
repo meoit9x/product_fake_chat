@@ -9,4 +9,30 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <!--flag-->
+    <string name="flag_name_english">English</string>
+    <string name="flag_name_japanese">Japanese</string>
+    <string name="flag_name_chiness">Chiness</string>
+    <string name="flag_name_indonesian">Indonesian</string>
+    <string name="flag_name_rusian">Rusian</string>
+    <string name="flag_name_spanish">Spanish</string>
+    <string name="flag_name_french">French</string>
+    <string name="flag_name_portugese">Portuguese</string>
+    <string name="flag_name_korean">Korean</string>
+    <string name="flag_name_vietnamese">Vietnamese</string>
+
+
+    <string name="select_language">Select language</string>
 </resources>
