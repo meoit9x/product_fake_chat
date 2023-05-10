@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.util.Consumer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -13,14 +14,17 @@ import java.util.ArrayList;
 
 import nat.pink.base.databinding.ItemLanguageBinding;
 import nat.pink.base.model.ObjectLanguage;
+import nat.pink.base.utils.PreferenceUtil;
 
 public class AdapterLanguage extends RecyclerView.Adapter<AdapterLanguage.ViewHolder> {
 
     private ArrayList<ObjectLanguage> objectLanguages = new ArrayList<>();
     private Context context;
+    private Consumer<ObjectLanguage> consumer;
 
-    public AdapterLanguage(Context context) {
+    public AdapterLanguage(Context context, Consumer<ObjectLanguage> consumer) {
         this.context = context;
+        this.consumer = consumer;
     }
 
     public void setObjectLanguages(ArrayList<ObjectLanguage> objectLanguages) {
@@ -41,10 +45,8 @@ public class AdapterLanguage extends RecyclerView.Adapter<AdapterLanguage.ViewHo
         ObjectLanguage objectLanguage = objectLanguages.get(position);
         Glide.with(context).load(objectLanguage.getFlags()).into(binding.ivFlag);
         binding.txtFlag.setText(objectLanguage.getLanguage());
-        binding.rb.setChecked(objectLanguage.getSelected());
-        binding.rb.setOnClickListener(view -> {
-
-        });
+        binding.rb.setChecked(objectLanguage.getValue().contains(PreferenceUtil.getString(context, PreferenceUtil.SETTING_ENGLISH, "")));
+        binding.cvContent.setOnClickListener(view -> consumer.accept(objectLanguage));
     }
 
     @Override

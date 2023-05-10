@@ -7,7 +7,7 @@ import nat.pink.base.databinding.FragmentOnboardBinding;
 
 public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, OnboardViewModel> {
 
-    public static String TAG = "OnboardFragment";
+    public static final String TAG = "OnboardFragment";
 
     @Override
     protected OnboardViewModel getViewModel() {

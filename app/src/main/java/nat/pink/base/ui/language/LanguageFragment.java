@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import nat.pink.base.adapter.AdapterLanguage;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentLanguageBinding;
+import nat.pink.base.utils.PreferenceUtil;
 
 public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, LanguageViewModel> {
 
-    public static String TAG = "LanguageFragment";
+    public static final String TAG = "LanguageFragment";
     private AdapterLanguage adapterLanguage;
 
     @Override
@@ -20,7 +21,10 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
     @Override
     protected void initView() {
         super.initView();
-        adapterLanguage = new AdapterLanguage(requireContext());
+        adapterLanguage = new AdapterLanguage(requireContext(), data -> {
+            PreferenceUtil.saveString(requireContext(), PreferenceUtil.SETTING_ENGLISH, data.getValue());
+            adapterLanguage.notifyDataSetChanged();
+        });
         binding.rcvEnglish.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rcvEnglish.setAdapter(adapterLanguage);
     }
@@ -29,7 +33,7 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
     protected void initData() {
         super.initData();
         getViewModel().initData(requireContext());
-        getViewModel().languages.observe(this,objectLanguages -> {
+        getViewModel().languages.observe(this, objectLanguages -> {
             adapterLanguage.setObjectLanguages(objectLanguages);
         });
     }

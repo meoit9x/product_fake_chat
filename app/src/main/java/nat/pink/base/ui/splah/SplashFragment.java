@@ -16,7 +16,7 @@ import nat.pink.base.utils.PreferenceUtil;
 
 public class SplashFragment extends BaseFragment<FragmentSplashBinding, SplashViewModel> {
 
-    public static String TAG = "SplashFragment";
+    public static final String TAG = "SplashFragment";
 
     @Override
     protected SplashViewModel getViewModel() {
