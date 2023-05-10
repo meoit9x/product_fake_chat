@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import nat.pink.base.adapter.AdapterLanguage;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentLanguageBinding;
+import nat.pink.base.ui.onboard.OnboardFragment;
 import nat.pink.base.utils.PreferenceUtil;
 
 public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, LanguageViewModel> {
@@ -27,6 +28,9 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
         });
         binding.rcvEnglish.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rcvEnglish.setAdapter(adapterLanguage);
+        binding.txtSave.setOnClickListener(v -> {
+            replaceFragment(new OnboardFragment(), OnboardFragment.TAG);
+        });
     }
 
     @Override
