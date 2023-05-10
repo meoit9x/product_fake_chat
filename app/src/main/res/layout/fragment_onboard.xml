@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/screen_viewpager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tab_indicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_indicator"
+        android:layout_width="64dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/linear_layout_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabBackground="@drawable/indicator_selector"
+        app:tabIndicatorHeight="0dp">
+    </com.google.android.material.tabs.TabLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="15dp"
+        android:id="@+id/linear_layout_next"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:elevation="12dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:textSize="14dp"
+            android:padding="10px"
+            android:id="@+id/skip"
+            android:text="Skip"
+            android:layout_marginLeft="36dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            app:cardCornerRadius="90dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="36dp"
+            android:id="@+id/btn_next"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <RelativeLayout
+                android:background="@drawable/bg_gradient_start"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+        <ImageView
+            android:scaleY="1.3"
+            android:scaleX="1.3"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_next"/>
+        </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:visibility="gone"
+            app:cardCornerRadius="90dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="36dp"
+            android:id="@+id/btn_get_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:background="@drawable/bg_gradient_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+          <TextView
+              android:textSize="18dp"
+              android:textColor="@color/white"
+              android:layout_marginVertical="19dp"
+              android:paddingHorizontal="29dp"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Get Started"
+              /></RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </RelativeLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

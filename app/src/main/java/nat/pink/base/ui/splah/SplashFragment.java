@@ -1,12 +1,18 @@
 package nat.pink.base.ui.splah;
 
 import android.os.Handler;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+import nat.pink.base.adapter.OnboardViewPagerAdapter;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentSplashBinding;
 import nat.pink.base.ui.home.HomeFragment;
@@ -15,7 +21,6 @@ import nat.pink.base.ui.onboard.OnboardFragment;
 import nat.pink.base.utils.PreferenceUtil;
 
 public class SplashFragment extends BaseFragment<FragmentSplashBinding, SplashViewModel> {
-
     public static final String TAG = "SplashFragment";
 
     @Override
