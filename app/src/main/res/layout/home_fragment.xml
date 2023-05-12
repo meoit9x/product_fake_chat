@@ -1,14 +1,362 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_main"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/transparent"
+        app:cardCornerRadius="@dimen/_99sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_gradient_border_main">
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                app:cardBackgroundColor="@color/color_8F2ECC"
+                app:cardCornerRadius="@dimen/_99sdp">
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:layout_marginBottom="@dimen/_9sdp"
+                        android:src="@drawable/logofake" />
+
+                    <ImageView
+                        android:id="@+id/fake_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:layout_toRightOf="@id/logo"
+                        android:src="@drawable/fake_icon" />
+
+                    <ImageView
+                        android:id="@+id/messenger_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginTop="@dimen/_9sdp"
+                        android:layout_toRightOf="@id/fake_icon"
+                        android:src="@drawable/messenger_icon" />
+
+                    <ImageView
+                        android:id="@+id/coin_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/fake_icon"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_toRightOf="@id/logo"
+                        android:src="@drawable/coin_icon" />
+
+                    <TextView
+                        android:id="@+id/coin_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/messenger_icon"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@id/coin_icon"
+                        android:fontFamily="@font/sf_pro_display"
+                        android:text="200"
+                        android:textColor="@color/color_FFE989"
+                        android:textFontWeight="600"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/messenger_icon"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@id/coin_count"
+                        android:fontFamily="@font/sf_pro_display"
+                        android:text="Your coin"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="@dimen/_9sdp"
+                        android:src="@drawable/menu_icon" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_toLeftOf="@id/menu"
+                        android:src="@drawable/view_ads_icon" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/sf_pro_display"
+        android:text="Conversation suggestions"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_fake_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:orientation="vertical"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_fake_user" />
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="qưeqweqwejqwekjqwe"
-        android:textColor="@color/black"
-        android:textSize="23dp" />
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_minus20sdp"
+        app:cardCornerRadius="@dimen/_20sdp">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <GridLayout
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_330sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_17sdp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="#7D76CF">
+                <RelativeLayout
+                    android:background="@drawable/bg_mess"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:textSize="@dimen/_16sdp"
+                           android:layout_marginHorizontal="@dimen/_14sdp"
+                            android:layout_marginVertical="@dimen/_7sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fake \nMessage"
+                            />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        app:cardCornerRadius="@dimen/_99sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="@dimen/_10sdp"
+                            android:layout_marginVertical="@dimen/_5sdp"
+                            android:layout_marginHorizontal="@dimen/_19sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Free"
+                            />
+                    </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_17sdp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="#80C3D7">
+                <RelativeLayout
+                    android:background="@drawable/bg_call"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginHorizontal="@dimen/_14sdp"
+                            android:layout_marginVertical="@dimen/_7sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fake \nVoice Call"
+                            />
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            app:cardCornerRadius="@dimen/_99sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="@dimen/_10sdp"
+                                android:layout_marginVertical="@dimen/_5sdp"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-100 Coin"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_17sdp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="#E191C0">
+                <RelativeLayout
+                    android:background="@drawable/bg_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginHorizontal="@dimen/_14sdp"
+                            android:layout_marginVertical="@dimen/_7sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fake \nVideo Call"
+                            />
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            app:cardCornerRadius="@dimen/_99sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="@dimen/_10sdp"
+                                android:layout_marginVertical="@dimen/_5sdp"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-200 Coin"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_17sdp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                app:cardBackgroundColor="#8DCC78">
+                <RelativeLayout
+                    android:background="@drawable/bg_noti"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_alignParentBottom="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textColor="@color/white"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:textSize="@dimen/_16sdp"
+                            android:layout_marginHorizontal="@dimen/_14sdp"
+                            android:layout_marginVertical="@dimen/_7sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fake \nNotification"
+                            />
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:layout_marginBottom="@dimen/_7sdp"
+                            app:cardCornerRadius="@dimen/_99sdp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="@dimen/_10sdp"
+                                android:layout_marginVertical="@dimen/_5sdp"
+                                android:layout_marginHorizontal="@dimen/_10sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="-300 Coin"
+                                />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </GridLayout>
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/activity_main_drawer"
+        tools:layout_gravity="end" />
+</LinearLayout>
