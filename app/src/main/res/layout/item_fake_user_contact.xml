@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:orientation="horizontal">
+    <com.google.android.material.card.MaterialCardView
+        app:cardElevation="@dimen/_2sdp"
+        android:layout_margin="@dimen/_2sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/_99sdp"
+        app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/messi2" />
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+        <RelativeLayout
+            android:id="@+id/online_status"
+            android:layout_marginLeft="@dimen/_37sdp"
+            android:layout_marginBottom="0dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/_99sdp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:id="@+id/online_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_margin="@dimen/_2sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/color_5AD439"
+                        app:cardCornerRadius="@dimen/_99sdp"
+                        app:cardElevation="0dp">
+
+                    </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <nat.pink.base.custom.view.ExtTextView
+        android:id="@+id/tv_name"
+        android:textStyle="bold"
+        android:fontFamily="@font/sf_pro_display"
+        android:textSize="@dimen/_14sdp"
+        android:layout_toRightOf="@id/card_avatar"
+        android:text="Leo Messi"
+        android:textColor="@color/color_212121"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/iv_verify"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:src="@drawable/ic_verified"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <ImageView
+        android:layout_marginHorizontal="@dimen/_7sdp"
+        android:id="@+id/iv_call"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_phone"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

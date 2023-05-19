@@ -20,7 +20,34 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
 
     protected abstract VM getViewModel();
 
+    private boolean hideAds = true;
+    String interstitialAdUnitId = "YOUR_AD_UNIT_ID";
     protected VB binding;
+
+    public String getInterstitialAdUnitId() {
+        return interstitialAdUnitId;
+    }
+
+    public void setInterstitialAdUnitId(String interstitialAdUnitId) {
+        this.interstitialAdUnitId = interstitialAdUnitId;
+    }
+
+    public VB getBinding() {
+        return binding;
+    }
+
+    public void setBinding(VB binding) {
+        this.binding = binding;
+    }
+
+    public boolean isHideAds() {
+        return hideAds;
+    }
+
+    public void setHideAds(boolean hideAds) {
+        this.hideAds = hideAds;
+    }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +108,15 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();
             activity.addFragment(fragment, tag);
+        }
+    }
+
+    //AppLovin Ads Integrate!!!
+    protected void initInterstitialAd() {
+        if (getActivity() instanceof MainActivity) {
+//            if ((activity as MainActivity).isNetworkConnected()) {
+            ((MainActivity) getActivity()).setLoadingAdsView(true);
+//            }
         }
     }
 }

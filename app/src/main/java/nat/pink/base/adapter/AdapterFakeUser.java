@@ -14,20 +14,21 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import nat.pink.base.databinding.ItemFakeUserBinding;
-import nat.pink.base.model.FakeUser;
+import nat.pink.base.model.ObjectUser;
+import nat.pink.base.utils.ImageUtils;
 
 public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHolder> {
 
-    private ArrayList<FakeUser> fakeUsers = new ArrayList<>();
+    private ArrayList<ObjectUser> fakeUsers = new ArrayList<>();
     private Context context;
-    private Consumer<FakeUser> consumer;
+    private Consumer<ObjectUser> consumer;
 
-    public AdapterFakeUser(Context context, Consumer<FakeUser> consumer) {
+    public AdapterFakeUser(Context context, Consumer<ObjectUser> consumer) {
         this.context = context;
         this.consumer = consumer;
     }
 
-    public void setFakeUsers(ArrayList<FakeUser> fakeUsers) {
+    public void setFakeUsers(ArrayList<ObjectUser> fakeUsers) {
         this.fakeUsers = fakeUsers;
         notifyDataSetChanged();
     }
@@ -42,10 +43,11 @@ public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemFakeUserBinding binding = holder.binding;
-        FakeUser user = fakeUsers.get(position);
-        Glide.with(context).load(user.getAvatar()).into(binding.avatar);
-        binding.name.setText(user.getDisplayName());
-        if (!user.isOnline()) {
+        ObjectUser user = fakeUsers.get(position);
+        ImageUtils.loadImage(binding.avatar, user.getAvatar());
+     //   Glide.with(context).load(user.getAvatar()).into(binding.avatar);
+        binding.name.setText(user.getName());
+        if (user.getStatus()==0) {
             binding.onlineStatus.setVisibility(View.GONE);
         }
 

@@ -1,5 +1,9 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+
+  //  id 'com.google.gms.google-services'
+   // id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -29,6 +33,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
@@ -49,4 +54,75 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.13.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.1'
 
+    // Carbon view
+    api 'tk.zielony:carbon:0.16.0.1'
+
+    // Ted permission
+    implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
+
+    // Coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+
+    //okkhttp
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+
+    // lottie
+    implementation 'com.airbnb.android:lottie:4.2.2'
+
+    // Room database
+    def room_version = "2.4.2"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Dot indicator
+    implementation("com.tbuonomo:dotsindicator:4.3")
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation "com.squareup.okhttp3:okhttp:4.7.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+//    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.2'
+
+//    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+    // AppLovin SDK and addition network integrate
+ //   implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
+ //   implementation 'com.applovin:applovin-sdk:+'
+   // implementation 'com.applovin.mediation:ironsource-adapter:+'        // IronSource
+ //   implementation 'com.applovin.mediation:bytedance-adapter:+'         // Pangle
+   // implementation 'com.applovin.mediation:facebook-adapter:+'          // Meta
+    //implementation 'com.applovin.mediation:google-adapter:+'            // Google AdMob
+
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+
+    // Firebase crash
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.11'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+   // implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
+//    implementation 'com.linsea:universalvideoview:1.1.0@aar'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // In-App Purchase Library
+    def billing_version = "5.0.0"
+    implementation "com.android.billingclient:billing-ktx:$billing_version"
+    implementation 'commons-net:commons-net:3.6'
+
+    // Firebase Cloud Messaging (Kotlin)
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 }

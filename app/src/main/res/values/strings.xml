@@ -9,6 +9,13 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel_dialog">Cancel</string>
+    <string name="agree_dialog">Agree</string>
+    <string name="add_record">Add Record</string>
+    <string name="ok">Ok</string>
+    <string name="edit">Edit</string>
+
 
     <!--FONT-->
     <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
@@ -24,9 +31,9 @@
     <!--flag-->
     <string name="flag_name_english">English</string>
     <string name="flag_name_japanese">Japanese</string>
-    <string name="flag_name_chiness">Chiness</string>
+    <string name="flag_name_chiness">Chinese</string>
     <string name="flag_name_indonesian">Indonesian</string>
-    <string name="flag_name_rusian">Rusian</string>
+    <string name="flag_name_rusian">Russian</string>
     <string name="flag_name_spanish">Spanish</string>
     <string name="flag_name_french">French</string>
     <string name="flag_name_portugese">Portuguese</string>
@@ -34,5 +41,164 @@
     <string name="flag_name_vietnamese">Vietnamese</string>
 
 
+    <string name="content_about_app">
+Questions or feedback? We read every single email
+Have suggestions? Please, feel free to reach us at support@realink.dev
+"</string>
+
+    <string name="save">Save</string>
+    <string name="loading_ads_text">Loading ads...</string>
+    <string name="facebook_app_id" translatable="false">1105959933462571</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">Fake\nVideo Call</string>
+    <string name="make_message">Fake\nMessage</string>
+    <string name="make_message_title">Make Message</string>
+    <string name="make_notification">Fake\nNotification</string>
+    <string name="make_notification_title">Make Notification</string>
+    <string name="make_voice_call">Fake\nVoice Call</string>
+    <string name="make_voice_call_title">Make Voice Call</string>
+    <string name="title_make_video_call">Make Video Call</string>
+    <string name="call_now">Call Now</string>
+    <string name="call_type">Call type</string>
+    <string name="notification_type">Notification type</string>
+    <string name="incoming_call">Incoming call</string>
+    <string name="incoming_call_later">Incoming call later:</string>
+    <string name="top">Top</string>
+    <string name="popup">Popup</string>
+    <string name="calling">Calling</string>
+    <string name="name_your_friend">Name Your Friend</string>
+    <string name="lives_in">Lives In</string>
+    <string name="message">Messenger</string>
+    <string name="operation_status">Operation Status</string>
+    <string name="change_avatar">Change avatar</string>
+    <string name="hint_text_name">Cameron Williamson</string>
+    <string name="hint_lives_in">Parker Rd. Allentown, New Mexico</string>
+    <string name="enter_message">Enter message</string>
+    <string name="incoming_call_picture">Incoming call picture</string>
+    <string name="video_of_incoming_calls">Video of incoming calls</string>
+    <string name="call_later">Call later</string>
+    <string name="send_later">Send later</string>
+    <string name="pick_up_later">Pick up later</string>
+    <string name="voice_later">Voice later</string>
+    <string name="pick_up_the_phone_later">Pick up the phone later</string>
+    <string name="now">Now</string>
+    <string name="send_a_message_later">Send a message later</string>
+    <string name="message_photo">Message photo</string>
+    <string name="online">Online</string>
+    <string name="online_5_minutes_ago">Online 5 minutes ago</string>
+    <string name="online_30_minutes_ago">Online 30 minutes ago</string>
+    <string name="online_1_hour_ago">Online 1 hour ago</string>
+    <string name="online_1_day_ago">Online 1 day ago</string>
+    <string name="time_call_seconds">%s seconds</string>
+    <string name="time_call_minutes">%s minutes</string>
+    <string name="time_call_one_minutes">1 minute</string>
+    <string name="video_call_on_messenger">Video call on messenger</string>
+    <string name="refuse">REFUSE</string>
+    <string name="answer">Answer</string>
+    <string name="guide">Guide</string>
+    <string name="more_app">More app</string>
+    <string name="rate_app">Rate app</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact_us">Contact us</string>
+    <string name="content_by">Application developed \nby Merry Blue</string>
+    <string name="body_name_app">Tools, lifestyle</string>
+    <string name="title_rate_app">Give us 5 stars to encourage \nThanks to your support! </string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">We will absorb and upgrade a lot more! Thank you!</string>
+    <string name="please_give_us_feedback">Please give us feedback</string>
+    <string name="do_you_like_the_app">Do you like the app?</string>
+    <string name="sent">Sent</string>
+    <string name="change_picture">Change picture</string>
+    <string name="outgoing_call_pictures">Outgoing call pictures</string>
+    <string name="done">Done</string>
+    <string name="please_fill_in_the_information">Please fill in the information</string>
+    <string name="maxium_characters">Maximum of 25 characters</string>
+    <string name="note">Note</string>
+    <string name="note_title_error">Please fill out the \ninformation completely</string>
+    <string name="call_come_later">The call will come later:</string>
+    <string name="noti_come_later">Notification will come later:</string>
+    <string name="noti">Notification come later:</string>
+    <string name="another_task">Another task is running. Please wait for the task to finish.</string>
+
+    <string name="guide_info_1">Enter the text of the message you like to create a fake chat.</string>
+    <string name="guide_info_2">Make a fake video call by filling in the information available in the function.</string>
+    <string name="guide_info_3">Make a fake voice call by filling in basic information such as: name, photo according to your preferences.</string>
+    <string name="guide_info_4">Fill in the message text and choose the appearance (top or popup) you want.</string>
+    <string name="guide_info_5">Keep all the chat lists you have created.</string>
+    <string name="title_calling">Calling...</string>
+    <string name="fake_messenger_title">Fake Messenger</string>
+    <string name="content_empty_view">You don\'t have a chat list yet.\n Please add a new chat</string>
+    <string name="active_now">Active now</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content"><![CDATA[You can\'t reply to this conversation. <u>Learn More</u>]]></string>
+    <string name="change_information">Change Infomation</string>
+    <string name="conversation_list">Conversation list</string>
+    <string name="select_sticker">Select Sticker</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="removed_a_message">%s removed a message</string>
+    <string name="live_in">Lives in %s</string>
+    <string name="you">You</string>
+    <string name="you_are_friends">You\'re friends on Facebook</string>
+    <string name="ask_save_image">Do you want to save the screenshot ?</string>
+    <string name="cancel">Cancel</string>
+    <string name="screenshort_success">Screenshort success</string>
+    <string name="set_time">Set time</string>
+    <string name="voice_message">Voice Message</string>
+    <string name="enter_data">Enter data</string>
+    <string name="you_must_enter">You must enter %s</string>
+    <string name="full_data">full data</string>
+
+    <string name="monthly_package">Monthly package</string>
+    <string name="get_premium_for_1_month">Get Premium privileges for 1 month.</string>
+    <string name="save_20">Save 20%</string>
+    <string name="year_package">Year package</string>
+    <string name="get_premium_for_1_year">Get Premium privileges for 1 year.</string>
+    <string name="forever_package">Forever package</string>
+    <string name="get_premium_forever">Get Premium privileges for forever.</string>
+    <string name="month">/month</string>
+    <string name="year">/year</string>
+    <string name="forever">/forever</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9$</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">Can\'t get video link.\n Please choose another video</string>
+    <string name="delete">Delete</string>
+    <string name="delete_this_conversation">Delete this conversation</string>
+    <string name="please_turn_on_the_network">Please turn on the network\n for a better experience</string>
+    <string name="thank_for_your_response">Thanks for your response !</string>
+    <string name="we_will_listen_to_your_comments">We will listen to your comments and\n work to improve the product better!</string>
+
+    <string name="load_ads">Load Ads</string>
+    <string name="ads_are_loading">Ads are loading while waiting for\nthis function is processing</string>
+    <string name="remove_ads">Remove Ads</string>
+
+    // in app purchase
+    <string name="enjoy_your_premium_member">Enjoy your premium member</string>
+    <string name="continues">Continue</string>
+    <string name="in_app_month">/month</string>
+    <string name="in_app_forever">/forever</string>
+    <string name="in_app_year">/year</string>
+    <string name="save_in_app">Save %s</string>
+
+    <string name="in_app_title_1_m">Monthly package</string>
+    <string name="in_app_content_1_m">Get Premium privileges for 1 month.</string>
+
+    <string name="in_app_title_n_m">%s months package</string>
+    <string name="in_app_content_n_m">Get Premium privileges for %s month.</string>
+
+    <string name="in_app_title_1_y">Year package</string>
+    <string name="in_app_content_1_y">Get Premium privileges for 1 year.</string>
+
+    <string name="in_app_title_f_r">Forever package</string>
+    <string name="in_app_content_f_r">Get Premium privileges for forever</string>
+
+    <string name="unlimited_ess">Unlimited Mess</string>
+    <string name="no_ads">No ADS</string>
+    <string name="high_quality_video_call">High-Quality Video Call</string>
+    <string name="get">Get</string>
+    <string name="premium">Premium</string>
     <string name="select_language">Select language</string>
 </resources>

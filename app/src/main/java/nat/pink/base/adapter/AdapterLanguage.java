@@ -45,7 +45,8 @@ public class AdapterLanguage extends RecyclerView.Adapter<AdapterLanguage.ViewHo
         ObjectLanguage objectLanguage = objectLanguages.get(position);
         Glide.with(context).load(objectLanguage.getFlags()).into(binding.ivFlag);
         binding.txtFlag.setText(objectLanguage.getLanguage());
-        binding.rb.setChecked(objectLanguage.getValue().contains(PreferenceUtil.getString(context, PreferenceUtil.SETTING_ENGLISH, "")));
+        boolean selected = objectLanguage.getValue().contains(PreferenceUtil.getString(context, PreferenceUtil.SETTING_ENGLISH, " "));
+        binding.rb.setChecked(selected);
         binding.cvContent.setOnClickListener(view -> consumer.accept(objectLanguage));
     }
 

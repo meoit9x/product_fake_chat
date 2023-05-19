@@ -6,11 +6,18 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/content"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id="@+id/frContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
+
+    <include
+        android:id="@+id/loading_ads_layout"
+        layout="@layout/loading_ads_layout" />
 </androidx.appcompat.widget.LinearLayoutCompat>

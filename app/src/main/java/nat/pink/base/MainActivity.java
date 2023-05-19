@@ -1,5 +1,7 @@
 package nat.pink.base;
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,11 +10,13 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -90,5 +94,38 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         finish();
+    }
+
+    private void hideOrShowBottomView(boolean show) {
+//        if (show) {
+//            binding.bannerAdView.visibility = View.VISIBLE
+//            if (binding.ctsBottomNavigation.visibility != View.VISIBLE)
+//                binding.ctsBottomNavigation.visibility = View.VISIBLE
+//        } else {
+//            binding.bannerAdView.visibility = View.GONE
+//            binding.ctsBottomNavigation.visibility = View.GONE
+//            binding.bannerAdView.visibility = View.GONE
+//        }
+    }
+
+    public void addChildFragment(Fragment fragment, String tag) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.frContent, fragment);
+        if (!fragmentStates.contains(tag))
+            fragmentStates.add(tag);
+        ft.addToBackStack(tag);
+        ft.commit();
+//        hideOrShowBottomView(
+//                tag.contains(HomeFragment.class.getSimpleName())
+//                        ||  tag.contains(OtherFragment.class.getSimpleName())
+//                        || tag.contains(SettingFragment.class.getSimpleName())
+//        );
+    }
+
+    public void setLoadingAdsView(Boolean visible) {
+        Log.d(TAG, "LoadingAdsView: " + visible);
+        binding.loadingAdsLayout.loadingAdsLayout.bringToFront();
+        binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE==binding.loadingAdsLayout.loadingAdsLayout.getVisibility()? View.GONE : View.VISIBLE);
+        binding.frContent.setVisibility(View.VISIBLE==binding.frContent.getVisibility()? View.GONE : View.VISIBLE);
     }
 }
