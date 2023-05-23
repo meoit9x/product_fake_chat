@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         //disable darkmode
-       // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         //use full taskbar
 /*        View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        addFragment(new SplashFragment(), SplashFragment.TAG);
+        replaceFragment(new SplashFragment(), SplashFragment.TAG);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
@@ -87,13 +87,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (fragmentStates.size() > 1 && !fragmentStates.contains(SplashFragment.TAG)) {
-            getSupportFragmentManager().popBackStack(fragmentStates.get(fragmentStates.size() - 1), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-            fragmentStates.remove(fragmentStates.size() - 1);
-
+        if (fragmentStates.size() == 0 || fragmentStates.get(fragmentStates.size() - 1).equals(HomeFragment.TAG) || fragmentStates.get(fragmentStates.size() - 1).equals(SplashFragment.TAG)) {
+            finish();
             return;
         }
-        finish();
+        getSupportFragmentManager().popBackStack(fragmentStates.get(fragmentStates.size() - 1), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        fragmentStates.remove(fragmentStates.size() - 1);
     }
 
     private void hideOrShowBottomView(boolean show) {
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     public void setLoadingAdsView(Boolean visible) {
         Log.d(TAG, "LoadingAdsView: " + visible);
         binding.loadingAdsLayout.loadingAdsLayout.bringToFront();
-        binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE==binding.loadingAdsLayout.loadingAdsLayout.getVisibility()? View.GONE : View.VISIBLE);
-        binding.frContent.setVisibility(View.VISIBLE==binding.frContent.getVisibility()? View.GONE : View.VISIBLE);
+        binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE == binding.loadingAdsLayout.loadingAdsLayout.getVisibility() ? View.GONE : View.VISIBLE);
+        binding.frContent.setVisibility(View.VISIBLE == binding.frContent.getVisibility() ? View.GONE : View.VISIBLE);
     }
 }

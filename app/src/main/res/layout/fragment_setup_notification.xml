@@ -2,26 +2,28 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_action_bar_top"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/_20sdp"
-        android:paddingVertical="@dimen/_15sdp"
-        android:src="@drawable/ic_back_white" />
+    <include layout="@layout/action_bar_top" />
 
-    <nat.pink.base.custom.view.ExtTextView
-        android:id="@+id/txt_title"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_18sdp"
-        app:textViewFontAssetName="@string/font_bold" />
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:paddingTop="@dimen/_12sdp">
+
+        <nat.pink.base.custom.view.ExtTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notification_type"
+            android:textColor="@color/black"
+            app:textViewFontAssetName="@string/font_regular" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

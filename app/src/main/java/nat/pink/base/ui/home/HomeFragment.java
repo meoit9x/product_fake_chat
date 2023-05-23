@@ -16,6 +16,7 @@ import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.dialog.DialogSelectChat;
 import nat.pink.base.ui.language.LanguageFragment;
+import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.InAppPurchase;
 import nat.pink.base.utils.Utils;
@@ -59,6 +60,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.fakeMessage.setOnClickListener(v -> {
             showAds(Const.KEY_ADS_MESSAGE);
         });
+        binding.fakeNoti.setOnClickListener(v->{
+            addFragment(new NotificationFragment(),NotificationFragment.TAG);
+        });
+
     }
 
     private void showAds(String key) {

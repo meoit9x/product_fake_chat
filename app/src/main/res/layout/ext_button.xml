@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_button_select"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/ic_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:src="@drawable/ic_rdb_check" />
+
+    <nat.pink.base.custom.view.ExtTextView
+        android:id="@+id/txt_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12sdp"
+        app:textViewFontAssetName="@string/font_regular" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
