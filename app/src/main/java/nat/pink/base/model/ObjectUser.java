@@ -11,13 +11,7 @@ import java.util.List;
 @Entity(tableName = "user")
 public class ObjectUser implements Serializable {
 
-    public ObjectUser(int id, String name, String liveIn, int status, String avatar) {
-        this.id = id;
-        this.name = name;
-        this.liveIn = liveIn;
-        this.status = status;
-        this.avatar = avatar;
-    }
+
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -34,6 +28,26 @@ public class ObjectUser implements Serializable {
 
     @ColumnInfo(name = "avatar")
     private String avatar;
+
+    @ColumnInfo(name = "verified")
+    private int verified;
+
+    public ObjectUser(int id, String name, String liveIn, int status, String avatar, int verified) {
+        this.id = id;
+        this.name = name;
+        this.liveIn = liveIn;
+        this.status = status;
+        this.avatar = avatar;
+        this.verified = verified;
+    }
+
+    public int getVerified() {
+        return verified;
+    }
+
+    public void setVerified(int verified) {
+        this.verified = verified;
+    }
 
     public int getId() {
         return id;

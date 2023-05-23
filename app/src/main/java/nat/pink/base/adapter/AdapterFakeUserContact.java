@@ -1,6 +1,8 @@
 package nat.pink.base.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import nat.pink.base.R;
 import nat.pink.base.databinding.ItemFakeUserBinding;
 import nat.pink.base.databinding.ItemFakeUserContactBinding;
 import nat.pink.base.model.ObjectUser;
@@ -50,6 +53,21 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
         if (user.getStatus()==0) {
             binding.onlineStatus.setVisibility(View.GONE);
         }
+        if (user.getVerified()==0) {
+            binding.ivVerify.setVisibility(View.GONE);
+        }
+
+        //case add new user
+        if (user.getId()== -1){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                binding.ivVerify.setVisibility(View.GONE);
+                binding.tvName.setTextColor(context.getColor(R.color.color_7C76CE));
+                binding.tvName.setTextAppearance(Typeface.NORMAL);
+                binding.ivAction.setVisibility(View.GONE);
+            }
+        }
+
+        binding.mainAction.setOnClickListener(v -> consumer.accept(user));
 
         //binding.cvContent.setOnClickListener(view -> consumer.accept(objectLanguage));
     }

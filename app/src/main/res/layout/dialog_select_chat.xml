@@ -12,7 +12,7 @@
        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_6sdp"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_500sdp">
+        android:layout_height="wrap_content">
        <RelativeLayout
            android:layout_width="match_parent"
            android:layout_height="match_parent">
@@ -31,12 +31,15 @@
                />
 
            <ImageView
-               android:layout_margin="@dimen/_7sdp"
-               android:layout_alignParentEnd="true"
+               android:id="@+id/iv_exit"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/ic_cancel"
-               />
+               android:layout_alignParentEnd="true"
+               android:layout_marginStart="@dimen/_7sdp"
+               android:layout_marginTop="@dimen/_7sdp"
+               android:layout_marginEnd="@dimen/_7sdp"
+               android:layout_marginBottom="@dimen/_7sdp"
+               android:src="@drawable/ic_cancel" />
 
            <nat.pink.base.custom.view.ExtTextView
                android:id="@+id/tv_suggest"
@@ -63,17 +66,24 @@
                android:id="@+id/tv_contact"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="Suggest"
+               android:text="Your Contact"
                android:layout_below="@+id/rcv_suggest"
                android:layout_marginTop="@dimen/_10sdp"
                android:layout_marginLeft="@dimen/_10sdp"
                />
+
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/rcv_contact"
-               android:layout_margin="@dimen/_10sdp"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
                android:layout_below="@id/tv_contact"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
+               android:layout_marginStart="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_10sdp"
+               android:layout_marginEnd="@dimen/_10sdp"
+               android:layout_marginBottom="@dimen/_10sdp"
+               tools:itemCount="1"
+               tools:listitem="@layout/item_fake_user_contact"
+               />
        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

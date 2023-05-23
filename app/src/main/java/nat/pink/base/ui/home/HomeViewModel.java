@@ -18,11 +18,11 @@ public class HomeViewModel extends BaseViewModel {
 
     public void initData(Context context) {
         ArrayList<ObjectUser> fakeUsers = new ArrayList<>();
-        fakeUsers.add(new ObjectUser(1,"Create \nnew", "", 0, Uri.parse("android.resource://"+context.getPackageName()+"/drawable/add_fake_user2").toString()));
-        fakeUsers.add(new ObjectUser(2,"Cristiano Ronaldo", "", 1, Uri.parse("android.resource://"+context.getPackageName()+"/drawable/ronaldo").toString()));
-        fakeUsers.add(new ObjectUser(3,"Leo \nMessi", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/messi2").toString()));
-        fakeUsers.add(new ObjectUser(4,"Taylor \nSwift", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/taylor").toString()));
-        fakeUsers.add(new ObjectUser(5,"Johnny \nDepp", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/depp").toString()));
+        fakeUsers.add(new ObjectUser(1,"Create \nnew", "", 0, Uri.parse("android.resource://"+context.getPackageName()+"/drawable/add_fake_user2").toString(),1));
+        fakeUsers.add(new ObjectUser(2,"Cristiano Ronaldo", "", 1, Uri.parse("android.resource://"+context.getPackageName()+"/drawable/ronaldo").toString(),1));
+        fakeUsers.add(new ObjectUser(3,"Leo \nMessi", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/messi2").toString(),1));
+        fakeUsers.add(new ObjectUser(4,"Taylor \nSwift", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/taylor").toString(),1));
+        fakeUsers.add(new ObjectUser(5,"Johnny \nDepp", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/depp").toString(),1));
         users.postValue(fakeUsers);
     }
 
