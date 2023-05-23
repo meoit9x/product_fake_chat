@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
+    //    fragmentStates.remove(fragmentStates.size() - 1);
         fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment, tag)
                 .addToBackStack(tag)

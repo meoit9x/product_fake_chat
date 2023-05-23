@@ -1,14 +1,465 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/red_alpha_40"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateUserFragment">
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/_15sdp"
+    android:orientation="vertical">
 
-    <TextView
+    <include
+        android:id="@+id/layout_action_bar"
+        layout="@layout/layout_action_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_above="@id/layout_btn_create"
+        android:layout_below="@+id/layout_action_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/_20sdp"
+            android:paddingHorizontal="@dimen/_14sdp">
+
+            <FrameLayout
+                android:id="@+id/fr_ava_mess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_change_ava"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:src="@drawable/ic_avatar2" />
+
+
+
+            </FrameLayout>
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/ext_change_ava"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/change_avatar"
+                android:textColor="@color/color_7D76CF"
+                android:textSize="@dimen/_11sdp"
+                app:textViewFontAssetName="@string/font_bold" />
+
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/name_your_friend"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                app:textViewFontAssetName="@string/font_bold" />
+
+            <nat.pink.base.custom.view.ExtEditText
+                android:background="@drawable/bg_edit_text"
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/hint_text_name"
+                android:paddingStart="@dimen/_18sdp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/color_9E9E9E"
+                android:textSize="@dimen/_14sdp" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/edt_error"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="@string/please_fill_in_the_information"
+                android:textColor="@color/color_FF3B30"
+                android:textSize="@dimen/_11sdp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/cst_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:background="@drawable/bg_edit_options"
+                    android:id="@+id/fr_incoming_call"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <nat.pink.base.custom.view.ExtTextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@drawable/ic_online_status"
+                        android:drawablePadding="@dimen/_8sdp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_20sdp"
+                        android:text="@string/online"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <Switch
+                        android:id="@+id/sw_status"
+                        style="@style/StyleSwitch"
+                        android:layout_gravity="right|center"
+                        android:layout_marginRight="@dimen/_15sdp" />
+
+                </FrameLayout>
+
+                <View
+                    android:id="@+id/lineView1"
+                    style="@style/LineSytle"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/_13sdp"
+                    android:visibility="gone" />
+
+                <RadioGroup
+                    android:background="@drawable/bg_edit_text"
+                    android:id="@+id/radios"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:inputType="text"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:paddingHorizontal="@dimen/_10sdp">
+
+                    <RadioButton
+                        android:id="@+id/rb_5_min"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:backgroundTint="#335AFB"
+                        android:buttonTint="#335AFB"
+                        android:clickable="false"
+                        android:checked="true"
+                        android:layoutDirection="ltr"
+                        android:text="@string/online_5_minutes_ago"
+                        android:textColor="@color/color_212121"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_30_min"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:backgroundTint="#335AFB"
+                        android:buttonTint="#335AFB"
+                        android:clickable="false"
+                        android:layoutDirection="ltr"
+                        android:text="@string/online_30_minutes_ago"
+                        android:textColor="@color/color_212121"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_1_hour"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:backgroundTint="#335AFB"
+                        android:buttonTint="#335AFB"
+                        android:clickable="false"
+                        android:layoutDirection="ltr"
+                        android:text="@string/online_1_hour_ago"
+                        android:textColor="@color/color_212121"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RadioButton
+                        android:id="@+id/rb_1_day"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_9sdp"
+                        android:backgroundTint="#335AFB"
+                        android:buttonTint="#335AFB"
+                        android:clickable="false"
+                        android:layoutDirection="ltr"
+                        android:text="@string/online_1_day_ago"
+                        android:textColor="@color/color_212121"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </RadioGroup>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <FrameLayout
+                android:background="@drawable/bg_edit_options"
+                android:id="@+id/fr_verified"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_11sdp">
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/txt_verified"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/ic_verified_2"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:text="@string/verified"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <Switch
+                    android:id="@+id/swVerify"
+                    style="@style/StyleSwitch"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="@dimen/_15sdp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:background="@drawable/bg_edit_options"
+                android:id="@+id/fr_friend"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_11sdp">
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/txt_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/ic_friend"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:text="@string/friend_on_facebook"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <Switch
+                    android:id="@+id/swFriend"
+                    style="@style/StyleSwitch"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="@dimen/_15sdp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:background="@drawable/bg_edit_options"
+                android:id="@+id/fr_color"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_11sdp">
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/txt_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/ic_theme"
+                    android:drawablePadding="@dimen/_8sdp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:text="@string/theme"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_color"
+                    android:src="@drawable/ic_online_status"
+                    android:layout_gravity="right|center"
+                    android:layout_marginRight="@dimen/_15sdp" />
+
+            </FrameLayout>
+
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/personal_info"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                app:textViewFontAssetName="@string/font_bold" />
+
+            <LinearLayout
+                android:background="@drawable/bg_edit_text"
+                android:paddingHorizontal="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/tv_edu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_11sdp"
+                    android:text="@string/education"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    app:textViewFontAssetName="@string/font_bold" />
+
+                <nat.pink.base.custom.view.ExtEditText
+                    android:background="@drawable/bg_edit_text"
+                    android:id="@+id/edt_edu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/education_hint"
+                    android:paddingStart="@dimen/_18sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_9E9E9E"
+                    android:textSize="@dimen/_14sdp" />
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/tv_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_11sdp"
+                    android:text="@string/work"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp"
+                    app:textViewFontAssetName="@string/font_bold" />
+
+                <nat.pink.base.custom.view.ExtEditText
+                    android:background="@drawable/bg_edit_text"
+                    android:id="@+id/edt_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/work_hint"
+                    android:paddingStart="@dimen/_18sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_9E9E9E"
+                    android:textSize="@dimen/_14sdp" />
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/tv_live"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_11sdp"
+                    android:text="@string/live"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp"
+                    app:textViewFontAssetName="@string/font_bold" />
+
+                <nat.pink.base.custom.view.ExtEditText
+
+                    android:layout_marginBottom="@dimen/_12sdp"
+                    android:background="@drawable/bg_edit_text"
+                    android:id="@+id/edt_live"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/hint_lives_in"
+                    android:paddingStart="@dimen/_18sdp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_9E9E9E"
+                    android:textSize="@dimen/_14sdp" />
+            </LinearLayout>
+
+
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/edt_error_live"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="@string/please_fill_in_the_information"
+                android:textColor="@color/color_FF3B30"
+                android:textSize="@dimen/_11sdp" />
+
+
+
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/call_later"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone"
+                app:textViewFontAssetName="@string/font_bold" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/txt_timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+
+                android:drawableEnd="@drawable/ic_right_textview"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/_18sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:text="@string/now"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:elevation="@dimen/_3sdp"
+        android:id="@+id/layout_btn_create"
+        android:background="@color/white"
+        android:paddingVertical="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+
+            app:cardCornerRadius="@dimen/_99sdp"
+            app:cardBackgroundColor="@color/color_AF7CE4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+        <nat.pink.base.custom.view.ExtTextView
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:paddingVertical="@dimen/_11sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create"
+            />
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

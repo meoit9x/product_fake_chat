@@ -7,15 +7,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import nat.pink.base.CreateUserFragment;
-import nat.pink.base.MainActivity;
+import nat.pink.base.ui.create.CreateUserFragment;
 import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterFakeUser;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.dialog.DialogSelectChat;
-import nat.pink.base.ui.language.LanguageFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.InAppPurchase;
