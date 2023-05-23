@@ -22,6 +22,13 @@
             android:textColor="@color/black"
             app:textViewFontAssetName="@string/font_regular" />
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal" />
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
