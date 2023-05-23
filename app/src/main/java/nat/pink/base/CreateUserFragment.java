@@ -12,25 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CreateUserFragment extends Fragment {
+import nat.pink.base.base.BaseFragment;
+import nat.pink.base.databinding.FragmentCreateUserBinding;
+import nat.pink.base.ui.home.HomeViewModel;
+
+public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, HomeViewModel> {
     public static final String TAG = "CreateUserFragment";
-    private CreateUserViewModel mViewModel;
-
-    public static CreateUserFragment newInstance() {
-        return new CreateUserFragment();
-    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_create_user, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CreateUserViewModel.class);
-        // TODO: Use the ViewModel
+    protected HomeViewModel getViewModel() {
+        return new ViewModelProvider(this).get(HomeViewModel.class);
     }
 
 }

@@ -78,17 +78,20 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         }
     }
 
+    private DialogSelectChat dialog;
+
     private void showMessage() {
         binding.frAdsHome.setVisibility(View.VISIBLE);
         //  App.firebaseAnalytics.logEvent("Access_Message_Function", null);
         //  Toast.makeText(this.getContext(), "hello ", Toast.LENGTH_SHORT).show();
         //  ((MainActivity) getActivity()).addChildFragment(new FragmentListUser(), FragmentListUser.class.getSimpleName());
 
-        DialogSelectChat dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
+        dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
             if (user.getId() == -1) {
                 //create mew user
-            //    ((MainActivity) getActivity()).addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
+                //    ((MainActivity) getActivity()).addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
+                dialog.dismiss();
             }
 
         });
