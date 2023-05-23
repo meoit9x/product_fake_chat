@@ -203,6 +203,8 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="select_language">Select language</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="chat_bubbles">Chat Bubbles</string>
+    <string name="navigation_bar">Navigation bar</string>
 
 
 </resources>
