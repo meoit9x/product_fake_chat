@@ -5,8 +5,10 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/_25sdp"
     tools:context=".MainActivity">
     <FrameLayout
+
         android:id="@+id/content"
         android:background="@color/white"
         android:layout_width="match_parent"
