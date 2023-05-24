@@ -27,14 +27,15 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
         btChatBubbles = new ExtButton(requireContext());
         btNavigationBar = new ExtButton(requireContext());
 
+        binding.llTop.txtTitle.setText(getString(R.string.setup_fake_notiffication));
         btChatBubbles.setStringText(getString(R.string.chat_bubbles));
-        LinearLayoutCompat.LayoutParams lpChatBubbles =  new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT,1f);
+        LinearLayoutCompat.LayoutParams lpChatBubbles = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, 1f);
         lpChatBubbles.setMarginEnd(15);
         btChatBubbles.setLayoutParams(lpChatBubbles);
         btChatBubbles.setSelected(true);
         binding.llButton.addView(btChatBubbles);
 
-        LinearLayoutCompat.LayoutParams lpNavigationBar = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT,1f);
+        LinearLayoutCompat.LayoutParams lpNavigationBar = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, 1f);
         lpNavigationBar.setMarginStart(15);
         btNavigationBar.setLayoutParams(lpNavigationBar);
         btNavigationBar.setStringText(getString(R.string.navigation_bar));
@@ -54,7 +55,7 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
         btNavigationBar.setOnClickListener(v -> setStateView(true));
     }
 
-    private void setStateView(boolean isChatBubles){
+    private void setStateView(boolean isChatBubles) {
         btNavigationBar.setSelected(isChatBubles);
         btChatBubbles.setSelected(!isChatBubles);
     }

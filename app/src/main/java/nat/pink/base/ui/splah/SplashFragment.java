@@ -46,9 +46,13 @@ public class SplashFragment extends BaseFragment<FragmentSplashBinding, SplashVi
                 binding.progress.setProgress(progress);
                 if (progress == 99) {
                     boolean firstTime = PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.OPEN_APP_FIRST_TIME, true);
-                    if (firstTime)
-                        replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
-                    else
+                    if (firstTime) {
+                        if (PreferenceUtil.getString(requireContext(), PreferenceUtil.SETTING_ENGLISH, "").equals("")) {
+                            replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
+                        } else {
+                            replaceFragment(new HomeFragment(), HomeFragment.TAG);
+                        }
+                    } else
                         replaceFragment(new HomeFragment(), HomeFragment.TAG);
                 }
             }

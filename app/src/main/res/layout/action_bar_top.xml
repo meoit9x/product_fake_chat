@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_action_bar_top"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/_20sdp">
 
     <ImageView
         android:id="@+id/iv_back"
@@ -21,7 +22,7 @@
         android:layout_gravity="center"
         android:layout_weight="1"
         android:textColor="@color/white"
-        android:textSize="@dimen/_18sdp"
+        android:textSize="@dimen/_16sdp"
         app:textViewFontAssetName="@string/font_bold" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -216,6 +216,12 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="chat_bubbles">Chat Bubbles</string>
     <string name="navigation_bar">Navigation bar</string>
-
+    <string name="setup_fake_notiffication">Setup Fake Notiffication</string>
+    <string name="contact">Contact</string>
+    <string name="message_content">Message content</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">Enter the text of the message</string>
+    <string name="time_delay">Time Delay</string>
+    <string name="message_sound">Message sound</string>
 
 </resources>
