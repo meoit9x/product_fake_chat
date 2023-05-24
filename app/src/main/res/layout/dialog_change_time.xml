@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_14sdp"
+    android:backgroundTint="@color/white"
+    android:paddingBottom="@dimen/_10sdp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_6sdp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:id="@+id/select_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/sf_pro_display"
+                    android:text="@string/time_delay"
+                    android:textColor="@color/color_212121"
+                    android:textSize="@dimen/_18sdp" />
+
+                <ImageView
+                    android:id="@+id/iv_exit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginEnd="@dimen/_7sdp"
+                    android:layout_marginBottom="@dimen/_7sdp"
+                    android:src="@drawable/ic_cancel" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="@string/dialog_description_time_delay"
+                android:textColor="@color/color_666666"
+                android:textSize="@dimen/_14sdp" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/txt_get_now"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/get_a_call_now"
+                android:textColor="@color/color_212121"
+                android:textSize="@dimen/_14sdp" />
+
+            <View style="@style/LineSytle" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/txt_five_seconds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/five_seconds_later"
+                android:textColor="@color/color_212121"
+                android:textSize="@dimen/_14sdp" />
+
+            <View style="@style/LineSytle" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_ten_seconds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="@dimen/_8sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/ten_seconds_later"
+                    android:textColor="@color/color_212121"
+                    android:textSize="@dimen/_14sdp" />
+
+                <nat.pink.base.custom.view.ExtTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/_8sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:text="@string/recommend"
+                    android:textColor="@color/color_9E9E9E"
+                    android:textSize="@dimen/_14sdp"
+                    app:textViewFontAssetName="@string/font_regular" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <View style="@style/LineSytle" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/txt_fifteen_seconds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/fifteen_seconds_later"
+                android:textColor="@color/color_212121"
+                android:textSize="@dimen/_14sdp" />
+
+            <View style="@style/LineSytle" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/txt_twenty_seconds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="@string/twenty_seconds_later"
+                android:textColor="@color/color_212121"
+                android:textSize="@dimen/_14sdp" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

@@ -223,5 +223,12 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="hint_messsage_content">Enter the text of the message</string>
     <string name="time_delay">Time Delay</string>
     <string name="message_sound">Message sound</string>
+    <string name="dialog_description_time_delay">Is the countdown time to show the fake incoming call</string>
+    <string name="get_a_call_now">Get a call now</string>
+    <string name="five_seconds_later">5 seconds later</string>
+    <string name="ten_seconds_later">10 seconds later</string>
+    <string name="fifteen_seconds_later">15 seconds later</string>
+    <string name="twenty_seconds_later">20 seconds later</string>
+    <string name="recommend">Recommend</string>
 
 </resources>

@@ -45,6 +45,7 @@ import java.util.function.Consumer;
 
 import nat.pink.base.MainActivity;
 import nat.pink.base.R;
+import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.dialog.DialogRemoveAds;
 
 public class Utils {
@@ -61,7 +62,6 @@ public class Utils {
         context.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         return displayMetrics.widthPixels;
     }
-
 
 
     public static void hiddenKeyboard(Activity activity, View view) {
@@ -86,7 +86,35 @@ public class Utils {
         }
     }
 
+    public static String getStringTimeDelay(Context context, DialogChangeTime.CHANGE_TYPE changeType) {
 
+        if (changeType == DialogChangeTime.CHANGE_TYPE.NOW)
+            return context.getString(R.string.get_a_call_now);
+        if (changeType == DialogChangeTime.CHANGE_TYPE.FIFTEEN_SECONDS)
+            return context.getString(R.string.fifteen_seconds_later);
+        if (changeType == DialogChangeTime.CHANGE_TYPE.FIVE_SECONDS)
+            return context.getString(R.string.five_seconds_later);
+        if (changeType == DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS)
+            return context.getString(R.string.ten_seconds_later);
+        if (changeType == DialogChangeTime.CHANGE_TYPE.TWENTY_SECONDS)
+            return context.getString(R.string.twenty_seconds_later);
+        return context.getString(R.string.get_a_call_now);
+    }
+
+    public static int getIntTimeDelay(Context context, DialogChangeTime.CHANGE_TYPE changeType) {
+
+        if (changeType == DialogChangeTime.CHANGE_TYPE.NOW)
+            return 0;
+        if (changeType == DialogChangeTime.CHANGE_TYPE.FIFTEEN_SECONDS)
+            return 15;
+        if (changeType == DialogChangeTime.CHANGE_TYPE.FIVE_SECONDS)
+            return 5;
+        if (changeType == DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS)
+            return 10;
+        if (changeType == DialogChangeTime.CHANGE_TYPE.TWENTY_SECONDS)
+            return 20;
+        return 0;
+    }
 
     public static long getTimeFromKey(Context context, int item) {
         switch (item) {
@@ -109,7 +137,6 @@ public class Utils {
         }
         return 0;
     }
-
 
 
     public static String getRealPathFromURI(Activity activity, Uri contentURI) {
@@ -180,8 +207,6 @@ public class Utils {
         }
         win.setAttributes(winParams);
     }
-
-
 
 
     public static void clearFlags(Activity activity) {
@@ -277,7 +302,7 @@ public class Utils {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public static void showDialogRemoveAds(Activity activity, Consumer consumerBuy, Consumer showAds){
+    public static void showDialogRemoveAds(Activity activity, Consumer consumerBuy, Consumer showAds) {
 //        new DialogRemoveAds(activity, R.style.MaterialDialogSheet, aBoolean -> {
 //            if (aBoolean) {
 //                ((MainActivity) activity).addChildFragment(new InAppFragment(o -> consumerBuy.accept(new Object())), InAppFragment.class.getSimpleName());
