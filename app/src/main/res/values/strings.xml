@@ -230,5 +230,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="fifteen_seconds_later">15 seconds later</string>
     <string name="twenty_seconds_later">20 seconds later</string>
     <string name="recommend">Recommend</string>
+    <string name="create_your_contact">Create your contact</string>
 
 </resources>
