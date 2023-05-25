@@ -255,4 +255,9 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
 
     <string name="create_new">"Create\nnew"</string>
 
+    <string name="choose_interface_color">Choose interface color</string>
+    <string name="your_chat_bubble_display_color">Your chat bubble display color</string>
+    <string name="close">Close</string>
+    <string name="ok_dialog">OK</string>
+
 </resources>

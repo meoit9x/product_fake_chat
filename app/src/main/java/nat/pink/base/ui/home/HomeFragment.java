@@ -29,7 +29,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 
     @Override
     protected HomeViewModel getViewModel() {
-        return new ViewModelProvider(this).get(HomeViewModel.class);
+        return new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
     }
 
     @Override

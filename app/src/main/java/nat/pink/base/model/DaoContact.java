@@ -1,13 +1,15 @@
 package nat.pink.base.model;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 @Entity(tableName = "contact")
-public class DaoContact implements Serializable {
+public class DaoContact implements Serializable, Comparable<DaoContact> {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -118,5 +120,15 @@ public class DaoContact implements Serializable {
 
     public void setLive(String live) {
         this.live = live;
+    }
+
+    @Override
+    public int compareTo(DaoContact daoContact) {
+        return Comparators.NAME.compare(this, daoContact);
+    }
+
+    public static class Comparators {
+
+        public static Comparator<DaoContact> NAME = (o1, o2) -> o1.name.compareTo(o2.name);
     }
 }

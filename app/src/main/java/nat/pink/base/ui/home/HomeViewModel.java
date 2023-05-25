@@ -9,6 +9,7 @@ import android.net.Uri;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import nat.pink.base.R;
@@ -23,7 +24,14 @@ public class HomeViewModel extends BaseViewModel {
     MutableLiveData<List<DaoContact>> contacts = new MutableLiveData<>();
 
     public void getListContact(Context context) {
-        contacts.postValue(DatabaseController.getInstance(context).getContact());
+        List<DaoContact> daoContacts = DatabaseController.getInstance(context).getContact();
+        Collections.sort(daoContacts,DaoContact.Comparators.NAME);
+        contacts.postValue(daoContacts);
+    }
+
+    public void insertContact(Context context, DaoContact contact) {
+        DatabaseController.getInstance(context).insertContact(contact);
+        getListContact(context);
     }
 
 }
