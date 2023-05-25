@@ -1,6 +1,7 @@
 package nat.pink.base.adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import nat.pink.base.R;
 import nat.pink.base.databinding.ItemFakeUserBinding;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectUser;
 import nat.pink.base.utils.ImageUtils;
+import nat.pink.base.utils.Utils;
 
 public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHolder> {
 
-    private ArrayList<ObjectUser> fakeUsers = new ArrayList<>();
+    private List<DaoContact> fakeUsers = new ArrayList<>();
     private Context context;
-    private Consumer<ObjectUser> consumer;
+    private Consumer<Integer> consumer;
 
-    public AdapterFakeUser(Context context, Consumer<ObjectUser> consumer) {
+    public AdapterFakeUser(Context context, Consumer<Integer> consumer) {
         this.context = context;
         this.consumer = consumer;
     }
 
-    public void setFakeUsers(ArrayList<ObjectUser> fakeUsers) {
+    public void setFakeUsers(List<DaoContact> fakeUsers) {
         this.fakeUsers = fakeUsers;
         notifyDataSetChanged();
     }
@@ -43,20 +48,29 @@ public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemFakeUserBinding binding = holder.binding;
-        ObjectUser user = fakeUsers.get(position);
-        ImageUtils.loadImage(binding.avatar, user.getAvatar());
-     //   Glide.with(context).load(user.getAvatar()).into(binding.avatar);
-        binding.name.setText(user.getName());
-        if (user.getStatus()==0) {
+        binding.getRoot().setOnClickListener(v -> {
+            consumer.accept(position);
+        });
+
+        if (position == 0) {
+            binding.avatar.setImageResource(R.drawable.add_fake_user2);
+            binding.name.setText(context.getString(R.string.create_new));
             binding.onlineStatus.setVisibility(View.GONE);
+            return;
         }
 
-        //binding.cvContent.setOnClickListener(view -> consumer.accept(objectLanguage));
+        DaoContact user = fakeUsers.get(position - 1);
+        if (user.getAvatar().contains("R.drawable")) {
+            binding.avatar.setImageResource(Utils.convertStringToDrawable(context, user.getAvatar()));
+        } else
+            ImageUtils.loadImage(binding.avatar, user.getAvatar());
+        binding.name.setText(user.getName());
+        binding.mcvOnline.setCardBackgroundColor(context.getColor(user.getOnline() == 1 ? R.color.color_5AD439 : R.color.gray_D9));
     }
 
     @Override
     public int getItemCount() {
-        return fakeUsers == null ? 0 : fakeUsers.size();
+        return fakeUsers == null ? 1 : (fakeUsers.size() + 1);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

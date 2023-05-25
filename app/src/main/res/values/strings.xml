@@ -235,4 +235,24 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="recommend">Recommend</string>
     <string name="create_your_contact">Create your contact</string>
 
+    <!--    data default contact-->
+    <string name="data_default_name_1">"Cristiano\nRonaldo"</string>
+    <string name="data_default_work_1">Captain at Saudi Pro League club Al Nassr</string>
+    <string name="data_default_live_1">Lives in Madeira, Portugal</string>
+
+    <string name="data_default_name_2">"Leo\nMessi"</string>
+    <string name="data_default_education_2">Studied at Barcelona\'s La Masia Academy</string>
+    <string name="data_default_work_2">Striker at club Paris Saint-Germain</string>
+    <string name="data_default_live_2">Lives in Paris, France</string>
+
+    <string name="data_default_name_3">"Taylor\nSwift"</string>
+    <string name="data_default_work_3">Grammy Award Winning Singer</string>
+    <string name="data_default_live_3">Lives in Nashville, Tennessee</string>
+
+    <string name="data_default_name_4">"Johnny\nDepp"</string>
+    <string name="data_default_work_4">Famous actor</string>
+    <string name="data_default_live_4">Live in America</string>
+
+    <string name="create_new">"Create\nnew"</string>
+
 </resources>

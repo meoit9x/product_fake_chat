@@ -1,5 +1,7 @@
 package nat.pink.base.ui.home;
 
+import static nat.pink.base.utils.PreferenceUtil.KEY_SETUP_DATA_DEFAULT;
+
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -7,23 +9,21 @@ import android.net.Uri;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nat.pink.base.R;
 import nat.pink.base.base.BaseViewModel;
+import nat.pink.base.dao.DatabaseController;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectUser;
+import nat.pink.base.utils.PreferenceUtil;
 
 public class HomeViewModel extends BaseViewModel {
 
-    MutableLiveData<ArrayList<ObjectUser>> users = new MutableLiveData<>();
+    MutableLiveData<List<DaoContact>> contacts = new MutableLiveData<>();
 
-    public void initData(Context context) {
-        ArrayList<ObjectUser> fakeUsers = new ArrayList<>();
-        fakeUsers.add(new ObjectUser(1,"Create \nnew", "", 0, Uri.parse("android.resource://"+context.getPackageName()+"/drawable/add_fake_user2").toString(),1));
-        fakeUsers.add(new ObjectUser(2,"Cristiano Ronaldo", "", 1, Uri.parse("android.resource://"+context.getPackageName()+"/drawable/ronaldo").toString(),1));
-        fakeUsers.add(new ObjectUser(3,"Leo \nMessi", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/messi2").toString(),1));
-        fakeUsers.add(new ObjectUser(4,"Taylor \nSwift", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/taylor").toString(),1));
-        fakeUsers.add(new ObjectUser(5,"Johnny \nDepp", "", 1,Uri.parse("android.resource://"+context.getPackageName()+"/drawable/depp").toString(),1));
-        users.postValue(fakeUsers);
+    public void getListContact(Context context) {
+        contacts.postValue(DatabaseController.getInstance(context).getContact());
     }
 
 }

@@ -324,4 +324,10 @@ public class Utils {
             i.setType("image/*");
         activity.startActivityForResult(i, isVideo ? Const.ALBUM_REQUEST_ONLY_VIDEO : Const.ALBUM_REQUEST_CODE);
     }
+
+    public static int convertStringToDrawable(Context context, String uri){
+        String s = uri.replace("R.drawable.", "");
+        return context.getResources().getIdentifier(s, "drawable", context.getPackageName());
+    }
+
 }

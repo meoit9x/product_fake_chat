@@ -2,6 +2,7 @@ package nat.pink.base.ui.create;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
+import com.bumptech.glide.Glide;
+
 import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentCreateUserBinding;
 import nat.pink.base.ui.home.HomeViewModel;
+import nat.pink.base.utils.Const;
 import nat.pink.base.utils.Utils;
 
 public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, HomeViewModel> {
@@ -55,6 +59,19 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
             Utils.hiddenKeyboard(requireActivity(), binding.edtName);
             Utils.openGallery(requireActivity(), false);
         });
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Utils.openGallery(requireActivity(), false);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Const.ALBUM_REQUEST_CODE && data.getData() != null) {
+            Glide.with(requireContext()).load(data.getDataString()).into(binding.ivChangeAva);
+        }
     }
 }
