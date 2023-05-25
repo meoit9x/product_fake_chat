@@ -29,9 +29,6 @@ public class CallScreenFragment extends BaseFragment<FragmentCallScreenBinding,C
     @Override
     protected void initData() {
         super.initData();
-        user  = new DaoContact(2, "Cristiano Ronaldo", 1, true,true,1, "harvard","new castle","", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
-
-
         Bundle bundle = getArguments();
         if (bundle != null) {
             Serializable serializable =  bundle.getSerializable(Const.PUT_EXTRAL_OBJECT_CALL);
@@ -45,8 +42,9 @@ public class CallScreenFragment extends BaseFragment<FragmentCallScreenBinding,C
     @Override
     protected void initView() {
         super.initView();
-        Utils.showFullScreen(getActivity());
+        user  = new DaoContact(2, "Cristiano Ronaldo", 1, true,true,1, "harvard","new castle","", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
 
+        Utils.showFullScreen(getActivity());
 
         binding.txtName.setText(user.getName());
         ImageUtils.loadImage(binding.ivCall,user.getAvatar());
@@ -72,5 +70,10 @@ public class CallScreenFragment extends BaseFragment<FragmentCallScreenBinding,C
             binding.ivBack.setVisibility(View.VISIBLE);
             binding.swCamera.setVisibility(View.VISIBLE);
         });
+
+        binding.ivBack.setOnClickListener(v -> {
+            backStackFragment();
+        });
+
     }
 }

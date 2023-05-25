@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import nat.pink.base.dao.DatabaseController;
+import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.chat.FragmentChat;
 import nat.pink.base.ui.create.CreateUserFragment;
 import nat.pink.base.R;
@@ -77,7 +78,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             addFragment(new NotificationFragment(), NotificationFragment.TAG);
         });
         binding.fakeVoice.setOnClickListener(v -> {
-//            addFragment(new CallFragment(new ObjectUser(2, "Cristiano Ronaldo", "", 1, Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString(), 1)), CallFragment.TAG);
+            addFragment(new CallFragment(), CallFragment.TAG);
         });
         binding.fakeVideo.setOnClickListener(view -> {
             addFragment(new VideoFragment(),VideoFragment.TAG);

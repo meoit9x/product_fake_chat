@@ -3,6 +3,7 @@ package nat.pink.base.ui.call;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.net.Uri;
 import android.view.View;
 
 import nat.pink.base.R;
@@ -12,6 +13,7 @@ import nat.pink.base.databinding.FragmentSetupCallBinding;
 import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.ui.call.CallViewModel;
+import nat.pink.base.ui.incoming.CallScreenFragment;
 import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 
@@ -20,8 +22,8 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
     public static final String TAG = "CallFragment";
 
     private DaoContact user;
-    public CallFragment(DaoContact user){
-        this.user = user;
+    public CallFragment(){
+
     }
 
     @Override
@@ -36,6 +38,8 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
     @Override
     protected void initView() {
         super.initView();
+        user  = new DaoContact(2, "Cristiano Ronaldo", 1, true,true,1, "harvard","new castle","", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
+
         btInComing = new ExtButton(requireContext());
         btOutComing = new ExtButton(requireContext());
 
@@ -67,13 +71,13 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
             binding.txtTimer.setText(Utils.getStringTimeDelay(requireContext(), v));
         });
 
+        binding.txtTimer.setText(getString(R.string.ten_seconds_later));
     }
 
     @Override
     protected void initData() {
         super.initData();
-        binding.txtTimer.setText(getString(R.string.ten_seconds_later));
-    }
+          }
 
     @Override
     protected void initEvent() {
@@ -85,7 +89,7 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                 dialogChangeTime.show();
         });
         binding.txtDone.setOnClickListener(v -> {
-            backStackFragment();
+            replaceFragment(new CallScreenFragment(),CallScreenFragment.TAG);
         });
         binding.llTop.ivBack.setOnClickListener(v -> backStackFragment());
 
