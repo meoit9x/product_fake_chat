@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.model.ObjectUser;
 import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.create.CreateUserFragment;
@@ -19,6 +20,7 @@ import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogSelectChat;
 import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.PreferenceUtil;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewModel> {
     private AdapterFakeUser adapterFakeUser;
@@ -34,7 +36,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     protected void initView() {
         super.initView();
         adapterFakeUser = new AdapterFakeUser(requireContext(), data -> {
-            adapterFakeUser.notifyDataSetChanged();
+            if (data == 0)
+                addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
         });
         LinearLayoutManager ln = new LinearLayoutManager(requireContext());
         ln.setOrientation(RecyclerView.HORIZONTAL);
@@ -52,8 +55,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     @Override
     protected void initData() {
         super.initData();
-        getViewModel().initData(requireContext());
-        getViewModel().users.observe(this, fakeUsers -> {
+        if (PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.KEY_SETUP_DATA_DEFAULT, false)) {
+            DatabaseController.getInstance(requireContext()).setupDataDefault();
+        }
+        getViewModel().getListContact(requireContext());
+        getViewModel().contacts.observe(this, fakeUsers -> {
             adapterFakeUser.setFakeUsers(fakeUsers);
         });
     }
@@ -67,11 +73,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.fakeMessage.setOnClickListener(v -> {
             showAction(Const.KEY_ADS_MESSAGE);
         });
-        binding.fakeNoti.setOnClickListener(v->{
-            addFragment(new NotificationFragment(),NotificationFragment.TAG);
+        binding.fakeNoti.setOnClickListener(v -> {
+            addFragment(new NotificationFragment(), NotificationFragment.TAG);
         });
-        binding.fakeVoice.setOnClickListener(v->{
-            addFragment(new CallFragment(new ObjectUser(2,"Cristiano Ronaldo", "", 1, Uri.parse("android.resource://"+getContext().getPackageName()+"/drawable/ronaldo").toString(),1)),CallFragment.TAG);
+        binding.fakeVoice.setOnClickListener(v -> {
+            addFragment(new CallFragment(new ObjectUser(2, "Cristiano Ronaldo", "", 1, Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString(), 1)), CallFragment.TAG);
         });
 
     }
