@@ -6,16 +6,23 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -42,6 +49,7 @@ import nat.pink.base.ui.home.HomeViewModel;
 import nat.pink.base.utils.Config;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.FileUtil;
+import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.SoftInputAssist;
 import nat.pink.base.utils.Toolbox;
 import nat.pink.base.utils.Utils;
@@ -71,6 +79,9 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     @Override
     public void initView() {
         super.initView();
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        lp.topMargin = Utils.getStatusBarHeight(requireContext());
+        binding.container.setLayoutParams(lp);
         softInputAssist = new SoftInputAssist(requireActivity());
         binding.tvBlock.setText(Html.fromHtml(getString(R.string.block_content), Html.FROM_HTML_MODE_COMPACT));
         binding.rcvMessage.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -148,8 +159,10 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
 
     private void loadUser() {
         getViewModel().objectMessenges.clear();
-        if (objectUser.getAvatar() != null)
-            Glide.with(requireContext()).load(Uri.parse(objectUser.getAvatar())).into(binding.layoutTop.imInline);
+        if (objectUser.getAvatar().contains("R.drawable")) {
+            binding.layoutTop.imInline.setImageResource(Utils.convertStringToDrawable(requireContext(), objectUser.getAvatar()));
+        } else
+            ImageUtils.loadImage(binding.layoutTop.imInline, objectUser.getAvatar());
         if (objectUser.getName() != null)
             binding.layoutTop.tvName.setText(objectUser.getName());
         binding.layoutTop.tvContent.setText(Utils.getStringFromIndex(requireContext(), objectUser.getOnline() - 1));
@@ -175,6 +188,12 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         if (softInputAssist != null)
@@ -186,7 +205,6 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
         if (softInputAssist != null)
             softInputAssist.onDestroy();
         super.onDestroy();
-
     }
 
     @Override

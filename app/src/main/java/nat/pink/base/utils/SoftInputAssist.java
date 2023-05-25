@@ -47,7 +47,7 @@ public class SoftInputAssist {
     private void possiblyResizeChildOfContent() {
         contentContainer.getWindowVisibleDisplayFrame(contentAreaOfWindowBounds);
         int usableHeightNow = contentAreaOfWindowBounds.height()
-                + activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._25sdp);
+                + activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._50sdp);
 
         if (usableHeightNow != usableHeightPrevious) {
             setHeightWindow(usableHeightNow);
