@@ -17,6 +17,7 @@ import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentCreateUserBinding;
 import nat.pink.base.ui.home.HomeViewModel;
+import nat.pink.base.utils.Utils;
 
 public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, HomeViewModel> {
     public static final String TAG = "CreateUserFragment";
@@ -41,13 +42,18 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
     protected void initEvent() {
         super.initEvent();
         binding.swStatus.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked){
+            if (isChecked) {
                 binding.lineView1.setVisibility(View.VISIBLE);
                 binding.radios.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 binding.lineView1.setVisibility(View.GONE);
                 binding.radios.setVisibility(View.GONE);
             }
+        });
+
+        binding.extChangeAva.setOnClickListener(v -> {
+            Utils.hiddenKeyboard(requireActivity(), binding.edtName);
+            Utils.openGallery(requireActivity(), false);
         });
 
     }

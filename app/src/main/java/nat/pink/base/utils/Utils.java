@@ -311,4 +311,17 @@ public class Utils {
 //            }
 //        }).show();
     }
+
+    public static void openGallery(Activity activity, boolean isVideo) {
+        if (activity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            activity.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Const.ALBUM_REQUEST_CODE);
+            return;
+        }
+        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (isVideo)
+            i.setType("video/*");
+        else
+            i.setType("image/*");
+        activity.startActivityForResult(i, isVideo ? Const.ALBUM_REQUEST_ONLY_VIDEO : Const.ALBUM_REQUEST_CODE);
+    }
 }
