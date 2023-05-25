@@ -49,6 +49,22 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".ui.video.child.VideoCallActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Base.NoActionBar"
+            android:showOnLockScreen="true" />
+
+        <activity
+            android:name=".ui.video.child.VideoCallAnswerActivity"
+            android:theme="@style/Theme.Base.NoActionBar"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.video.child.OutCommingActivity"
+            android:theme="@style/Theme.Base.NoActionBar"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

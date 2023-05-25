@@ -324,4 +324,11 @@ public class Utils {
             i.setType("image/*");
         activity.startActivityForResult(i, isVideo ? Const.ALBUM_REQUEST_ONLY_VIDEO : Const.ALBUM_REQUEST_CODE);
     }
+
+    public static Bitmap getBitmapFromVideo(Context context, Uri uri) {
+        String picturePath = UriUtils.getPathFromUri(context, uri);
+        if (picturePath == null)
+            return null;
+        return ThumbnailUtils.createVideoThumbnail(picturePath, MediaStore.Video.Thumbnails.MICRO_KIND);
+    }
 }

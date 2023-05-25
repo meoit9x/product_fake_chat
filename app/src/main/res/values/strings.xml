@@ -216,7 +216,8 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="chat_bubbles">Chat Bubbles</string>
     <string name="navigation_bar">Navigation bar</string>
-    <string name="setup_fake_notiffication">Setup Fake Notiffication</string>
+    <string name="setup_fake_notiffication">Setup Fake Notification</string>
+    <string name="setup_fake_video_call">Setup Fake Video Call</string>
     <string name="contact">Contact</string>
     <string name="message_content">Message content</string>
     <string name="number_text_message_content">0/100</string>
@@ -231,5 +232,13 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="twenty_seconds_later">20 seconds later</string>
     <string name="recommend">Recommend</string>
     <string name="create_your_contact">Create your contact</string>
+    <string name="pick_up_time">Pick up time</string>
+    <string name="des_pick_up_time">Is the countdown time until the recipient picks up your fake video call</string>
+    <string name="video_fake">Video Fake</string>
+    <string name="des_upload_video">It is recommended \n to choose videos \n with vertical aspect \n ratio (9:16) for the \n best experience.</string>
+    <string name="upload_video">Upload Video</string>
+    <string name="call_away">Call away</string>
+    <string name="pick_up_now">Pick up now</string>
+    <string name="change_video">Change Video</string>
 
 </resources>

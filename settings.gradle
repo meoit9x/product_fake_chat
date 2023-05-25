@@ -10,6 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+
+        // AppLovin integrate
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "Fake_Chat"

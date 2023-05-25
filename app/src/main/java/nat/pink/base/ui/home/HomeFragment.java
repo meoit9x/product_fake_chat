@@ -15,6 +15,7 @@ import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogSelectChat;
 import nat.pink.base.ui.notification.NotificationFragment;
+import nat.pink.base.ui.video.VideoFragment;
 import nat.pink.base.utils.Const;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewModel> {
@@ -66,6 +67,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         });
         binding.fakeNoti.setOnClickListener(v->{
             addFragment(new NotificationFragment(),NotificationFragment.TAG);
+        });
+        binding.fakeVideo.setOnClickListener(view -> {
+            addFragment(new VideoFragment(),VideoFragment.TAG);
         });
 
     }
