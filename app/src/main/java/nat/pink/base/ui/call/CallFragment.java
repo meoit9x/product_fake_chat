@@ -1,17 +1,25 @@
-package nat.pink.base.ui.notification;
-
-import android.annotation.SuppressLint;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
+package nat.pink.base.ui.call;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.custom.view.ExtButton;
+import nat.pink.base.databinding.FragmentSetupCallBinding;
 import nat.pink.base.databinding.FragmentSetupNotificationBinding;
 import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.model.ObjectUser;
@@ -19,41 +27,50 @@ import nat.pink.base.ui.home.HomeViewModel;
 import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 
-public class NotificationFragment extends BaseFragment<FragmentSetupNotificationBinding, HomeViewModel> {
+public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallViewModel> {
 
-    public static final String TAG = "NotificationFragment";
+    public static final String TAG = "CallFragment";
 
-    @Override
-    protected HomeViewModel getViewModel() {
-        return new ViewModelProvider(this).get(HomeViewModel.class);
+    private ObjectUser user;
+    public CallFragment(ObjectUser user){
+        this.user = user;
     }
 
-    private ExtButton btChatBubbles, btNavigationBar;
+    @Override
+    protected CallViewModel getViewModel() {
+        return new ViewModelProvider(this).get(CallViewModel.class);
+    }
+
+    private ExtButton btInComing, btOutComing;
     private DialogChangeTime dialogChangeTime;
     private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS;
 
     @Override
     protected void initView() {
         super.initView();
-        btChatBubbles = new ExtButton(requireContext());
-        btNavigationBar = new ExtButton(requireContext());
+        btInComing = new ExtButton(requireContext());
+        btOutComing = new ExtButton(requireContext());
 
+        ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        binding.txtNameContact.setText(user.getName());
+        if (user.getVerified()==1) {
+            binding.ivCheckRank.setVisibility(View.VISIBLE);
+        }
 
-
-        binding.llTop.txtTitle.setText(getString(R.string.setup_fake_notiffication));
-        btChatBubbles.setStringText(getString(R.string.chat_bubbles));
+        binding.llTop.txtTitle.setText(getString(R.string.setup_fake_call));
+        btInComing.setStringText(getString(R.string.in_coming_call));
         LinearLayoutCompat.LayoutParams lpChatBubbles = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, 1f);
         lpChatBubbles.setMarginEnd(15);
-        btChatBubbles.setLayoutParams(lpChatBubbles);
-        btChatBubbles.setSelected(true);
-        binding.llButton.addView(btChatBubbles);
+        btInComing.setLayoutParams(lpChatBubbles);
+        btInComing.setSelected(true);
+        binding.llButton.addView(btInComing);
 
         LinearLayoutCompat.LayoutParams lpNavigationBar = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, 1f);
         lpNavigationBar.setMarginStart(15);
-        btNavigationBar.setLayoutParams(lpNavigationBar);
-        btNavigationBar.setStringText(getString(R.string.navigation_bar));
-        btNavigationBar.setSelected(false);
-        binding.llButton.addView(btNavigationBar);
+        btOutComing.setLayoutParams(lpNavigationBar);
+        btOutComing.setStringText(getString(R.string.out_coming_call));
+        btOutComing.setSelected(false);
+        binding.llButton.addView(btOutComing);
 
         dialogChangeTime = new DialogChangeTime(requireContext(), v -> {
             if (dialogChangeTime.isShowing())
@@ -73,8 +90,8 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
     @Override
     protected void initEvent() {
         super.initEvent();
-        btChatBubbles.setOnClickListener(v -> setStateView(false));
-        btNavigationBar.setOnClickListener(v -> setStateView(true));
+        btInComing.setOnClickListener(v -> setStateView(false));
+        btOutComing.setOnClickListener(v -> setStateView(true));
         binding.llSelectTimer.setOnClickListener(view -> {
             if (!dialogChangeTime.isShowing())
                 dialogChangeTime.show();
@@ -83,27 +100,11 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
             backStackFragment();
         });
         binding.llTop.ivBack.setOnClickListener(v -> backStackFragment());
-        binding.txtDescription.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
-
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                binding.txtNumberText.setText(charSequence.length() + "/100");
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
     private void setStateView(boolean isChatBubles) {
-        btNavigationBar.setSelected(isChatBubles);
-        btChatBubbles.setSelected(!isChatBubles);
+        btOutComing.setSelected(isChatBubles);
+        btInComing.setSelected(!isChatBubles);
     }
 }

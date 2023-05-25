@@ -1,6 +1,7 @@
 package nat.pink.base.ui.home;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -8,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import nat.pink.base.model.ObjectUser;
+import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.create.CreateUserFragment;
 import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterFakeUser;
@@ -66,6 +69,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         });
         binding.fakeNoti.setOnClickListener(v->{
             addFragment(new NotificationFragment(),NotificationFragment.TAG);
+        });
+        binding.fakeVoice.setOnClickListener(v->{
+            addFragment(new CallFragment(new ObjectUser(2,"Cristiano Ronaldo", "", 1, Uri.parse("android.resource://"+getContext().getPackageName()+"/drawable/ronaldo").toString(),1)),CallFragment.TAG);
         });
 
     }
