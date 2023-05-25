@@ -336,9 +336,14 @@ public class Utils {
         activity.startActivityForResult(i, isVideo ? Const.ALBUM_REQUEST_ONLY_VIDEO : Const.ALBUM_REQUEST_CODE);
     }
 
+    public static Bitmap getBitmapFromVideo(Context context, Uri uri) {
+        String picturePath = UriUtils.getPathFromUri(context, uri);
+        if (picturePath == null)
+            return null;
+        return ThumbnailUtils.createVideoThumbnail(picturePath, MediaStore.Video.Thumbnails.MICRO_KIND);
+    }
     public static int convertStringToDrawable(Context context, String uri){
         String s = uri.replace("R.drawable.", "");
         return context.getResources().getIdentifier(s, "drawable", context.getPackageName());
     }
-
 }

@@ -113,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
             item.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        for (Fragment item : getSupportFragmentManager().getFragments()) {
+            item.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
     public void setLoadingAdsView(Boolean visible) {
         Log.d(TAG, "LoadingAdsView: " + visible);
         binding.loadingAdsLayout.loadingAdsLayout.bringToFront();

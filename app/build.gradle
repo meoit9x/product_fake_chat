@@ -112,6 +112,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.linsea:universalvideoview:1.1.0@aar'
 
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 }

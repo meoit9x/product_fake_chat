@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_20sdp"
         android:paddingVertical="@dimen/_15sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_back_white" />
 
     <nat.pink.base.custom.view.ExtTextView

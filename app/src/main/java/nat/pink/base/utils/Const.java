@@ -47,4 +47,7 @@ public class Const {
     public static final int CHECK_1_H = 3;
     public static final int CHECK_1_D = 4;
 
+    public static final int CHECK_TURN_OFF_VOICE = 1260;
+    public static final int CHECK_TURN_OFF_VOICE_INCOMING = 1261;
+
 }

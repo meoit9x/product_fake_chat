@@ -42,14 +42,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="@dimen/_7sdp"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    android:layout_marginEnd="@dimen/_7sdp"
-                    android:layout_marginBottom="@dimen/_7sdp"
+                    android:layout_margin="@dimen/_7sdp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_cancel" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/ext_des"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sf_pro_display"
@@ -65,6 +64,7 @@
                 android:paddingHorizontal="@dimen/_8sdp"
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/get_a_call_now"
+                android:background="?attr/selectableItemBackground"
                 android:textColor="@color/color_212121"
                 android:textSize="@dimen/_14sdp" />
 
@@ -78,12 +78,14 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/five_seconds_later"
                 android:textColor="@color/color_212121"
+                android:background="?attr/selectableItemBackground"
                 android:textSize="@dimen/_14sdp" />
 
             <View style="@style/LineSytle" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_ten_seconds"
+                android:background="?attr/selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -120,6 +122,7 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/fifteen_seconds_later"
                 android:textColor="@color/color_212121"
+                android:background="?attr/selectableItemBackground"
                 android:textSize="@dimen/_14sdp" />
 
             <View style="@style/LineSytle" />
@@ -133,6 +136,7 @@
                 android:paddingVertical="@dimen/_10sdp"
                 android:text="@string/twenty_seconds_later"
                 android:textColor="@color/color_212121"
+                android:background="?attr/selectableItemBackground"
                 android:textSize="@dimen/_14sdp" />
 
 
