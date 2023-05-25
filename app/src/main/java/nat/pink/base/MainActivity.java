@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -69,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
-    //    fragmentStates.remove(fragmentStates.size() - 1);
         fragmentManager.beginTransaction()
                 .replace(R.id.content, fragment, tag)
                 .addToBackStack(tag)
@@ -98,30 +99,18 @@ public class MainActivity extends AppCompatActivity {
         fragmentStates.remove(fragmentStates.size() - 1);
     }
 
-    private void hideOrShowBottomView(boolean show) {
-//        if (show) {
-//            binding.bannerAdView.visibility = View.VISIBLE
-//            if (binding.ctsBottomNavigation.visibility != View.VISIBLE)
-//                binding.ctsBottomNavigation.visibility = View.VISIBLE
-//        } else {
-//            binding.bannerAdView.visibility = View.GONE
-//            binding.ctsBottomNavigation.visibility = View.GONE
-//            binding.bannerAdView.visibility = View.GONE
-//        }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        for (Fragment item : getSupportFragmentManager().getFragments())
+            item.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void addChildFragment(Fragment fragment, String tag) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.frContent, fragment);
-        if (!fragmentStates.contains(tag))
-            fragmentStates.add(tag);
-        ft.addToBackStack(tag);
-        ft.commit();
-//        hideOrShowBottomView(
-//                tag.contains(HomeFragment.class.getSimpleName())
-//                        ||  tag.contains(OtherFragment.class.getSimpleName())
-//                        || tag.contains(SettingFragment.class.getSimpleName())
-//        );
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (Fragment item : getSupportFragmentManager().getFragments())
+            item.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override

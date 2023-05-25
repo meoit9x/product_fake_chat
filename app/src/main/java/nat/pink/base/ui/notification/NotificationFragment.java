@@ -5,7 +5,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import nat.pink.base.R;
@@ -34,6 +33,8 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
         super.initView();
         btChatBubbles = new ExtButton(requireContext());
         btNavigationBar = new ExtButton(requireContext());
+
+
 
         binding.llTop.txtTitle.setText(getString(R.string.setup_fake_notiffication));
         btChatBubbles.setStringText(getString(R.string.chat_bubbles));

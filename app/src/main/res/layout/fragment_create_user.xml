@@ -81,7 +81,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
-
                 android:orientation="vertical">
 
                 <FrameLayout
@@ -141,7 +140,6 @@
                         android:backgroundTint="#335AFB"
                         android:buttonTint="#335AFB"
                         android:checked="true"
-                        android:clickable="false"
                         android:layoutDirection="ltr"
                         android:text="@string/online_5_minutes_ago"
                         android:textColor="@color/color_212121"
@@ -156,7 +154,6 @@
                         android:layout_marginEnd="@dimen/_9sdp"
                         android:backgroundTint="#335AFB"
                         android:buttonTint="#335AFB"
-                        android:clickable="false"
                         android:layoutDirection="ltr"
                         android:text="@string/online_30_minutes_ago"
                         android:textColor="@color/color_212121"
@@ -171,7 +168,6 @@
                         android:layout_marginEnd="@dimen/_9sdp"
                         android:backgroundTint="#335AFB"
                         android:buttonTint="#335AFB"
-                        android:clickable="false"
                         android:layoutDirection="ltr"
                         android:text="@string/online_1_hour_ago"
                         android:textColor="@color/color_212121"
@@ -186,7 +182,6 @@
                         android:layout_marginEnd="@dimen/_9sdp"
                         android:backgroundTint="#335AFB"
                         android:buttonTint="#335AFB"
-                        android:clickable="false"
                         android:layoutDirection="ltr"
                         android:text="@string/online_1_day_ago"
                         android:textColor="@color/color_212121"
@@ -278,13 +273,13 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/iv_content"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="right|center"
                     android:layout_marginRight="@dimen/_15sdp"
-                    android:src="@drawable/ic_online_status" />
+                    android:src="@drawable/ic_change_color" />
 
             </FrameLayout>
 
@@ -434,9 +429,9 @@
             app:cardCornerRadius="@dimen/_99sdp">
 
             <RelativeLayout
+                android:id="@+id/rl_done"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
 
                 <nat.pink.base.custom.view.ExtTextView
                     android:layout_width="wrap_content"

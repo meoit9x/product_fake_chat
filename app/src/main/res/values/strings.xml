@@ -218,6 +218,9 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="navigation_bar">Navigation bar</string>
     <string name="setup_fake_notiffication">Setup Fake Notification</string>
     <string name="setup_fake_video_call">Setup Fake Video Call</string>
+    <string name="setup_fake_call">Setup Fake Voice Call</string>
+    <string name="in_coming_call">Incoming Call</string>
+    <string name="out_coming_call">Call away</string>
     <string name="contact">Contact</string>
     <string name="message_content">Message content</string>
     <string name="number_text_message_content">0/100</string>
@@ -240,5 +243,30 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="call_away">Call away</string>
     <string name="pick_up_now">Pick up now</string>
     <string name="change_video">Change Video</string>
+
+    <!--    data default contact-->
+    <string name="data_default_name_1">"Cristiano Ronaldo"</string>
+    <string name="data_default_work_1">Captain at Saudi Pro League club Al Nassr</string>
+    <string name="data_default_live_1">Lives in Madeira, Portugal</string>
+
+    <string name="data_default_name_2">"Leo Messi"</string>
+    <string name="data_default_education_2">Studied at Barcelona\'s La Masia Academy</string>
+    <string name="data_default_work_2">Striker at club Paris Saint-Germain</string>
+    <string name="data_default_live_2">Lives in Paris, France</string>
+
+    <string name="data_default_name_3">"Taylor Swift"</string>
+    <string name="data_default_work_3">Grammy Award Winning Singer</string>
+    <string name="data_default_live_3">Lives in Nashville, Tennessee</string>
+
+    <string name="data_default_name_4">"Johnny Depp"</string>
+    <string name="data_default_work_4">Famous actor</string>
+    <string name="data_default_live_4">Live in America</string>
+
+    <string name="create_new">"Create\nnew"</string>
+
+    <string name="choose_interface_color">Choose interface color</string>
+    <string name="your_chat_bubble_display_color">Your chat bubble display color</string>
+    <string name="close">Close</string>
+    <string name="ok_dialog">OK</string>
 
 </resources>
