@@ -1,6 +1,5 @@
 package nat.pink.base.model;
 
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -101,4 +100,3 @@ public class ObjectMessenge implements Serializable {
         this.status = status;
     }
 }
-

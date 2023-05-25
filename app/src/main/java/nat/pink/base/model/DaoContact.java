@@ -10,6 +10,22 @@ import java.util.Comparator;
 
 @Entity(tableName = "contact")
 public class DaoContact implements Serializable, Comparable<DaoContact> {
+    public DaoContact(int id, String name, int online, boolean verified, boolean is_friend, int color, String education, String work, String live, String avatar) {
+        this.id = id;
+        this.name = name;
+        this.online = online;
+        this.verified = verified;
+        this.is_friend = is_friend;
+        this.color = color;
+        this.education = education;
+        this.work = work;
+        this.live = live;
+        this.avatar = avatar;
+    }
+
+    public DaoContact(){
+
+    }
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")

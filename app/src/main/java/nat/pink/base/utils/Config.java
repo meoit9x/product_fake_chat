@@ -1,5 +1,6 @@
 package nat.pink.base.utils;
 
+
 import nat.pink.base.model.ObjectMessenge;
 
 public class Config {
