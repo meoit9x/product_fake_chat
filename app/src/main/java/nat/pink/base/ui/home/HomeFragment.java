@@ -55,7 +55,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     @Override
     protected void initData() {
         super.initData();
-        if (PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.KEY_SETUP_DATA_DEFAULT, false)) {
+        if (PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.KEY_SETUP_DATA_DEFAULT, true)) {
             DatabaseController.getInstance(requireContext()).setupDataDefault();
         }
         getViewModel().getListContact(requireContext());
