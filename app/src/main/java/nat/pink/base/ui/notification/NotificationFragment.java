@@ -3,10 +3,8 @@ package nat.pink.base.ui.notification;
 import android.annotation.SuppressLint;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 
 import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import nat.pink.base.R;
@@ -14,9 +12,7 @@ import nat.pink.base.base.BaseFragment;
 import nat.pink.base.custom.view.ExtButton;
 import nat.pink.base.databinding.FragmentSetupNotificationBinding;
 import nat.pink.base.dialog.DialogChangeTime;
-import nat.pink.base.model.ObjectUser;
 import nat.pink.base.ui.home.HomeViewModel;
-import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 
 public class NotificationFragment extends BaseFragment<FragmentSetupNotificationBinding, HomeViewModel> {

@@ -7,8 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import nat.pink.base.model.DaoContact;
+import nat.pink.base.model.ObjectMessenge;
 
-@Database(entities = {DaoContact.class}, version = 1)
+@Database(entities = {DaoContact.class, ObjectMessenge.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase appDatabase;
 
@@ -24,4 +25,6 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract ContactDao getContactDao();
+
+    public abstract MessengeDao getMessengeDao();
 }

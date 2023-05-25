@@ -12,28 +12,25 @@ import androidx.core.util.Consumer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nat.pink.base.R;
-import nat.pink.base.databinding.ItemFakeUserBinding;
 import nat.pink.base.databinding.ItemFakeUserContactBinding;
-import nat.pink.base.model.ObjectUser;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.utils.ImageUtils;
+import nat.pink.base.utils.Utils;
 
 
 public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUserContact.ViewHolder> {
 
-    private ArrayList<ObjectUser> fakeUsers = new ArrayList<>();
+    private List<DaoContact> fakeUsers;
     private Context context;
-    private Consumer<ObjectUser> consumer;
+    private Consumer<DaoContact> consumer;
 
-    public AdapterFakeUserContact(Context context, Consumer<ObjectUser> consumer) {
+    public AdapterFakeUserContact(Context context, List<DaoContact> fakeUsers, Consumer<DaoContact> consumer) {
         this.context = context;
         this.consumer = consumer;
-    }
-
-    public void setFakeUsers(ArrayList<ObjectUser> fakeUsers) {
         this.fakeUsers = fakeUsers;
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -46,19 +43,18 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemFakeUserContactBinding binding = holder.binding;
-        ObjectUser user = fakeUsers.get(position);
-        ImageUtils.loadImage(binding.avatar, user.getAvatar());
-        //   Glide.with(context).load(user.getAvatar()).into(binding.avatar);
+        DaoContact user = fakeUsers.get(position);
+
+        if (user.getAvatar().contains("R.drawable")) {
+            binding.avatar.setImageResource(Utils.convertStringToDrawable(context, user.getAvatar()));
+        } else
+            ImageUtils.loadImage(binding.avatar, user.getAvatar());
+
         binding.tvName.setText(user.getName());
-        if (user.getStatus()==0) {
-            binding.onlineStatus.setVisibility(View.GONE);
-        }
-        if (user.getVerified()==0) {
-            binding.ivVerify.setVisibility(View.GONE);
-        }
+        binding.ivVerify.setVisibility(user.isVerified() ? View.VISIBLE : View.INVISIBLE);
 
         //case add new user
-        if (user.getId()== -1){
+        if (user.getId() == -1) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 binding.ivVerify.setVisibility(View.GONE);
                 binding.tvName.setTextColor(context.getColor(R.color.color_7C76CE));
@@ -66,10 +62,8 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
                 binding.ivAction.setVisibility(View.GONE);
             }
         }
-
+        binding.mcvOnline.setCardBackgroundColor(context.getColor(user.getOnline() == 1 ? R.color.color_5AD439 : R.color.gray_D9));
         binding.mainAction.setOnClickListener(v -> consumer.accept(user));
-
-        //binding.cvContent.setOnClickListener(view -> consumer.accept(objectLanguage));
     }
 
     @Override

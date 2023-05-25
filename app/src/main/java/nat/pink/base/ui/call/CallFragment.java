@@ -3,27 +3,14 @@ package nat.pink.base.ui.call;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.custom.view.ExtButton;
 import nat.pink.base.databinding.FragmentSetupCallBinding;
-import nat.pink.base.databinding.FragmentSetupNotificationBinding;
 import nat.pink.base.dialog.DialogChangeTime;
-import nat.pink.base.model.ObjectUser;
-import nat.pink.base.ui.home.HomeViewModel;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 
@@ -31,8 +18,8 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
 
     public static final String TAG = "CallFragment";
 
-    private ObjectUser user;
-    public CallFragment(ObjectUser user){
+    private DaoContact user;
+    public CallFragment(DaoContact user){
         this.user = user;
     }
 
@@ -53,7 +40,7 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
 
         ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
-        if (user.getVerified()==1) {
+        if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);
         }
 

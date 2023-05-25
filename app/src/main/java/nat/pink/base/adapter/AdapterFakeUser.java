@@ -1,7 +1,6 @@
 package nat.pink.base.adapter;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import nat.pink.base.R;
 import nat.pink.base.databinding.ItemFakeUserBinding;
 import nat.pink.base.model.DaoContact;
-import nat.pink.base.model.ObjectUser;
 import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 

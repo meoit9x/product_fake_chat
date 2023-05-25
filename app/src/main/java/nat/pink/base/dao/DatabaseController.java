@@ -3,9 +3,12 @@ package nat.pink.base.dao;
 import static nat.pink.base.utils.PreferenceUtil.KEY_SETUP_DATA_DEFAULT;
 
 import android.content.Context;
+
+import java.util.ArrayList;
 import java.util.List;
 import nat.pink.base.R;
 import nat.pink.base.model.DaoContact;
+import nat.pink.base.model.ObjectMessenge;
 import nat.pink.base.utils.PreferenceUtil;
 
 public class DatabaseController {
@@ -105,5 +108,25 @@ public class DatabaseController {
         DatabaseController.getInstance(context).insertContact(daoContact);
 
         PreferenceUtil.saveBoolean(context, KEY_SETUP_DATA_DEFAULT, false);
+    }
+
+    public List<ObjectMessenge> getMessageById(int id) {
+        if (appDatabase != null) {
+            return appDatabase.getMessengeDao().getMessageByOwnId(id);
+        }
+        return new ArrayList<>();
+    }
+
+    public Long insertMessenge(ObjectMessenge objectMessenge) {
+        if (appDatabase != null) {
+            return appDatabase.getMessengeDao().insertMessenge(objectMessenge);
+        }
+        return 0L;
+    }
+
+    public void deleteMessenger(int id) {
+        if (appDatabase != null) {
+            appDatabase.getMessengeDao().deleteMessage(id);
+        }
     }
 }

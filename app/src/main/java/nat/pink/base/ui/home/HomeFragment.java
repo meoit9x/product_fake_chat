@@ -1,7 +1,5 @@
 package nat.pink.base.ui.home;
 
-import android.annotation.SuppressLint;
-import android.net.Uri;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -10,8 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import nat.pink.base.dao.DatabaseController;
-import nat.pink.base.model.ObjectUser;
-import nat.pink.base.ui.call.CallFragment;
+import nat.pink.base.ui.chat.FragmentChat;
 import nat.pink.base.ui.create.CreateUserFragment;
 import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterFakeUser;
@@ -45,9 +42,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.rcvFakeUser.setAdapter(adapterFakeUser);
 
         dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
+            dialog.dismiss();
             if (user.getId() == -1) {
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
-                dialog.dismiss();
+            } else {
+                addFragment(new FragmentChat(user), FragmentChat.TAG);
             }
         });
     }
@@ -59,9 +58,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             DatabaseController.getInstance(requireContext()).setupDataDefault();
         }
         getViewModel().getListContact(requireContext());
-        getViewModel().contacts.observe(this, fakeUsers -> {
-            adapterFakeUser.setFakeUsers(fakeUsers);
-        });
+        getViewModel().contacts.observe(this, fakeUsers -> adapterFakeUser.setFakeUsers(fakeUsers));
+        getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
+        getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
     }
 
     @Override
@@ -77,7 +76,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             addFragment(new NotificationFragment(), NotificationFragment.TAG);
         });
         binding.fakeVoice.setOnClickListener(v -> {
-            addFragment(new CallFragment(new ObjectUser(2, "Cristiano Ronaldo", "", 1, Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString(), 1)), CallFragment.TAG);
+//            addFragment(new CallFragment(new ObjectUser(2, "Cristiano Ronaldo", "", 1, Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString(), 1)), CallFragment.TAG);
         });
 
     }

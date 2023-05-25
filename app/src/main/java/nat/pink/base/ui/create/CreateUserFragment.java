@@ -87,6 +87,7 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
         binding.rb5Min.setOnClickListener(this::onRadioButtonClicked);
         binding.rb30Min.setOnClickListener(this::onRadioButtonClicked);
         binding.frColor.setOnClickListener(v -> dialogChangeColor.show());
+        binding.llTop.ivBack.setOnClickListener(v -> backStackFragment());
 
     }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_change_info"
+        android:icon="@drawable/ic_menu_change_info"
+        android:title="@string/change_information"
+        app:showAsAction=""/>
+    <item
+        android:icon="@drawable/ic_conversation"
+        android:id="@+id/menu_conversation"
+        android:title="@string/conversation_list" />
+
+</menu>

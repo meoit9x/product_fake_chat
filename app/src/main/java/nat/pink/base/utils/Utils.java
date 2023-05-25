@@ -63,6 +63,17 @@ public class Utils {
         return displayMetrics.widthPixels;
     }
 
+    public static String getStringFromIndex(Context context, int checked) {
+        if (checked == Const.CHECK_5_M)
+            return context.getString(R.string.online_5_minutes_ago);
+        if (checked == Const.CHECK_30_M)
+            return context.getString(R.string.online_30_minutes_ago);
+        if (checked == Const.CHECK_1_H)
+            return context.getString(R.string.online_1_hour_ago);
+        if (checked == Const.CHECK_1_D)
+            return context.getString(R.string.online_1_day_ago);
+        return context.getString(R.string.online);
+    }
 
     public static void hiddenKeyboard(Activity activity, View view) {
         if (activity == null)
