@@ -8,6 +8,7 @@ public class Const {
     public static final String KEY_ADS_GUIDE = "4711083542d8d3b0";
     public static final String KEY_ADS_HOME = "a90fe0c34b45b496";
     public static final String KEY_ADS_VIDEO_CALL = "d6a9c4851f988ca6";
+    public static final String KEY_ADS_VOICE_CALL = "d6a9c4851f988caa";
     public static final String KEY_ADS_MESSAGE = "c15c272e296b33eb";
     public static final String KEY_ADS_NOTIFICATION = "0f59554c6250aa24";
     public static final String KEY_ADS_DONE = "89b5de9992a2828a";

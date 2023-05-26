@@ -255,6 +255,7 @@
                                 app:cardCornerRadius="@dimen/_99sdp">
 
                                 <TextView
+                                    android:id="@+id/txt_voice_call"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginHorizontal="@dimen/_10sdp"

@@ -22,6 +22,7 @@ import nat.pink.base.R;
 import nat.pink.base.databinding.ActivityScreenIncomingBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 
 public class VideoCallActivity extends AppCompatActivity {
@@ -67,14 +68,24 @@ public class VideoCallActivity extends AppCompatActivity {
 
     private void iniData() {
         if (objectCalling != null) {
-            Glide.with(this)
+/*            Glide.with(this)
                     .load(objectCalling.getPathImage() != null ? Uri.parse(objectCalling.getPathImage()) : null)
                     .placeholder(R.drawable.ic_user_default)
                     .into(binding.ivCall);
             Glide.with(this).load(objectCalling.getPathImage() != null ? Uri.parse(objectCalling.getPathImage()) : null)
                     .skipMemoryCache(true)
                     .placeholder(R.drawable.ic_user_default)
-                    .fitCenter().into(binding.ivContent);
+                    .fitCenter().into(binding.ivContent);*/
+            if (objectCalling.getPathImage()!=null) {
+                if (objectCalling.getPathImage().contains("R.drawable")) {
+                    binding.ivCall.setImageResource(Utils.convertStringToDrawable(this,  objectCalling.getPathImage()));
+                    binding.ivContent.setImageResource(Utils.convertStringToDrawable(this,  objectCalling.getPathImage()));
+                } else {
+                    ImageUtils.loadImage(binding.ivCall, objectCalling.getPathImage());
+                    ImageUtils.loadImage(binding.ivContent, objectCalling.getPathImage());
+                }
+            }
+
             binding.txtName.setText(objectCalling.getName());
         }
     }

@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.function.Consumer;
+
 import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.custom.view.ExtButton;
@@ -29,9 +31,15 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
     public static final String TAG = "CallFragment";
 
     private DaoContact user;
+    private Consumer<Object> consumer;
 
     public CallFragment() {
 
+    }
+
+    public CallFragment(DaoContact objectUser, Consumer<Object> consumer) {
+        this.user = objectUser;
+        this.consumer = consumer;
     }
 
     @Override
@@ -48,12 +56,16 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
     @Override
     protected void initView() {
         super.initView();
-        user = new DaoContact(2, "Cristiano Ronaldo", 1, true, true, 1, "harvard", "new castle", "", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
-
+        // user = new DaoContact(2, "Cristiano Ronaldo", 1, true, true, 1, "harvard", "new castle", "", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
         btInComing = new ExtButton(requireContext());
         btOutComing = new ExtButton(requireContext());
 
-        ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        if (user.getAvatar().contains("R.drawable")) {
+            binding.ivAvatarContact.setImageResource(Utils.convertStringToDrawable(getContext(), user.getAvatar()));
+        } else {
+            ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        }
+        //ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
         if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);
@@ -127,31 +139,32 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                 backStackFragment();
             }*/
 
-            if (btOutComing.isSelected()){
+            if (btOutComing.isSelected()) {
                 if (objectCalling.getTimer() == DialogChangeTime.CHANGE_TYPE.NOW) {
                     Intent intent = new Intent(requireContext(), OutCommingActivity.class);
                     intent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, objectCalling);
                     intent.putExtra("show_icon_video", true);
                     startActivityForResult(intent, Config.CHECK_TURN_OFF_VOICE);
                 } else {
-                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(),changeType)));
+                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
                     PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);
-                    Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(),changeType)), Const.ACTION_CALL_VOICE, objectCalling);
+                    Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_CALL_VOICE, objectCalling);
                     backStackFragment();
                 }
-            }else{
+            } else {
                 if (objectIncoming.getTimer() == DialogChangeTime.CHANGE_TYPE.NOW) {
                     Intent intent = new Intent(requireContext(), VideoCallActivity.class);
                     intent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, objectIncoming);
                     intent.putExtra("show_icon_video", true);
                     startActivityForResult(intent, Config.CHECK_TURN_OFF_VOICE);
                 } else {
-                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(),changeType)));
+                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
                     PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_COMMING_VOICE);
-                    Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(),changeType)), Const.ACTION_COMMING_VOICE, objectIncoming);
+                    Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_COMMING_VOICE, objectIncoming);
                     backStackFragment();
                 }
             }
+            consumer.accept(new Object());
         });
         binding.llTop.ivBack.setOnClickListener(v -> backStackFragment());
 

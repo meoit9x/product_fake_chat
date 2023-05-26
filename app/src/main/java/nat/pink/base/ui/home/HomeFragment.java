@@ -4,12 +4,10 @@ import android.os.CountDownTimer;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import nat.pink.base.MainActivity;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
 import nat.pink.base.ui.call.CallFragment;
@@ -50,6 +48,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.rcvFakeUser.setLayoutManager(ln);
         binding.rcvFakeUser.setAdapter(adapterFakeUser);
         binding.txtVideoCall.setTextColor(requireContext().getColor(R.color.color_FE294D));
+        binding.txtVoiceCall.setTextColor(requireContext().getColor(R.color.color_FE294D));
 
         dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
             dialog.dismiss();
@@ -60,7 +59,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                     addFragment(new FragmentChat(user), FragmentChat.TAG);
                 } else if (type.equals(Const.KEY_ADS_VIDEO_CALL)) {
                     addFragment(new VideoFragment(user, o -> {
-                        countDownVideo();
+                        updateCountdown(Const.KEY_ADS_VIDEO_CALL);
+                    }), VideoFragment.TAG);
+                } else if (type.equals(Const.KEY_ADS_VOICE_CALL)) {
+                    addFragment(new CallFragment(user, o -> {
+                        updateCountdown(Const.KEY_ADS_VOICE_CALL);
                     }), VideoFragment.TAG);
                 }
             }
@@ -77,7 +80,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         getViewModel().contacts.observe(this, fakeUsers -> adapterFakeUser.setFakeUsers(fakeUsers));
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
-        countDownVideo();
+       // updateCountdown();
     }
 
     @Override
@@ -93,7 +96,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             addFragment(new NotificationFragment(), NotificationFragment.TAG);
         });
         binding.fakeVoice.setOnClickListener(v -> {
-            addFragment(new CallFragment(), CallFragment.TAG);
+            showAction(Const.KEY_ADS_VOICE_CALL);
         });
         binding.fakeVideo.setOnClickListener(view -> {
             showAction(Const.KEY_ADS_VIDEO_CALL);
@@ -104,6 +107,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private void showMessage() {
         binding.frAdsHome.setVisibility(View.VISIBLE);
         dialog.show();
+    }
+    private void showVoiceCall() {
+        binding.frAdsHome.setVisibility(View.VISIBLE);
+        checkShowNoti(PreferenceUtil.KEY_CALLING_VOICE, PreferenceUtil.KEY_COMMING_VOICE);
     }
 
     private void showVideoCall() {
@@ -117,32 +124,51 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             showVideoCall();
         } else if (key.equals(Const.KEY_ADS_MESSAGE)) {
             showMessage();
+        } else if (key.equals(Const.KEY_ADS_VOICE_CALL)) {
+            showVoiceCall();
         }
 //        if (key.equals(Const.KEY_ADS_NOTIFICATION))
         //   showNoti();
     }
 
-    private void countDownVideo() {
+    private void updateCountdown(String key) {
         time = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME);
         CountDownTimer countDownTimer = new CountDownTimer(time - System.currentTimeMillis(), 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 String currentTime = Utils.formatDuration(millisUntilFinished / 1000, true);
                 if (isAdded()) {
-                    int showNoti = PreferenceUtil.getInt(requireContext(), PreferenceUtil.KEY_CALLING_VIDEO);
-                    int showPopup = PreferenceUtil.getInt(requireContext(), PreferenceUtil.KEY_COMMING_VIDEO);
-                    if (time != 0 && (showNoti == 1 || showPopup == 1)) {
-                        binding.txtVideoCall.setText(currentTime);
-                        binding.txtVideoCall.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_clock_circle_video_call, 0, 0, 0);
+                    if (key.equals(Const.KEY_ADS_VIDEO_CALL)){
+                        int showNoti = PreferenceUtil.getInt(requireContext(), PreferenceUtil.KEY_CALLING_VIDEO);
+                        int showPopup = PreferenceUtil.getInt(requireContext(), PreferenceUtil.KEY_COMMING_VIDEO);
+                        if (time != 0 && (showNoti == 1 || showPopup == 1)) {
+                            binding.txtVideoCall.setText(currentTime);
+                            binding.txtVideoCall.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_clock_circle_video_call, 0, 0, 0);
+                        }
+                    }else if(key.equals(Const.KEY_ADS_VOICE_CALL)){
+                        int showNoti = PreferenceUtil.getInt(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);
+                        int showPopup = PreferenceUtil.getInt(requireContext(), PreferenceUtil.KEY_COMMING_VOICE);
+                        if (time != 0 && (showNoti == 1 || showPopup == 1)) {
+                            binding.txtVoiceCall.setText(currentTime);
+                            binding.txtVoiceCall.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_clock_circle_video_call, 0, 0, 0);
+                        }
                     }
+
                 }
             }
 
             @Override
             public void onFinish() {
-                binding.txtVideoCall.setText("-200 coin");
-                binding.txtVideoCall.setTextColor(requireContext().getColor(R.color.color_FE294D));
-                binding.txtVideoCall.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                if (key.equals(Const.KEY_ADS_VIDEO_CALL)){
+                    binding.txtVideoCall.setText("-200 coin");
+                    binding.txtVideoCall.setTextColor(requireContext().getColor(R.color.color_FE294D));
+                    binding.txtVideoCall.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                } else if (key.equals(Const.KEY_ADS_VOICE_CALL)) {
+                    binding.txtVoiceCall.setText("-100 coin");
+                    binding.txtVoiceCall.setTextColor(requireContext().getColor(R.color.color_FE294D));
+                    binding.txtVoiceCall.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                }
+
             }
         };
         countDownTimer.start();
