@@ -26,7 +26,7 @@ public class DialogChangeTime extends Dialog {
     }
 
     public enum CHANGE_TYPE {
-        NOW, FIVE_SECONDS, TEN_SSECONDS, FIFTEEN_SECONDS, TWENTY_SECONDS
+        NOW, FIVE_SECONDS, TEN_SECONDS, FIFTEEN_SECONDS, TWENTY_SECONDS
     }
 
     private Consumer<CHANGE_TYPE> consumer;
@@ -46,7 +46,7 @@ public class DialogChangeTime extends Dialog {
         setContentView(binding.getRoot());
 
         binding.ivExit.setOnClickListener(view -> dismiss());
-        binding.llTenSeconds.setOnClickListener(view -> consumer.accept(CHANGE_TYPE.TEN_SSECONDS));
+        binding.llTenSeconds.setOnClickListener(view -> consumer.accept(CHANGE_TYPE.TEN_SECONDS));
         binding.txtFifteenSeconds.setOnClickListener(view -> consumer.accept(CHANGE_TYPE.FIFTEEN_SECONDS));
         binding.txtFiveSeconds.setOnClickListener(view -> consumer.accept(CHANGE_TYPE.FIVE_SECONDS));
         binding.txtGetNow.setOnClickListener(view -> consumer.accept(CHANGE_TYPE.NOW));

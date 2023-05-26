@@ -1,7 +1,6 @@
 package nat.pink.base.utils;
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
-
 import static nat.pink.base.utils.Const.MY_PERMISSIONS_REQUEST_STORAGE;
 
 import android.Manifest;
@@ -9,8 +8,6 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -29,11 +26,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.Serializable;
@@ -43,10 +41,9 @@ import java.util.Locale;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
-import nat.pink.base.MainActivity;
 import nat.pink.base.R;
 import nat.pink.base.dialog.DialogChangeTime;
-import nat.pink.base.dialog.DialogRemoveAds;
+import nat.pink.base.service.AlarmReceiver;
 
 public class Utils {
 
@@ -114,7 +111,7 @@ public class Utils {
             return context.getString(R.string.fifteen_seconds_later);
         if (changeType == DialogChangeTime.CHANGE_TYPE.FIVE_SECONDS)
             return context.getString(R.string.five_seconds_later);
-        if (changeType == DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS)
+        if (changeType == DialogChangeTime.CHANGE_TYPE.TEN_SECONDS)
             return context.getString(R.string.ten_seconds_later);
         if (changeType == DialogChangeTime.CHANGE_TYPE.TWENTY_SECONDS)
             return context.getString(R.string.twenty_seconds_later);
@@ -124,15 +121,15 @@ public class Utils {
     public static int getIntTimeDelay(Context context, DialogChangeTime.CHANGE_TYPE changeType) {
 
         if (changeType == DialogChangeTime.CHANGE_TYPE.NOW)
-            return 0;
+            return 1;
         if (changeType == DialogChangeTime.CHANGE_TYPE.FIFTEEN_SECONDS)
-            return 15;
+            return 7;
         if (changeType == DialogChangeTime.CHANGE_TYPE.FIVE_SECONDS)
-            return 5;
-        if (changeType == DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS)
-            return 10;
+            return 2;
+        if (changeType == DialogChangeTime.CHANGE_TYPE.TEN_SECONDS)
+            return 3;
         if (changeType == DialogChangeTime.CHANGE_TYPE.TWENTY_SECONDS)
-            return 20;
+            return 8;
         return 0;
     }
 
@@ -228,6 +225,19 @@ public class Utils {
         win.setAttributes(winParams);
     }
 
+    public static void startAlarmService(Activity activity, long time, String action, Serializable objectIncoming) {
+        AlarmManager alarmManager = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(activity, AlarmReceiver.class);
+        intent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, objectIncoming);
+        Gson gson = new Gson();
+        String json = gson.toJson(objectIncoming);
+        intent.setAction(action);
+        intent.setType(json);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(activity, 0, intent, PendingIntent.FLAG_IMMUTABLE | FLAG_UPDATE_CURRENT);
+
+        long l = System.currentTimeMillis() + time;
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, l, pendingIntent);
+    }
 
     public static void clearFlags(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {

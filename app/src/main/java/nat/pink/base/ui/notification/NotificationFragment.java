@@ -26,7 +26,7 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
 
     private ExtButton btChatBubbles, btNavigationBar;
     private DialogChangeTime dialogChangeTime;
-    private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS;
+    private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SECONDS;
 
     @Override
     protected void initView() {

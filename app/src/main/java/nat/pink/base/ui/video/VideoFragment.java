@@ -1,14 +1,9 @@
 package nat.pink.base.ui.video;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -45,7 +40,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     private DialogChangeTime dialogChangeTime;
     private ObjectCalling objectIncoming = new ObjectCalling();
     private ObjectCalling objectCalling = new ObjectCalling();
-    private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS;
+    private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SECONDS;
 
     @Override
     protected void initView() {
