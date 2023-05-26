@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);*/
 
-
+        //initView();
         initData();
         Intent intent = getIntent();
         if (intent!=null && intent.getAction().equals("android.intent.action.MAIN")){
@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     gson.fromJson(intent.getType(), ObjectCalling.class)
             );
             startActivity(mIntent);
+            finish();
         } else if (intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, OutCommingActivity.class);
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     gson.fromJson(intent.getType(), ObjectCalling.class)
             );
             startActivity(mIntent);
+            finish();
         } else if (intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, OutCommingActivity.class);
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             );
             mIntent.putExtra("show_icon_video", true);
             startActivity(mIntent);
+            finish();
         } else if (intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, VideoCallActivity.class);
@@ -103,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             );
             mIntent.putExtra("show_icon_video", true);
             startActivity(mIntent);
+            finish();
         }
 
     }
@@ -163,4 +167,5 @@ public class MainActivity extends AppCompatActivity {
         binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE == binding.loadingAdsLayout.loadingAdsLayout.getVisibility() ? View.GONE : View.VISIBLE);
         binding.frContent.setVisibility(View.VISIBLE == binding.frContent.getVisibility() ? View.GONE : View.VISIBLE);
     }
+
 }
