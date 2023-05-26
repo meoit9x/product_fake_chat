@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,8 +27,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import nat.pink.base.databinding.ActivityMainBinding;
+import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.ui.home.HomeFragment;
 import nat.pink.base.ui.splah.SplashFragment;
+import nat.pink.base.ui.video.child.OutCommingActivity;
+import nat.pink.base.ui.video.child.VideoCallActivity;
+import nat.pink.base.utils.Const;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,8 +63,48 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);*/
 
-        initView();
+
         initData();
+        Intent intent = getIntent();
+        if (intent!=null && intent.getAction().equals("android.intent.action.MAIN")){
+            initView();
+        }
+        if (intent != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, VideoCallActivity.class);
+            mIntent.putExtra(
+                    Const.PUT_EXTRAL_OBJECT_CALL,
+                    gson.fromJson(intent.getType(), ObjectCalling.class)
+            );
+            startActivity(mIntent);
+        } else if (intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, OutCommingActivity.class);
+            mIntent.putExtra(
+                    Const.PUT_EXTRAL_OBJECT_CALL,
+                    gson.fromJson(intent.getType(), ObjectCalling.class)
+            );
+            startActivity(mIntent);
+        } else if (intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, OutCommingActivity.class);
+            mIntent.putExtra(
+                    Const.PUT_EXTRAL_OBJECT_CALL,
+                    gson.fromJson(intent.getType(), ObjectCalling.class)
+            );
+            mIntent.putExtra("show_icon_video", true);
+            startActivity(mIntent);
+        } else if (intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, VideoCallActivity.class);
+            mIntent.putExtra(
+                    Const.PUT_EXTRAL_OBJECT_CALL,
+                    gson.fromJson(intent.getType(), ObjectCalling.class)
+            );
+            mIntent.putExtra("show_icon_video", true);
+            startActivity(mIntent);
+        }
+
     }
 
     private void initData() {

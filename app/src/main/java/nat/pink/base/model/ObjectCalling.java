@@ -9,7 +9,7 @@ public class ObjectCalling implements Serializable {
     private String message = "";
     private String pathImage;
     private String pathVideo;
-    private DialogChangeTime.CHANGE_TYPE timer = DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS;
+    private DialogChangeTime.CHANGE_TYPE timer = DialogChangeTime.CHANGE_TYPE.TEN_SECONDS;
     private boolean isCalling;
 
     public boolean isCalling() {
