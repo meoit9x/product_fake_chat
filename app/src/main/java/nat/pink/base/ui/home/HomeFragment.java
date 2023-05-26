@@ -25,6 +25,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private AdapterFakeUser adapterFakeUser;
     public static final String TAG = "HomeFragment";
     private DialogSelectChat dialog;
+    private String type = "";
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -48,7 +49,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             if (user.getId() == -1) {
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
             } else {
-                addFragment(new FragmentChat(user), FragmentChat.TAG);
+                if (type.equals(Const.KEY_ADS_MESSAGE)) {
+                    addFragment(new FragmentChat(user), FragmentChat.TAG);
+                } else if (type.equals(Const.KEY_ADS_VIDEO_CALL)) {
+                    addFragment(new VideoFragment(user), VideoFragment.TAG);
+                }
             }
         });
     }
@@ -81,7 +86,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             addFragment(new CallFragment(), CallFragment.TAG);
         });
         binding.fakeVideo.setOnClickListener(view -> {
-            addFragment(new VideoFragment(),VideoFragment.TAG);
+            showAction(Const.KEY_ADS_VIDEO_CALL);
         });
 
     }
@@ -91,11 +96,17 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         dialog.show();
     }
 
+    private void showVideoCall() {
+        binding.frAdsHome.setVisibility(View.VISIBLE);
+        dialog.show();
+    }
+
     private void showAction(String key) {
-//        if (key.equals(Const.KEY_ADS_VIDEO_CALL))
-        //  showVideoCall();
-        if (key.equals(Const.KEY_ADS_MESSAGE))
+        if (key.equals(Const.KEY_ADS_VIDEO_CALL)) {
+            showVideoCall();
+        } else if (key.equals(Const.KEY_ADS_MESSAGE)) {
             showMessage();
+        }
 //        if (key.equals(Const.KEY_ADS_NOTIFICATION))
         //   showNoti();
     }

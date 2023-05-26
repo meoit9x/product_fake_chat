@@ -46,11 +46,16 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     private DaoContact user;
     private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SECONDS;
 
+    public VideoFragment() {
+    }
+
+    public VideoFragment(DaoContact objectUser) {
+        this.user = objectUser;
+    }
+
     @Override
     protected void initView() {
         super.initView();
-        user  = new DaoContact(2, "Cristiano Ronaldo", 1, true,true,1, "harvard","new castle","", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
-
         btChatBubbles = new ExtButton(requireContext());
         btNavigationBar = new ExtButton(requireContext());
 
