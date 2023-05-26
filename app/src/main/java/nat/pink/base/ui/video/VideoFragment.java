@@ -23,11 +23,13 @@ import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.dialog.DialogErrorLink;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.dialog.DialogShowError;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.ui.home.HomeViewModel;
 import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.PreferenceUtil;
 import nat.pink.base.utils.UriUtils;
 import nat.pink.base.utils.Utils;
@@ -45,13 +47,22 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     private DialogChangeTime dialogChangeTime;
     private ObjectCalling objectIncoming = new ObjectCalling();
     private ObjectCalling objectCalling = new ObjectCalling();
+    private DaoContact user;
     private DialogChangeTime.CHANGE_TYPE changeType = DialogChangeTime.CHANGE_TYPE.TEN_SSECONDS;
 
     @Override
     protected void initView() {
         super.initView();
+        user  = new DaoContact(2, "Cristiano Ronaldo", 1, true,true,1, "harvard","new castle","", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
+
         btChatBubbles = new ExtButton(requireContext());
         btNavigationBar = new ExtButton(requireContext());
+
+        ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        binding.txtNameContact.setText(user.getName());
+        if (user.isVerified()) {
+            binding.ivCheckRank.setVisibility(View.VISIBLE);
+        }
 
         binding.llTop.txtTitle.setText(getString(R.string.setup_fake_video_call));
         LinearLayoutCompat.LayoutParams lpChatBubbles = new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT, 1f);
