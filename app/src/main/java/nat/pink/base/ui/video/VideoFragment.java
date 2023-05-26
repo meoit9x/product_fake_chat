@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 
+import java.util.function.Consumer;
+
 import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.custom.view.ExtButton;
@@ -38,7 +40,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     protected HomeViewModel getViewModel() {
         return new ViewModelProvider(this).get(HomeViewModel.class);
     }
-
+    private Consumer<Object> consumer;
     private ExtButton btChatBubbles, btNavigationBar;
     private DialogChangeTime dialogChangeTime;
     private ObjectCalling objectIncoming = new ObjectCalling();
@@ -49,8 +51,9 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     public VideoFragment() {
     }
 
-    public VideoFragment(DaoContact objectUser) {
+    public VideoFragment(DaoContact objectUser, Consumer<Object> consumer) {
         this.user = objectUser;
+        this.consumer = consumer;
     }
 
     @Override
@@ -59,7 +62,10 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
         btChatBubbles = new ExtButton(requireContext());
         btNavigationBar = new ExtButton(requireContext());
 
-        ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        if (user.getAvatar().contains("R.drawable")) {
+            binding.ivAvatarContact.setImageResource(Utils.convertStringToDrawable(requireContext(), user.getAvatar()));
+        } else
+            ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
         if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);
@@ -106,7 +112,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
         btNavigationBar.setOnClickListener(v -> setStateView(true));
         binding.llSelectTimer.setOnClickListener(view -> {
             if (!dialogChangeTime.isShowing()) {
-                if(btNavigationBar.isSelected()){
+                if (btNavigationBar.isSelected()) {
                     dialogChangeTime.setData(getString(R.string.pick_up_time), getString(R.string.des_pick_up_time), getString(R.string.pick_up_now));
                 } else {
                     dialogChangeTime.setData(getString(R.string.time_delay), getString(R.string.dialog_description_time_delay), getString(R.string.get_a_call_now));
@@ -137,7 +143,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
         btNavigationBar.setSelected(isChatBubles);
         btChatBubbles.setSelected(!isChatBubles);
 
-        binding.extTitleTime.setText(isChatBubles? getString(R.string.pick_up_time) : getString(R.string.time_delay));
+        binding.extTitleTime.setText(isChatBubles ? getString(R.string.pick_up_time) : getString(R.string.time_delay));
 
         binding.txtTimer.setText(Utils.getStringTimeDelay(requireContext(), isChatBubles ? objectCalling.getTimer() : objectIncoming.getTimer()));
 
@@ -167,7 +173,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     private void updateButtonChangeVideo(boolean isChange) {
         binding.extChangeVideo.setText(isChange ? getString(R.string.change_video) : getString(R.string.upload_video));
         binding.extChangeVideo.setCompoundDrawablesWithIntrinsicBounds(isChange ? R.drawable.ic_refresh_circle : R.drawable.ic_upload_file, 0, 0, 0);
-        binding.extChangeVideo.setBackgroundResource(isChange? R.drawable.bg_change_video : R.color.transparent);
+        binding.extChangeVideo.setBackgroundResource(isChange ? R.drawable.bg_change_video : R.color.transparent);
     }
 
     private void actionSave() {
@@ -177,9 +183,9 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
                 intent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, objectCalling);
                 startActivityForResult(intent, Const.CHECK_TURN_OFF_VOICE);
             } else {
-//                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), objectCalling.getTimer()));
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
                 PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VIDEO);
-//                Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), objectCalling.getTimer()), Const.ACTION_CALL_VIDEO, objectCalling);
+                Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_CALL_VIDEO, objectCalling);
                 backStackFragment();
             }
         } else {
@@ -188,12 +194,13 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
                 intent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, objectIncoming);
                 startActivityForResult(intent, Const.CHECK_TURN_OFF_VOICE);
             } else {
-//                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), objectIncoming.getTimer()));
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
                 PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_COMMING_VIDEO);
-//                Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), objectIncoming.getTimer()), Const.ACTION_COMMING_VIDEO, objectIncoming);
+                Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_COMMING_VIDEO, objectIncoming);
                 backStackFragment();
             }
         }
+        consumer.accept(new Object());
     }
 
     @Override

@@ -59,15 +59,15 @@
 
         <nat.pink.base.custom.view.ExtTextView
             android:id="@+id/ext_ok"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/_10sdp"
             android:paddingVertical="@dimen/_5sdp"
             android:layout_marginVertical="@dimen/_10sdp"
             android:text="@string/ok"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="@dimen/_18sdp"
-            android:background="?attr/selectableItemBackground"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lineView" />
