@@ -26,6 +26,7 @@ import nat.pink.base.R;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
+import nat.pink.base.utils.Utils;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
@@ -47,14 +48,14 @@ public class AlarmReceiver extends BroadcastReceiver {
             if (NotificationManagerCompat.from(context).areNotificationsEnabled())
                 showNotification(context, objectCalling);
         } else if (intent.getAction().equals(Const.ACTION_SHOW_POP_UP)) {
-//            PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_SHOW_POPUP);
-//            ObjectCalling objectCalling = (ObjectCalling) intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL);
-//            Gson gson = new Gson();
-//            String json = gson.toJson(objectCalling);
-//            Intent i = new Intent(context, ChatHeadService.class);
-//            i.setAction(Const.ACTION_SHOW_POP_UP);
-//            i.setType(json);
-//            context.startService(i);
+            PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_SHOW_POPUP);
+            ObjectCalling objectCalling = (ObjectCalling) intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL);
+            Gson gson = new Gson();
+            String json = gson.toJson(objectCalling);
+            Intent i = new Intent(context, ChatHeadService.class);
+            i.setAction(Const.ACTION_SHOW_POP_UP);
+            i.setType(json);
+            context.startService(i);
         } else if (intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
             PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_COMMING_VIDEO);
             Intent i = new Intent(context, MainActivity.class);
@@ -85,7 +86,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     private void showNotification(Context context, ObjectCalling objectCalling) {
-     /*   Uri imageUri = objectCalling.getPathImage() == null || objectCalling.getPathImage().equals("") ? null : Uri.parse(objectCalling.getPathImage());
+     Uri imageUri = objectCalling.getPathImage() == null || objectCalling.getPathImage().equals("") ? null : Uri.parse(objectCalling.getPathImage());
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
@@ -105,7 +106,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         Date resultdate = new Date(yourmilliseconds);
 
         RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.custom_notification);
-        contentView.setImageViewUri(R.id.ava, imageUri);
+        if (imageUri != null && imageUri.toString().contains("R.drawable")) {
+            contentView.setImageViewResource(R.id.ava, Utils.convertStringToDrawable(context, objectCalling.getPathImage()));
+        } else {
+            contentView.setImageViewUri(R.id.ava, imageUri);
+        }
         contentView.setTextViewText(R.id.ext_name, objectCalling.getName());
         contentView.setTextViewText(R.id.ext_title, objectCalling.getMessage());
         contentView.setTextViewText(R.id.time, sdf.format(resultdate));
@@ -130,7 +135,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
         // Will display the notification in the notification bar
-        mNotificationManager.notify(1, builder.build());*/
+        mNotificationManager.notify(1, builder.build());
     }
 
 

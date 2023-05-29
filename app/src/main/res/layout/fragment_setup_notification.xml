@@ -115,6 +115,12 @@
                     android:text="@string/number_text_message_content"
                     android:textColor="@color/color_9E9E9E"
                     android:textColorHint="@color/color_666666"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:maxLength="@integer/mtrl_btn_anim_duration_ms"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
                     android:textSize="@dimen/_10sdp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

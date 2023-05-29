@@ -35,6 +35,7 @@ import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectMessenge;
 import nat.pink.base.utils.Config;
 import nat.pink.base.utils.ImageUtils;
+import nat.pink.base.utils.Utils;
 
 public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, RecyclerView.ViewHolder> {
 
@@ -141,7 +142,11 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
 
         public void bindData() {
             binding.llInfor.setVisibility(View.VISIBLE);
-            Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(binding.imAvatar);
+            if (conversationModel.getAvatar().contains("R.drawable")) {
+                binding.imAvatar.setImageResource(Utils.convertStringToDrawable(mContext, conversationModel.getAvatar()));
+            } else {
+                Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(binding.imAvatar);
+            }
             if (!TextUtils.isEmpty(conversationModel.getName()))
                 binding.tvName2.setText(conversationModel.getName());
             if (!TextUtils.isEmpty(conversationModel.getLive()))
@@ -424,7 +429,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
         if (position == 0)
             /*0 là header*/
             return;
-        ImageUtils.loadImage(imAvatar, conversationModel.getAvatar());
+        ImageUtils.loadImage(mContext, imAvatar, conversationModel.getAvatar());
 //        UserMessageModel userMessageCurrent = null;
 //        /** Xử lý logic ẩn hiện avatar trong đoạn chat */
 //        if (conversationModel.isGroup()) {
@@ -486,7 +491,11 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             } else if (messageModel.getStatus() == Config.STATUS_NOT_RECEIVED) {
                 imStatus.setImageResource(R.drawable.ic_check);
             } else {
-                Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(imStatus);
+                if(conversationModel.getAvatar().contains("R.drawable")) {
+                    imStatus.setImageResource(Utils.convertStringToDrawable(mContext, conversationModel.getAvatar()));
+                } else {
+                    Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(imStatus);
+                }
             }
         }
 

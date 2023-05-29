@@ -69,6 +69,9 @@ public class DialogCountdownTime extends Dialog {
             case Const.KEY_ADS_VOICE_CALL:
                 tvMsg = getContext().getString(R.string.ads_voice_call);
                 break;
+            case Const.KEY_ADS_NOTIFICATION:
+                tvMsg = getContext().getString(R.string.ads_notification);
+                break;
         }
         binding.tvMsg.setText(tvMsg);
 

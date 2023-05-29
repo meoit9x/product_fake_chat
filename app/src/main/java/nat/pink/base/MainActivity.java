@@ -29,6 +29,7 @@ import androidx.navigation.ui.NavigationUI;
 import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.ui.home.HomeFragment;
+import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.ui.splah.SplashFragment;
 import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
@@ -108,10 +109,25 @@ public class MainActivity extends AppCompatActivity {
             startActivity(mIntent);
             finish();
         }
-
+        handleIntent(intent);
     }
 
     private void initData() {
+
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if(intent != null) {
+            handleIntent(intent);
+        }
+    }
+
+    private void handleIntent(Intent intent) {
+        if (intent.getAction().equals(Const.ACTION_CREAT_NOTIFICATION)) {
+            addFragment(new HomeFragment(), HomeFragment.TAG);
+        }
 
     }
 

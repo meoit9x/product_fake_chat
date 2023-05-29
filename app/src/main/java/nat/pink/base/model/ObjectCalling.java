@@ -11,6 +11,7 @@ public class ObjectCalling implements Serializable {
     private String pathVideo;
     private DialogChangeTime.CHANGE_TYPE timer = DialogChangeTime.CHANGE_TYPE.TEN_SECONDS;
     private boolean isCalling;
+    private boolean isSound = true;
 
     public boolean isCalling() {
         return isCalling;
@@ -61,5 +62,12 @@ public class ObjectCalling implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+    public boolean isSound() {
+        return isSound;
+    }
+
+    public void setSound(boolean sound) {
+        isSound = sound;
     }
 }

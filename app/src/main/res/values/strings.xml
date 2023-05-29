@@ -272,5 +272,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="ok_dialog">OK</string>
     <string name="ads_video_call">Your fake video call is coming…</string>
     <string name="ads_voice_call">Your fake voice call is coming…</string>
+    <string name="ads_notification">Your fake Notiffication is coming…</string>
 
 </resources>
