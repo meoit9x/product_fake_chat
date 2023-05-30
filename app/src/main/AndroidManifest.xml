@@ -73,6 +73,10 @@
 
         <service android:name=".service.ChatHeadService" />
 
+        <activity android:name="nat.pink.base.ui.chat.StickerActivity"
+            android:theme="@style/Theme.Base.NoActionBar"
+            android:screenOrientation="portrait" />
+
         <receiver
             android:name=".service.AlarmReceiver"
             android:enabled="true"

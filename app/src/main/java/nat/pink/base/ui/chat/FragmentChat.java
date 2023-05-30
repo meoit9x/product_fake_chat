@@ -229,8 +229,8 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
         }
         if (view.getId() == binding.layoutBottom.imEmoji.getId()) {
             // todo
-//            Intent intentEmoji = new Intent(requireContext(), StickerActivity.class);
-//            startActivityForResult(intentEmoji, Config.REQUEST_CODE_ACT_STICKER);
+            Intent intentEmoji = new Intent(requireContext(), StickerActivity.class);
+            startActivityForResult(intentEmoji, Config.REQUEST_CODE_ACT_STICKER);
         }
         if (view.getId() == binding.layoutBottom.imMore.getId()) {
             if (!binding.layoutBottom.llOpt.isShown()) {
