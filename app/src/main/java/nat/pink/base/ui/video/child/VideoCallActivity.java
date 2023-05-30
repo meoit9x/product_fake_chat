@@ -21,6 +21,7 @@ import java.io.Serializable;
 import nat.pink.base.R;
 import nat.pink.base.databinding.ActivityScreenIncomingBinding;
 import nat.pink.base.model.ObjectCalling;
+import nat.pink.base.service.CallingService;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
@@ -64,6 +65,15 @@ public class VideoCallActivity extends AppCompatActivity {
         if (showVideo) {
             binding.ivAnswer.setImageResource(R.drawable.ic_call);
         }
+        if (getIntent().getBooleanExtra(Const.ACTION_FORWARD_SCREEN,false)){
+            Intent serviceIntent = new Intent(this, CallingService.class);
+            this.stopService(serviceIntent);
+            if (Utils.checkPermission(this,Manifest.permission.CAMERA)) {
+                showView();
+            } else {
+                requestPermissions(new String[]{Manifest.permission.CAMERA}, Const.REQUEST_CODE_CAMERA);
+            }
+        }
     }
 
     private void iniData() {
@@ -106,7 +116,7 @@ public class VideoCallActivity extends AppCompatActivity {
         });
         binding.ivRefuse.setOnClickListener(v -> finish());
         binding.ivAnswer.setOnClickListener(v -> {
-            if (checkCameraHardware(this)) {
+            if (Utils.checkPermission(this,Manifest.permission.CAMERA)) {
                 showView();
             } else {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, Const.REQUEST_CODE_CAMERA);
@@ -128,22 +138,12 @@ public class VideoCallActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Check if this device has a camera
-     */
-    private boolean checkCameraHardware(Context context) {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == Const.REQUEST_CODE_CAMERA && checkCameraHardware(this)) {
+        if (requestCode == Const.REQUEST_CODE_CAMERA && Utils.checkPermission(this,Manifest.permission.CAMERA)) {
             showView();
         }
     }

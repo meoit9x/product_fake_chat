@@ -28,6 +28,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.model.ObjectCalling;
+import nat.pink.base.service.CallingService;
 import nat.pink.base.ui.home.HomeFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.ui.splah.SplashFragment;
@@ -67,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
         //initView();
         initData();
         Intent intent = getIntent();
+
+        boolean isFromNoti = intent.getBooleanExtra(Const.ACTION_FORWARD_SCREEN,false);
+        if (isFromNoti){
+            Intent serviceIntent = new Intent(this, CallingService.class);
+            this.stopService(serviceIntent);
+        }
+
         if (intent!=null && intent.getAction().equals("android.intent.action.MAIN")){
             initView();
         }

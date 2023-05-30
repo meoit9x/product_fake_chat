@@ -14,6 +14,7 @@ public class Const {
     public static final String KEY_ADS_DONE = "89b5de9992a2828a";
 
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";
+    public static final String PUT_EXTERNAL_ACTION = "PUT_EXTERNAL_ACTION";
     public static final String PUT_EXTRAL_OBJECT_MESSENGER = "PUT_EXTRAL_OBJECT_MESSENGER";
 
     public static final int PICK_FROM_GALLERY = 1000;
@@ -29,6 +30,7 @@ public class Const {
     public static final int KEY_TIME_20_S = 8;
 
     public static final int REQUEST_CODE_CAMERA = 998;
+    public static final int REQUEST_CODE_POST_NOTIFY = 996;
     public static final int REQUEST_CODE_GALLERY = 999;
     public static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 997;
     public static final int ALBUM_REQUEST_CODE = 9998;
@@ -41,6 +43,7 @@ public class Const {
     public static final String ACTION_CREAT_NOTIFICATION = "ACTION_CREAT_NOTIFICATION";
     public static final String ACTION_CALL_VOICE = "ACTION_CALL_VOICE";
     public static final String ACTION_COMMING_VOICE = "ACTION_COMMING_VOICE";
+    public static final String ACTION_FORWARD_SCREEN = "ACTION_FORWARD_SCREEN";
 
     public static final int CHECK_ONLINE = 0;
     public static final int CHECK_5_M = 1;

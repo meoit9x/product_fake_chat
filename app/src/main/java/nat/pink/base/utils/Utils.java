@@ -7,6 +7,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.KeyguardManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -46,7 +48,7 @@ import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.service.AlarmReceiver;
 
 public class Utils {
-
+    public  static String CHANNEL_ID = "xab_002_ntr";
 
     public static int getHeightScreen(Activity context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -237,6 +239,7 @@ public class Utils {
 
         long l = System.currentTimeMillis() + time;
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, l, pendingIntent);
+
     }
 
     public static void clearFlags(Activity activity) {
@@ -343,7 +346,7 @@ public class Utils {
     }
 
     public static void openGallery(Activity activity, boolean isVideo) {
-        if (activity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (!checkPermission(activity.getApplicationContext(),Manifest.permission.READ_EXTERNAL_STORAGE)) {
             activity.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Const.ALBUM_REQUEST_CODE);
             return;
         }
@@ -364,5 +367,31 @@ public class Utils {
     public static int convertStringToDrawable(Context context, String uri){
         String s = uri.replace("R.drawable.", "");
         return context.getResources().getIdentifier(s, "drawable", context.getPackageName());
+    }
+
+
+    public static boolean checkPermission(Context context,String permission) {
+        if (ContextCompat.checkSelfPermission(context, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static void createNotificationChannel(Context context, String channelId) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+//                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+//                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+//                    .build();
+
+            String name = "Incoming Calls";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(channelId, name, importance);
+            //channel.setSound(Uri.parse("android.resource://" +context.getPackageName() + "/" + R.raw.ring_stone), audioAttributes);
+            NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

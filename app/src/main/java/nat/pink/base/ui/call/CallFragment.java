@@ -1,12 +1,18 @@
 package nat.pink.base.ui.call;
 
+import static nat.pink.base.utils.Utils.CHANNEL_ID;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.function.Consumer;
 
@@ -150,7 +156,10 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                     PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);
                     Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_CALL_VOICE, objectCalling);
                     backStackFragment();
+
                 }
+
+
             } else {
                 if (objectIncoming.getTimer() == DialogChangeTime.CHANGE_TYPE.NOW) {
                     Intent intent = new Intent(requireContext(), VideoCallActivity.class);
@@ -158,18 +167,42 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                     intent.putExtra("show_icon_video", true);
                     startActivityForResult(intent, Config.CHECK_TURN_OFF_VOICE);
                 } else {
-                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
-                    PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_COMMING_VOICE);
-                    Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_COMMING_VOICE, objectIncoming);
-                    backStackFragment();
+                    if (Build.VERSION.SDK_INT >= 33 && !Utils.checkPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS)) {
+                     //   shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS);
+                        //should create channel first so can request notify permission
+                        Utils.createNotificationChannel(getContext(),CHANNEL_ID);
+                        requireActivity().requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, Const.REQUEST_CODE_POST_NOTIFY);
+                    } else {
+                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
+                        PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_COMMING_VOICE);
+                        Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_COMMING_VOICE, objectIncoming);
+                        backStackFragment();
+                    }
                 }
             }
+
             consumer.accept(new Object());
         });
         binding.llTop.ivBack.setOnClickListener(v -> backStackFragment());
 
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (Build.VERSION.SDK_INT >= 33) {
+
+
+            if (requestCode == Const.REQUEST_CODE_POST_NOTIFY && Utils.checkPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS)) {
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
+                PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);
+                Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_CALL_VOICE, objectCalling);
+                backStackFragment();
+            }else{
+                Toast.makeText(getContext(), getString(R.string.notify_declined), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
     private void setStateView(boolean isChatBubles) {
         btOutComing.setSelected(isChatBubles);
