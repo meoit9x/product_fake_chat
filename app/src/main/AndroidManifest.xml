@@ -69,7 +69,7 @@
 
         <activity
             android:name=".ui.chat.FragmentChat"
-            android:theme="@style/splash_screen"
+            android:theme="@style/Theme.Base.NoActionBar"
             android:screenOrientation="portrait" />
 
         <activity
