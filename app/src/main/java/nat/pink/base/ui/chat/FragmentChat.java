@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.constraintlayout.widget.Constraints;
@@ -38,6 +40,7 @@ import nat.pink.base.R;
 import nat.pink.base.adapter.MessageAdapter;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.dao.DatabaseController;
+import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.databinding.FragmentChatBinding;
 import nat.pink.base.dialog.DialogCreateRecord;
 import nat.pink.base.dialog.DialogDeleteMessenger;
@@ -54,13 +57,13 @@ import nat.pink.base.utils.SoftInputAssist;
 import nat.pink.base.utils.Toolbox;
 import nat.pink.base.utils.Utils;
 
-public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewModel> implements View.OnClickListener {
+public class FragmentChat extends AppCompatActivity implements View.OnClickListener {
 
     @NonNull
-    @Override
-    public HomeViewModel getViewModel() {
-        return new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
-    }
+//    @Override
+//    public HomeViewModel getViewModel() {
+//        return new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
+//    }
 
     public static final String TAG = "FragmentChat";
     private SoftInputAssist softInputAssist;
@@ -69,27 +72,42 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     private MessageAdapter messageAdapter;
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1001;
 
+    HomeViewModel homeViewModel;
+
+    FragmentChatBinding binding;
+
     public FragmentChat() {
     }
 
-    public FragmentChat(DaoContact objectUser) {
-        this.objectUser = objectUser;
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        binding = FragmentChatBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        Log.e("natruou", "");
+
+        initView();
+        initData();
+        initEvent();
     }
 
-    @Override
+    private HomeViewModel getViewModel() {
+        return homeViewModel;
+    }
+
     public void initView() {
-        super.initView();
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        lp.topMargin = Utils.getStatusBarHeight(requireContext());
-        binding.container.setLayoutParams(lp);
-        softInputAssist = new SoftInputAssist(requireActivity());
+//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        lp.topMargin = Utils.getStatusBarHeight(requireContext());
+//        binding.container.setLayoutParams(lp);
+        softInputAssist = new SoftInputAssist(this);
         binding.tvBlock.setText(Html.fromHtml(getString(R.string.block_content), Html.FROM_HTML_MODE_COMPACT));
-        binding.rcvMessage.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.rcvMessage.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    @Override
     public void initEvent() {
-        super.initEvent();
         binding.llMessage.setOnClickListener(this);
         binding.layoutTop.imBack.setOnClickListener(this);
         binding.layoutTop.imCall.setOnClickListener(this);
@@ -122,32 +140,36 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
         binding.layoutBottom.imTakePhoto.setOnClickListener(this);
     }
 
-    @Override
     public void initData() {
-        super.initData();
+        Intent intent = getIntent();
+        if (intent != null) {
+            Object ob = intent.getExtras().get("data");
+            if (ob instanceof DaoContact) {
+                objectUser = (DaoContact) ob;
+            }
+        }
+
         if (objectUser == null)
             return;
 
         loadUser();
-        getViewModel().loadChatInfo.observe(requireActivity(), obj -> {
-            if (isAdded()) {
-                objectUser = obj;
-                loadUser();
-                loadData();
-            }
+        getViewModel().loadChatInfo.observe(this, obj -> {
+            objectUser = obj;
+            loadUser();
+            loadData();
         });
 
         binding.layoutBottom.imEmoji.setOnClickListener(this);
-        getViewModel().reloadDataMessenger.observe(requireActivity(), aBoolean -> {
-            if (aBoolean && isAdded()) {
+        getViewModel().reloadDataMessenger.observe(this, aBoolean -> {
+            if (aBoolean) {
                 loadData();
             }
         });
-        messageAdapter = new MessageAdapter(requireContext(), objectUser, getViewModel().objectMessenges);
+        messageAdapter = new MessageAdapter(this, objectUser, getViewModel().objectMessenges);
         binding.rcvMessage.setAdapter(messageAdapter);
         messageAdapter.setItemLongClickListener((position, itemType, view) -> {
-            DialogDeleteMessenger dialogDeleteMessenger = new DialogDeleteMessenger(requireContext(), R.style.MaterialDialogSheet, o -> {
-                DatabaseController.getInstance(requireContext()).deleteMessenger(getViewModel().objectMessenges.get(position).getId());
+            DialogDeleteMessenger dialogDeleteMessenger = new DialogDeleteMessenger(this, R.style.MaterialDialogSheet, o -> {
+                DatabaseController.getInstance(this).deleteMessenger(getViewModel().objectMessenges.get(position).getId());
                 getViewModel().objectMessenges.remove(position);
                 loadData();
             });
@@ -160,16 +182,16 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     private void loadUser() {
         getViewModel().objectMessenges.clear();
         if (objectUser.getAvatar().contains("R.drawable")) {
-            binding.layoutTop.imInline.setImageResource(Utils.convertStringToDrawable(requireContext(), objectUser.getAvatar()));
+            binding.layoutTop.imInline.setImageResource(Utils.convertStringToDrawable(this, objectUser.getAvatar()));
         } else
             ImageUtils.loadImage(binding.layoutTop.imInline, objectUser.getAvatar());
         if (objectUser.getName() != null)
             binding.layoutTop.tvName.setText(objectUser.getName());
-        binding.layoutTop.tvContent.setText(Utils.getStringFromIndex(requireContext(), objectUser.getOnline() - 1));
+        binding.layoutTop.tvContent.setText(Utils.getStringFromIndex(this, objectUser.getOnline() - 1));
     }
 
     private void loadData() {
-        getViewModel().getMessengerById(requireContext(), objectUser.getId(), o -> {
+        getViewModel().getMessengerById(this, objectUser.getId(), o -> {
             if (getViewModel().objectMessenges.isEmpty() || getViewModel().objectMessenges.get(0).getType() != Config.TYPE_HEAEDER) {
                 ObjectMessenge messageModel = new ObjectMessenge();
                 messageModel.setType(Config.TYPE_HEAEDER);
@@ -187,11 +209,11 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
         });
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//    }
 
     @Override
     public void onResume() {
@@ -218,7 +240,7 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     public void onClick(View view) {
         if (view.getId() == binding.layoutTop.imBack.getId()) {
             Utils.hideKeyboard(binding.layoutBottom.edtInput);
-            backStackFragment();
+            finish();
         }
         if (view.getId() == binding.layoutTop.imCall.getId()) {
         }
@@ -229,7 +251,7 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
         }
         if (view.getId() == binding.layoutBottom.imEmoji.getId()) {
             // todo
-            Intent intentEmoji = new Intent(requireContext(), StickerActivity.class);
+            Intent intentEmoji = new Intent(this, StickerActivity.class);
             startActivityForResult(intentEmoji, Config.REQUEST_CODE_ACT_STICKER);
         }
         if (view.getId() == binding.layoutBottom.imMore.getId()) {
@@ -241,7 +263,7 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
             showPopupOptSend();
         }
         if (view.getId() == binding.layoutBottom.imTakePhoto.getId()) {
-            new AlertDialog.Builder(getContext())
+            new AlertDialog.Builder(this)
                     .setMessage(getString(R.string.ask_save_image))
                     .setPositiveButton(R.string.ok, (dialog, which) -> {
                         dialog.cancel();
@@ -261,7 +283,7 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
                         ObjectMessenge message = Config.createMessage(time, Config.TYPE_RECORD);
                         message.setUserOwn(objectUser.getId());
                         message.setSend(isSend);
-                        getViewModel().inserMessenger(requireContext(), message);
+                        getViewModel().inserMessenger(this, message);
                         getViewModel().objectMessenges.add(message);
                         scrollLastItemMessage();
                         baseDialog.dismiss();
@@ -270,12 +292,12 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
                         baseDialog.dismiss();
                     })
                     .build()
-                    .show(getActivity().getSupportFragmentManager(), DialogEditMessage.class.getName());
+                    .show(this.getSupportFragmentManager(), DialogEditMessage.class.getName());
         }
         if (view.getId() == binding.layoutBottom.imPicture.getId()) {
             try {
-                Utils.askPermissionStorage(getActivity(), () -> {
-                    Utils.requestGetGallery(requireActivity());
+                Utils.askPermissionStorage(this, () -> {
+                    Utils.requestGetGallery(this);
                     return null;
                 });
             } catch (Exception e) {
@@ -285,8 +307,8 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     }
 
     private void showPopup(View view) {
-        Toolbox.hideSoftKeyboard(requireActivity());
-        PopupMenu popup = new PopupMenu(requireContext(), view);
+        Toolbox.hideSoftKeyboard(this);
+        PopupMenu popup = new PopupMenu(this, view);
         popup.getMenuInflater()
                 .inflate(R.menu.menu_infor_detail_conversation, popup.getMenu());
         popup.setOnMenuItemClickListener(item -> {
@@ -295,7 +317,7 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
 
                     break;
                 case R.id.menu_conversation:
-                    backStackFragment();
+                    finish();
                     break;
             }
             return true;
@@ -305,12 +327,12 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     }
 
     private void showPopupOptSend() {
-        PopupMenu popup = new PopupMenu(getContext(), binding.layoutBottom.imSend);
+        PopupMenu popup = new PopupMenu(this, binding.layoutBottom.imSend);
         popup.getMenuInflater()
                 .inflate(R.menu.menu_send_message, popup.getMenu());
         popup.setOnMenuItemClickListener(item -> {
             boolean isSend = item.getItemId() == R.id.menu_send;
-            getViewModel().inserMessenger(requireContext(), initDataSend(isSend));
+            getViewModel().inserMessenger(this, initDataSend(isSend));
             ObjectMessenge messageModel = initDataSend(isSend);
             getViewModel().objectMessenges.add(messageModel);
             scrollLastItemMessage();
@@ -373,14 +395,14 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Const.PICK_FROM_GALLERY && data != null && data.getData() != null) {
             CropImage.activity(data.getData())
-                    .start(requireActivity());
+                    .start(this);
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == -1 && null != data) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             Uri resultUri = result.getUri();
             pathImageSelect = resultUri.toString();
             binding.layoutSelectImage.container.setVisibility(View.VISIBLE);
-            Glide.with(getContext()).load(resultUri).into(binding.layoutSelectImage.imPreview);
+            Glide.with(this).load(resultUri).into(binding.layoutSelectImage.imPreview);
             binding.layoutBottom.imSend.setImageResource(R.drawable.ic_send);
         }
         if (requestCode == Config.REQUEST_CODE_ACT_STICKER) {
@@ -392,7 +414,7 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
             ObjectMessenge messageModel = Config.createMessage(resName, Config.TYPE_STICKER);
             messageModel.setSend(isSend);
             messageModel.setUserOwn(objectUser.getId());
-            getViewModel().inserMessenger(requireContext(), messageModel);
+            getViewModel().inserMessenger(this, messageModel);
             getViewModel().objectMessenges.add(messageModel);
             scrollLastItemMessage();
         }
@@ -401,15 +423,15 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
     public void saveImage() {
         try {
             askPermissionStorage(() -> {
-                File file = FileUtil.createFolder(requireActivity(), getString(R.string.app_name));
+                File file = FileUtil.createFolder(this, getString(R.string.app_name));
                 Log.e("file_storage", file.getAbsolutePath());
-                String path = FileUtil.saveImageToGallery(requireContext()
+                String path = FileUtil.saveImageToGallery(this
                         , file
                         , Toolbox.screenShortView(binding.container));
                 new DialogImageScreenshort.ExtendBuilder()
                         .setPath(path)
                         .setTitle(getString(R.string.screenshort_success))
-                        .build().show(requireActivity().getSupportFragmentManager(), DialogImageScreenshort.class.getName());
+                        .build().show(this.getSupportFragmentManager(), DialogImageScreenshort.class.getName());
                 return null;
             });
         } catch (Exception e) {
@@ -419,9 +441,9 @@ public class FragmentChat extends BaseFragment<FragmentChatBinding, HomeViewMode
 
     public void askPermissionStorage(Callable<Void> callable) throws Exception {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(requireActivity(),
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
                                 , Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
             } else {

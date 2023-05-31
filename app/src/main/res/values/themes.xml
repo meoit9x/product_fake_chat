@@ -21,7 +21,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="splash_screen" parent="Theme.AppCompat.NoActionBar">
+
+    <style name="splash_screen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/color_f2f2f2</item>
         <item name="colorControlHighlight">@color/colorPrimary_10</item>

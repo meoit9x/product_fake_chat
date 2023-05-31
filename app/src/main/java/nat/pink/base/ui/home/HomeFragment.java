@@ -1,5 +1,6 @@
 package nat.pink.base.ui.home;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.view.View;
 
@@ -56,7 +57,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             } else {
                 switch (type) {
                     case Const.KEY_ADS_MESSAGE:
-                        addFragment(new FragmentChat(user), FragmentChat.TAG);
+                        Intent intent = new Intent(requireActivity(),FragmentChat.class);
+                        intent.putExtra("data",user);
+                        startActivity(intent);
+//                        addFragment(new FragmentChat(user), FragmentChat.TAG);
                         break;
                     case Const.KEY_ADS_VIDEO_CALL:
                         addFragment(new VideoFragment(user, o -> {
