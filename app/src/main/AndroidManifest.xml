@@ -90,6 +90,10 @@
             android:name=".service.AlarmReceiver"
             android:enabled="true"
             android:exported="true"></receiver>
+        <receiver
+            android:name=".service.HangupReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
