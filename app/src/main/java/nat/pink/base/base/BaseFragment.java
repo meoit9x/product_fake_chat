@@ -2,36 +2,35 @@ package nat.pink.base.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 import androidx.viewbinding.ViewBinding;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
+
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.util.concurrent.TimeUnit;
 
 import nat.pink.base.MainActivity;
+import nat.pink.base.model.DaoContact;
 
 public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewModel> extends Fragment {
 
     protected abstract VM getViewModel();
-
     private boolean hideAds = true;
-    String interstitialAdUnitId = "YOUR_AD_UNIT_ID";
     protected VB binding;
-
-    public String getInterstitialAdUnitId() {
-        return interstitialAdUnitId;
-    }
-
-    public void setInterstitialAdUnitId(String interstitialAdUnitId) {
-        this.interstitialAdUnitId = interstitialAdUnitId;
-    }
-
     public VB getBinding() {
         return binding;
     }
@@ -54,6 +53,7 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         super.onCreate(savedInstanceState);
 
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -110,13 +110,29 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
             activity.addFragment(fragment, tag);
         }
     }
+    protected boolean showInterstitialAd(Consumer consumer) {
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            return activity.showInterstitialAd(consumer);
+        }
+        return false;
+    }
+    protected void createInterstitialAd(String key) {
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.createInterstitialAd(key);
+        }
+    }
+
+
+
+
+
 
     //AppLovin Ads Integrate!!!
     protected void initInterstitialAd() {
         if (getActivity() instanceof MainActivity) {
-//            if ((activity as MainActivity).isNetworkConnected()) {
             ((MainActivity) getActivity()).setLoadingAdsView(true);
-//            }
         }
     }
 }

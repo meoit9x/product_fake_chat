@@ -5,6 +5,10 @@ plugins {
 }
 
 android {
+    apply plugin: 'applovin-quality-service'
+    applovin {
+        apiKey "dBk4O4sMwGwpJvhX7ARsPIZqFBIdrpazs5qqJlvL8TfwtPNo3tAU_Pn8S26apsPz0CgxP4EwfQZSfgSaWPZfdK"
+    }
     namespace 'nat.pink.base'
     compileSdk 33
 
@@ -94,6 +98,7 @@ dependencies {
 //    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
 
+    implementation 'com.applovin:applovin-sdk:11.10.1@aar'
     // AppLovin SDK and addition network integrate
  //   implementation 'com.google.android.gms:play-services-ads-identifier:17.1.0'
  //   implementation 'com.applovin:applovin-sdk:+'

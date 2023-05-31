@@ -7,6 +7,12 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxInterstitialAd;
+import com.applovin.sdk.AppLovinSdk;
+import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
@@ -14,10 +20,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -26,6 +34,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.service.CallingService;
@@ -35,18 +44,25 @@ import nat.pink.base.ui.splah.SplashFragment;
 import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.PreferenceUtil;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private ActivityMainBinding binding;
     private ArrayList<String> fragmentStates = new ArrayList<>();
     private FragmentManager fragmentManager;
+    private MaxInterstitialAd interstitialAd;
+    private int retryAttempt;
+    private boolean showInterstitial = false;
+    private Consumer interstitialConsumer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);*/
 
         //initView();
+        initAds();
         initData();
         Intent intent = getIntent();
 
@@ -189,7 +206,92 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "LoadingAdsView: " + visible);
         binding.loadingAdsLayout.loadingAdsLayout.bringToFront();
         binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE == binding.loadingAdsLayout.loadingAdsLayout.getVisibility() ? View.GONE : View.VISIBLE);
-        binding.frContent.setVisibility(View.VISIBLE == binding.frContent.getVisibility() ? View.GONE : View.VISIBLE);
+        binding.content.setVisibility(View.VISIBLE == binding.content.getVisibility() ? View.GONE : View.VISIBLE);
     }
+
+    void initAds(){
+        AppLovinSdk.getInstance( this ).setMediationProvider( "max" );
+        AppLovinSdk.initializeSdk( this, new AppLovinSdk.SdkInitializationListener() {
+            @Override
+            public void onSdkInitialized(final AppLovinSdkConfiguration configuration)
+            {
+               createInterstitialAd(Const.KEY_ADS_GUIDE);
+             //   Toast.makeText(getApplicationContext(), "done init", Toast.LENGTH_SHORT).show();
+                Log.d("adsDebug", "onSdkInitialized: ");
+            }
+        } );
+    }
+
+    protected void updateAdsRequest(){
+        if (showInterstitial && interstitialAd !=null && interstitialAd.isReady()){
+            setLoadingAdsView(false);
+            interstitialAd.showAd();
+            showInterstitial = false;
+        }
+    }
+
+    public void createInterstitialAd(String keyAds) {
+        if (interstitialAd == null || interstitialAd.getAdUnitId() != keyAds) {
+            interstitialAd = new MaxInterstitialAd(keyAds, this);
+            interstitialAd.setListener(new MaxAdListener() {
+                @Override
+                public void onAdLoaded(MaxAd maxAd) {
+                    retryAttempt = 0;
+                  //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
+                    Log.d("adsDebug", "onAdLoaded: ");
+                    updateAdsRequest();
+                }
+
+                @Override
+                public void onAdDisplayed(MaxAd maxAd) {
+                    Log.d("adsDebug", "onAdDisplayed: ");
+                 //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onAdHidden(MaxAd maxAd) {
+                    interstitialConsumer.accept(null);
+                    interstitialAd.loadAd();
+                }
+
+                @Override
+                public void onAdClicked(MaxAd maxAd) {
+                    Log.d("adsDebug", "onAdClicked: ");
+                }
+
+                @Override
+                public void onAdLoadFailed(String s, MaxError maxError) {
+                    // Interstitial ad failed to load
+                    // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+                    retryAttempt++;
+                    long delayMillis = TimeUnit.SECONDS.toMillis(5);
+
+                    new Handler().postDelayed(() -> interstitialAd.loadAd(), delayMillis);
+                }
+
+                @Override
+                public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
+                    interstitialAd.loadAd();
+                }
+            });
+        }
+            // Load the first ad
+            interstitialAd.loadAd();
+    }
+
+    public boolean showInterstitialAd(Consumer doneConsumer){
+        interstitialConsumer = doneConsumer;
+        if (interstitialAd !=null && interstitialAd.isReady())
+        {
+            interstitialAd.showAd();
+            return true;
+        }
+        setLoadingAdsView(true);
+        showInterstitial = true;
+        return false;
+    }
+
+
+
 
 }

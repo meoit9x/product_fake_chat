@@ -49,6 +49,8 @@ public class SplashFragment extends BaseFragment<FragmentSplashBinding, SplashVi
                     if (firstTime) {
                         if (PreferenceUtil.getString(requireContext(), PreferenceUtil.SETTING_ENGLISH, "").equals("")) {
                             replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
+                        } else if (!PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.IS_INTRO_OPENED, false)) {
+                            replaceFragment(new OnboardFragment(), OnboardFragment.TAG);
                         } else {
                             replaceFragment(new HomeFragment(), HomeFragment.TAG);
                         }

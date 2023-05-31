@@ -2,12 +2,15 @@ package nat.pink.base.ui.onboard;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static nat.pink.base.utils.PreferenceUtil.MyPREFERENCES;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.core.util.Consumer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
@@ -22,6 +25,7 @@ import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentOnboardBinding;
 import nat.pink.base.model.ScreenItem;
 import nat.pink.base.ui.home.HomeFragment;
+import nat.pink.base.utils.Const;
 
 public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, OnboardViewModel> {
     private ViewPager screenPager;
@@ -37,15 +41,15 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
     @Override
     protected void initView() {
         super.initView();
-        if (restorePreData()){
+        if (restorePreData()) {
             replaceFragment(new HomeFragment(), HomeFragment.TAG);
         }
 
         //Data
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Realistic Fake Conversations app", "Create fake chat, fake call, fake video call and fake notification completely like messenger.", R.drawable.ob_1,R.drawable.ob_1_bg));
-        mList.add(new ScreenItem("Control the both sides of the conversation", "Easily set the time to send and receive messages.", R.drawable.ob_2,R.drawable.ob_2_bg));
-        mList.add(new ScreenItem("Prank your friend or your partner", "Create celebrities to text with them like the real thing. Use it to troll your friends.", R.drawable.ob_3,R.drawable.ob_3_bg));
+        mList.add(new ScreenItem("Realistic Fake Conversations app", "Create fake chat, fake call, fake video call and fake notification completely like messenger.", R.drawable.ob_1, R.drawable.ob_1_bg));
+        mList.add(new ScreenItem("Control the both sides of the conversation", "Easily set the time to send and receive messages.", R.drawable.ob_2, R.drawable.ob_2_bg));
+        mList.add(new ScreenItem("Prank your friend or your partner", "Create celebrities to text with them like the real thing. Use it to troll your friends.", R.drawable.ob_3, R.drawable.ob_3_bg));
         //Setup viewPager
         screenPager = binding.screenViewpager;
         onboardViewPagerAdapter = new OnboardViewPagerAdapter(getContext(), mList);
@@ -58,14 +62,14 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                screenPager.setCurrentItem(screenPager.getCurrentItem()+1, true);
+                screenPager.setCurrentItem(screenPager.getCurrentItem() + 1, true);
             }
         });
 
         binding.tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition()==mList.size()-1){
+                if (tab.getPosition() == mList.size() - 1) {
                     loadLastScreen();
                 }
             }
@@ -81,12 +85,13 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
             }
         });
 
-       //Button Get Started
-            binding.btnGetStart.setOnClickListener(new View.OnClickListener() {
+        //Button Get Started
+        binding.btnGetStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragment(new HomeFragment(), HomeFragment.TAG);
-                savePrefsData();
+
+//                replaceFragment(new HomeFragment(), HomeFragment.TAG);
+//                savePrefsData();
                 //finish();
             }
         });
@@ -94,27 +99,29 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
         binding.skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new HomeFragment(), HomeFragment.TAG);
-                savePrefsData();
+                showInterstitialAd(o -> {
+                    replaceFragment(new HomeFragment(), HomeFragment.TAG);
+                    savePrefsData();
+                });
             }
         });
     }
 
-    private boolean restorePreData(){
-        SharedPreferences preferences = getContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
+    private boolean restorePreData() {
+        SharedPreferences preferences = getContext().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         Boolean isIntroActivityOpenedBefore = preferences.getBoolean("isIntroOpened", false);
         return isIntroActivityOpenedBefore;
     }
 
-    private void savePrefsData(){
-        SharedPreferences preferences = getContext().getSharedPreferences("myPrefs", MODE_PRIVATE);
+    private void savePrefsData() {
+        SharedPreferences preferences = getContext().getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("isIntroOpened", true);
         editor.apply();
     }
 
-    private void loadLastScreen(){
-       binding.btnNext.setVisibility(View.INVISIBLE);
-       binding.btnGetStart.setVisibility(View.VISIBLE);
+    private void loadLastScreen() {
+        binding.btnNext.setVisibility(View.INVISIBLE);
+        binding.btnGetStart.setVisibility(View.VISIBLE);
     }
 }

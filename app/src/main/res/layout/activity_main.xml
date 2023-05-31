@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/_25sdp"
     tools:context=".MainActivity">
     <FrameLayout
-
+        android:visibility="visible"
         android:id="@+id/content"
         android:background="@color/white"
         android:layout_width="match_parent"

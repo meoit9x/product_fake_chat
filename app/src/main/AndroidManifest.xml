@@ -36,6 +36,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Base"
         tools:targetApi="31">
+        <meta-data android:name="applovin.sdk.key"
+            android:value="h4MnT3IKt4SmQgK4qMocaUBf20oH5Uz3klpc3w0cVvbAPHgsT9bl_f8O5oKbcw96pXpNrrKXx2wdM_qV7NqNpb"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

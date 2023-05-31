@@ -14,6 +14,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.applovin.mediation.MaxAd;
+import com.applovin.mediation.MaxError;
+import com.applovin.mediation.MaxReward;
+
 import java.util.function.Consumer;
 
 import nat.pink.base.R;

@@ -4,8 +4,9 @@ public class Const {
 
     public static final String URL_REQUEST = "https://manager.merryblue.llc/";
 
+
     public static final String KEY_ADS_CHANGE_LANGUAGE = "f07a751bc371361d";
-    public static final String KEY_ADS_GUIDE = "4711083542d8d3b0";
+    public static final String KEY_ADS_GUIDE = "197e605cf2e0aa76";
     public static final String KEY_ADS_HOME = "a90fe0c34b45b496";
     public static final String KEY_ADS_VIDEO_CALL = "d6a9c4851f988ca6";
     public static final String KEY_ADS_VOICE_CALL = "d6a9c4851f988caa";

@@ -6,8 +6,10 @@ import android.content.SharedPreferences;
 public class PreferenceUtil {
     public static final String SETTING_ENGLISH = "SETTING_ENGLISH";
     public static final String SETTING_PREMIUM_MONTHLY = "SETTING_PREMIUM_MONTHLY";
-    private static final String MyPREFERENCES = "MyPreferences";
+    public static final String MyPREFERENCES = "MyPreferences";
+
     public static final String OPEN_APP_FIRST_TIME = "open_app_first_time";
+    public static final String IS_INTRO_OPENED = "isIntroOpened";
     public static final String GO_BACK_COUNT = "back_from_detail_view_count";
     public static final String DISPLAY_ADS_AFTER_ONBOARD = "display_ads_after_onboard";
     public static final String KEY_CURRENT_LANGUAGE = "key_current_language";
