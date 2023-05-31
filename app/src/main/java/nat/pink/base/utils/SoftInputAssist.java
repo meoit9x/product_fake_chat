@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
-public class SoftInputAssist {
+public class SoftInputAssist{
     private View rootView;
     private ViewGroup contentContainer;
     private ViewTreeObserver viewTreeObserver;
@@ -46,8 +46,8 @@ public class SoftInputAssist {
 
     private void possiblyResizeChildOfContent() {
         contentContainer.getWindowVisibleDisplayFrame(contentAreaOfWindowBounds);
-        int usableHeightNow = contentAreaOfWindowBounds.height()
-                + activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._50sdp);
+        int usableHeightNow = contentAreaOfWindowBounds.height();
+//                + activity.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._5sdp);
 
         if (usableHeightNow != usableHeightPrevious) {
             setHeightWindow(usableHeightNow);
@@ -61,4 +61,3 @@ public class SoftInputAssist {
         usableHeightPrevious = usableHeightNow;
     }
 }
-
