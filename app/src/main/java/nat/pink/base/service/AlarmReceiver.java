@@ -57,13 +57,22 @@ public class AlarmReceiver extends BroadcastReceiver {
             i.setType(json);
             context.startService(i);
         } else if (intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
-            PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_COMMING_VIDEO);
-            Intent i = new Intent(context, MainActivity.class);
-            i.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL));
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.setAction(Const.ACTION_COMMING_VIDEO);
-            i.setType(intent.getType());
-            context.startActivity(i);
+            if (Build.VERSION.SDK_INT >= 29) {
+                Intent intentCall = new Intent(context, CallingService.class);
+                intentCall.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL));
+                intentCall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intentCall.setAction(Const.ACTION_COMMING_VIDEO);
+                intentCall.setType(intent.getType());
+                context.startService(intentCall);
+            } else {
+                PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_COMMING_VIDEO);
+                Intent i = new Intent(context, MainActivity.class);
+                i.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL));
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.setAction(Const.ACTION_COMMING_VIDEO);
+                i.setType(intent.getType());
+                context.startActivity(i);
+            }
         } else if (intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
             PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_CALLING_VOICE);
             Intent i = new Intent(context, MainActivity.class);
@@ -73,29 +82,27 @@ public class AlarmReceiver extends BroadcastReceiver {
             i.setType(intent.getType());
             context.startActivity(i);
         } else if (intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
-
-
-            if (Build.VERSION.SDK_INT >= 29){
-                Intent intentCall = new Intent(context,CallingService.class);
+            if (Build.VERSION.SDK_INT >= 29) {
+                Intent intentCall = new Intent(context, CallingService.class);
                 intentCall.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL));
                 intentCall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intentCall.setAction(Const.ACTION_COMMING_VOICE);
                 intentCall.setType(intent.getType());
                 context.startService(intentCall);
-            }else{
-            PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_COMMING_VOICE);
-            Intent i = new Intent(context, MainActivity.class);
-            i.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL));
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.setAction(Const.ACTION_COMMING_VOICE);
-            i.setType(intent.getType());
-            context.startActivity(i);
+            } else {
+                PreferenceUtil.clearEdit(context, PreferenceUtil.KEY_COMMING_VOICE);
+                Intent i = new Intent(context, MainActivity.class);
+                i.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, intent.getSerializableExtra(Const.PUT_EXTRAL_OBJECT_CALL));
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.setAction(Const.ACTION_COMMING_VOICE);
+                i.setType(intent.getType());
+                context.startActivity(i);
             }
         }
     }
 
     private void showNotification(Context context, ObjectCalling objectCalling) {
-     Uri imageUri = objectCalling.getPathImage() == null || objectCalling.getPathImage().equals("") ? null : Uri.parse(objectCalling.getPathImage());
+        Uri imageUri = objectCalling.getPathImage() == null || objectCalling.getPathImage().equals("") ? null : Uri.parse(objectCalling.getPathImage());
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
 
