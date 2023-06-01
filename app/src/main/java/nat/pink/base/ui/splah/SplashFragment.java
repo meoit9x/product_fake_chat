@@ -47,7 +47,7 @@ public class SplashFragment extends BaseFragment<FragmentSplashBinding, SplashVi
                 if (progress == 99) {
                     boolean firstTime = PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.OPEN_APP_FIRST_TIME, true);
                     if (firstTime) {
-                        if (PreferenceUtil.getString(requireContext(), PreferenceUtil.SETTING_ENGLISH, "").equals("")) {
+                        if (PreferenceUtil.getString(requireContext(), PreferenceUtil.SETTING_LANGUAGE, "").equals("")) {
                             replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
                         } else if (!PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.IS_INTRO_OPENED, false)) {
                             replaceFragment(new OnboardFragment(), OnboardFragment.TAG);

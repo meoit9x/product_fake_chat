@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PreferenceUtil {
-    public static final String SETTING_ENGLISH = "SETTING_ENGLISH";
+    public static final String SETTING_LANGUAGE = "SETTING_LANGUAGE";
     public static final String SETTING_PREMIUM_MONTHLY = "SETTING_PREMIUM_MONTHLY";
     public static final String MyPREFERENCES = "MyPreferences";
 

@@ -7,13 +7,14 @@ public class Const {
 
     public static final String KEY_ADS_CHANGE_LANGUAGE = "f07a751bc371361d";
     public static final String KEY_ADS_GUIDE = "197e605cf2e0aa76";
-    public static final String KEY_ADS_HOME = "a90fe0c34b45b496";
+    public static final String KEY_ADS_HOME = "23d414c3036c2431";
     public static final String KEY_ADS_VIDEO_CALL = "d6a9c4851f988ca6";
     public static final String KEY_ADS_VOICE_CALL = "d6a9c4851f988caa";
     public static final String KEY_ADS_MESSAGE = "c15c272e296b33eb";
     public static final String KEY_ADS_NOTIFICATION = "0f59554c6250aa24";
     public static final String KEY_ADS_LANGUAGE = "ec45a958f366f067";
     public static final String KEY_ADS_DONE = "89b5de9992a2828a";
+    public static final String KEY_ADS_CREATE_CONTACT = "197e605cf2e0aa76";
 
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";
     public static final String PUT_EXTERNAL_ACTION = "PUT_EXTERNAL_ACTION";

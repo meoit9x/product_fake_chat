@@ -10,7 +10,7 @@
     tools:openDrawer="start">
 
     <LinearLayout
-        android:paddingTop="@dimen/_25sdp"
+        android:paddingTop="@dimen/_22sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient_main"
@@ -155,7 +155,10 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_minus20sdp"
             app:cardCornerRadius="@dimen/_20sdp">
-
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_330sdp"
@@ -378,15 +381,29 @@
 
 
             </GridLayout>
+            <FrameLayout
+                android:visibility="visible"
+                android:background="@color/white"
+                android:id="@+id/fr_ads_home"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_weight="1.65" />
+            <com.applovin.mediation.ads.MaxAdView
+                xmlns:maxads="http://schemas.applovin.com/android/1.0"
+                android:id="@+id/ads_banner_view"
+                maxads:adUnitId="23d414c3036c2431"
+                android:layout_weight="1.65"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/banner_height" />
+        </LinearLayout>
+
+
         </androidx.cardview.widget.CardView>
-        <FrameLayout
-            android:id="@+id/fr_ads_home"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/_14sdp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:layout_weight="1.65"
-            app:carbon_maxHeight="@dimen/_80sdp" />
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

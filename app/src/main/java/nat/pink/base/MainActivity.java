@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
+import com.applovin.mediation.MaxAdViewAdListener;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxAdView;
 import com.applovin.mediation.ads.MaxInterstitialAd;
@@ -52,6 +53,7 @@ import nat.pink.base.utils.PreferenceUtil;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private MaxNativeAdLoader nativeAdLoader;
     private MaxNativeAdView nativeAdView;
     private MaxAd nativeAd;
+    private MaxAdView bannerAd;
     private int retryAttempt;
     private boolean showInterstitial = false;
     private boolean showNativeAd = false;
@@ -330,6 +333,63 @@ public class MainActivity extends AppCompatActivity {
         interstitialAd.loadAd();
     }
 
+    public void createBannerAd(String keyAds,ViewGroup rootView){
+        bannerAd = new MaxAdView(keyAds,MainActivity.this);
+        // Stretch to the width of the screen for banners to be fully functional
+        int width = ViewGroup.LayoutParams.MATCH_PARENT;
+        // Banner height on phones and tablets is 50 and 90, respectively
+        int heightPx = getResources().getDimensionPixelSize( R.dimen.banner_height );
+        bannerAd.setLayoutParams( new FrameLayout.LayoutParams( width, heightPx ) );
+        // Set background or background color for banners to be fully functional
+        bannerAd.setBackgroundColor( Color.WHITE );
+        rootView.addView( bannerAd );
+        // Load the ad
+        bannerAd.loadAd();
+        bannerAd.setListener(new MaxAdViewAdListener() {
+            @Override
+            public void onAdExpanded(MaxAd maxAd) {
+
+            }
+
+            @Override
+            public void onAdCollapsed(MaxAd maxAd) {
+
+            }
+
+            @Override
+            public void onAdLoaded(MaxAd maxAd) {
+                Log.d("adsDebug","failed");
+                bannerAd.loadAd();
+            }
+
+            @Override
+            public void onAdDisplayed(MaxAd maxAd) {
+
+            }
+
+            @Override
+            public void onAdHidden(MaxAd maxAd) {
+
+            }
+
+            @Override
+            public void onAdClicked(MaxAd maxAd) {
+
+            }
+
+            @Override
+            public void onAdLoadFailed(String s, MaxError maxError) {
+                Log.d("adsDebug","failed");
+            }
+
+            @Override
+            public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
+                Log.d("adsDebug","failed");
+            }
+        });
+    }
+
+
     public boolean showInterstitialAd(Consumer doneConsumer) {
         interstitialConsumer = doneConsumer;
         if (interstitialAd != null && interstitialAd.isReady()) {
@@ -346,6 +406,5 @@ public class MainActivity extends AppCompatActivity {
         nativeAdView = view;
         showNativeAd = true;
     }
-
 
 }

@@ -30,8 +30,10 @@ import nat.pink.base.model.DaoContact;
 public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewModel> extends Fragment {
 
     protected abstract VM getViewModel();
+
     private boolean hideAds = true;
     protected VB binding;
+
     public VB getBinding() {
         return binding;
     }
@@ -111,6 +113,7 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
             activity.addFragment(fragment, tag);
         }
     }
+
     protected boolean showInterstitialAd(Consumer consumer) {
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();
@@ -119,16 +122,24 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         return false;
     }
 
-    protected void createNativeAd(String key){
+    protected void createNativeAd(String key) {
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();
             activity.createNativeAd(key);
         }
     }
-    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer){
+
+    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();
-            activity.setNativeAdView(view,loadedConsumer);
+            activity.setNativeAdView(view, loadedConsumer);
+        }
+    }
+
+    protected void createBannerAd(String keyAds, ViewGroup rootView) {
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.createBannerAd(keyAds, rootView);
         }
     }
 
@@ -138,10 +149,6 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
             activity.createInterstitialAd(key);
         }
     }
-
-
-
-
 
 
     //AppLovin Ads Integrate!!!

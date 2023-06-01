@@ -22,6 +22,7 @@ import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentCreateUserBinding;
 import nat.pink.base.dialog.DialogChangeColor;
 import nat.pink.base.model.DaoContact;
+import nat.pink.base.ui.home.HomeFragment;
 import nat.pink.base.ui.home.HomeViewModel;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.Utils;
@@ -55,7 +56,9 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
         daoContact.setOnline(1);
         daoContact.setVerified(true);
         daoContact.setIs_friend(true);
+        createInterstitialAd(Const.KEY_ADS_CREATE_CONTACT);
     }
+
 
     @Override
     protected void initEvent() {
@@ -78,8 +81,10 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
 
         binding.rlDone.setOnClickListener(v -> {
             if (setupDone()) {
-                getViewModel().insertContact(requireContext(), daoContact);
-                backStackFragment();
+                showInterstitialAd(o -> {
+                    getViewModel().insertContact(requireContext(), daoContact);
+                    backStackFragment();
+                });
             }
         });
         binding.rb1Day.setOnClickListener(this::onRadioButtonClicked);
