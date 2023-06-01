@@ -66,7 +66,6 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
     @Override
     protected void initView() {
         super.initView();
-        // user = new DaoContact(2, "Cristiano Ronaldo", 1, true, true, 1, "harvard", "new castle", "", Uri.parse("android.resource://" + getContext().getPackageName() + "/drawable/ronaldo").toString());
         btInComing = new ExtButton(requireContext());
         btOutComing = new ExtButton(requireContext());
 
@@ -75,7 +74,6 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
         } else {
             ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
         }
-        //ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
         if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);
@@ -195,8 +193,6 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (Build.VERSION.SDK_INT >= 33) {
-
-
             if (requestCode == Const.REQUEST_CODE_POST_NOTIFY && Utils.checkPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS)) {
                 PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
                 PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);

@@ -22,6 +22,7 @@ public class PreferenceUtil {
     public static final String KEY_CALLING_VOICE = "key_calling_voice";
     public static final String KEY_SETUP_DATA_DEFAULT = "KEY_SETUP_DATA_DEFAULT";
 
+
     public static void saveBoolean(Context context, String str, boolean z) {
         SharedPreferences.Editor edit = context.getSharedPreferences(MyPREFERENCES, 0).edit();
         edit.putBoolean(str, z);

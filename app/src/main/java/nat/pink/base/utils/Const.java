@@ -18,6 +18,8 @@ public class Const {
     public static final String PUT_EXTERNAL_ACTION = "PUT_EXTERNAL_ACTION";
     public static final String PUT_EXTRAL_OBJECT_MESSENGER = "PUT_EXTRAL_OBJECT_MESSENGER";
 
+    public static final String KEY_DATA_CONTACT = "KEY_DATA_CONTACT";
+
     public static final int PICK_FROM_GALLERY = 1000;
     public static final int MY_PERMISSIONS_REQUEST_STORAGE = 1001;
 

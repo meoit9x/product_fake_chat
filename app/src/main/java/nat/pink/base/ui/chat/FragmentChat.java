@@ -87,7 +87,6 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
 
         setContentView(binding.getRoot());
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        Log.e("natruou", "");
 
         initView();
         initData();
@@ -99,9 +98,6 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initView() {
-//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//        lp.topMargin = Utils.getStatusBarHeight(requireContext());
-//        binding.container.setLayoutParams(lp);
         softInputAssist = new SoftInputAssist(this);
         binding.tvBlock.setText(Html.fromHtml(getString(R.string.block_content), Html.FROM_HTML_MODE_COMPACT));
         binding.rcvMessage.setLayoutManager(new LinearLayoutManager(this));
@@ -143,7 +139,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     public void initData() {
         Intent intent = getIntent();
         if (intent != null) {
-            Object ob = intent.getExtras().get("data");
+            Object ob = intent.getExtras().get(Const.KEY_DATA_CONTACT);
             if (ob instanceof DaoContact) {
                 objectUser = (DaoContact) ob;
             }
@@ -176,7 +172,6 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
             dialogDeleteMessenger.show();
         });
         loadData();
-//        scrollLastItemMessage();
     }
 
     private void loadUser() {
@@ -208,12 +203,6 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
-
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-//    }
 
     @Override
     public void onResume() {
@@ -424,7 +413,6 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
         try {
             askPermissionStorage(() -> {
                 File file = FileUtil.createFolder(this, getString(R.string.app_name));
-                Log.e("file_storage", file.getAbsolutePath());
                 String path = FileUtil.saveImageToGallery(this
                         , file
                         , Toolbox.screenShortView(binding.container));

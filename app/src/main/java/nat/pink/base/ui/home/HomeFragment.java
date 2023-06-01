@@ -58,9 +58,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 switch (type) {
                     case Const.KEY_ADS_MESSAGE:
                         Intent intent = new Intent(requireActivity(),FragmentChat.class);
-                        intent.putExtra("data",user);
+                        intent.putExtra(Const.KEY_DATA_CONTACT,user);
                         startActivity(intent);
-//                        addFragment(new FragmentChat(user), FragmentChat.TAG);
                         break;
                     case Const.KEY_ADS_VIDEO_CALL:
                         addFragment(new VideoFragment(user, o -> {
@@ -92,7 +91,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         getViewModel().contacts.observe(this, fakeUsers -> adapterFakeUser.setFakeUsers(fakeUsers));
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
-        // updateCountdown();
     }
 
     @Override
@@ -154,8 +152,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 break;
             default:
         }
-//        if (key.equals(Const.KEY_ADS_NOTIFICATION))
-        //   showNoti();
     }
 
     private void updateCountdown(String key) {
@@ -207,17 +203,17 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 typeCountDown = "";
                 switch (key) {
                     case Const.KEY_ADS_VIDEO_CALL:
-                        binding.txtVideoCall.setText("-200 coin");
+                        binding.txtVideoCall.setText(getString(R.string.two_hun_coin));
                         binding.txtVideoCall.setTextColor(requireContext().getColor(R.color.color_D770AD));
                         binding.txtVideoCall.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                         break;
                     case Const.KEY_ADS_VOICE_CALL:
-                        binding.txtVoiceCall.setText("-100 coin");
+                        binding.txtVoiceCall.setText(getString(R.string.one_hun_coin));
                         binding.txtVoiceCall.setTextColor(requireContext().getColor(R.color.color_27839E));
                         binding.txtVoiceCall.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                         break;
                     case Const.KEY_ADS_NOTIFICATION:
-                        binding.txtNoti.setText("-300 coin");
+                        binding.txtNoti.setText(getString(R.string.three_hun_coin));
                         binding.txtNoti.setTextColor(requireContext().getColor(R.color.color_8DCC78));
                         binding.txtNoti.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
                         break;
