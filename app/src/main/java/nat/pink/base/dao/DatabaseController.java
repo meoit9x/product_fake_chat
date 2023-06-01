@@ -129,4 +129,10 @@ public class DatabaseController {
             appDatabase.getMessengeDao().deleteMessage(id);
         }
     }
+
+    public void deleteContact(DaoContact objectMessenge) {
+        if (appDatabase != null) {
+            appDatabase.getContactDao().deleteContact(objectMessenge);
+        }
+    }
 }

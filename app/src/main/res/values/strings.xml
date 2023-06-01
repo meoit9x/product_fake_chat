@@ -294,5 +294,9 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
 
     <string name="conversation_suggestions">Conversation suggestions</string>
     <string name="your_coin">Your coin</string>
+    <string name="manage_conversation">Manage Conversation</string>
+    <string name="suggest">Suggest</string>
+    <string name="create_new_manager_suggest">Create new</string>
+    <string name="your_conversation_manager_suggest">Your conversation</string>
 
 </resources>
