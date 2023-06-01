@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
 import com.applovin.mediation.MaxError;
+import com.applovin.mediation.ads.MaxAdView;
 import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.applovin.mediation.nativeAds.MaxNativeAdListener;
 import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
