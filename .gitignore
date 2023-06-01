@@ -14,3 +14,11 @@
 .cxx
 local.properties
 .idea/*
+.safedk/app_sdks.lst
+.safedk/hashes.safedk
+.safedk/list.enc
+.safedk/plugin.properties
+.safedk/proguard-safedk.pro
+.safedk/api/SafeDKAndroid-5.11.0.jar
+.safedk/dex/android-support-multidex.dex
+.safedk/dex/SafeDKAndroid-5.11.0.dex

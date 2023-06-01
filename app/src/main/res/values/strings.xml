@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Base</string>
+    <string name="app_name">Fake Chat</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -274,5 +274,13 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="ads_voice_call">Your fake voice call is coming…</string>
     <string name="ads_notification">Your fake Notification is coming…</string>
     <string name="notify_declined">Please allow notification to use fake call</string>
+
+    <string name="onboard_title_1">Realistic Fake Conversations app</string>
+    <string name="onboard_title_2">Control the both sides of the conversation</string>
+    <string name="onboard_title_3">Prank your friend or your partner</string>
+
+    <string name="onboard_des_1">Create fake chat, fake call, fake video call and fake notification completely like messenger.</string>
+    <string name="onboard_des_2">Easily set the time to send and receive messages.</string>
+    <string name="onboard_des_3">Create celebrities to text with them like the real thing. Use it to troll your friends.</string>
 
 </resources>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "514682069817",
+    "project_id": "fake-messenger-5b650",
+    "storage_bucket": "fake-messenger-5b650.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514682069817:android:3e1051e595df3dad083ee8",
+        "android_client_info": {
+          "package_name": "nat.pink.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514682069817-t1ui922fdhfresur5skaks3gleas9vkv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nat.pink.messenger",
+            "certificate_hash": "f79bca565c2c650ca53624e04ce29e32b815e437"
+          }
+        },
+        {
+          "client_id": "514682069817-578p22b7kqs94a2rklq2eubbh7qajjn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmbdVkoGJAvfSYmpRwGOlygGviZ98LS0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514682069817-578p22b7kqs94a2rklq2eubbh7qajjn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

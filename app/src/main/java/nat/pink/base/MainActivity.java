@@ -74,13 +74,6 @@ public class MainActivity extends AppCompatActivity  {
 
         fragmentManager = getSupportFragmentManager();
 
-        //disable darkmode
-        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        //use full taskbar
-/*        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);*/
-
         //initView();
         initAds();
         initData();
@@ -211,15 +204,10 @@ public class MainActivity extends AppCompatActivity  {
 
     void initAds(){
         AppLovinSdk.getInstance( this ).setMediationProvider( "max" );
-        AppLovinSdk.initializeSdk( this, new AppLovinSdk.SdkInitializationListener() {
-            @Override
-            public void onSdkInitialized(final AppLovinSdkConfiguration configuration)
-            {
-               createInterstitialAd(Const.KEY_ADS_GUIDE);
-             //   Toast.makeText(getApplicationContext(), "done init", Toast.LENGTH_SHORT).show();
-                Log.d("adsDebug", "onSdkInitialized: ");
-            }
-        } );
+        AppLovinSdk.initializeSdk( this, configuration -> {
+         //   Toast.makeText(getApplicationContext(), "done init", Toast.LENGTH_SHORT).show();
+            Log.d("adsDebug", "onSdkInitialized: ");
+        });
     }
 
     protected void updateAdsRequest(){
@@ -288,6 +276,7 @@ public class MainActivity extends AppCompatActivity  {
         }
         setLoadingAdsView(true);
         showInterstitial = true;
+        createInterstitialAd(Const.KEY_ADS_GUIDE);
         return false;
     }
 

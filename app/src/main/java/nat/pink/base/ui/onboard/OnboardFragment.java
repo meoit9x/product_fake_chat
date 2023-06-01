@@ -47,9 +47,9 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
 
         //Data
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Realistic Fake Conversations app", "Create fake chat, fake call, fake video call and fake notification completely like messenger.", R.drawable.ob_1, R.drawable.ob_1_bg));
-        mList.add(new ScreenItem("Control the both sides of the conversation", "Easily set the time to send and receive messages.", R.drawable.ob_2, R.drawable.ob_2_bg));
-        mList.add(new ScreenItem("Prank your friend or your partner", "Create celebrities to text with them like the real thing. Use it to troll your friends.", R.drawable.ob_3, R.drawable.ob_3_bg));
+        mList.add(new ScreenItem(getString(R.string.onboard_title_1), getString(R.string.onboard_des_1), R.drawable.ob_1, R.drawable.ob_1_bg));
+        mList.add(new ScreenItem(getString(R.string.onboard_title_2), getString(R.string.onboard_des_2), R.drawable.ob_2, R.drawable.ob_2_bg));
+        mList.add(new ScreenItem(getString(R.string.onboard_title_3), getString(R.string.onboard_des_3), R.drawable.ob_3, R.drawable.ob_3_bg));
         //Setup viewPager
         screenPager = binding.screenViewpager;
         onboardViewPagerAdapter = new OnboardViewPagerAdapter(getContext(), mList);
