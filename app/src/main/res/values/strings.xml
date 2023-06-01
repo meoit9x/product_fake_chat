@@ -283,4 +283,16 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="onboard_des_2">Easily set the time to send and receive messages.</string>
     <string name="onboard_des_3">Create celebrities to text with them like the real thing. Use it to troll your friends.</string>
 
+    <string name="content_fake_messenger">"Fake \nMessage"</string>
+    <string name="content_fake_voice_call">"Fake \nVoice Call"</string>
+    <string name="content_fake_video_call">Fake \nVideo Call</string>
+    <string name="content_fake_noti">"Fake \nNotification"</string>
+    <string name="free">Free</string>
+    <string name="one_hun_coin">-100 Coin</string>
+    <string name="two_hun_coin">-200 Coin</string>
+    <string name="three_hun_coin">-300 Coin</string>
+
+    <string name="conversation_suggestions">Conversation suggestions</string>
+    <string name="your_coin">Your coin</string>
+
 </resources>
