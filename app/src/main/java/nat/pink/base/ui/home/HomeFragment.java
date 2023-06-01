@@ -25,6 +25,7 @@ import nat.pink.base.adapter.AdapterFakeUser;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogSelectChat;
+import nat.pink.base.ui.manager.ManagerContactFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.ui.video.VideoFragment;
 import nat.pink.base.utils.Const;
@@ -38,6 +39,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private String type = "";
     private String typeCountDown = "";
     private long time = 0;
+    private View navMenu;
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -55,6 +57,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         ln.setOrientation(RecyclerView.HORIZONTAL);
         binding.rcvFakeUser.setLayoutManager(ln);
         binding.rcvFakeUser.setAdapter(adapterFakeUser);
+        navMenu = binding.navView2.getHeaderView(0);
 
         dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
             dialog.dismiss();
@@ -63,8 +66,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             } else {
                 switch (type) {
                     case Const.KEY_ADS_MESSAGE:
-                        Intent intent = new Intent(requireActivity(),FragmentChat.class);
-                        intent.putExtra(Const.KEY_DATA_CONTACT,user);
+                        Intent intent = new Intent(requireActivity(), FragmentChat.class);
+                        intent.putExtra(Const.KEY_DATA_CONTACT, user);
                         startActivity(intent);
                         break;
                     case Const.KEY_ADS_VIDEO_CALL:
@@ -161,7 +164,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.fakeVideo.setOnClickListener(view -> {
             showAction(Const.KEY_ADS_VIDEO_CALL);
         });
-
+        navMenu.findViewById(R.id.ll_home).setOnClickListener(v -> binding.drawerLayout.closeDrawers());
+        navMenu.findViewById(R.id.ll_manager_coin).setOnClickListener(v -> {
+            binding.drawerLayout.closeDrawers();
+            addFragment(new ManagerContactFragment(),ManagerContactFragment.TAG);
+        });
     }
 
     private void showMessage() {

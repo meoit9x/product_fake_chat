@@ -16,9 +16,9 @@ import nat.pink.base.model.ObjectMessenge;
 
 public class HomeViewModel extends BaseViewModel {
 
-    MutableLiveData<List<DaoContact>> contacts = new MutableLiveData<>();
-    MutableLiveData<List<DaoContact>> contactSuggest = new MutableLiveData<>();
-    MutableLiveData<List<DaoContact>> contactNormal = new MutableLiveData<>();
+    public MutableLiveData<List<DaoContact>> contacts = new MutableLiveData<>();
+    public MutableLiveData<List<DaoContact>> contactSuggest = new MutableLiveData<>();
+    public MutableLiveData<List<DaoContact>> contactNormal = new MutableLiveData<>();
     public List<ObjectMessenge> objectMessenges = new ArrayList<>();
     public MutableLiveData<Boolean> reloadDataMessenger = new MutableLiveData<>();
     public MutableLiveData<DaoContact> loadChatInfo = new MutableLiveData<>();
@@ -56,5 +56,15 @@ public class HomeViewModel extends BaseViewModel {
             return true;
         }
         return false;
+    }
+
+    public void deleteContact(Context context, DaoContact objectMessenge) {
+        DatabaseController.getInstance(context).deleteContact(objectMessenge);
+        getListContact(context);
+    }
+
+    public void updateContact(Context context, DaoContact objectMessenge) {
+        DatabaseController.getInstance(context).updateContact(objectMessenge);
+        getListContact(context);
     }
 }

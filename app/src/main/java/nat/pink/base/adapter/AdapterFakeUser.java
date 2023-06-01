@@ -56,10 +56,7 @@ public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHo
         }
 
         DaoContact user = fakeUsers.get(position - 1);
-        if (user.getAvatar().contains("R.drawable")) {
-            binding.avatar.setImageResource(Utils.convertStringToDrawable(context, user.getAvatar()));
-        } else
-            ImageUtils.loadImage(binding.avatar, user.getAvatar());
+        ImageUtils.loadImage(context, binding.avatar, user.getAvatar());
         binding.name.setText(user.getName());
         binding.mcvOnline.setCardBackgroundColor(context.getColor(user.getOnline() == 1 ? R.color.color_5AD439 : R.color.gray_D9));
     }

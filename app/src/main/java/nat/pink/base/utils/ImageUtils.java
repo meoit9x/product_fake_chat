@@ -16,6 +16,10 @@ public class ImageUtils {
     }
 
     public static void loadImage(Context context, ImageView imageView, String path) {
+        if (path == null) {
+            imageView.setImageResource(R.drawable.ic_user_default);
+            return;
+        }
         if (path.contains("R.drawable")) {
             imageView.setImageResource(Utils.convertStringToDrawable(context, path));
         } else {
