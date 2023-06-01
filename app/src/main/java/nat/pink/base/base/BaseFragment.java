@@ -18,6 +18,7 @@ import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
 import com.applovin.mediation.MaxError;
 import com.applovin.mediation.ads.MaxInterstitialAd;
+import com.applovin.mediation.nativeAds.MaxNativeAdView;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -117,6 +118,20 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         }
         return false;
     }
+
+    protected void createNativeAd(String key){
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.createNativeAd(key);
+        }
+    }
+    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer){
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.setNativeAdView(view,loadedConsumer);
+        }
+    }
+
     protected void createInterstitialAd(String key) {
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();

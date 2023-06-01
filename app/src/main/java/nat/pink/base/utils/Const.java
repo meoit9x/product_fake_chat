@@ -12,6 +12,7 @@ public class Const {
     public static final String KEY_ADS_VOICE_CALL = "d6a9c4851f988caa";
     public static final String KEY_ADS_MESSAGE = "c15c272e296b33eb";
     public static final String KEY_ADS_NOTIFICATION = "0f59554c6250aa24";
+    public static final String KEY_ADS_LANGUAGE = "ec45a958f366f067";
     public static final String KEY_ADS_DONE = "89b5de9992a2828a";
 
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";

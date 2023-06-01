@@ -10,7 +10,7 @@
     tools:openDrawer="start">
 
     <LinearLayout
-        android:paddingTop="@dimen/_20sdp"
+        android:paddingTop="@dimen/_25sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradient_main"
@@ -262,7 +262,7 @@
                                     android:layout_marginHorizontal="@dimen/_10sdp"
                                     android:layout_marginVertical="@dimen/_5sdp"
                                     android:text="@string/one_hun_coin"
-                                    android:textColor="@color/color_27839E"
+                                    android:textColor="@color/color_D770AD"
                                     android:textSize="@dimen/_10sdp" />
                             </com.google.android.material.card.MaterialCardView>
                         </LinearLayout>
