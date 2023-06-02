@@ -3,6 +3,7 @@ package nat.pink.base.ui.create;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import nat.pink.base.model.DaoContact;
 import nat.pink.base.ui.home.HomeFragment;
 import nat.pink.base.ui.home.HomeViewModel;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
 
 public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, HomeViewModel> {
@@ -37,11 +39,20 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
 
     private DaoContact daoContact;
     private DialogChangeColor dialogChangeColor;
+    private boolean isEdit = false;
+
+    public CreateUserFragment(DaoContact daoContact) {
+        this.daoContact = daoContact;
+        isEdit = true;
+    }
+
+    public CreateUserFragment() {
+    }
 
     @Override
     protected void initView() {
         super.initView();
-        binding.llTop.txtTitle.setText(getString(R.string.create_your_contact));
+
         dialogChangeColor = new DialogChangeColor(requireContext(), v -> {
             daoContact.setColor(v);
             binding.ivContent.setColorFilter(v);
@@ -52,6 +63,30 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
     @Override
     protected void initData() {
         super.initData();
+
+        binding.llTop.txtTitle.setText(getString(daoContact == null ? R.string.create_your_contact : R.string.edit_your_contact));
+        binding.txtDone.setText(daoContact == null ? R.string.create : R.string.edit);
+
+        // init data edit
+        if (daoContact != null) {
+            ImageUtils.loadImage(requireContext(), binding.ivChangeAva, daoContact.getAvatar());
+            binding.edtName.setText(daoContact.getName());
+            binding.swStatus.setChecked(daoContact.getOnline() == 1);
+            binding.radios.setVisibility(daoContact.getOnline() == 1 ? View.GONE : View.VISIBLE);
+            binding.rb5Min.setChecked(daoContact.getOnline() == 2);
+            binding.rb30Min.setChecked(daoContact.getOnline() == 3);
+            binding.rb1Hour.setChecked(daoContact.getOnline() == 4);
+            binding.rb1Day.setChecked(daoContact.getOnline() == 5);
+            binding.swFriend.setChecked(daoContact.isIs_friend());
+            binding.ivContent.setColorFilter(daoContact.getColor());
+            binding.edtEdu.setText(daoContact.getEducation());
+            binding.edtWork.setText(daoContact.getWork());
+            binding.edtLive.setText(daoContact.getLive());
+
+            return;
+        }
+
+        // data create
         daoContact = new DaoContact();
         daoContact.setOnline(1);
         daoContact.setVerified(true);
@@ -82,8 +117,13 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
         binding.rlDone.setOnClickListener(v -> {
             if (setupDone()) {
                 showInterstitialAd(o -> {
-                    getViewModel().insertContact(requireContext(), daoContact);
-                    backStackFragment();
+                    requireActivity().runOnUiThread(() -> {
+                        if (isEdit)
+                            getViewModel().updateContact(requireContext(), daoContact);
+                        else
+                            getViewModel().insertContact(requireContext(), daoContact);
+                        backStackFragment();
+                    });
                 });
             }
         });
@@ -113,7 +153,9 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Utils.openGallery(requireActivity(), false);
+        if (requestCode == Const.ALBUM_REQUEST_CODE && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            Utils.openGallery(requireActivity(), false);
     }
 
     @Override
