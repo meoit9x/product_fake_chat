@@ -346,7 +346,7 @@ public class Utils {
     }
 
     public static void openGallery(Activity activity, boolean isVideo) {
-        if (!checkPermission(activity.getApplicationContext(),Manifest.permission.READ_EXTERNAL_STORAGE)) {
+        if (!checkPermission(activity,Manifest.permission.READ_EXTERNAL_STORAGE) && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             activity.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Const.ALBUM_REQUEST_CODE);
             return;
         }

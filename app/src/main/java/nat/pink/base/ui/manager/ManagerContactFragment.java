@@ -48,7 +48,7 @@ public class ManagerContactFragment extends BaseFragment<FragmentManagerContactB
         super.initEvent();
         binding.llTop.ivBack.setOnClickListener(v -> backStackFragment());
         adapterContacts.setConsumerCreateNew(v -> addFragment(new CreateUserFragment(), CreateUserFragment.TAG));
-        adapterContacts.setConsumerEdit(v -> addFragment(new CreateUserFragment(), CreateUserFragment.TAG));
+        adapterContacts.setConsumerEdit(v -> addFragment(new CreateUserFragment(v), CreateUserFragment.TAG));
         adapterContacts.setConsumerDelete(v -> {
             getViewModel().deleteContact(requireContext(), v);
         });
