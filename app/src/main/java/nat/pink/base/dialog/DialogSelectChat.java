@@ -68,9 +68,10 @@ public class DialogSelectChat extends Dialog {
     }
 
     void initData() {
-        adapterSuggest = new AdapterFakeUserContact(getContext(), contactSuggests, getTypeAction(), data -> {
+        adapterSuggest = new AdapterFakeUserContact(getContext(), contactSuggests, data -> {
             consumer.accept(data);
         });
+        adapterSuggest.setTypeAction(getTypeAction());
 
         LinearLayoutManager ln = new LinearLayoutManager(getContext());
         ln.setOrientation(RecyclerView.VERTICAL);
@@ -81,9 +82,8 @@ public class DialogSelectChat extends Dialog {
         binding.rcvSuggest.addItemDecoration(dividerItemDecoration);
         binding.rcvSuggest.setAdapter(adapterSuggest);
 
-
         //contact adapter
-        adapterContact = new AdapterFakeUserContact(getContext(), contactNormals, getTypeAction(), user -> {
+        adapterContact = new AdapterFakeUserContact(getContext(), contactNormals, user -> {
             consumer.accept(user);
         });
 
@@ -105,6 +105,9 @@ public class DialogSelectChat extends Dialog {
 
     public void setTypeAction(TYPE_ACTION typeAction) {
         this.typeAction = typeAction;
+        if (adapterSuggest != null) {
+            adapterSuggest.setTypeAction(typeAction);
+        }
     }
 
 }

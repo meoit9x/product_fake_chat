@@ -29,9 +29,8 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
     private DialogSelectChat.TYPE_ACTION typeAction;
     private Consumer<DaoContact> consumer;
 
-    public AdapterFakeUserContact(Context context, List<DaoContact> fakeUsers, DialogSelectChat.TYPE_ACTION typeAction, Consumer<DaoContact> consumer) {
+    public AdapterFakeUserContact(Context context, List<DaoContact> fakeUsers, Consumer<DaoContact> consumer) {
         this.context = context;
-        this.typeAction = typeAction;
         this.consumer = consumer;
         this.fakeUsers = fakeUsers;
     }
@@ -67,7 +66,7 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
         }
         binding.mcvOnline.setCardBackgroundColor(context.getColor(user.getOnline() == 1 ? R.color.color_5AD439 : R.color.gray_D9));
         binding.mainAction.setOnClickListener(v -> consumer.accept(user));
-        switch (typeAction) {
+        switch (getTypeAction()) {
             case ACTION_VIDEO:
                 binding.ivAction.setImageResource(R.drawable.ic_video_camera);
                 break;
@@ -95,5 +94,14 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
             super(binding.getRoot());
             this.binding = binding;
         }
+    }
+
+    public DialogSelectChat.TYPE_ACTION getTypeAction() {
+        return typeAction;
+    }
+
+    public void setTypeAction(DialogSelectChat.TYPE_ACTION typeAction) {
+        this.typeAction = typeAction;
+        notifyDataSetChanged();
     }
 }
