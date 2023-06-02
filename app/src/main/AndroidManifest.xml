@@ -9,23 +9,19 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="com.android.vending.BILLING"/>
-
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -39,7 +35,6 @@
     </queries>
 
     <application
-        tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -47,11 +42,22 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_logo"
         android:supportsRtl="true"
+        tools:replace="android:allowBackup"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.splah.SplashActivity"
+            android:theme="@style/Theme.Base.NoActionBar"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-        <meta-data android:name="applovin.sdk.key"
-            android:value="h4MnT3IKt4SmQgK4qMocaUBf20oH5Uz3klpc3w0cVvbAPHgsT9bl_f8O5oKbcw96pXpNrrKXx2wdM_qV7NqNpb"/>
+        </activity>
 
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="h4MnT3IKt4SmQgK4qMocaUBf20oH5Uz3klpc3w0cVvbAPHgsT9bl_f8O5oKbcw96pXpNrrKXx2wdM_qV7NqNpb" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-6333075779989445~7098425734" />
@@ -62,11 +68,11 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Base.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -75,44 +81,44 @@
         <activity
             android:name=".ui.video.child.VideoCallActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Base.NoActionBar"
-            android:showOnLockScreen="true" />
-
+            android:showOnLockScreen="true"
+            android:theme="@style/Theme.Base.NoActionBar" />
         <activity
             android:name=".ui.video.child.VideoCallAnswerActivity"
-            android:theme="@style/Theme.Base.NoActionBar"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Base.NoActionBar" />
         <activity
             android:name=".ui.video.child.OutCommingActivity"
-            android:theme="@style/Theme.Base.NoActionBar"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Base.NoActionBar" />
         <activity
             android:name=".ui.chat.FragmentChat"
-            android:theme="@style/Theme.Base.NoActionBar"
-            android:screenOrientation="portrait" />
-
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Base.NoActionBar" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
 
         <service android:name=".service.ChatHeadService" />
 
-        <activity android:name="nat.pink.base.ui.chat.StickerActivity"
-            android:theme="@style/Theme.Base.NoActionBar"
-            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.chat.StickerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Base.NoActionBar" />
 
-        <service android:name=".service.CallingService"  android:label="@string/app_name" android:enabled="true"/>
+        <service
+            android:name=".service.CallingService"
+            android:enabled="true"
+            android:label="@string/app_name" />
 
         <receiver
             android:name=".service.AlarmReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
         <receiver
             android:name=".service.HangupReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
     </application>
 
 </manifest>

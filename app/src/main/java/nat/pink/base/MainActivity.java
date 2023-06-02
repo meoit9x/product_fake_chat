@@ -44,7 +44,9 @@ import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.service.CallingService;
 import nat.pink.base.ui.home.HomeFragment;
+import nat.pink.base.ui.language.LanguageFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
+import nat.pink.base.ui.onboard.OnboardFragment;
 import nat.pink.base.ui.splah.SplashFragment;
 import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
@@ -170,7 +172,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        replaceFragment(new SplashFragment(), SplashFragment.TAG);
+        boolean firstTime = PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.OPEN_APP_FIRST_TIME, true);
+        if (firstTime) {
+            if (PreferenceUtil.getString(getApplicationContext(), PreferenceUtil.SETTING_LANGUAGE, "").equals("")) {
+                replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
+            } else if (!PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.IS_INTRO_OPENED, false)) {
+                 replaceFragment(new OnboardFragment(), OnboardFragment.TAG);
+            } else {
+                replaceFragment(new HomeFragment(), HomeFragment.TAG);
+            }
+        } else{
+             replaceFragment(new HomeFragment(), HomeFragment.TAG);
+        }
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
