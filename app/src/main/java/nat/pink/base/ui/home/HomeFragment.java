@@ -178,23 +178,19 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     }
 
     private void showMessage() {
-        binding.frAdsHome.setVisibility(View.VISIBLE);
         dialog.setTypeAction(DialogSelectChat.TYPE_ACTION.ACTION_MESSAGE);
         dialog.show();
     }
 
     private void showVoiceCall() {
-        binding.frAdsHome.setVisibility(View.VISIBLE);
         checkShowNoti(DialogSelectChat.TYPE_ACTION.ACTION_VOICE);
     }
 
     private void showVideoCall() {
-        binding.frAdsHome.setVisibility(View.VISIBLE);
         checkShowNoti(DialogSelectChat.TYPE_ACTION.ACTION_VIDEO);
     }
 
     private void showNotification() {
-        binding.frAdsHome.setVisibility(View.VISIBLE);
         checkShowNoti(DialogSelectChat.TYPE_ACTION.ACTION_NOTIFICATION);
     }
 

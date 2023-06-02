@@ -161,9 +161,9 @@
             android:layout_height="match_parent">
             <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_330sdp"
-                android:layout_margin="@dimen/_5sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_height="@dimen/_325sdp"
+                android:layout_margin="@dimen/_1sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:columnCount="2"
                 android:rowCount="2">
 
@@ -381,15 +381,7 @@
 
 
             </GridLayout>
-            <FrameLayout
-                android:visibility="visible"
-                android:background="@color/white"
-                android:id="@+id/fr_ads_home"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="@dimen/_14sdp"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:layout_weight="1.65" />
+
             <com.applovin.mediation.ads.MaxAdView
                 xmlns:maxads="http://schemas.applovin.com/android/1.0"
                 android:id="@+id/ads_banner_view"
