@@ -117,12 +117,13 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
         binding.rlDone.setOnClickListener(v -> {
             if (setupDone()) {
                 showInterstitialAd(o -> {
-                    if (isEdit)
-                        getViewModel().updateContact(requireContext(), daoContact);
-                    else
-                        getViewModel().insertContact(requireContext(), daoContact);
-                    backStackFragment();
-                    backStackFragment();
+                    requireActivity().runOnUiThread(() -> {
+                        if (isEdit)
+                            getViewModel().updateContact(requireContext(), daoContact);
+                        else
+                            getViewModel().insertContact(requireContext(), daoContact);
+                        backStackFragment();
+                    });
                 });
             }
         });
