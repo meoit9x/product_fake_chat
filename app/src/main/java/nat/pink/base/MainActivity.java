@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
             this.stopService(serviceIntent);
         }
 
-        if (intent!=null && intent.getAction().equals("android.intent.action.MAIN")){
+        if (intent.getAction() != null && intent.getAction().equals("android.intent.action.MAIN")){
             initView();
         }
-        if (intent != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
+        if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, VideoCallActivity.class);
             mIntent.putExtra(
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             );
             startActivity(mIntent);
             finish();
-        } else if (intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, OutCommingActivity.class);
             mIntent.putExtra(
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             );
             startActivity(mIntent);
             finish();
-        } else if (intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, OutCommingActivity.class);
             mIntent.putExtra(
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             mIntent.putExtra("show_icon_video", true);
             startActivity(mIntent);
             finish();
-        } else if (intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, VideoCallActivity.class);
             mIntent.putExtra(
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleIntent(Intent intent) {
-        if (intent.getAction().equals(Const.ACTION_CREAT_NOTIFICATION)) {
+        if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CREAT_NOTIFICATION)) {
             addFragment(new HomeFragment(), HomeFragment.TAG);
         }
 

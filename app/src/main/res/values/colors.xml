@@ -131,5 +131,9 @@
     <color name="color_8DCC78">#8DCC78</color>
     <color name="color_6A62C9">#6A62C9</color>
     <color name="color_80C3D7">#80C3D7</color>
+    <color name="color_3C3454">#3C3454</color>
+    <color name="radio_button_unchecked">#B9B9B9</color>
+    <color name="radio_button_checked">#ffffff</color>
+
 
 </resources>

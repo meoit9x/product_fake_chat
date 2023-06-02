@@ -13,6 +13,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/root_view"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -37,8 +38,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:backgroundTint="#335AFB"
-                android:buttonTint="#335AFB"
+                android:theme="@style/CustomRadioButton"
                 android:clickable="false" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

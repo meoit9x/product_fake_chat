@@ -2,8 +2,7 @@ package nat.pink.base.model;
 
 import java.io.Serializable;
 
-public class
-ObjectLanguage implements Serializable {
+public class ObjectLanguage implements Serializable {
 
     private String language;
     private String value;

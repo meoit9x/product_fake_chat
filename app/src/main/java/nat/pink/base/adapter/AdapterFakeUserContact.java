@@ -16,6 +16,7 @@ import java.util.List;
 
 import nat.pink.base.R;
 import nat.pink.base.databinding.ItemFakeUserContactBinding;
+import nat.pink.base.dialog.DialogSelectChat;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.utils.ImageUtils;
 import nat.pink.base.utils.Utils;
@@ -25,10 +26,12 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
 
     private List<DaoContact> fakeUsers;
     private Context context;
+    private DialogSelectChat.TYPE_ACTION typeAction;
     private Consumer<DaoContact> consumer;
 
-    public AdapterFakeUserContact(Context context, List<DaoContact> fakeUsers, Consumer<DaoContact> consumer) {
+    public AdapterFakeUserContact(Context context, List<DaoContact> fakeUsers, DialogSelectChat.TYPE_ACTION typeAction, Consumer<DaoContact> consumer) {
         this.context = context;
+        this.typeAction = typeAction;
         this.consumer = consumer;
         this.fakeUsers = fakeUsers;
     }
@@ -64,6 +67,20 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
         }
         binding.mcvOnline.setCardBackgroundColor(context.getColor(user.getOnline() == 1 ? R.color.color_5AD439 : R.color.gray_D9));
         binding.mainAction.setOnClickListener(v -> consumer.accept(user));
+        switch (typeAction) {
+            case ACTION_VIDEO:
+                binding.ivAction.setImageResource(R.drawable.ic_video_camera);
+                break;
+            case ACTION_VOICE:
+                binding.ivAction.setImageResource(R.drawable.ic_phone);
+                break;
+            case ACTION_NOTIFICATION:
+                binding.ivAction.setImageResource(R.drawable.ic_chat_round_unread);
+                break;
+            default:
+                binding.ivAction.setImageResource(R.drawable.ic_message);
+                break;
+        }
     }
 
     @Override

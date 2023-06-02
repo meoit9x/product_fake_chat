@@ -1,6 +1,7 @@
 package nat.pink.base.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import nat.pink.base.R;
 import nat.pink.base.databinding.ItemLanguageBinding;
 import nat.pink.base.model.ObjectLanguage;
 import nat.pink.base.utils.PreferenceUtil;
@@ -51,6 +53,8 @@ public class AdapterLanguage extends RecyclerView.Adapter<AdapterLanguage.ViewHo
             binding.rb.setChecked(selected);
         }
         binding.cvContent.setOnClickListener(view -> consumer.accept(objectLanguage));
+        binding.txtFlag.setTextColor(selected ? Color.WHITE : context.getColor(R.color.color_212121));
+        binding.rootView.setBackgroundResource(selected ? R.drawable.bg_setting_language : R.drawable.bg_white);
     }
 
     @Override
@@ -66,4 +70,5 @@ public class AdapterLanguage extends RecyclerView.Adapter<AdapterLanguage.ViewHo
             this.binding = binding;
         }
     }
+
 }

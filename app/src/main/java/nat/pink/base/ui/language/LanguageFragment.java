@@ -1,6 +1,7 @@
 package nat.pink.base.ui.language;
 
 import android.graphics.Color;
+import android.os.Bundle;
 
 import androidx.core.util.Consumer;
 import androidx.lifecycle.ViewModelProvider;
@@ -13,6 +14,7 @@ import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterLanguage;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentLanguageBinding;
+import nat.pink.base.model.ObjectLanguage;
 import nat.pink.base.ui.onboard.OnboardFragment;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
@@ -26,8 +28,6 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
     protected LanguageViewModel getViewModel() {
         return new ViewModelProvider(this).get(LanguageViewModel.class);
     }
-
-
 
     @Override
     protected void initView() {

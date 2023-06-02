@@ -28,6 +28,11 @@ import nat.pink.base.model.DaoContact;
 
 
 public class DialogSelectChat extends Dialog {
+    public enum TYPE_ACTION {
+        ACTION_MESSAGE, ACTION_VOICE, ACTION_VIDEO, ACTION_NOTIFICATION
+    }
+
+    private TYPE_ACTION typeAction = TYPE_ACTION.ACTION_MESSAGE;
     private Consumer consumer;
     private DialogSelectChatBinding binding;
     private AdapterFakeUserContact adapterSuggest, adapterContact;
@@ -63,7 +68,7 @@ public class DialogSelectChat extends Dialog {
     }
 
     void initData() {
-        adapterSuggest = new AdapterFakeUserContact(getContext(), contactSuggests, data -> {
+        adapterSuggest = new AdapterFakeUserContact(getContext(), contactSuggests, getTypeAction(), data -> {
             consumer.accept(data);
         });
 
@@ -78,7 +83,7 @@ public class DialogSelectChat extends Dialog {
 
 
         //contact adapter
-        adapterContact = new AdapterFakeUserContact(getContext(), contactNormals, user -> {
+        adapterContact = new AdapterFakeUserContact(getContext(), contactNormals, getTypeAction(), user -> {
             consumer.accept(user);
         });
 
@@ -92,6 +97,14 @@ public class DialogSelectChat extends Dialog {
 
     void initEvent() {
         binding.ivExit.setOnClickListener(v -> DialogSelectChat.this.dismiss());
+    }
+
+    public TYPE_ACTION getTypeAction() {
+        return typeAction;
+    }
+
+    public void setTypeAction(TYPE_ACTION typeAction) {
+        this.typeAction = typeAction;
     }
 
 }

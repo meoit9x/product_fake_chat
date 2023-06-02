@@ -25,8 +25,10 @@ import nat.pink.base.adapter.AdapterFakeUser;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogSelectChat;
+import nat.pink.base.ui.language.LanguageFragment;
 import nat.pink.base.ui.manager.ManagerContactFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
+import nat.pink.base.ui.setting.LanguageFragmentSetting;
 import nat.pink.base.ui.video.VideoFragment;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
@@ -169,26 +171,31 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.closeDrawers();
             addFragment(new ManagerContactFragment(),ManagerContactFragment.TAG);
         });
+        navMenu.findViewById(R.id.ll_language).setOnClickListener(view -> {
+            binding.drawerLayout.closeDrawers();
+            addFragment(new LanguageFragmentSetting(), LanguageFragmentSetting.TAG);
+        });
     }
 
     private void showMessage() {
         binding.frAdsHome.setVisibility(View.VISIBLE);
+        dialog.setTypeAction(DialogSelectChat.TYPE_ACTION.ACTION_MESSAGE);
         dialog.show();
     }
 
     private void showVoiceCall() {
         binding.frAdsHome.setVisibility(View.VISIBLE);
-        checkShowNoti();
+        checkShowNoti(DialogSelectChat.TYPE_ACTION.ACTION_VOICE);
     }
 
     private void showVideoCall() {
         binding.frAdsHome.setVisibility(View.VISIBLE);
-        checkShowNoti();
+        checkShowNoti(DialogSelectChat.TYPE_ACTION.ACTION_VIDEO);
     }
 
     private void showNotification() {
         binding.frAdsHome.setVisibility(View.VISIBLE);
-        checkShowNoti();
+        checkShowNoti(DialogSelectChat.TYPE_ACTION.ACTION_NOTIFICATION);
     }
 
 
@@ -280,11 +287,12 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         countDownTimer.start();
     }
 
-    private void checkShowNoti() {
+    private void checkShowNoti(DialogSelectChat.TYPE_ACTION typeAction) {
         time = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME);
         long countdown = time - System.currentTimeMillis();
         if (countdown < 0) {
             PreferenceUtil.clearEdit(requireContext(), PreferenceUtil.KEY_CURRENT_TIME);
+            dialog.setTypeAction(typeAction);
             dialog.show();
         } else {
             DialogCountdownTime dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {

@@ -28,6 +28,23 @@
     <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
     <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
 
+    <string name="txt_language_in" translatable="false">Indonesian</string>
+    <string name="txt_language_thai" translatable="false">Thai</string>
+    <string name="txt_language_malay" translatable="false">Malaysian</string>
+    <string name="txt_language_en">English</string>
+    <string name="txt_language_vi">Vietnamese</string>
+    <string name="txt_language_spanish">Spanish</string>
+    <string name="txt_language_portuguese">Portuguese</string>
+    <string name="txt_language_russiane">Russian</string>
+    <string name="txt_language_ja">Japanese</string>
+    <string name="txt_language_korean">Korean</string>
+    <string name="txt_language_french">French</string>
+    <string name="txt_language_german">German</string>
+    <string name="txt_language_arabic" translatable="false">Arabic</string>
+    <string name="txt_language_chi">Chinese</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">Chinese (Simplified )</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">Chinese (Traditional)</string>
+
     <!--flag-->
     <string name="flag_name_english">English</string>
     <string name="flag_name_japanese">Japanese</string>
@@ -299,5 +316,8 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="suggest">Suggest</string>
     <string name="create_new_manager_suggest">Create new</string>
     <string name="your_conversation_manager_suggest">Your conversation</string>
+    <string name="asked_question">Frequently Asked Questions?</string>
+    <string name="faq">FAQ</string>
+    <string name="language">Language</string>
 
 </resources>

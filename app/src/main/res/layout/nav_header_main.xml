@@ -19,11 +19,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/bg_nav_top"/>
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/bg_nav_top" />
 
             <ImageView
                 android:id="@+id/main_logo"
@@ -31,12 +32,13 @@
                 android:layout_height="@dimen/_90sdp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/logofake" />
+
             <ImageView
-                android:layout_below="@id/main_logo"
-                android:layout_marginStart="@dimen/_15sdp"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_messenger_app_fake"/>
+                android:layout_below="@id/main_logo"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:src="@drawable/ic_messenger_app_fake" />
 
         </RelativeLayout>
 
@@ -55,23 +57,23 @@
                 android:src="@drawable/ic_home" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="Home"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
 
-
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_manager_coin"
             android:layout_width="match_parent"
@@ -87,21 +89,22 @@
                 android:src="@drawable/ic_convo" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="Manage Conversation"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_guide"
             android:layout_width="match_parent"
@@ -117,23 +120,24 @@
                 android:src="@drawable/ic_rating" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="Coin Rankings"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ll_more_app"
+            android:id="@+id/ll_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -147,21 +151,22 @@
                 android:src="@drawable/ic_translate" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="Language"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_rate_app"
             android:layout_width="match_parent"
@@ -177,21 +182,22 @@
                 android:src="@drawable/ic_faq2" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="FAQ"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_feedback"
             android:layout_width="match_parent"
@@ -207,21 +213,22 @@
                 android:src="@drawable/ic_more2" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="More App"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_contact_us"
             android:layout_width="match_parent"
@@ -238,21 +245,22 @@
                 android:src="@drawable/ic_feedback2" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="FeedBack"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="@color/color_E8E8E8"
-            />
+            android:background="@color/color_E8E8E8" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_privacy"
             android:layout_width="match_parent"
@@ -268,29 +276,30 @@
                 android:src="@drawable/ic_privacy2" />
 
             <TextView
-                android:fontFamily="@font/sf_pro_display"
-                android:textFontWeight="400"
-                android:textColor="@color/color_404040"
-                android:layout_marginStart="@dimen/_12sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/sf_pro_display"
                 android:text="Privacy"
+                android:textColor="@color/color_404040"
+                android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <RelativeLayout
 
-            android:fitsSystemWindows="true"
-            android:fillViewport="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true">
+
             <ImageView
-                android:visibility="invisible"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/bg_nav_bottom"/>
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/bg_nav_bottom"
+                android:visibility="invisible" />
         </RelativeLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 

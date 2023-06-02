@@ -3,6 +3,10 @@ package nat.pink.base.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
+import nat.pink.base.model.Language;
+
 public class PreferenceUtil {
     public static final String SETTING_LANGUAGE = "SETTING_LANGUAGE";
     public static final String SETTING_PREMIUM_MONTHLY = "SETTING_PREMIUM_MONTHLY";
@@ -71,5 +75,13 @@ public class PreferenceUtil {
     public static Integer getInt(Context context, String key) {
         int value = context.getSharedPreferences(MyPREFERENCES, 0).getInt(key, 0);
         return value;
+    }
+    public static void saveCurrentLanguage(Context context, Language language) {
+        String jsonString = new Gson().toJson(language);
+        saveString(context, KEY_CURRENT_LANGUAGE, jsonString);
+    }
+
+    public static Language getCurrentLanguage(Context context) {
+        return new Gson().fromJson(getString(context, KEY_CURRENT_LANGUAGE, ""), Language.class);
     }
 }

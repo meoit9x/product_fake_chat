@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_button_beauty"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <nat.pink.base.custom.view.ExtTextView
+        android:id="@+id/listTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:paddingVertical="@dimen/_8sdp"
+        android:textSize="@dimen/_12sdp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:gravity="start|center"
+        android:drawablePadding="@dimen/_5sdp" />
+</LinearLayout>
