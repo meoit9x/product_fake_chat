@@ -3,8 +3,10 @@ package nat.pink.base.ui.setting
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
+import androidx.recyclerview.widget.RecyclerView
+import com.gun0912.tedpermission.provider.TedPermissionProvider
 import nat.pink.base.MainActivity
 import nat.pink.base.R
 import nat.pink.base.adapter.LanguageAdapter
@@ -12,8 +14,8 @@ import nat.pink.base.base.BaseFragment
 import nat.pink.base.base.EmptyViewModel
 import nat.pink.base.databinding.FragmentLanguageSettingBinding
 import nat.pink.base.model.Language
-import nat.pink.base.ui.home.HomeViewModel
 import nat.pink.base.utils.PreferenceUtil
+
 
 class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, EmptyViewModel>() {
 
@@ -22,6 +24,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
     private var adapterLanguage: LanguageAdapter? = null
 
     private lateinit var currentLanguageSelected: Language
+    private lateinit var english: String
 
     override fun initData() {
         super.initData()
@@ -33,7 +36,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
                 Language(getString(R.string.txt_language_en), true, "en", R.drawable.flag_en)
         }
 
-        val english = PreferenceUtil.getString(context, PreferenceUtil.SETTING_LANGUAGE, "")
+        english = PreferenceUtil.getString(context, PreferenceUtil.SETTING_LANGUAGE, "")
         listLanguage.apply {
             add(
                 Language(
@@ -130,6 +133,12 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
 
     override fun initEvent() {
         super.initEvent()
+        for (i in 0 until listLanguage.size) {
+            val language = listLanguage[i]
+            if (language.value.equals(english)) {
+                binding.rcvEnglish.scrollToPosition(i)
+            }
+        }
         binding.llTop.ivBack.setOnClickListener {
             backStackFragment()
         }
@@ -160,6 +169,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterLanguage
         }
+        binding.llView.setOnClickListener { }
     }
 
     private fun onLanguageSelected(position: Int) {
@@ -173,6 +183,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
         listLanguage[position].isSelected = true
         currentLanguageSelected = listLanguage[position]
         adapterLanguage?.notifyItemChanged(position)
+        binding.rcvEnglish.scrollToPosition(position)
     }
 
     companion object {
