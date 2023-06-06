@@ -1,5 +1,7 @@
 package nat.pink.base.ui.create;
 
+import static android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -13,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
@@ -52,7 +55,7 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
     @Override
     protected void initView() {
         super.initView();
-
+        requireActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         dialogChangeColor = new DialogChangeColor(requireContext(), v -> {
             daoContact.setColor(v);
             binding.ivContent.setColorFilter(v);

@@ -8,10 +8,8 @@
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingTop="10dp"
+        android:padding="@dimen/_10sdp"
         android:textColor="@color/color_212121"
-        android:paddingBottom="10dp"
         android:background="@drawable/bg_button_gray8"
         tools:ignore="RtlSymmetry" />
 </LinearLayout>

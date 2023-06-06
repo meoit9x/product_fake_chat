@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ObjectFaq implements Serializable {
     private String title;
-    private List<String> content;
+    private String content;
 
-    public ObjectFaq(String title, List<String> content) {
+    public ObjectFaq(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -20,11 +20,11 @@ public class ObjectFaq implements Serializable {
         this.title = title;
     }
 
-    public List<String> getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(List<String> content) {
+    public void setContent(String content) {
         this.content = content;
     }
 }

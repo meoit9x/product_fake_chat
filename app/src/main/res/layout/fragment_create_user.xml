@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
     <include
         android:id="@+id/ll_top"
@@ -18,7 +17,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="@dimen/_14sdp"
             android:paddingVertical="@dimen/_10sdp">
@@ -60,6 +59,8 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_edit_text"
                 android:hint="@string/hint_text_name"
+                android:nextFocusDown="@id/edt_edu"
+                android:inputType="textCapWords"
                 android:paddingStart="@dimen/_18sdp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_9E9E9E"
@@ -320,6 +321,8 @@
                     android:hint="@string/education_hint"
                     android:paddingStart="@dimen/_8sdp"
                     android:textColor="@color/black"
+                    android:nextFocusDown="@id/edt_work"
+                    android:inputType="textCapWords"
                     android:textColorHint="@color/color_CCCCCC"
                     android:textSize="@dimen/_14sdp" />
 
@@ -342,6 +345,8 @@
                     android:hint="@string/work_hint"
                     android:paddingStart="@dimen/_8sdp"
                     android:textColor="@color/black"
+                    android:nextFocusDown="@id/edt_live"
+                    android:inputType="textCapWords"
                     android:textColorHint="@color/color_CCCCCC"
                     android:textSize="@dimen/_14sdp" />
 
@@ -356,7 +361,6 @@
                     app:textViewFontAssetName="@string/font_bold" />
 
                 <nat.pink.base.custom.view.ExtEditText
-
                     android:id="@+id/edt_live"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -365,6 +369,8 @@
                     android:background="@drawable/bg_edit_text"
                     android:hint="@string/hint_lives_in"
                     android:paddingStart="@dimen/_8sdp"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapWords"
                     android:textColor="@color/black"
                     android:textColorHint="@color/color_CCCCCC"
                     android:textSize="@dimen/_14sdp" />
@@ -398,7 +404,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
                 android:drawableEnd="@drawable/ic_right_textview"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_18sdp"

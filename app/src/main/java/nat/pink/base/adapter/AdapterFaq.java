@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import nat.pink.base.R;
@@ -16,9 +18,10 @@ public class AdapterFaq extends BaseExpandableListAdapter {
     public LayoutInflater inflater;
     public Activity activity;
 
-    public AdapterFaq(Activity act) {
+    public AdapterFaq(Activity act, List<ObjectFaq> list) {
         activity = act;
         inflater = act.getLayoutInflater();
+        this.faqList = list;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class AdapterFaq extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int i) {
-        return faqList.get(i).getContent() != null ? faqList.get(i).getContent().size() : 0;
+        return faqList.get(i).getTitle() != null ? 1 : 0;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class AdapterFaq extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int i, int i1) {
-        return faqList.get(i).getContent().get(i1);
+        return faqList.get(i).getContent();
     }
 
     @Override

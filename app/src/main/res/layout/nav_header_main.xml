@@ -204,6 +204,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:paddingVertical="@dimen/_6sdp">
 
             <androidx.constraintlayout.utils.widget.ImageFilterView

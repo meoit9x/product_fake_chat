@@ -306,12 +306,12 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="content_fake_video_call">Fake \nVideo Call</string>
     <string name="content_fake_noti">"Fake \nNotification"</string>
     <string name="free">Free</string>
-    <string name="one_hun_coin">-100 Coin</string>
-    <string name="two_hun_coin">-200 Coin</string>
-    <string name="three_hun_coin">-300 Coin</string>
+    <string name="one_hun_coin">-100 Poin</string>
+    <string name="two_hun_coin">-200 Poin</string>
+    <string name="three_hun_coin">-300 Poin</string>
 
     <string name="conversation_suggestions">Conversation suggestions</string>
-    <string name="your_coin">Your coin</string>
+    <string name="your_coin">Your poin</string>
     <string name="manage_conversation">Manage Conversation</string>
     <string name="suggest">Suggest</string>
     <string name="create_new_manager_suggest">Create new</string>
@@ -319,5 +319,19 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="asked_question">Frequently Asked Questions?</string>
     <string name="faq">FAQ</string>
     <string name="language">Language</string>
+
+    <string name="faq_des_1">To use this feature, you simply click on \'Fake Messenger,\' then select the contact with whom you want to create a conversation and interact as if it were a real Messenger. We hope you enjoy it!</string>
+    <string name="faq_des_2">Yes, our application provides you with the ability to fake both incoming and outgoing video calls. All you need to do is select the desired function, choose a contact, set up call information, and initiate the call.</string>
+    <string name="faq_des_3">This is a feature that allows you to create incoming message notifications in the form of chat bubbles or status bar notifications (depending on your preference). You can customize how the incoming messages are displayed. This function is very effective for pranking or teasing your girlfriend, boyfriend, or romantic partners. Bring some humorous moments to your loved ones with our application.</string>
+    <string name="faq_des_4">No, we do not impose a limit on the number of fake calls, fake messages, or fake video calls that can be created. Instead, we have implemented a scoring mechanism. By using your existing points, you can utilize our corresponding features. The fake message function can be used without any limits. However, for the fake calls or video calls, you will need to spend \'Points\' to create them. Similarly, for the fake notification feature, it is a highly effective function, so it requires more points to use.</string>
+    <string name="faq_des_5">To enhance excitement and fairness in gift-giving, we have implemented a scoring mechanism for each member using the app. You will use points to utilize our features. Each feature will consume a certain number of points when used. You can earn points by daily logins or by watching rewarded advertisements. Don\'t forget to accumulate more points to increase your ranking on the leaderboard, where you will receive exciting monthly perks and benefits.</string>
+    <string name="faq_des_6">The leaderboard will display your ranking based on your \'Points\' compared to other users. The higher your points, the higher your ranking, and vice versa. Those who achieve high rankings (top 1–3) will receive valuable rewards at the end of each month. The rewards may include additional points or vouchers for our premium ad-free package.</string>
+
+    <string name="faq_1">How to use the fake messenger message function?</string>
+    <string name="faq_2">Does the application support fake video calls?</string>
+    <string name="faq_3">What is the function of faking message notifications?</string>
+    <string name="faq_4">Is there a limit to the number of fake calls, fake messages, or fake video calls in the application?</string>
+    <string name="faq_5">What are the \'Points\' in this application?</string>
+    <string name="faq_6">What is the leaderboard?</string>
 
 </resources>

@@ -28,6 +28,7 @@ import nat.pink.base.dialog.DialogSelectChat;
 import nat.pink.base.ui.language.LanguageFragment;
 import nat.pink.base.ui.manager.ManagerContactFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
+import nat.pink.base.ui.setting.FaqFragment;
 import nat.pink.base.ui.setting.LanguageFragmentSetting;
 import nat.pink.base.ui.video.VideoFragment;
 import nat.pink.base.utils.Const;
@@ -174,6 +175,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         navMenu.findViewById(R.id.ll_language).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
             addFragment(new LanguageFragmentSetting(), LanguageFragmentSetting.TAG);
+        });
+        navMenu.findViewById(R.id.ll_rate_app).setOnClickListener(view -> {
+            binding.drawerLayout.closeDrawers();
+            addFragment(new FaqFragment(), FaqFragment.TAG);
         });
     }
 
