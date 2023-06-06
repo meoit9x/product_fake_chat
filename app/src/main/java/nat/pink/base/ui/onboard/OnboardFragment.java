@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.core.util.Consumer;
@@ -41,6 +42,8 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
     @Override
     protected void initView() {
         super.initView();
+        requireActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         if (restorePreData()) {
             replaceFragment(new HomeFragment(), HomeFragment.TAG);
         }

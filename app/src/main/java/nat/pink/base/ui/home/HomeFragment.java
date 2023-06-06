@@ -5,6 +5,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -52,6 +53,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     @Override
     protected void initView() {
         super.initView();
+        requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
         adapterFakeUser = new AdapterFakeUser(requireContext(), data -> {
             if (data == 0)
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
