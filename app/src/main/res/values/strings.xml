@@ -292,6 +292,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="ads_video_call">Your fake video call is coming…</string>
     <string name="ads_voice_call">Your fake voice call is coming…</string>
     <string name="ads_notification">Your fake Notification is coming…</string>
+    <string name="ads_done">We will listen to your comments and work to improve the product better!</string>
     <string name="notify_declined">Please allow notification to use fake call</string>
 
     <string name="onboard_title_1">Realistic Fake Conversations app</string>
@@ -319,6 +320,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="your_conversation_manager_suggest">Your conversation</string>
     <string name="asked_question">Frequently Asked Questions?</string>
     <string name="faq">FAQ</string>
+    <string name="privacy_policy">Privacy policy</string>
     <string name="language">Language</string>
 
     <string name="faq_des_1">To use this feature, you simply click on \'Fake Messenger,\' then select the contact with whom you want to create a conversation and interact as if it were a real Messenger. We hope you enjoy it!</string>
@@ -334,5 +336,12 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="faq_4">Is there a limit to the number of fake calls, fake messages, or fake video calls in the application?</string>
     <string name="faq_5">What are the \'Points\' in this application?</string>
     <string name="faq_6">What is the leaderboard?</string>
+
+    <string name="title_privacy">Demo text heading privacy</string>
+    <string name="content_privacy">Demo Text Body. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</string>
+    <string name="thank_you">Thank you !!!
+
+</string>
+
 
 </resources>

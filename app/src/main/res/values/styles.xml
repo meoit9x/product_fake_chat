@@ -73,4 +73,15 @@
         <item name="colorControlNormal">@color/radio_button_unchecked</item>
         <item name="colorControlActivated">@color/radio_button_checked</item>
     </style>
+
+    <style name="OnboardDefaultHeading" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/onboard_headtext_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMaxTextSize">@dimen/onboard_headtext_size</item>
+        <item name="autoSizeMinTextSize">@dimen/onboard_min_text_size</item>
+        <item name="autoSizeStepGranularity">@dimen/onboard_text_granularity_size</item>
+    </style>
 </resources>

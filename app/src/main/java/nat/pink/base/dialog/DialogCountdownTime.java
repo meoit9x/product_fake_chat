@@ -25,14 +25,12 @@ import nat.pink.base.utils.PreferenceUtil;
 import nat.pink.base.utils.Utils;
 
 public class DialogCountdownTime extends Dialog {
-    private Consumer consumer;
     private DialogCountdownTimeBinding binding;
     private long time = 0;
     private String type = "";
 
-    public DialogCountdownTime(@NonNull Context context, int themeResId, Consumer consumer) {
+    public DialogCountdownTime(@NonNull Context context, int themeResId) {
         super(context, themeResId);
-        this.consumer = consumer;
     }
 
     @Override
@@ -47,19 +45,21 @@ public class DialogCountdownTime extends Dialog {
         binding = DialogCountdownTimeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        CountDownTimer countDownTimer = new CountDownTimer(time - System.currentTimeMillis(), 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                String currentTime = Utils.formatDuration(millisUntilFinished / 1000, true);
-                binding.tvTime.setText(currentTime);
-            }
+        if (time > 0) {
+            CountDownTimer countDownTimer = new CountDownTimer(time - System.currentTimeMillis(), 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    String currentTime = Utils.formatDuration(millisUntilFinished / 1000, true);
+                    binding.tvTime.setText(currentTime);
+                }
 
-            @Override
-            public void onFinish() {
-                dismiss();
-            }
-        };
-        countDownTimer.start();
+                @Override
+                public void onFinish() {
+                    dismiss();
+                }
+            };
+            countDownTimer.start();
+        }
 
         String tvMsg = "";
         switch (type) {
@@ -72,6 +72,14 @@ public class DialogCountdownTime extends Dialog {
             case Const.KEY_ADS_NOTIFICATION:
                 tvMsg = getContext().getString(R.string.ads_notification);
                 break;
+            case Const.KEY_ADS_DONE:
+                binding.tvTime.setText(getContext().getString(R.string.thank_you));
+                binding.tvTitle.setImageResource(R.drawable.ic_tick);
+                tvMsg = getContext().getString(R.string.ads_done);
+                break;
+            default:
+                break;
+
         }
         binding.tvMsg.setText(tvMsg);
 

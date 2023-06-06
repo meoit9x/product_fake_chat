@@ -18,6 +18,8 @@ import com.applovin.mediation.MaxError;
 
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
+import nat.pink.base.dialog.DialogFeedback;
+import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.chat.FragmentChat;
@@ -32,6 +34,7 @@ import nat.pink.base.ui.manager.ManagerContactFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.ui.setting.FaqFragment;
 import nat.pink.base.ui.setting.LanguageFragmentSetting;
+import nat.pink.base.ui.setting.PrivacyFragment;
 import nat.pink.base.ui.video.VideoFragment;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
@@ -190,6 +193,23 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.closeDrawers();
             addFragment(new FaqFragment(), FaqFragment.TAG);
         });
+        navMenu.findViewById(R.id.ll_privacy).setOnClickListener(view -> {
+            binding.drawerLayout.closeDrawers();
+            addFragment(new PrivacyFragment(), PrivacyFragment.TAG);
+        });
+        navMenu.findViewById(R.id.ll_contact_us).setOnClickListener(view -> {
+            binding.drawerLayout.closeDrawers();
+            new DialogFeedback(requireContext(), R.style.TransparentDialog, o -> {
+                DialogCountdownTime dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet);
+                dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);
+                dialogCountdownTime.show();
+//                dialogLoading.show();
+//                getViewModel().feedback(requestAPI, o, getActivity().getPackageName(), o1 -> {
+//                    dialogLoading.dismiss();
+//                    new DialogNetworkFail(requireContext(), R.style.MaterialDialogSheet, true).show();
+//                });
+            }).show();
+        });
     }
 
     private void showMessage() {
@@ -306,8 +326,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             dialog.setTypeAction(typeAction);
             dialog.show();
         } else {
-            DialogCountdownTime dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
-            });
+            DialogCountdownTime dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet);
             dialogCountdownTime.setTimeAndTitle(time, typeCountDown);
             dialogCountdownTime.show();
         }
