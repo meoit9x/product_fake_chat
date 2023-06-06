@@ -77,7 +77,7 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:grantUriPermissions="true"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
