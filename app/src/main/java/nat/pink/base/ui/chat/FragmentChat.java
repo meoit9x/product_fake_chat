@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -183,6 +184,9 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
         if (objectUser.getName() != null)
             binding.layoutTop.tvName.setText(objectUser.getName());
         binding.layoutTop.tvContent.setText(Utils.getStringFromIndex(this, objectUser.getOnline() - 1));
+        binding.layoutTop.imStatus.setVisibility(objectUser.getOnline() == 1 ? View.VISIBLE : View.GONE);
+        binding.layoutTop.imStatusOff.setVisibility(objectUser.getOnline() == 1 ? View.GONE : View.VISIBLE);
+
     }
 
     private void loadData() {

@@ -17,6 +17,7 @@ import com.applovin.mediation.MaxError;
 
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.chat.FragmentChat;
 import nat.pink.base.ui.create.CreateUserFragment;
@@ -52,9 +53,14 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     @Override
     protected void initView() {
         super.initView();
-        adapterFakeUser = new AdapterFakeUser(requireContext(), data -> {
-            if (data == 0)
+        adapterFakeUser = new AdapterFakeUser(requireContext(), (position, user) -> {
+            if (position == 0) {
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
+            } else {
+                Intent intent = new Intent(requireActivity(), FragmentChat.class);
+                intent.putExtra(Const.KEY_DATA_CONTACT, user.get(position - 1));
+                startActivity(intent);
+            }
         });
         LinearLayoutManager ln = new LinearLayoutManager(requireContext());
         ln.setOrientation(RecyclerView.HORIZONTAL);
@@ -144,7 +150,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             DatabaseController.getInstance(requireContext()).setupDataDefault();
         }
         getViewModel().getListContact(requireContext());
-        getViewModel().contacts.observe(this, fakeUsers -> adapterFakeUser.setFakeUsers(fakeUsers));
+        getViewModel().contacts.observe(this, fakeUsers -> {
+            adapterFakeUser.setFakeUsers(fakeUsers);
+        });
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
     }

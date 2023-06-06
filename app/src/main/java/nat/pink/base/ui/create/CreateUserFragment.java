@@ -55,7 +55,7 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
     @Override
     protected void initView() {
         super.initView();
-        requireActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        requireActivity().getWindow().setSoftInputMode(SOFT_INPUT_ADJUST_PAN);
         dialogChangeColor = new DialogChangeColor(requireContext(), v -> {
             daoContact.setColor(v);
             binding.ivContent.setColorFilter(v);

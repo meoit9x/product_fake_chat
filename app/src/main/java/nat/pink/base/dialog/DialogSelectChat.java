@@ -71,7 +71,7 @@ public class DialogSelectChat extends Dialog {
         adapterSuggest = new AdapterFakeUserContact(getContext(), contactSuggests, data -> {
             consumer.accept(data);
         });
-        adapterSuggest.setTypeAction(getTypeAction());
+        adapterSuggest.setTypeAction(getTypeAction(), contactSuggests);
 
         LinearLayoutManager ln = new LinearLayoutManager(getContext());
         ln.setOrientation(RecyclerView.VERTICAL);
@@ -86,6 +86,7 @@ public class DialogSelectChat extends Dialog {
         adapterContact = new AdapterFakeUserContact(getContext(), contactNormals, user -> {
             consumer.accept(user);
         });
+        adapterContact.setTypeAction(getTypeAction(), contactNormals);
 
         LinearLayoutManager ln2 = new LinearLayoutManager(getContext());
         ln.setOrientation(RecyclerView.VERTICAL);
@@ -106,7 +107,10 @@ public class DialogSelectChat extends Dialog {
     public void setTypeAction(TYPE_ACTION typeAction) {
         this.typeAction = typeAction;
         if (adapterSuggest != null) {
-            adapterSuggest.setTypeAction(typeAction);
+            adapterSuggest.setTypeAction(typeAction, contactSuggests);
+        }
+        if(adapterContact != null) {
+            adapterContact.setTypeAction(typeAction, contactNormals);
         }
     }
 

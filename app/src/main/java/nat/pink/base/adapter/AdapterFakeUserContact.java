@@ -100,8 +100,9 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
         return typeAction;
     }
 
-    public void setTypeAction(DialogSelectChat.TYPE_ACTION typeAction) {
+    public void setTypeAction(DialogSelectChat.TYPE_ACTION typeAction, List<DaoContact> fakeUsers) {
         this.typeAction = typeAction;
+        this.fakeUsers = fakeUsers;
         notifyDataSetChanged();
     }
 }

@@ -22,11 +22,15 @@ public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHo
 
     private List<DaoContact> fakeUsers = new ArrayList<>();
     private Context context;
-    private Consumer<Integer> consumer;
+    private ItemClickListener itemClickListener;
 
-    public AdapterFakeUser(Context context, Consumer<Integer> consumer) {
+    public interface ItemClickListener {
+        void onItemClickListener(int position, List<DaoContact> user);
+    }
+
+    public AdapterFakeUser(Context context, ItemClickListener itemClickListener) {
         this.context = context;
-        this.consumer = consumer;
+        this.itemClickListener = itemClickListener;
     }
 
     public void setFakeUsers(List<DaoContact> fakeUsers) {
@@ -45,7 +49,7 @@ public class AdapterFakeUser extends RecyclerView.Adapter<AdapterFakeUser.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemFakeUserBinding binding = holder.binding;
         binding.getRoot().setOnClickListener(v -> {
-            consumer.accept(position);
+            itemClickListener.onItemClickListener(position, fakeUsers);
         });
 
         if (position == 0) {
