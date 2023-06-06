@@ -96,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
 /*        View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(Color.TRANSPARENT);*/
-
+        Log.d(TAG, "onCreate: created");
+        initView();
         initView();
         initAds();
         initData();
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (intent.getAction() != null && intent.getAction().equals("android.intent.action.MAIN")){
-            initView();
+           // initView();
         }
         if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
             Gson gson = new Gson();
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         boolean firstTime = PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.OPEN_APP_FIRST_TIME, true);
         if (firstTime) {
-            if (PreferenceUtil.getString(getApplicationContext(), PreferenceUtil.SETTING_LANGUAGE, "").equals("")) {
+            if (PreferenceUtil.getString(getApplicationContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, "").equals("")) {
                 replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
             } else if (!PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.IS_INTRO_OPENED, false)) {
                  replaceFragment(new OnboardFragment(), OnboardFragment.TAG);

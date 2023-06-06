@@ -26,13 +26,15 @@ public class LanguageViewModel extends BaseViewModel {
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_rusian), "ru", R.drawable.flag_ru);
         objectLanguages.add(language);
-        language = new ObjectLanguage(context.getString(R.string.flag_name_spanish), "sp", R.drawable.flag_sp);
+        language = new ObjectLanguage(context.getString(R.string.flag_name_spanish), "es", R.drawable.flag_sp);
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_french), "fr", R.drawable.flag_fr);
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_portugese), "pt", R.drawable.flag_pt);
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_korean), "kr", R.drawable.flag_kr);
+        objectLanguages.add(language);
+        language = new ObjectLanguage(context.getString(R.string.flag_name_german), "de", R.drawable.flag_gr);
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_vietnamese), "vi", R.drawable.flag_vi);
         objectLanguages.add(language);
