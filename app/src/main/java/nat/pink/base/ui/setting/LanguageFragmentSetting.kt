@@ -23,7 +23,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
 
     private var adapterLanguage: LanguageAdapter? = null
 
-    private lateinit var currentLanguageSelected: Language
+    private lateinit var currentLanguageSelected: String
     private lateinit var english: String
 
     override fun initData() {
@@ -32,11 +32,11 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
         PreferenceUtil.getCurrentLanguage(requireContext())?.let {
             currentLanguageSelected = it
         } ?: kotlin.run {
-            currentLanguageSelected =
-                Language(getString(R.string.txt_language_en), true, "en", R.drawable.flag_en)
+            currentLanguageSelected ="en"
         }
 
-        english = PreferenceUtil.getString(context, PreferenceUtil.SETTING_LANGUAGE, "")
+
+        english = PreferenceUtil.getString(context, PreferenceUtil.KEY_CURRENT_LANGUAGE, "")
         listLanguage.apply {
             add(
                 Language(
@@ -49,16 +49,16 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             add(
                 Language(
                     getString(R.string.txt_language_chi),
-                    english.equals("za"),
-                    "za",
+                    english.equals("cn"),
+                    "cn",
                     R.drawable.flag_cn
                 )
             )
             add(
                 Language(
                     getString(R.string.txt_language_ja),
-                    english.equals("ja"),
-                    "ja",
+                    english.equals("jp"),
+                    "jp",
                     R.drawable.flag_jp
                 )
             )
@@ -89,7 +89,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             add(
                 Language(
                     getString(R.string.txt_language_russiane),
-                    false,
+                    english.equals("ru"),
                     "ru",
                     R.drawable.flag_rs
                 )
@@ -97,8 +97,8 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             add(
                 Language(
                     getString(R.string.txt_language_korean),
-                    english.equals("ko"),
-                    "ko",
+                    english.equals("kr"),
+                    "kr",
                     R.drawable.flag_kr
                 )
             )
@@ -145,8 +145,8 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
         binding.txtDone.setOnClickListener {
             PreferenceUtil.saveString(
                 requireContext(),
-                PreferenceUtil.SETTING_LANGUAGE,
-                currentLanguageSelected.value
+                PreferenceUtil.KEY_CURRENT_LANGUAGE,
+                currentLanguageSelected
             )
             PreferenceUtil.saveCurrentLanguage(requireContext(), currentLanguageSelected)
             Handler(Looper.getMainLooper()).postDelayed({
@@ -181,7 +181,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
         }
 
         listLanguage[position].isSelected = true
-        currentLanguageSelected = listLanguage[position]
+        currentLanguageSelected = listLanguage[position].value
         adapterLanguage?.notifyItemChanged(position)
         binding.rcvEnglish.scrollToPosition(position)
     }

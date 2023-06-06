@@ -80,13 +80,12 @@ public class PreferenceUtil {
         int value = context.getSharedPreferences(MyPREFERENCES, 0).getInt(key, 0);
         return value;
     }
-    public static void saveCurrentLanguage(Context context, Language language) {
-        String jsonString = new Gson().toJson(language);
-        saveString(context, KEY_CURRENT_LANGUAGE, jsonString);
+    public static void saveCurrentLanguage(Context context, String lang) {
+        saveString(context, KEY_CURRENT_LANGUAGE, lang);
     }
 
-    public static Language getCurrentLanguage(Context context) {
-        return new Gson().fromJson(getString(context, KEY_CURRENT_LANGUAGE, ""), Language.class);
+    public static String getCurrentLanguage(Context context) {
+        return getString(context, KEY_CURRENT_LANGUAGE, "");
     }
 
     public static void smoothScrollToPositionFromTop(final AbsListView view, final int position) {

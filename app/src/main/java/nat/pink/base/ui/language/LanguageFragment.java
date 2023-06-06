@@ -33,7 +33,7 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
     protected void initView() {
         super.initView();
         adapterLanguage = new AdapterLanguage(requireContext(), data -> {
-            PreferenceUtil.saveString(requireContext(), PreferenceUtil.SETTING_LANGUAGE, data.getValue());
+            PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, data.getValue());
             adapterLanguage.notifyDataSetChanged();
         });
         binding.rcvEnglish.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -69,7 +69,7 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
             adapterLanguage.setObjectLanguages(objectLanguages);
         });
         //default english
-        PreferenceUtil.saveString(requireContext(), PreferenceUtil.SETTING_LANGUAGE,"en");
+        PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE,"en");
         //createNativeAd(Const.KEY_ADS_LANGUAGE);
     }
 

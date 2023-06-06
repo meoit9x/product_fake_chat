@@ -89,8 +89,8 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
         binding.btnGetStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                replaceFragment(new HomeFragment(), HomeFragment.TAG);
                 showInterstitialAd(o -> {
-                    replaceFragment(new HomeFragment(), HomeFragment.TAG);
                     savePrefsData();
                 });
             }
@@ -99,8 +99,8 @@ public class OnboardFragment extends BaseFragment<FragmentOnboardBinding, Onboar
         binding.skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                replaceFragment(new HomeFragment(), HomeFragment.TAG);
                 showInterstitialAd(o -> {
-                    replaceFragment(new HomeFragment(), HomeFragment.TAG);
                     savePrefsData();
                 });
             }
