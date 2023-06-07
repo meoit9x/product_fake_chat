@@ -134,6 +134,7 @@
     <color name="color_3C3454">#3C3454</color>
     <color name="radio_button_unchecked">#B9B9B9</color>
     <color name="radio_button_checked">#ffffff</color>
+    <color name="color_FE9923">#FE9923</color>
 
 
 </resources>

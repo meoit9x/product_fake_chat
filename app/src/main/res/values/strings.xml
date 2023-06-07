@@ -311,6 +311,9 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="one_hun_coin">-100 Poin</string>
     <string name="two_hun_coin">-200 Poin</string>
     <string name="three_hun_coin">-300 Poin</string>
+    <string name="one_extra_coin">+100 Poin</string>
+    <string name="two_extra_coin">+200 Poin</string>
+    <string name="three_extra_coin">+300 Poin</string>
 
     <string name="conversation_suggestions">Conversation suggestions</string>
     <string name="your_coin">Your poin</string>
@@ -339,7 +342,10 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
 
     <string name="title_privacy">Demo text heading privacy</string>
     <string name="content_privacy">Demo Text Body. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</string>
-    <string name="thank_you">Thank you !!!
+    <string name="thank_you">Thank you !!!</string>
+    <string name="claim">Claim</string>
+    <string name="daily_login">Congratulations! You have received a reward for daily login.</string>
+    <string name="received_a_reward">Congratulations! You have received a reward.
 
 </string>
 

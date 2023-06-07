@@ -29,6 +29,9 @@ public class PreferenceUtil {
     public static final String KEY_COMMING_VOICE = "key_comming_voice";
     public static final String KEY_CALLING_VOICE = "key_calling_voice";
     public static final String KEY_SETUP_DATA_DEFAULT = "KEY_SETUP_DATA_DEFAULT";
+    public static final String KEY_PRESENT_EVERYDAY = "KEY_PRESENT_EVERYDAY";
+    public static final String KEY_PRESENT = "KEY_PRESENT";
+    public static final String KEY_TOTAL_COIN = "KEY_TOTAL_COIN";
 
 
     public static void saveBoolean(Context context, String str, boolean z) {

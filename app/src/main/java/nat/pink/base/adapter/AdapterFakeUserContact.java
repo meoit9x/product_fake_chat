@@ -53,16 +53,16 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
             ImageUtils.loadImage(binding.avatar, user.getAvatar());
 
         binding.tvName.setText(user.getName());
+
         binding.ivVerify.setVisibility(user.isVerified() ? View.VISIBLE : View.INVISIBLE);
 
         //case add new user
         if (user.getId() == -1) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                binding.ivVerify.setVisibility(View.GONE);
-                binding.tvName.setTextColor(context.getColor(R.color.color_7C76CE));
-                binding.tvName.setTextAppearance(Typeface.NORMAL);
-                binding.ivAction.setVisibility(View.GONE);
-            }
+            binding.ivVerify.setVisibility(View.GONE);
+            binding.tvName.setTextColor(context.getColor(R.color.color_7C76CE));
+            binding.tvName.setTextAppearance(Typeface.NORMAL);
+            binding.ivAction.setVisibility(View.GONE);
+            binding.onlineStatus.setVisibility(View.GONE);
         }
         binding.mcvOnline.setCardBackgroundColor(context.getColor(user.getOnline() == 1 ? R.color.color_5AD439 : R.color.gray_D9));
         binding.mainAction.setOnClickListener(v -> consumer.accept(user));

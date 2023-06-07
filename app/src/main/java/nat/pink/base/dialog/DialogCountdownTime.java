@@ -28,9 +28,11 @@ public class DialogCountdownTime extends Dialog {
     private DialogCountdownTimeBinding binding;
     private long time = 0;
     private String type = "";
+    private Consumer<Object> consumer;
 
-    public DialogCountdownTime(@NonNull Context context, int themeResId) {
+    public DialogCountdownTime(@NonNull Context context, int themeResId, Consumer<Object> consumer) {
         super(context, themeResId);
+        this.consumer = consumer;
     }
 
     @Override
@@ -77,6 +79,20 @@ public class DialogCountdownTime extends Dialog {
                 binding.tvTitle.setImageResource(R.drawable.ic_tick);
                 tvMsg = getContext().getString(R.string.ads_done);
                 break;
+            case Const.KEY_ADS_PRESENT_EVERYDAY:
+                binding.tvTime.setText(getContext().getString(R.string.two_extra_coin));
+                binding.tvTime.setTextColor(getContext().getColor(R.color.color_FE9923));
+                binding.tvTitle.setImageResource(R.drawable.ic_coin);
+                tvMsg = getContext().getString(R.string.daily_login);
+                binding.txtDone.setText(getContext().getString(R.string.claim));
+                break;
+            case Const.KEY_ADS_PRESENT:
+                binding.tvTime.setText(getContext().getString(R.string.one_extra_coin));
+                binding.tvTime.setTextColor(getContext().getColor(R.color.color_FE9923));
+                binding.tvTitle.setImageResource(R.drawable.ic_coin);
+                tvMsg = getContext().getString(R.string.received_a_reward);
+                binding.txtDone.setText(getContext().getString(R.string.claim));
+                break;
             default:
                 break;
 
@@ -84,6 +100,7 @@ public class DialogCountdownTime extends Dialog {
         binding.tvMsg.setText(tvMsg);
 
         binding.txtDone.setOnClickListener(v -> {
+            consumer.accept(new Object());
             dismiss();
         });
     }

@@ -82,6 +82,8 @@ public class DialogSelectChat extends Dialog {
         binding.rcvSuggest.addItemDecoration(dividerItemDecoration);
         binding.rcvSuggest.setAdapter(adapterSuggest);
 
+        contactNormals.add(0, new DaoContact(-1, getContext().getString(R.string.create_new_manager_suggest), 0, false, false, 0, "", "", "", "R.drawable.ic_create_new"));
+
         //contact adapter
         adapterContact = new AdapterFakeUserContact(getContext(), contactNormals, user -> {
             consumer.accept(user);

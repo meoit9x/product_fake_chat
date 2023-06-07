@@ -16,6 +16,12 @@ import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdViewAdListener;
 import com.applovin.mediation.MaxError;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
 import nat.pink.base.dialog.DialogFeedback;
@@ -47,7 +53,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private String type = "";
     private String typeCountDown = "";
     private long time = 0;
+    private long timePresent = 0;
+    private long timePresentReward = 0;
+    private int totalCoin = 0;
     private View navMenu;
+    private DialogCountdownTime dialogCountdownTime;
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -115,17 +125,17 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 
             @Override
             public void onAdLoaded(MaxAd maxAd) {
-                Log.d("adsDebug","test");
+                Log.d("adsDebug", "test");
             }
 
             @Override
             public void onAdDisplayed(MaxAd maxAd) {
-                Log.d("adsDebug","test");
+                Log.d("adsDebug", "test");
             }
 
             @Override
             public void onAdHidden(MaxAd maxAd) {
-                Log.d("adsDebug","test");
+                Log.d("adsDebug", "test");
             }
 
             @Override
@@ -145,7 +155,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         });
         binding.adsBannerView.loadAd();
         binding.adsBannerView.startAutoRefresh();
-      // createBannerAd(Const.KEY_ADS_HOME,binding.frAdsHome);
+        checkShowPresent();
+        // createBannerAd(Const.KEY_ADS_HOME,binding.frAdsHome);
     }
 
     @Override
@@ -168,6 +179,43 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.menu.setOnClickListener(v -> {
             binding.drawerLayout.openDrawer(GravityCompat.END);
         });
+        binding.present.setOnClickListener(v -> {
+            dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
+                totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+                binding.coinCount.setText(String.valueOf(totalCoin));
+            });
+            timePresent = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY);
+            timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
+            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+            if (timePresent == 0) {
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
+                dialogCountdownTime.show();
+                totalCoin += 200;
+                PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin));
+            } else {
+                if (isNewDateGreaterThanGiven(timePresent)) {
+                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                    dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
+                    dialogCountdownTime.show();
+                    totalCoin += 200;
+                    PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin));
+                } else {
+                    showInterstitialAd(o -> {
+                        requireActivity().runOnUiThread(() -> {
+                            PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                            dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
+                            dialogCountdownTime.show();
+                            totalCoin += 100;
+                            PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin));
+                        });
+                    });
+                }
+            }
+            binding.present.setVisibility(View.GONE);
+            countDownPresent(Const.TOTAL_TIME_MS);
+        });
         binding.fakeMessage.setOnClickListener(v -> {
             showAction(Const.KEY_ADS_MESSAGE);
         });
@@ -183,7 +231,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         navMenu.findViewById(R.id.ll_home).setOnClickListener(v -> binding.drawerLayout.closeDrawers());
         navMenu.findViewById(R.id.ll_manager_coin).setOnClickListener(v -> {
             binding.drawerLayout.closeDrawers();
-            addFragment(new ManagerContactFragment(),ManagerContactFragment.TAG);
+            addFragment(new ManagerContactFragment(), ManagerContactFragment.TAG);
         });
         navMenu.findViewById(R.id.ll_language).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
@@ -200,7 +248,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         navMenu.findViewById(R.id.ll_contact_us).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
             new DialogFeedback(requireContext(), R.style.TransparentDialog, o -> {
-                DialogCountdownTime dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet);
+                dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o1 -> {});
                 dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);
                 dialogCountdownTime.show();
 //                dialogLoading.show();
@@ -210,6 +258,18 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 //                });
             }).show();
         });
+    }
+
+    private void checkShowPresent() {
+        timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
+        if(areTimesThreeMinutesApart(System.currentTimeMillis(), timePresentReward)) {
+            binding.present.setVisibility(View.VISIBLE);
+        } else {
+            countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
+            binding.present.setVisibility(View.GONE);
+        }
+        totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+        binding.coinCount.setText(String.valueOf(totalCoin));
     }
 
     private void showMessage() {
@@ -326,10 +386,45 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             dialog.setTypeAction(typeAction);
             dialog.show();
         } else {
-            DialogCountdownTime dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet);
+            dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {});
             dialogCountdownTime.setTimeAndTitle(time, typeCountDown);
             dialogCountdownTime.show();
         }
+    }
+
+    public boolean isNewDateGreaterThanGiven(long givenTimeInMillis) {
+        Calendar givenTime = Calendar.getInstance();
+        givenTime.setTimeInMillis(givenTimeInMillis);
+
+        Calendar currentTime = Calendar.getInstance();
+
+        if (givenTime.get(Calendar.YEAR) != currentTime.get(Calendar.YEAR)
+                || givenTime.get(Calendar.MONTH) != currentTime.get(Calendar.MONTH)
+                || givenTime.get(Calendar.DAY_OF_MONTH) != currentTime.get(Calendar.DAY_OF_MONTH)) {
+            return currentTime.getTimeInMillis() > givenTime.getTimeInMillis();
+        }
+        return false;
+    }
+
+    public boolean areTimesThreeMinutesApart(long time1, long time2) {
+        long timeDifference = Math.abs(time1 - time2);
+        return timeDifference >= Const.TOTAL_TIME_MS;
+    }
+
+    private void countDownPresent(long time) {
+        CountDownTimer countDownTimer = new CountDownTimer(time, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                long minutes = millisUntilFinished / (60 * 1000);
+                long seconds = (millisUntilFinished % (60 * 1000)) / 1000;
+            }
+
+            @Override
+            public void onFinish() {
+                checkShowPresent();
+            }
+        };
+        countDownTimer.start();
     }
 
 }

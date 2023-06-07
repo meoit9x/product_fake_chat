@@ -15,6 +15,8 @@ public class Const {
     public static final String KEY_ADS_LANGUAGE = "ec45a958f366f067";
     public static final String KEY_ADS_DONE = "89b5de9992a2828a";
     public static final String KEY_ADS_CREATE_CONTACT = "197e605cf2e0aa76";
+    public static final String KEY_ADS_PRESENT_EVERYDAY = "KEY_ADS_PRESENT_EVERYDAY";
+    public static final String KEY_ADS_PRESENT = "KEY_ADS_PRESENT";
 
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";
     public static final String PUT_EXTERNAL_ACTION = "PUT_EXTERNAL_ACTION";
@@ -58,5 +60,6 @@ public class Const {
 
     public static final int CHECK_TURN_OFF_VOICE = 1260;
     public static final int CHECK_TURN_OFF_VOICE_INCOMING = 1261;
+    public static final long TOTAL_TIME_MS = 3 * 60 * 1000;
 
 }
