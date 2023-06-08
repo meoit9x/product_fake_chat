@@ -2,7 +2,7 @@ package nat.pink.base.utils;
 
 public class Const {
 
-    public static final String URL_REQUEST = "https://manager.merryblue.llc/";
+    public static final String URL_REQUEST = "https://kocatech.com/";
 
 
     public static final String KEY_ADS_CHANGE_LANGUAGE = "f07a751bc371361d";

@@ -1,6 +1,8 @@
 package nat.pink.base.ui.home;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
@@ -25,8 +27,11 @@ import java.util.Date;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
 import nat.pink.base.dialog.DialogFeedback;
+import nat.pink.base.dialog.DialogLoading;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.model.DaoContact;
+import nat.pink.base.retrofit.RequestAPI;
+import nat.pink.base.retrofit.RetrofitClient;
 import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.chat.FragmentChat;
 import nat.pink.base.ui.create.CreateUserFragment;
@@ -45,6 +50,7 @@ import nat.pink.base.ui.video.VideoFragment;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
 import nat.pink.base.utils.Utils;
+import retrofit2.Retrofit;
 
 public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewModel> {
     private AdapterFakeUser adapterFakeUser;
@@ -58,6 +64,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private int totalCoin = 0;
     private View navMenu;
     private DialogCountdownTime dialogCountdownTime;
+    private DialogLoading dialogLoading;
+    protected RequestAPI requestAPI;
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -162,6 +170,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     @Override
     protected void initData() {
         super.initData();
+        Retrofit retrofit = RetrofitClient.getInstance(Const.URL_REQUEST);
+        requestAPI = retrofit.create(RequestAPI.class);
+        dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> {
+            dialogLoading.dismiss();
+        });
         if (PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.KEY_SETUP_DATA_DEFAULT, true)) {
             DatabaseController.getInstance(requireContext()).setupDataDefault();
         }
@@ -248,14 +261,26 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         navMenu.findViewById(R.id.ll_contact_us).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
             new DialogFeedback(requireContext(), R.style.TransparentDialog, o -> {
-                dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o1 -> {});
-                dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);
-                dialogCountdownTime.show();
-//                dialogLoading.show();
-//                getViewModel().feedback(requestAPI, o, getActivity().getPackageName(), o1 -> {
-//                    dialogLoading.dismiss();
-//                    new DialogNetworkFail(requireContext(), R.style.MaterialDialogSheet, true).show();
-//                });
+                dialogLoading.show();
+                PackageManager manager = requireContext().getPackageManager();
+                PackageInfo info;
+                try {
+                    info = manager.getPackageInfo(
+                            requireContext().getPackageName(), 0);
+                } catch (PackageManager.NameNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+                getViewModel().feedback(requestAPI, requireActivity().getPackageName(), info.versionName, o, o1 -> {
+                    dialogLoading.dismiss();
+                    if (o1 == 400) {
+                        dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
+                        });
+                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);
+                        dialogCountdownTime.show();
+                    } else {
+                        new DialogNetworkFail(requireContext(), R.style.MaterialDialogSheet, true).show();
+                    }
+                });
             }).show();
         });
     }

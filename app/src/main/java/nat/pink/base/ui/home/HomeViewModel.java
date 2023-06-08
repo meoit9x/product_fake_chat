@@ -13,6 +13,10 @@ import nat.pink.base.base.BaseViewModel;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectMessenge;
+import nat.pink.base.retrofit.RequestAPI;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeViewModel extends BaseViewModel {
 
@@ -66,5 +70,19 @@ public class HomeViewModel extends BaseViewModel {
     public void updateContact(Context context, DaoContact objectMessenge) {
         DatabaseController.getInstance(context).updateContact(objectMessenge);
         getListContact(context);
+    }
+
+    public void feedback(RequestAPI requestAPI,String pack, String version,  String contentFeedback, Consumer<Integer> consumer) {
+        requestAPI.feedback(pack, version, contentFeedback).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                consumer.accept(response.code());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                consumer.accept(t.hashCode());
+            }
+        });
     }
 }

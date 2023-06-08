@@ -6,6 +6,6 @@
     <path
         android:strokeWidth="1"
         android:pathData="M0.5,20C0.5,9.23 9.23,0.5 20,0.5H84C94.77,0.5 103.5,9.23 103.5,20C103.5,30.77 94.77,39.5 84,39.5H20C9.23,39.5 0.5,30.77 0.5,20Z"
-        android:fillColor="@color/gray_D9"
+        android:fillColor="#ECECEC"
         android:strokeColor="#7C76CE"/>
 </vector>
