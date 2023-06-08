@@ -14,6 +14,7 @@ import nat.pink.base.base.BaseFragment
 import nat.pink.base.base.EmptyViewModel
 import nat.pink.base.databinding.FragmentLanguageSettingBinding
 import nat.pink.base.model.Language
+import nat.pink.base.ui.splah.SplashActivity
 import nat.pink.base.utils.PreferenceUtil
 
 
@@ -151,11 +152,13 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             PreferenceUtil.saveCurrentLanguage(requireContext(), currentLanguageSelected)
             Handler(Looper.getMainLooper()).postDelayed({
                 if (isAdded) {
+                    var intent =Intent(
+                        requireActivity(),
+                        SplashActivity::class.java
+                    )
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
                     requireActivity().startActivity(
-                        Intent(
-                            requireActivity(),
-                            MainActivity::class.java
-                        )
+                        intent
                     )
                     requireActivity().finish()
                 }
