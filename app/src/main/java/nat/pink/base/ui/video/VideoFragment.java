@@ -40,6 +40,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
     protected HomeViewModel getViewModel() {
         return new ViewModelProvider(this).get(HomeViewModel.class);
     }
+
     private Consumer<Object> consumer;
     private ExtButton btChatBubbles, btNavigationBar;
     private DialogChangeTime dialogChangeTime;
@@ -62,10 +63,7 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
         btChatBubbles = new ExtButton(requireContext());
         btNavigationBar = new ExtButton(requireContext());
 
-        if (user.getAvatar().contains("R.drawable")) {
-            binding.ivAvatarContact.setImageResource(Utils.convertStringToDrawable(requireContext(), user.getAvatar()));
-        } else
-            ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        ImageUtils.loadImage(requireContext(), binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
         if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);

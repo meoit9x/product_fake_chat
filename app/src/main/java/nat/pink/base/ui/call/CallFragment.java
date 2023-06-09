@@ -69,11 +69,7 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
         btInComing = new ExtButton(requireContext());
         btOutComing = new ExtButton(requireContext());
 
-        if (user.getAvatar().contains("R.drawable")) {
-            binding.ivAvatarContact.setImageResource(Utils.convertStringToDrawable(getContext(), user.getAvatar()));
-        } else {
-            ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
-        }
+        ImageUtils.loadImage(requireContext(), binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
         if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);
@@ -170,9 +166,9 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                     startActivityForResult(intent, Config.CHECK_TURN_OFF_VOICE);
                 } else {
                     if (Build.VERSION.SDK_INT >= 33 && !Utils.checkPermission(getContext(), Manifest.permission.POST_NOTIFICATIONS)) {
-                     //   shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS);
+                        //   shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS);
                         //should create channel first so can request notify permission
-                        Utils.createNotificationChannel(getContext(),CHANNEL_ID);
+                        Utils.createNotificationChannel(getContext(), CHANNEL_ID);
                         requireActivity().requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, Const.REQUEST_CODE_POST_NOTIFY);
                     } else {
                         PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_CURRENT_TIME, System.currentTimeMillis() + Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)));
@@ -198,7 +194,7 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                 PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);
                 Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_CALL_VOICE, objectCalling);
                 backStackFragment();
-            }else{
+            } else {
                 Toast.makeText(getContext(), getString(R.string.notify_declined), Toast.LENGTH_SHORT).show();
             }
         }

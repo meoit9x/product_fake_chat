@@ -65,10 +65,10 @@ public class VideoCallActivity extends AppCompatActivity {
         if (showVideo) {
             binding.ivAnswer.setImageResource(R.drawable.ic_call);
         }
-        if (getIntent().getBooleanExtra(Const.ACTION_FORWARD_SCREEN,false)){
+        if (getIntent().getBooleanExtra(Const.ACTION_FORWARD_SCREEN, false)) {
             Intent serviceIntent = new Intent(this, CallingService.class);
             this.stopService(serviceIntent);
-            if (Utils.checkPermission(this,Manifest.permission.CAMERA)) {
+            if (Utils.checkPermission(this, Manifest.permission.CAMERA)) {
                 showView();
             } else {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, Const.REQUEST_CODE_CAMERA);
@@ -86,14 +86,9 @@ public class VideoCallActivity extends AppCompatActivity {
                     .skipMemoryCache(true)
                     .placeholder(R.drawable.ic_user_default)
                     .fitCenter().into(binding.ivContent);*/
-            if (objectCalling.getPathImage()!=null) {
-                if (objectCalling.getPathImage().contains("R.drawable")) {
-                    binding.ivCall.setImageResource(Utils.convertStringToDrawable(this,  objectCalling.getPathImage()));
-                    binding.ivContent.setImageResource(Utils.convertStringToDrawable(this,  objectCalling.getPathImage()));
-                } else {
-                    ImageUtils.loadImage(binding.ivCall, objectCalling.getPathImage());
-                    ImageUtils.loadImage(binding.ivContent, objectCalling.getPathImage());
-                }
+            if (objectCalling.getPathImage() != null) {
+                ImageUtils.loadImage(this, binding.ivCall, objectCalling.getPathImage());
+                ImageUtils.loadImage(this, binding.ivContent, objectCalling.getPathImage());
             }
 
             binding.txtName.setText(objectCalling.getName());
@@ -116,7 +111,7 @@ public class VideoCallActivity extends AppCompatActivity {
         });
         binding.ivRefuse.setOnClickListener(v -> finish());
         binding.ivAnswer.setOnClickListener(v -> {
-            if (Utils.checkPermission(this,Manifest.permission.CAMERA)) {
+            if (Utils.checkPermission(this, Manifest.permission.CAMERA)) {
                 showView();
             } else {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, Const.REQUEST_CODE_CAMERA);
@@ -139,11 +134,10 @@ public class VideoCallActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == Const.REQUEST_CODE_CAMERA && Utils.checkPermission(this,Manifest.permission.CAMERA)) {
+        if (requestCode == Const.REQUEST_CODE_CAMERA && Utils.checkPermission(this, Manifest.permission.CAMERA)) {
             showView();
         }
     }
