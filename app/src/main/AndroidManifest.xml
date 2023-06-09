@@ -27,9 +27,6 @@
 
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="com.android.vending.BILLING" />
-
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
