@@ -72,6 +72,12 @@ public class HomeViewModel extends BaseViewModel {
         return false;
     }
 
+    public void deleteMessByOwner(Context context, int owner, Consumer consumer) {
+        DatabaseController.getInstance(context).deleteMessengerByOwner(owner);
+        objectMessenges.clear();
+        consumer.accept(new Object());
+    }
+
     public void deleteContact(Context context, DaoContact objectMessenge) {
         DatabaseController.getInstance(context).deleteContact(objectMessenge);
         getListContact(context);

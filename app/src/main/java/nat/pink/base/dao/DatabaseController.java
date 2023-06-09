@@ -130,6 +130,12 @@ public class DatabaseController {
         }
     }
 
+    public void deleteMessengerByOwner(int id) {
+        if (appDatabase != null) {
+            appDatabase.getMessengeDao().deleteMessageByOwn(id);
+        }
+    }
+
     public void deleteContact(DaoContact objectMessenge) {
         if (appDatabase != null) {
             appDatabase.getContactDao().deleteContact(objectMessenge);

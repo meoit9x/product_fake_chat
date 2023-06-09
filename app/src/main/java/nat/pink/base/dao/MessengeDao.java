@@ -22,4 +22,7 @@ public interface MessengeDao {
 
     @Query("DELETE FROM message WHERE id IN (:id)")
     void deleteMessage(int id);
+
+    @Query("DELETE FROM message WHERE userOwn IN (:id)")
+    void deleteMessageByOwn(int id);
 }
