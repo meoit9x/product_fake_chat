@@ -181,7 +181,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             textBinding.tvContent.setTextColor(messageModel.isSend() ? Color.WHITE : Color.BLACK);
             //todo
             textBinding.tvContent.setBackgroundTintList(ColorStateList.valueOf(messageModel.isSend()
-                    ? mContext.getResources().getColor(R.color.color_088)
+                    ? (conversationModel.getColor() == 0 ?  mContext.getResources().getColor(R.color.color_088) : conversationModel.getColor())
                     : mContext.getResources().getColor(R.color.color_f1f1f1)));
 
 //            textBinding.tvContent.setBackgroundResource(Config.getBackgroundChatResoure(conversationModel, getAdapterPosition()));

@@ -421,5 +421,12 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
     <string name="daily_login">Toutes nos félicitations! Vous avez reçu une récompense pour votre connexion quotidienne.</string>
     <string name="received_a_reward">Toutes nos félicitations! Vous avez reçu une récompense.</string>
 
+    <string name="home">Accueil</string>
+    <string name="privacy">Confidentialité</string>
+    <string name="update_new_version">Mettre à jour la nouvelle version</string>
+    <string name="update_new_version_des">Apporter de nouvelles fonctionnalités, des performances optimisées et des corrections de bogues</string>
+    <string name="update_now">Mettre à jour maintenant</string>
 
+    <string name="select_contact">Sélectionner un contact</string>
+    <string name="your_contact">Votre contact</string>
 </resources>

@@ -422,5 +422,12 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="daily_login">Поздравляем! Вы получили вознаграждение за ежедневный вход в систему.</string>
     <string name="received_a_reward">Поздравляем! Вы получили награду.</string>
 
+    <string name="home">Главная</string>
+    <string name="privacy">Конфиденциальность</string>
+    <string name="update_new_version">Обновить новую версию</string>
+    <string name="update_new_version_des">Добавлены новые функции, оптимизирована производительность и исправлены ошибки</string>
+    <string name="update_now">Обновить сейчас</string>
 
+    <string name="select_contact">Выбрать контакт</string>
+    <string name="your_contact">Ваш контакт</string>
 </resources>

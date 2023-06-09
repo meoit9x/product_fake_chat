@@ -422,4 +422,13 @@ Le notificaré cualquier cambio publicando la nueva Política de privacidad en e
     <string name="daily_login">¡Felicidades! Has recibido una recompensa por iniciar sesión diariamente.</string>
     <string name="received_a_reward">¡Felicidades! Has recibido una recompensa.</string>
 
+    <string name="home">Inicio</string>
+    <string name="privacy">Privacidad</string>
+    <string name="update_new_version">Actualizar nueva versión</string>
+    <string name="update_new_version_des">Nuevas funciones, rendimiento optimizado y corrección de errores</string>
+    <string name="update_now">Actualizar ahora</string>
+
+    <string name="select_contact">Seleccionar contacto</string>
+    <string name="your_contact">Tu contacto</string>
+
 </resources>

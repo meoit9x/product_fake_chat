@@ -421,9 +421,15 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="thank_you">Thank you !!!</string>
     <string name="claim">Claim</string>
     <string name="daily_login">Congratulations! You have received a reward for daily login.</string>
-    <string name="received_a_reward">Congratulations! You have received a reward.
+    <string name="received_a_reward">Congratulations! You have received a reward.</string>
 
-</string>
+    <string name="home">Home</string>
+    <string name="privacy">Privacy</string>
+    <string name="update_new_version">Update new version</string>
+    <string name="update_new_version_des">Bringing new features, optimized performance, and bug fixes</string>
+    <string name="update_now">Update now</string>
 
+    <string name="select_contact">Select contact</string>
+    <string name="your_contact">Your Contact</string>
 
 </resources>

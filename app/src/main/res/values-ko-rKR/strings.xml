@@ -420,9 +420,15 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="thank_you">감사합니다 !!!</string>
     <string name="claim">주장하다</string>
     <string name="daily_login">축하해요! 일일 로그인에 대한 보상을 받았습니다.</string>
-    <string name="received_a_reward">축하해요! 당신은 보상을 받았습니다.
+    <string name="received_a_reward">축하해요! 당신은 보상을 받았습니다.</string>
 
-</string>
+    <string name="home">집</string>
+    <string name="privacy">개인 정보</string>
+    <string name="update_new_version">새 버전 업데이트</string>
+    <string name="update_new_version_des">새로운 기능, 최적화된 성능, 버그 수정 제공</string>
+    <string name="update_now">지금 업데이트</string>
 
+    <string name="select_contact">연락처 선택</string>
+    <string name="your_contact">귀하의 연락처</string>
 
 </resources>

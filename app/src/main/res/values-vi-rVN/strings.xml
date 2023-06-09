@@ -130,7 +130,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="guide">Hướng dẫn</string>
     <string name="more_app">Nhiều ứng dụng hơn</string>
     <string name="rate_app">Đánh giá ứng dụng</string>
-    <string name="feedback">Nhận xét</string>
+    <string name="feedback">Đánh giá</string>
     <string name="contact_us">Liên hệ chúng tôi</string>
     <string name="content_by">Ứng dụng được phát triển \nbởi GfStudio</string>
     <string name="body_name_app">Công cụ, lối sống</string>
@@ -138,7 +138,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="we_will_absorb_and_upgrade_a_lot_more">Chúng tôi sẽ tiếp thu và nâng cấp hơn rất nhiều! Cảm ơn!</string>
     <string name="please_give_us_feedback">Xin vui lòng cho chúng tôi thông tin phản hồi</string>
     <string name="do_you_like_the_app">Bạn có thích ứng dụng này không?</string>
-    <string name="sent">Đã gửi</string>
+    <string name="sent">Gửi</string>
     <string name="change_picture">Đổi ảnh</string>
     <string name="outgoing_call_pictures">Hình ảnh cuộc gọi đi</string>
     <string name="done">Hoàn thành</string>
@@ -418,8 +418,16 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     Tôi có thể cập nhật Chính sách quyền riêng tư của chúng tôitheo thời gian. Vì vậy, bạn nên xem lại trang này định kỳ để biết bất kỳ thay đổi nào.
 Tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đăng Chính sách quyền riêng tư mới trên trang này. Những thay đổi này có hiệu lực ngay sau khi chúng được đăng trên trang này.</string>
     <string name="thank_you">Cảm ơn !!!</string>
-    <string name="claim">Khẳng định</string>
+    <string name="claim">Lấy điểm</string>
     <string name="daily_login">Chúc mừng! Bạn đã nhận được phần thưởng cho việc đăng nhập hàng ngày.</string>
     <string name="received_a_reward">Chúc mừng! Bạn đã nhận được một phần thưởng.</string>
 
+    <string name="home">Màn hình chính</string>
+    <string name="privacy">Quyền riêng tư</string>
+    <string name="update_new_version">Cập nhật phiên bản mới</string>
+    <string name="update_new_version_des">Mang đến các tính năng mới, hiệu suất được tối ưu hóa và sửa lỗi</string>
+    <string name="update_now">Cập nhật ngay</string>
+
+    <string name="select_contact">Chọn liên hệ</string>
+    <string name="your_contact">Liên hệ của bạn</string>
 </resources>

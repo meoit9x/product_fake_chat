@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Home"
+                android:text="@string/home"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Manage Conversation"
+                android:text="@string/manage_conversation"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
@@ -156,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Language"
+                android:text="@string/language"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
@@ -187,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="FAQ"
+                android:text="@string/faq"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
@@ -251,7 +251,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="FeedBack"
+                android:text="@string/feedback"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />
@@ -282,7 +282,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Privacy"
+                android:text="@string/privacy"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />

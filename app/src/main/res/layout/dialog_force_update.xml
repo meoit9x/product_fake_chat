@@ -29,7 +29,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_16sdp"
             app:textViewFontAssetName="@string/font_bold"
-            android:text="Update new version" />
+            android:text="@string/update_new_version" />
 
         <nat.pink.base.custom.view.ExtTextView
             android:id="@+id/edt_set_time"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center_horizontal"
-            android:text="Bringing new features, optimized performance, and bug fixes"
+            android:text="@string/update_new_version_des"
             android:textColor="@color/color_666666"
             android:textSize="@dimen/_12sdp" />
 
@@ -50,7 +50,7 @@
             android:background="@drawable/bg_time"
             android:gravity="center"
             android:paddingVertical="@dimen/_10sdp"
-            android:text="Update now"
+            android:text="@string/update_now"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />
 

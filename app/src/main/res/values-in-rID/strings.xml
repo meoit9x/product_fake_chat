@@ -421,4 +421,13 @@ Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijaka
     <string name="claim">Mengeklaim</string>
     <string name="daily_login">Selamat! Anda telah menerima hadiah untuk login harian.</string>
     <string name="received_a_reward">Selamat! Anda telah menerima hadiah.</string>
+
+    <string name="home">Beranda</string>
+    <string name="privacy">Privasi</string>
+    <string name="update_new_version">Perbarui versi baru</string>
+    <string name="update_new_version_des">Menghadirkan fitur baru, performa optimal, dan perbaikan bug</string>
+    <string name="update_now">Perbarui sekarang</string>
+
+    <string name="select_contact">Pilih kontak</string>
+    <string name="your_contact">Kontak Anda</string>
 </resources>

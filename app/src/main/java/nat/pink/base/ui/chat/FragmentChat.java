@@ -181,7 +181,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
         if (objectUser.getName() != null)
             binding.layoutTop.tvName.setText(objectUser.getName());
         binding.layoutTop.tvContent.setText(Utils.getStringFromIndex(this, objectUser.getOnline() - 1));
-//        binding.layoutTop.imStatus.setVisibility(objectUser.getOnline() == 1 ? View.VISIBLE : View.GONE);
+        binding.layoutTop.imStatus.setVisibility(objectUser.getOnline() == 1 ? View.VISIBLE : View.GONE);
 //        binding.layoutTop.imStatusOff.setVisibility(objectUser.getOnline() == 1 ? View.GONE : View.VISIBLE);
 
     }

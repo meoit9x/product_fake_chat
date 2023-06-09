@@ -140,7 +140,6 @@
                         android:layout_marginEnd="@dimen/_9sdp"
                         android:backgroundTint="#335AFB"
                         android:buttonTint="#335AFB"
-                        android:checked="true"
                         android:layoutDirection="ltr"
                         android:text="@string/online_5_minutes_ago"
                         android:textColor="@color/color_212121"

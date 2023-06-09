@@ -105,6 +105,11 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
             if (!isChecked) {
                 binding.lineView1.setVisibility(View.VISIBLE);
                 binding.radios.setVisibility(View.VISIBLE);
+                binding.rb5Min.setChecked(daoContact.getOnline() == 2 || daoContact.getOnline() == 1);
+                binding.rb30Min.setChecked(daoContact.getOnline() == 3);
+                binding.rb1Hour.setChecked(daoContact.getOnline() == 4);
+                binding.rb1Day.setChecked(daoContact.getOnline() == 5);
+                daoContact.setOnline(daoContact.getOnline() == 1 ? 2 : daoContact.getOnline());
             } else {
                 binding.lineView1.setVisibility(View.GONE);
                 binding.radios.setVisibility(View.GONE);

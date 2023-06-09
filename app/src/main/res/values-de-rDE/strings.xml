@@ -422,7 +422,14 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
     <string name="thank_you">Danke!!!</string>
     <string name="claim">Anspruch</string>
     <string name="daily_login">Herzlichen Glückwunsch! Sie haben eine Belohnung für die tägliche Anmeldung erhalten.</string>
-    <string name="received_a_reward">Herzlichen Glückwunsch! Du hast eine Belohnung erhalten.
+    <string name="received_a_reward">Herzlichen Glückwunsch! Du hast eine Belohnung erhalten.</string>
 
-</string>
+    <string name="home">Zuhause</string>
+    <string name="privacy">Datenschutz</string>
+    <string name="update_new_version">Neue Version aktualisieren</string>
+    <string name="update_new_version_des">Bringt neue Funktionen, optimierte Leistung und Fehlerbehebungen</string>
+    <string name="update_now">Jetzt aktualisieren</string>
+
+    <string name="select_contact">Kontakt auswählen</string>
+    <string name="your_contact">Ihr Kontakt</string>
 </resources>

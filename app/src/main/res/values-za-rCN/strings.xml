@@ -422,4 +422,13 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="daily_login">恭喜！ 您已收到每日登录奖励。</string>
     <string name="received_a_reward">恭喜！ 你得到了奖励。</string>
 
+    <string name="home">主页</string>
+    <string name="privacy">隐私</string>
+    <string name="update_new_version">更新新版本</string>
+    <string name="update_new_version_des">带来新功能、优化性能和错误修复</string>
+    <string name="update_now">立即更新</string>
+
+    <string name="select_contact">选择联系人</string>
+    <string name="your_contact">您的联系人</string>
+
 </resources>

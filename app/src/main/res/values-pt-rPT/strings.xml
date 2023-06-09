@@ -420,9 +420,15 @@ Notificarei você sobre quaisquer alterações publicando a nova Política de Pr
     <string name="thank_you">Obrigado !!!</string>
     <string name="claim">Alegar</string>
     <string name="daily_login">Parabéns! Você recebeu uma recompensa pelo login diário.</string>
-    <string name="received_a_reward">Parabéns! Você recebeu uma recompensa.
+    <string name="received_a_reward">Parabéns! Você recebeu uma recompensa.</string>
 
-</string>
+    <string name="home">Casa</string>
+    <string name="privacy">Privacidade</string>
+    <string name="update_new_version">Atualizar nova versão</string>
+    <string name="update_new_version_des">Trazendo novos recursos, desempenho otimizado e correções de bugs</string>
+    <string name="update_now">Atualizar agora</string>
 
+    <string name="select_contact">Selecionar contato</string>
+    <string name="your_contact">Seu contato</string>
 
 </resources>
