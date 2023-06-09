@@ -3,6 +3,7 @@ package nat.pink.base.ui.home;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
@@ -24,9 +25,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import nat.pink.base.MainActivity;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
 import nat.pink.base.dialog.DialogFeedback;
+import nat.pink.base.dialog.DialogForceUpdate;
 import nat.pink.base.dialog.DialogLoading;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.model.DaoContact;
@@ -65,6 +68,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private View navMenu;
     private DialogCountdownTime dialogCountdownTime;
     private DialogLoading dialogLoading;
+    private DialogForceUpdate dialogForceUpdate;
     protected RequestAPI requestAPI;
 
     @Override
@@ -120,6 +124,19 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 }
             }
         });
+        dialogForceUpdate = new DialogForceUpdate(requireContext(), R.style.MaterialDialogSheet, v -> {
+            final String appPackageName = requireActivity().getPackageName();
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+            }
+        });
+        dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
+            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+            binding.coinCount.setText(String.valueOf(totalCoin));
+        });
+        dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
         binding.adsBannerView.setListener(new MaxAdViewAdListener() {
             @Override
             public void onAdExpanded(MaxAd maxAd) {
@@ -170,20 +187,32 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     @Override
     protected void initData() {
         super.initData();
-        Retrofit retrofit = RetrofitClient.getInstance(Const.URL_REQUEST);
+        Retrofit retrofit = RetrofitClient.getInstance(requireContext(), Const.URL_REQUEST);
         requestAPI = retrofit.create(RequestAPI.class);
-        dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> {
-            dialogLoading.dismiss();
-        });
         if (PreferenceUtil.getBoolean(requireContext(), PreferenceUtil.KEY_SETUP_DATA_DEFAULT, true)) {
             DatabaseController.getInstance(requireContext()).setupDataDefault();
         }
         getViewModel().getListContact(requireContext());
-        getViewModel().contacts.observe(this, fakeUsers -> {
-            adapterFakeUser.setFakeUsers(fakeUsers);
-        });
+        getViewModel().contacts.observe(this, fakeUsers -> adapterFakeUser.setFakeUsers(fakeUsers));
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
+
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            if (!dialogLoading.isShowing())
+                dialogLoading.show();
+            getViewModel().foreUpdate(activity.getFirebaseDatabase(), requireContext());
+            getViewModel().forceUpdate.observe(requireActivity(), v -> {
+                activity.runOnUiThread(() -> {
+                    dialogLoading.dismiss();
+                    if (v) {
+                        if (!dialogForceUpdate.isShowing())
+                            dialogForceUpdate.show();
+                    }
+                });
+            });
+        }
+
     }
 
     @Override
@@ -193,10 +222,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.openDrawer(GravityCompat.END);
         });
         binding.present.setOnClickListener(v -> {
-            dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
-                totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
-                binding.coinCount.setText(String.valueOf(totalCoin));
-            });
             timePresent = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY);
             timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
             totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
@@ -287,7 +312,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 
     private void checkShowPresent() {
         timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
-        if(areTimesThreeMinutesApart(System.currentTimeMillis(), timePresentReward)) {
+        if (areTimesThreeMinutesApart(System.currentTimeMillis(), timePresentReward)) {
             binding.present.setVisibility(View.VISIBLE);
         } else {
             countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
@@ -411,7 +436,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             dialog.setTypeAction(typeAction);
             dialog.show();
         } else {
-            dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {});
+            dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
+            });
             dialogCountdownTime.setTimeAndTitle(time, typeCountDown);
             dialogCountdownTime.show();
         }

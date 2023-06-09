@@ -1,19 +1,28 @@
 package nat.pink.base.ui.home;
 
 import android.content.Context;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
 import androidx.lifecycle.MutableLiveData;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import nat.pink.base.base.BaseViewModel;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectMessenge;
 import nat.pink.base.retrofit.RequestAPI;
+import nat.pink.base.utils.Utils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +35,7 @@ public class HomeViewModel extends BaseViewModel {
     public List<ObjectMessenge> objectMessenges = new ArrayList<>();
     public MutableLiveData<Boolean> reloadDataMessenger = new MutableLiveData<>();
     public MutableLiveData<DaoContact> loadChatInfo = new MutableLiveData<>();
+    public MutableLiveData<Boolean> forceUpdate = new MutableLiveData<>();
 
     public void getListContact(Context context) {
         List<DaoContact> daoContacts = DatabaseController.getInstance(context).getContact();
@@ -34,7 +44,7 @@ public class HomeViewModel extends BaseViewModel {
         for (int i = 0; i < daoContacts.size(); i++) {
             if (i <= 3) {
                 _contactactSuggest.add(daoContacts.get(i));
-            }else{
+            } else {
                 _contactactNormal.add(daoContacts.get(i));
             }
         }
@@ -72,7 +82,7 @@ public class HomeViewModel extends BaseViewModel {
         getListContact(context);
     }
 
-    public void feedback(RequestAPI requestAPI,String pack, String version,  String contentFeedback, Consumer<Integer> consumer) {
+    public void feedback(RequestAPI requestAPI, String pack, String version, String contentFeedback, Consumer<Integer> consumer) {
         requestAPI.feedback(pack, version, contentFeedback).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -82,6 +92,23 @@ public class HomeViewModel extends BaseViewModel {
             @Override
             public void onFailure(Call<String> call, Throwable t) {
                 consumer.accept(t.hashCode());
+            }
+        });
+    }
+
+    public void foreUpdate(DatabaseReference databaseReference, Context context) {
+        databaseReference.child("config/force").get().addOnCompleteListener(task -> {
+            String value = task.getResult().getValue().toString();
+            if (value.equals("true")) {
+                databaseReference.child("config/ver").get().addOnCompleteListener(task1 -> {
+                    String ver =  String.valueOf(task1.getResult().getValue());
+                    ver = ver.replace(".","");
+                    String verNow = Utils.getVer(context);
+                    verNow = verNow.replace(".","");
+                    forceUpdate.postValue(Integer.parseInt(ver) < Integer.parseInt(verNow));
+                });
+            } else {
+                forceUpdate.postValue(false);
             }
         });
     }

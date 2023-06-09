@@ -394,4 +394,12 @@ public class Utils {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+    public static String getVer(Context context){
+        try {
+            return context.getPackageManager().getPackageInfo(context.getPackageName(),0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            return "";
+        }
+    }
 }
