@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fake Chat</string>
+    <string name="action_settings">Einstellungen</string>
+    <!-- Strings, die für Fragmente zur Navigation verwendet werden -->
+    <string name="first_fragment_label">Erstes Fragment</string>
+    <string name="second_fragment_label">Zweites Fragment</string>
+    <string name="next">Weiter</string>
+    <string name="previous">Vorherige</string>
+
+    <string name="hello_first_fragment">Hallo erstes Fragment</string>
+    <string name="hello_second_fragment">Hallo zweites Fragment. Arg: %1$s</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="cancel_dialog">Abbrechen</string>
+    <string name="agree_dialog">Zustimmen</string>
+    <string name="add_record">Datensatz hinzufügen</string>
+    <string name="ok">Ok</string>
+    <string name="edit">Bearbeiten</string>
+
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <string name="txt_language_in" translatable="false">Indonesisch</string>
+    <string name="txt_language_thai" translatable="false">Thailändisch</string>
+    <string name="txt_language_malay" translatable="false">Malaysisch</string>
+    <string name="txt_language_en">Englisch</string>
+    <string name="txt_language_vi">Vietnamesisch</string>
+    <string name="txt_language_spanish">Spanisch</string>
+    <string name="txt_language_portuguese">Portugiesisch</string>
+    <string name="txt_language_russiane">Russisch</string>
+    <string name="txt_language_ja">Japanisch</string>
+    <string name="txt_language_korean">Koreanisch</string>
+    <string name="txt_language_french">Französisch</string>
+    <string name="txt_language_german">Deutsch</string>
+    <string name="txt_language_arabic" translatable="false">Arabisch</string>
+    <string name="txt_language_chi">Chinesisch</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">Chinesisch (vereinfacht)</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">Chinesisch (traditionell)</string>
+
+    <!--flag-->
+    <string name="flag_name_english">Englisch</string>
+    <string name="flag_name_japanese">Japanisch</string>
+    <string name="flag_name_chiness">Chinesisch</string>
+    <string name="flag_name_indonesian">Indonesisch</string>
+    <string name="flag_name_rusian">Russisch</string>
+    <string name="flag_name_spanish">Spanisch</string>
+    <string name="flag_name_french">Französisch</string>
+    <string name="flag_name_portugese">Portugiesisch</string>
+    <string name="flag_name_korean">Koreanisch</string>
+    <string name="flag_name_vietnamese">Vietnamesisch</string>
+    <string name="flag_name_german">Deutsch</string>
+
+
+    <string name="content_about_app">
+Fragen oder Feedback? Wir lesen jede einzelne E-Mail
+Haben Sie Vorschläge? Bitte zögern Sie nicht, uns unter support@realink.dev zu erreichen
+"</string>
+
+    <string name="save">Speichern</string>
+    <string name="loading_ads_text">Anzeigen werden geladen…</string>
+    <string name="facebook_app_id" translatorable="false">1105959933462571</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">Gefälschter\nVideoanruf</string>
+    <string name="make_message">Gefälschte\nNachricht</string>
+    <string name="make_message_title">Nachricht erstellen</string>
+    <string name="make_notification">Gefälschte\nBenachrichtigung</string>
+    <string name="make_notification_title">Benachrichtigung erstellen</string>
+    <string name="make_voice_call">Gefälschter\nSprachanruf</string>
+    <string name="make_voice_call_title">Sprachanruf tätigen</string>
+    <string name="title_make_video_call">Videoanruf tätigen</string>
+    <string name="call_now">Jetzt anrufen</string>
+    <string name="call_type">Anruftyp</string>
+    <string name="notification_type">Benachrichtigungstyp</string>
+    <string name="incoming_call">Eingehender Anruf</string>
+    <string name="incoming_call_later">Eingehender Anruf später:</string>
+    <string name="top">Oben</string>
+    <string name="popup">Popup</string>
+    <string name="calling">Anruf</string>
+    <string name="name_your_friend">Name</string>
+    <string name="education">Bildung</string>
+    <string name="education_hint">Beispiel: Student an der Harvard University</string>
+    <string name="work">Arbeit</string>
+    <string name="work_hint">Beispiel: Fußball in der Saudi Pro League</string>
+    <string name="live">Live</string>
+    <string name="live_hint">Beispiel: LiIch bin in New York City</string>
+    <string name="lives_in">Lebt in</string>
+    <string name="personal_info">Typ</string>
+    <string name="message">Messenger</string>
+    <string name="operation_status">Vorgangsstatus</string>
+    <string name="change_avatar">Profilbild ändern</string>
+    <string name="hint_text_name">Kontaktnamen eingeben</string>
+    <string name="hint_lives_in">Piermont Dr, Albuquerque, New Mexico</string>
+    <string name="enter_message">Nachricht eingeben</string>
+    <string name="incoming_call_picture">Bild des eingehenden Anrufs</string>
+    <string name="video_of_incoming_calls">Video eingehender Anrufe</string>
+    <string name="call_later">Später anrufen</string>
+    <string name="send_later">Später senden</string>
+    <string name="pick_up_later">Später abholen</string>
+    <string name="voice_later">Später sprechen</string>
+    <string name="pick_up_the_phone_later">Später zum Telefon greifen</string>
+    <string name="now">Jetzt</string>
+    <string name="send_a_message_later">Später eine Nachricht senden</string>
+    <string name="message_photo">Nachrichtenfoto</string>
+    <string name="online">Online-Status</string>
+    <string name="verified">Verifiziert</string>
+    <string name="friend_on_facebook">Sind Freunde auf Facebook</string>
+    <string name="theme">Farbe</string>
+    <string name="create">Erstellen</string>
+    <string name="online_5_minutes_ago">Vor 5 Minuten online</string>
+    <string name="online_30_minutes_ago">Vor 30 Minuten online</string>
+    <string name="online_1_hour_ago">Online vor 1 Stunde</string>
+    <string name="online_1_day_ago">Online vor 1 Tag</string>
+    <string name="time_call_seconds">%s Sekunden</string>
+    <string name="time_call_minutes">%s Minuten</string>
+    <string name="time_call_one_minutes">1 Minute</string>
+    <string name="video_call_on_messenger">Videoanruf im Messenger</string>
+    <string name="voice_call_on_messenger">Sprachanruf im Messenger</string>
+    <string name="refuse">ABLEHNEN</string>
+    <string name="answer">ANTWORT</string>
+    <string name="reply">ANTWORTEN</string>
+    <string name="guide">Anleitung</string>
+    <string name="more_app">Mehr App</string>
+    <string name="rate_app">App bewerten</string>
+    <string name="feedback">Feedback</string>
+    <string name="contact_us">Kontaktieren Sie uns</string>
+    <string name="content_by">Anwendung entwickelt \nvon Merry Blue</string>
+    <string name="body_name_app">Werkzeuge, Lebensstil</string>
+    <string name="title_rate_app">Geben Sie uns 5 Sterne, um uns zu ermutigen. \nVielen Dank für Ihre Unterstützung! </string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">Wir werden noch viel mehr absorbieren und upgraden! Vielen Dank!</string>
+    <string name="please_give_us_feedback">Bitte geben Sie uns Feedback</string>
+    <string name="do_you_like_the_app">Gefällt dir die App?</string>
+    <string name="sent">Gesendet</string>
+    <string name="change_picture">Bild ändern</string>
+    <string name="outgoing_call_pictures">Bilder ausgehender Anrufe</string>
+    <string name="done">Fertig</string>
+    <string name="please_fill_in_the_information">Bitte geben Sie die Informationen ein</string>
+    <string name="maxium_characters">Maximal 25 Zeichen</string>
+    <string name="note">Hinweis</string>
+    <string name="note_title_error">Bitte füllen Sie die \nInformationen vollständig aus</string>
+    <string name="call_come_later">Der Anruf kommt später:</string>
+    <string name="noti_come_later">Benachrichtigung kommt später:</string>
+    <string name="noti">Benachrichtigung kommt später:</string>
+    <string name="another_task">Eine andere Aufgabe wird ausgeführt. Bitte warten Sie, bis die Aufgabe abgeschlossen ist.</string>
+
+    <string name="guide_info_1">Geben Sie den Text der Nachricht ein, mit der Sie einen Fake-Chat erstellen möchten.</string>
+    <string name="guide_info_2">Tätigen Sie einen gefälschten Videoanruf, indem Sie die in der Funktion verfügbaren Informationen eingeben.</string>
+    <string name="guide_info_3">Tätigen Sie einen gefälschten Sprachanruf, indem Sie grundlegende Informationen wie Name und Foto entsprechend Ihren Präferenzen eingeben.</string>
+    <string name="guide_info_4">Geben Sie den Nachrichtentext ein und wählen Sie das gewünschte Erscheinungsbild (oben oder Popup) aus.</string>
+    <string name="guide_info_5">Behalten Sie alle von Ihnen erstellten Chatlisten.</string>
+    <string name="title_calling">Anruf…</string>
+    <string name="fake_messenger_title">Fake Messenger</string>
+    <string name="content_empty_view">Sie haben noch keine Chat-Liste.\n Bitte fügen Sie einen neuen Chat hinzu</string>
+    <string name="active_now">Jetzt aktiv</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content">Sie können auf diese Konversation nicht antworten. Weitere Informationen></string>
+    <string name="change_information">Informationen ändern</string>
+    <string name="conversation_list">Konversationsliste</string>
+    <string name="select_sticker">Aufkleber auswählen</string>
+    <string name="send">Senden</string>
+    <string name="receive">Empfangen</string>
+    <string name="removed_a_message">%s hat eine Nachricht entfernt</string>
+    <string name="live_in">Lebt in %s</string>
+    <string name="you">Du</string>
+    <string name="you_are_friends">Du bist Freunde auf Facebook</string>
+    <string name="ask_save_image">Möchten Sie den Screenshot speichern?</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="screenshort_success">Screenshort-Erfolg</string>
+    <string name="set_time">Zeit einstellen</string>
+    <string name="voice_message">Sprachnachricht</string>
+    <string name="enter_data">Daten eingeben</string>
+    <string name="you_must_enter">Sie müssen %s eingeben</string>
+    <string name="full_data">vollständige Daten</string>
+
+    <string name="monthly_package">Monatspaket</string>
+    <string name="get_premium_for_1_month">Erhalten Sie Premium-Berechtigungen für 1 Monat.</string>
+    <string name="save_20">20 % sparen</string>
+    <string name="year_package">Jahrespaket</string>
+    <string name="get_premium_for_1_year">Erhalten Sie Premium-Privilegien für 1 Jahr.</string>
+    <string name="forever_package">Forever-Paket</string>
+    <string name="get_premium_forever">Erhalten Sie Premium-Berechtigungen für immer.</string>
+    <string name="month">/monat</string>
+    <string name="year">/year</string>
+    <string name="forever">/forever</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9$</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">Videolink kann nicht abgerufen werden.\n Bitte wählen Sie ein anderes Video</string>
+    <string name="delete">Löschen</string>
+    <string name="delete_this_conversation">Diese Konversation löschen</string>
+    <string name="please_turn_on_the_network">Bitte schalten Sie das Netzwerk ein\n für ein besseres Erlebnis</string>
+    <string name="thank_for_your_response">Vielen Dank für Ihre Antwort!</string>
+    <string name="we_will_listen_to_your_comments">Wir werden auf Ihre Kommentare hören und\n daran arbeiten, das Produkt noch besser zu verbessern!</string>
+
+    <string name="load_ads">Anzeigen laden</string>
+    <string name="ads_are_loading">Anzeigen werden geladen, während darauf gewartet wird\ndiese Funktion wird verarbeitet</string>
+    <string name="remove_ads">Anzeigen entfernen</string>
+
+    // In-App-Kauf
+    <string name="enjoy_your_premium_member">Viel Spaß mit Ihrem Premium-Mitglied</string>
+    <string name="continues">Weiter</string>
+    <string name="in_app_month">/Monat</string>
+    <string name="in_app_forever">/forever</string>
+    <string name="in_app_year">/Jahr</string>
+    <string name="save_in_app">Speichern %s</string>
+
+    <string name="in_app_title_1_m">Monatspaket</string>
+    <string name="in_app_content_1_m">Erhalten Sie Premium-Berechtigungen für 1 Monat.</string>
+
+    <string name="in_app_title_n_m">%s Monatspaket</string>
+    <string name="in_app_content_n_m">Erhalten Sie Premium-Berechtigungen für %s Monat.</string>
+
+    <string name="in_app_title_1_y">Jahrespaket</string>
+    <string name="in_app_content_1_y">Erhalten Sie Premium-Berechtigungen für 1 Jahr.</string>
+
+    <string name="in_app_title_f_r">Forever-Paket</string>
+    <string name="in_app_content_f_r">Erhalten Sie Premium-Berechtigungen für immer</string>
+
+    <string name="unlimited_ess">Unbegrenztes Chaos</string>
+    <string name="no_ads">Kein ADS</string>
+    <string name="high_quality_video_call">Hochwertiger Videoanruf</string>
+    <string name="get">Get</string>
+    <string name="premium">Premium</string>
+    <string name="select_language">Sprache auswählen</string>
+    <!-- TODO: Entfernen oder ändern Sie diesen Platzhaltertext -->
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+    <string name="chat_bubbles">Chat-Blasen</string>
+    <string name="navigation_bar">Navigationsleiste</string>
+    <string name="setup_fake_notiffication">Gefälschte Benachrichtigung einrichten</string>
+    <string name="setup_fake_video_call">Täuschungsvideoanruf einrichten</string>
+    <string name="setup_fake_call">Täuschungsanruf einrichten</string>
+    <string name="in_coming_call">Eingehender Anruf</string>
+    <string name="out_coming_call">Abrufen</string>
+    <string name="contact">Kontakt</string>
+    <string name="message_content">Nachrichteninhalt</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">Geben Sie den Text der Nachricht ein</string>
+    <string name="time_delay">Zeitverzögerung</string>
+    <string name="message_sound">Nachrichtenton</string>
+    <string name="dialog_description_time_delay">Ist die Countdown-Zeit, um den gefälschten eingehenden Anruf anzuzeigen</string>
+    <string name="get_a_call_now">Jetzt anrufen</string>
+    <string name="five_seconds_later">5 Sekunden später</string>
+    <string name="ten_seconds_later">10 Sekunden später</string>
+    <string name="fifteen_seconds_later">15 Sekunden später</string>
+    <string name="twenty_seconds_later">20 Sekunden später</string>
+    <string name="recommend">Empfehlen</string>
+    <string name="create_your_contact">Erstellen Sie Ihren Kontakt</string>
+    <string name="edit_your_contact">Bearbeiten Sie Ihren Kontakt</string>
+    <string name="pick_up_time">Abholzeit</string>
+    <string name="des_pick_up_time">Ist die Countdown-Zeit, bis der Empfänger Ihren gefälschten Videoanruf entgegennimmt</string>
+    <string name="video_fake">Videofälschung</string>
+    <string name="des_upload_video">Es wird empfohlen, \n Videos mit einem vertikalen Seitenverhältnis (9:16) auszuwählen, um das beste Erlebnis zu erzielen.</string>
+    <string name="upload_video">Video hochladen</string>
+    <string name="call_away">Rufen Sie weg</string>
+    <string name="pick_up_now">Jetzt abholen</string>
+    <string name="change_video">Video ändern</string>
+
+    <!-- data default contact-->
+    <string name="data_default_name_1">"Cristiano Ronaldo"</string>
+    <string name="data_default_work_1">Kapitän des Saudi-Pro-League-Klubs Al Nassr</string>
+    <string name="data_default_live_1">Lebt auf Madeira, Portugal</string>
+
+    <string name="data_default_name_2">"Leo Messi"</string>
+    <string name="data_default_education_2">Studierte an der La Masia Academy in Barcelona</string>
+    <string name="data_default_work_2">Stürmer beim Verein Paris Saint-Germain</string>
+    <string name="data_default_live_2">Lebt in Paris, Frankreich</string>
+
+    <string name="data_default_name_3">"Taylor Swift"</string>
+    <string name="data_default_work_3">Grammy-preisgekrönter Sänger</string>
+    <string name="data_default_live_3">Lebt in Nashville, Tennessee</string>
+
+    <string name="data_default_name_4">"Johnny Depp"</string>
+    <string name="data_default_work_4">Berühmter Schauspieler</string>
+    <string name="data_default_live_4">Lebe in Amerika</string>
+
+    <string name="create_new">"Erstellen\nneu"</string>
+
+    <string name="choose_interface_color">Schnittstellenfarbe auswählen</string>
+    <string name="your_chat_bubble_display_color">Die Anzeigefarbe Ihrer Chat-Blase</string>
+    <string name="close">Schließen</string>
+    <string name="ok_dialog">OK</string>d
+    <string name="ads_video_call">Dein gefälschter Videoanruf kommt…</string>
+    <string name="ads_voice_call">Ihr gefälschter Sprachanruf kommt…</string>
+    <string name="ads_notification">Ihre gefälschte Benachrichtigung kommt…</string>
+    <string name="ads_done">Wir werden auf Ihre Kommentare hören und daran arbeiten, das Produkt noch besser zu verbessern!</string>
+    <string name="notify_declined">Bitte erlauben Sie die Benachrichtigung zur Verwendung eines Täuschungsanrufs</string>
+
+    <string name="onboard_title_1">App für realistische gefälschte Gespräche</string>
+    <string name="onboard_title_2">Kontrollieren Sie beide Seiten der Konversation</string>
+    <string name="onboard_title_3">Machen Sie Ihrem Freund oder Partner einen Streich</string>
+
+    <string name="onboard_des_1">Erstellen Sie Fake-Chat, Fake-Anrufe, Fake-Videoanrufe und Fake-Benachrichtigungen ganz wie Messenger.</string>
+    <string name="onboard_des_2">Stellen Sie ganz einfach die Zeit zum Senden und Empfangen von Nachrichten ein.</string>
+    <string name="onboard_des_3">Erstellen Sie Prominente, um mit ihnen wie mit echten Texten zu schreiben. Benutze es, um deine Freunde zu trollen.</string>
+
+    <string name="content_fake_messenger">"Gefälschte \nNachricht"</string>
+    <string name="content_fake_voice_call">"Gefälschter \nSprachanruf"</string>
+    <string name="content_fake_video_call">Gefälschter \nVideoanruf</string>
+    <string name="content_fake_noti">"Fake \nNotification"</string>
+    <string name="free">Kostenlos</string>
+    <string name="one_hun_coin">-100 Poin</string>
+    <string name="two_hun_coin">-200 Poin</string>
+    <string name="three_hun_coin">-300 Poin</string>
+    <string name="one_extra_coin">+100 Poin</string>
+    <string name="two_extra_coin">+200 Poin</string>
+    <string name="three_extra_coin">+300 Poin</string>
+
+    <string name="conversation_suggestions">Gesprächsvorschläge</string>
+    <string name="your_coin">Ihr Punkt</string>
+    <string name="manage_conversation">Konversation verwalten</string>
+    <string name="suggest">Vorschlagen</string>
+    <string name="create_new_manager_suggest">Neu erstellen</string>
+    <string name="your_conversation_manager_suggest">Ihr Gespräch</string>
+    <string name="asked_question">Häufig gestellte Fragen?</string>
+    <string name="faq">FAQ</string>
+    <string name="privacy_policy">Datenschutzrichtlinie</string>
+    <string name="language">Sprache</string>
+
+    <string name="faq_des_1">Um diese Funktion zu nutzen, klicken Sie einfach auf „Fake Messenger“ und wählen dann den Kontakt aus, mit dem Sie eine Konversation erstellen und interagieren möchten, als wäre es ein echter Messenger. Wir hoffen, dass es Ihnen gefällt!</string>
+    <string name="faq_des_2">Ja, unsere Anwendung bietet Ihnen die Möglichkeit, sowohl eingehende als auch ausgehende Videoanrufe zu fälschen. Sie müssen lediglich die gewünschte Funktion auswählen, einen Kontakt auswählen, Anrufinformationen einrichten und den Anruf einleiten.</string>
+    <string name="faq_des_3">Dies ist eine Funktion, mit der Sie Benachrichtigungen über eingehende Nachrichten in Form von Chat-Blasen oder Benachrichtigungen in der Statusleiste erstellen können (je nach Wunsch). Sie können anpassen, wie die eingehenden Nachrichten angezeigt werden. Diese Funktion ist sehr effektiv, um Ihrer Freundin, Ihrem Freund oder romantischen Partnern Streiche zu spielen oder sie zu necken. Schenken Sie Ihren Lieben mit unserer Anwendung ein paar humorvolle Momente.</string>
+    <string name="faq_des_4">Nein, wir legen keine Begrenzung für die Anzahl der gefälschten Anrufe, gefälschten Nachrichten oder gefälschten Videoanrufe fest, die erstellt werden können. Stattdessen haben wir einen Bewertungsmechanismus implementiert. Durch die NutzungUm Ihre vorhandenen Punkte zu erweitern, können Sie unsere entsprechenden Funktionen nutzen. Die Fake-Message-Funktion ist uneingeschränkt nutzbar. Für gefälschte Anrufe oder Videoanrufe müssen Sie jedoch „Punkte“ ausgeben, um sie zu erstellen. Ebenso handelt es sich bei der Fake-Benachrichtigungsfunktion um eine äußerst effektive Funktion, sodass für deren Verwendung mehr Punkte erforderlich sind.</string>
+    <string name="faq_des_5">Um die Spannung und Fairness beim Schenken zu erhöhen, haben wir für jedes Mitglied, das die App nutzt, einen Bewertungsmechanismus implementiert. Sie werden Punkte verwenden, um unsere Funktionen zu nutzen. Jede Funktion verbraucht bei Verwendung eine bestimmte Anzahl an Punkten. Sie können Punkte sammeln, indem Sie sich täglich anmelden oder belohnte Werbung ansehen. Vergessen Sie nicht, mehr Punkte zu sammeln, um Ihren Rang in der Bestenliste zu verbessern, wo Sie monatlich spannende Vergünstigungen und Vorteile erhalten.</string>
+    <string name="faq_des_6">In der Bestenliste wird Ihr Ranking basierend auf Ihren \'Punkten\' im Vergleich zu anderen Benutzern angezeigt. Je höher Ihre Punkte, desto höher Ihr Ranking und umgekehrt. Wer hohe Platzierungen (Top 1–3) erreicht, erhält am Ende jedes Monats wertvolle Belohnungen. Die Prämien können zusätzliche Punkte oder Gutscheine für unser werbefreies Premium-Paket umfassen.</string>
+
+    <string name="faq_1">Wie verwende ich die Funktion für gefälschte Messenger-Nachrichten?</string>
+    <string name="faq_2">Unterstützt die Anwendung gefälschte Videoanrufe?</string>
+    <string name="faq_3">Welche Funktion haben gefälschte Nachrichtenbenachrichtigungen?</string>
+    <string name="faq_4">Gibt es eine Begrenzung für die Anzahl gefälschter Anrufe, gefälschter Nachrichten oder gefälschter Videoanrufe in der Anwendung?</string>
+    <string name="faq_5">Was sind die \'Punkte\' in dieser Bewerbung?</string>
+    <string name="faq_6">Was ist die Bestenliste?</string>
+
+    <string name="title_privacy">Demotextüberschrift Datenschutz</string>
+    <string name="content_privacy">
+    Dieser DIENST wird von uns kostenlos zur Verfügung gestellt und ist für die Nutzung im Ist-Zustand vorgesehen.
+    Diese Seite wird verwendet, um Besucher über meine Richtlinien zur Erfassung, Verwendung und Offenlegung personenbezogener Daten zu informieren, falls sich jemand für die Nutzung meines Dienstes entscheidet.
+    Wenn Sie sich für die Nutzung meines Dienstes entscheiden, stimmen Sie der Erfassung und Nutzung von Informationen im Zusammenhang mit dieser Richtlinie zu.
+    Die von mir gesammelten personenbezogenen Daten werden zur Bereitstellung und Verbesserung des Dienstes verwendet. Ich werde Ihre Daten nicht verwenden oder an Dritte weitergeben, außer wie in dieser Datenschutzrichtlinie beschrieben.
+    - Bilder: Wir sind nicht verantwortlich für den Bildinhalt, der von Benutzern erstellt oder im Internet gesucht wird.
+    - Geschichten: Benutzergenerierte Geschichten in der App für politische, beleidigende oder irreführende Zwecke.
+    - Wir sind nicht verantwortlich, wenn Benutzer der Anwendung böswillige oder politische Zwecke verfolgen, abstimmen oder gegen geltende nationale Gesetze verstoßen.
+
+    1. Sammlung und Nutzung von Informationen
+    Für ein besseres Erlebnis bei der Nutzung unseres Dienstes kann es sein, dass ich Sie auffordere, uns bestimmte persönlich identifizierbare Informationen zur Verfügung zu stellen. Die von mir angeforderten Informationen werden auf Ihrem Gerät gespeichert und in keiner Weise von mir erfasst.
+    Die App nutzt Dienste Dritter, die möglicherweise Informationen sammeln, die zu Ihrer Identifizierung dienen.
+    In der App können Links zu den Datenschutzrichtlinien von Drittanbietern verwendet werden
+
+    2. Protokolldaten
+    Ich möchte Sie darüber informieren, dass ich bei jeder Nutzung meines Dienstes im Falle eines Fehlers in der App Daten und Informationen (über Produkte von Drittanbietern) auf Ihrem Telefon sammle, die als Protokolldaten bezeichnet werden.
+    Diese Protokolldaten können Informationen wie die IP-Adresse Ihres Geräts, den Gerätenamen, die Betriebssystemversion, die Konfiguration der App bei der Nutzung meines Dienstes, die Uhrzeit und das Datum Ihrer Nutzung des Dienstes sowie andere Statistiken enthalten .
+
+    3. Cookies
+    Cookies sind Dateien mit einer kleinen Datenmenge, die üblicherweise als anonyme eindeutige Kennungen verwendet werden.
+    Diese werden von den von Ihnen besuchten Websites an Ihren Browser gesendet und im internen Speicher Ihres Geräts gespeichert.
+    Dieser Dienst verwendet diese „Cookies“ nicht ausdrücklich. Die App kann jedoch Code und Bibliotheken von Drittanbietern verwenden, die „Cookies“ verwenden, um Informationen zu sammeln und ihre Dienste zu verbessern.
+    Sie haben die Möglichkeit, diese Cookies entweder zu akzeptieren oder abzulehnen und zu erfahren, wann ein Cookie an Ihr Gerät gesendet wird. Wenn Sie unsere Cookies ablehnen, können Sie möglicherweise einige Teile dieses Dienstes nicht nutzen.
+
+
+    4. Dienstleister
+
+    Die Berechtigungen, die wir in der Anwendung verwenden:
+    android.permission.WRITE_EXTERNAL_STORAGE
+
+    android.permission.READ_EXTERNAL_STORAGE
+
+    android.permission.WAKE_LOCK
+
+    android.permission.VIBRATE
+
+    android.permission.INTERNET
+
+    android.permission.ACCESS_NETWORK_STATE
+
+    android.permission.RECEIVE_BOOT_COMPLETED
+
+    NOTIZ:
+    - Wir verpflichten uns, die oben genannten Rechte nur zu dem Zweck zu nutzen, die Funktion der Anwendung zu erfüllen und die Richtlinien von Google Play vollständig einzuhalten, und nicht für andere Zwecke.
+
+    - Alle von den Nutzern bereitgestellten Informationen werden nur auf ihrem Gerät gespeichert und wir sammeln und speichern sie in keiner Form (auch nicht auf Servern oder in Cloud-Diensten…).
+
+    - Wir geben keine sensiblen Benutzerinformationen (E-Mail, Bankkonto usw.) weiter, speichern oder teilen sie nicht.
+
+    5. Dienstleister
+    Ich kann aus folgenden Gründen Drittunternehmen und Einzelpersonen beauftragen:
+    Um unseren Service zu erleichtern;
+    Um den Service in unserem Namen bereitzustellen;
+    Zur Erbringung dienstbezogener Dienstleistungen;
+    Um uns bei der Analyse der Nutzung unseres Dienstes zu unterstützen.
+    Ich möchte Benutzer dieses Dienstes darüber informieren, dass diese Dritten Zugriff auf Ihre persönlichen Daten haben.
+    Der Zweck besteht darin, die ihnen übertragenen Aufgaben in unserem Auftrag zu erfüllen. Sie sind jedoch verpflichtet, die Informationen nicht weiterzugeben oder für andere Zwecke zu verwenden.
+
+
+    6. Sicherheit
+    Ich schätze Ihr Vertrauen in die Bereitstellung Ihrer personenbezogenen Daten. Daher sind wir bestrebt, kommerziell akzeptable Mittel zum Schutz dieser Daten einzusetzen.
+    Bedenken Sie jedoch, dass keine Methode der Übertragung über das Internet oder Methode der elektronischen Speicherung zu 100 % sicher und zuverlässig ist und ich für deren absolute Sicherheit keine Garantie übernehmen kann.
+
+    7. Links zu anderen Websites
+    Dieser Dienst kann Links zu anderen Websites enthalten. Wenn Sie auf einen Link eines Drittanbieters klicken, werden Sie zu dieser Website weitergeleitet.
+    Bitte beachten Sie, dass diese externen Websites nicht von mir betrieben werden. Daher empfehle ich Ihnen dringend, die Datenschutzbestimmungen dieser Websites zu lesen.
+
+    Ich habe keine Kontrolle über die Inhalte, Datenschutzrichtlinien oder Praktiken von Websites oder Diensten Dritter und übernehme keine Verantwortung dafür.
+
+    8. Privatsphäre von Kindern
+    Diese Dienste richten sich nicht an Personen unter 13 Jahren. Ich sammle wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren.
+    Sollte ich feststellen, dass mir ein Kind unter 13 Jahren personenbezogene Daten zur Verfügung gestellt hat, lösche ich diese umgehend von unseren Servern.
+    Wenn Sie ein Elternteil oder Erziehungsberechtigter sind und wissen, dass Ihr Kind uns personenbezogene Daten zur Verfügung gestellt hat, kontaktieren Sie mich bitte, damit ich die erforderlichen Maßnahmen ergreifen kann.
+
+    9. Änderungen dieser Datenschutzrichtlinie
+    Ich kann unsere Datenschutzrichtlinie aktualisierenvon Zeit zu Zeit. Wir empfehlen Ihnen daher, diese Seite regelmäßig auf etwaige Änderungen zu überprüfen.
+Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datenschutzrichtlinie auf dieser Seite veröffentliche. Diese Änderungen treten sofort nach der Veröffentlichung auf dieser Seite in Kraft.</string>
+    <string name="thank_you">Danke!!!</string>
+    <string name="claim">Anspruch</string>
+    <string name="daily_login">Herzlichen Glückwunsch! Sie haben eine Belohnung für die tägliche Anmeldung erhalten.</string>
+    <string name="received_a_reward">Herzlichen Glückwunsch! Du hast eine Belohnung erhalten.
+
+</string>
+</resources>

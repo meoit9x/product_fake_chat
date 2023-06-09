@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">가짜 채팅</string>
+    <string name="action_settings">설정</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">첫 번째 조각</string>
+    <string name="second_fragment_label">두 번째 조각</string>
+    <string name="next">다음</string>
+    <string name="previous">이전의</string>
+
+    <string name="hello_first_fragment">안녕 첫 번째 조각</string>
+    <string name="hello_second_fragment">안녕하세요 두 번째 조각입니다. 인수: %1$s</string>
+    <string name="confirm">확인하다</string>
+    <string name="cancel_dialog">취소</string>
+    <string name="agree_dialog">동의하다</string>
+    <string name="add_record">레코드 추가</string>
+    <string name="ok">좋아요</string>
+    <string name="edit">편집하다</string>
+
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <string name="txt_language_in" translatable="false">인도네시아 인</string>
+    <string name="txt_language_thai" translatable="false">태국어</string>
+    <string name="txt_language_malay" translatable="false">말레이시아</string>
+    <string name="txt_language_en">영어</string>
+    <string name="txt_language_vi">베트남어</string>
+    <string name="txt_language_spanish">스페인의</string>
+    <string name="txt_language_portuguese">포르투갈 인</string>
+    <string name="txt_language_russiane">러시아인</string>
+    <string name="txt_language_ja">일본어</string>
+    <string name="txt_language_korean">한국인</string>
+    <string name="txt_language_french">프랑스 국민</string>
+    <string name="txt_language_german">독일 사람</string>
+    <string name="txt_language_arabic" translatable="false">아라비아 말</string>
+    <string name="txt_language_chi">중국인</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">중국어 (간체 )</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">중국 전통)</string>
+
+    <!--flag-->
+    <string name="flag_name_english">영어</string>
+    <string name="flag_name_japanese">일본어</string>
+    <string name="flag_name_chiness">중국인</string>
+    <string name="flag_name_indonesian">인도네시아 인</string>
+    <string name="flag_name_rusian">러시아인</string>
+    <string name="flag_name_spanish">스페인의</string>
+    <string name="flag_name_french">프랑스 국민</string>
+    <string name="flag_name_portugese">포르투갈 인</string>
+    <string name="flag_name_korean">한국인</string>
+    <string name="flag_name_vietnamese">베트남어</string>
+    <string name="flag_name_german">독일 사람</string>
+
+
+    <string name="content_about_app">
+Questions or feedback? We read every single email>
+Have suggestions? Please, feel free to reach us at support@realink.dev>
+</string>
+    <string name="loading_ads_text">광고 로드 중...</string>
+    <string name="facebook_app_id" translatable="false">1105959933462570</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">가짜\n영상 통화</string>
+    <string name="make_message">가짜\n메시지</string>
+    <string name="make_message_title">메시지 만들기</string>
+    <string name="make_notification">가짜\n알림</string>
+    <string name="make_notification_title">알림 만들기</string>
+    <string name="make_voice_call">가짜\n음성 통화</string>
+    <string name="make_voice_call_title">음성 통화 걸기</string>
+    <string name="title_make_video_call">화상 통화 걸기</string>
+    <string name="call_now">지금 전화하세요</string>
+    <string name="call_type">통화 유형</string>
+    <string name="notification_type">알림 유형</string>
+    <string name="incoming_call">수신 전화</string>
+    <string name="incoming_call_later">나중에 수신 전화:</string>
+    <string name="top">맨 위</string>
+    <string name="popup">팝업</string>
+    <string name="calling">부름</string>
+    <string name="name_your_friend">이름</string>
+    <string name="education">교육</string>
+    <string name="education_hint">예: 하버드 대학교 학생</string>
+    <string name="work">일하다</string>
+    <string name="work_hint">예: 사우디 프로 리그의 축구</string>
+    <string name="live">살다</string>
+    <string name="live_hint">예: 뉴욕시에 거주</string>
+    <string name="lives_in">에 살고</string>
+    <string name="personal_info">유형</string>
+    <string name="message">전령</string>
+    <string name="operation_status">운영현황</string>
+    <string name="change_avatar">프로필 사진을 바꾸다</string>
+    <string name="hint_text_name">연락처 이름 입력</string>
+    <string name="hint_lives_in">Piermont Dr, 앨버커키, 뉴멕시코</string>
+    <string name="enter_message">메시지 입력</string>
+    <string name="incoming_call_picture">수신 전화 사진</string>
+    <string name="video_of_incoming_calls">수신 전화 비디오</string>
+    <string name="call_later">나중에 전화하기</string>
+    <string name="send_later">나중에 보내기</string>
+    <string name="pick_up_later">나중에 수령</string>
+    <string name="voice_later">나중에 음성</string>
+    <string name="pick_up_the_phone_later">전화는 나중에 받아</string>
+    <string name="now">지금</string>
+    <string name="send_a_message_later">나중에 메시지 보내기</string>
+    <string name="message_photo">메시지 사진</string>
+    <string name="online">온라인 상태</string>
+    <string name="verified">검증됨</string>
+    <string name="friend_on_facebook">페이스북 친구다</string>
+    <string name="theme">색상</string>
+    <string name="create">만들다</string>
+    <string name="online_5_minutes_ago">5분 전 접속</string>
+    <string name="online_30_minutes_ago">30분 전 접속</string>
+    <string name="online_1_hour_ago">1시간 전 접속</string>
+    <string name="online_1_day_ago">1일 전 접속</string>
+    <string name="time_call_seconds">%s초</string>
+    <string name="time_call_minutes">%s분</string>
+    <string name="time_call_one_minutes">1 분</string>
+    <string name="video_call_on_messenger">메신저 영상통화</string>
+    <string name="voice_call_on_messenger">메신저 음성통화</string>
+    <string name="refuse">감소</string>
+    <string name="answer">답변</string>
+    <string name="reply">회신하다</string>
+    <string name="guide">가이드</string>
+    <string name="more_app">더 많은 앱</string>
+    <string name="rate_app">앱 평가</string>
+    <string name="feedback">피드백</string>
+    <string name="contact_us">문의하기</string>
+    <string name="content_by">메리 블루에서 \n개발한 애플리케이션</string>
+    <string name="body_name_app">도구, 라이프스타일</string>
+    <string name="title_rate_app">격려할 수 있도록 별 5개를 주세요. \n지원해 주셔서 감사합니다!</string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">더 많이 흡수하고 업그레이드 하겠습니다! 감사합니다!</string>
+    <string name="please_give_us_feedback">의견을 보내주세요</string>
+    <string name="do_you_like_the_app">당신은 응용 프로그램을 좋아합니까?</string>
+    <string name="sent">전송된</string>
+    <string name="change_picture">사진 바꾸기</string>
+    <string name="outgoing_call_pictures">발신 통화 사진</string>
+    <string name="done">완료</string>
+    <string name="please_fill_in_the_information">정보를 입력해주세요</string>
+    <string name="maxium_characters">최대 25자</string>
+    <string name="note">메모</string>
+    <string name="note_title_error">정보를 완전히 입력하십시오.</string>
+    <string name="call_come_later">나중에 전화가 올 것입니다.</string>
+    <string name="noti_come_later">알림은 나중에 올 것입니다:</string>
+    <string name="noti">알림이 나중에 올 경우:</string>
+    <string name="another_task">다른 작업이 실행 중입니다. 작업이 완료될 때까지 기다리십시오.</string>
+
+    <string name="guide_info_1">가짜 채팅을 만들고 싶은 메시지의 텍스트를 입력하세요.</string>
+    <string name="guide_info_2">기능에서 사용 가능한 정보를 입력하여 가짜 화상 통화를 만드십시오.</string>
+    <string name="guide_info_3">원하는 대로 이름, 사진과 같은 기본 정보를 입력하여 가짜 음성 통화를 만드세요.</string>
+    <string name="guide_info_4">메시지 텍스트를 입력하고 원하는 모양(상단 또는 팝업)을 선택합니다.</string>
+    <string name="guide_info_5">생성한 모든 채팅 목록을 유지합니다.</string>
+    <string name="title_calling">부름...</string>
+    <string name="fake_messenger_title">가짜 메신저</string>
+    <string name="content_empty_view">아직 채팅 목록이 없습니다.\n 새 채팅을 추가하세요.</string>
+    <string name="active_now">활성 지금</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content">You can\'t reply to this conversation.</string>
+    <string name="change_information">정보 변경</string>
+    <string name="conversation_list">대화 목록</string>
+    <string name="select_sticker">스티커 선택</string>
+    <string name="send">보내다</string>
+    <string name="receive">받다</string>
+    <string name="removed_a_message">%s 메시지를 제거했습니다.</string>
+    <string name="live_in">%s에 거주</string>
+    <string name="you">너</string>
+    <string name="you_are_friends">당신은 Facebook의 친구입니다</string>
+    <string name="ask_save_image">스크린샷을 저장하시겠습니까?</string>
+    <string name="cancel">취소</string>
+    <string name="screenshort_success">스크린쇼트 성공</string>
+    <string name="set_time">시간 설정</string>
+    <string name="voice_message">음성 메시지</string>
+    <string name="enter_data">데이터 입력</string>
+    <string name="you_must_enter">%s를 입력해야 합니다.</string>
+    <string name="full_data">전체 데이터</string>
+
+    <string name="monthly_package">월간 패키지</string>
+    <string name="get_premium_for_1_month">1개월 동안 프리미엄 혜택을 받으세요.</string>
+    <string name="save_20">절약 20%</string>
+    <string name="year_package">연도 패키지</string>
+    <string name="get_premium_for_1_year">1년 동안 프리미엄 혜택을 받으세요.</string>
+    <string name="forever_package">영원히 패키지</string>
+    <string name="get_premium_forever">영원히 프리미엄 혜택을 받으세요.</string>
+    <string name="month">/월</string>
+    <string name="year">/년도</string>
+    <string name="forever">/영원히</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9$</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">동영상 링크를 가져올 수 없습니다.\n 다른 동영상을 선택하세요.</string>
+    <string name="delete">삭제</string>
+    <string name="delete_this_conversation">이 대화 삭제</string>
+    <string name="please_turn_on_the_network">더 나은 경험을 위해\n 네트워크를 켜십시오</string>
+    <string name="thank_for_your_response">응답해 주셔서 감사합니다!</string>
+    <string name="we_will_listen_to_your_comments">귀하의 의견에 귀를 기울이고\n 제품을 개선하기 위해 노력하겠습니다!</string>
+
+    <string name="load_ads">광고 로드</string>
+    <string name="ads_are_loading">이 기능이 처리되는 동안\n대기하는 동안 광고가 로드 중입니다.</string>
+    <string name="remove_ads">광고를 제거하다</string>
+
+    // in app purchase
+    <string name="enjoy_your_premium_member">프리미엄 회원을 즐기세요</string>
+    <string name="continues">계속하다</string>
+    <string name="in_app_month">/월</string>
+    <string name="in_app_forever">/영원히</string>
+    <string name="in_app_year">/년도</string>
+    <string name="save_in_app">저장%s</string>
+
+    <string name="in_app_title_1_m">월간 패키지</string>
+    <string name="in_app_content_1_m">1개월 동안 프리미엄 혜택을 받으세요.</string>
+
+    <string name="in_app_title_n_m">%s개월 패키지</string>
+    <string name="in_app_content_n_m">%s개월 동안 프리미엄 권한을 받으세요.</string>
+
+    <string name="in_app_title_1_y">연도 패키지</string>
+    <string name="in_app_content_1_y">1년 동안 프리미엄 혜택을 받으세요.</string>
+
+    <string name="in_app_title_f_r">영원히 패키지</string>
+    <string name="in_app_content_f_r">영원히 프리미엄 혜택을 받으세요</string>
+
+    <string name="unlimited_ess">무제한 혼란</string>
+    <string name="no_ads">광고 없음</string>
+    <string name="high_quality_video_call">고품질 화상 통화</string>
+    <string name="get">얻다</string>
+    <string name="premium">프리미엄</string>
+    <string name="select_language">언어 선택</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">안녕하세요 빈 조각</string>
+    <string name="chat_bubbles">말풍선</string>
+    <string name="navigation_bar">내비게이션 바</string>
+    <string name="setup_fake_notiffication">가짜 알림 설정</string>
+    <string name="setup_fake_video_call">가짜 화상 통화 설정</string>
+    <string name="setup_fake_call">가짜 음성 통화 설정</string>
+    <string name="in_coming_call">수신 전화</string>
+    <string name="out_coming_call">불러내</string>
+    <string name="contact">연락하다</string>
+    <string name="message_content">메시지 내용</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">메시지의 텍스트를 입력하십시오</string>
+    <string name="time_delay">시간 지연</string>
+    <string name="message_sound">메시지 소리</string>
+    <string name="dialog_description_time_delay">가짜 수신 전화를 표시하는 카운트다운 시간입니다.</string>
+    <string name="get_a_call_now">지금 전화 받기</string>
+    <string name="five_seconds_later">5초 후</string>
+    <string name="ten_seconds_later">10초 후</string>
+    <string name="fifteen_seconds_later">15초 후</string>
+    <string name="twenty_seconds_later">20초 후</string>
+    <string name="recommend">추천하다</string>
+    <string name="create_your_contact">연락처 만들기</string>
+    <string name="edit_your_contact">연락처 편집</string>
+    <string name="pick_up_time">데리러 갈 시간</string>
+    <string name="des_pick_up_time">수신자가 가짜 화상 통화를 받을 때까지의 카운트다운 시간입니다.</string>
+    <string name="video_fake">비디오 가짜</string>
+    <string name="des_upload_video">최상의 경험을 위해 \n 수직 종횡비(9:16)의 동영상을 \n 선택하는 것이 \n 권장됩니다.</string>
+    <string name="upload_video">비디오 업로드</string>
+    <string name="call_away">불러내</string>
+    <string name="pick_up_now">지금 픽업</string>
+    <string name="change_video">비디오 변경</string>
+
+    <!--    data default contact-->
+    <string name="data_default_name_1">Cristiano Ronaldo</string>
+    <string name="data_default_work_1">사우디 프로리그 클럽 알 나스르의 주장</string>
+    <string name="data_default_live_1">포르투갈 마데이라에 거주</string>
+
+    <string name="data_default_name_2">Leo Messi</string>
+    <string name="data_default_education_2">바르셀로나의 La Masia Academy에서 공부했습니다.</string>
+    <string name="data_default_work_2">클럽 파리 생제르맹의 스트라이커</string>
+    <string name="data_default_live_2">프랑스 파리 거주</string>
+
+    <string name="data_default_name_3">Taylor Swift</string>
+    <string name="data_default_work_3">그래미상 수상 가수</string>
+    <string name="data_default_live_3">테네시주 내슈빌에 거주</string>
+
+    <string name="data_default_name_4">Johnny Depp</string>
+    <string name="data_default_work_4">유명한 배우</string>
+    <string name="data_default_live_4">미국에서 살다</string>
+
+    <string name="create_new">생성\n새로 만들기</string>
+
+    <string name="choose_interface_color">인터페이스 색상 선택</string>
+    <string name="your_chat_bubble_display_color">말풍선 표시 색상</string>
+    <string name="close">닫다</string>
+    <string name="ok_dialog">좋아요</string>
+    <string name="ads_video_call">당신의 가짜 화상 통화가 다가오고 있습니다…</string>
+    <string name="ads_voice_call">당신의 가짜 음성 통화가 오고 있습니다…</string>
+    <string name="ads_notification">가짜 알림이 오고 있습니다…</string>
+    <string name="ads_done">고객님의 의견에 귀기울여 더 좋은 제품이 되도록 노력하겠습니다!</string>
+    <string name="notify_declined">가짜 전화를 사용하려면 알림을 허용하십시오.</string>
+
+    <string name="onboard_title_1">현실적인 가짜 대화 앱</string>
+    <string name="onboard_title_2">대화의 양쪽을 제어</string>
+    <string name="onboard_title_3">친구나 파트너에게 장난을 쳐보세요</string>
+
+    <string name="onboard_des_1">메신저처럼 가짜 채팅, 가짜 통화, 가짜 화상 통화 및 가짜 알림을 만듭니다.</string>
+    <string name="onboard_des_2">메시지를 보내고 받는 시간을 쉽게 설정할 수 있습니다.</string>
+    <string name="onboard_des_3">실제처럼 문자를 보낼 유명인을 만드세요. 친구를 트롤링하는 데 사용하십시오.</string>
+
+    <string name="content_fake_messenger">가짜 \n메시지</string>
+    <string name="content_fake_voice_call">가짜 \n음성 통화</string>
+    <string name="content_fake_video_call">가짜\n영상통화</string>
+    <string name="content_fake_noti">가짜 \n알림</string>
+    <string name="free">무료</string>
+    <string name="one_hun_coin">-100포인트</string>
+    <string name="two_hun_coin">-200포인트</string>
+    <string name="three_hun_coin">-300포인트</string>
+    <string name="one_extra_coin">+100포인트</string>
+    <string name="two_extra_coin">+200포인트</string>
+    <string name="three_extra_coin">+300포인트</string>
+
+    <string name="conversation_suggestions">대화 제안</string>
+    <string name="your_coin">당신의 포인트</string>
+    <string name="manage_conversation">대화 관리</string>
+    <string name="suggest">제안하다</string>
+    <string name="create_new_manager_suggest">새로 만들기</string>
+    <string name="your_conversation_manager_suggest">당신의 대화</string>
+    <string name="asked_question">자주 묻는 질문?</string>
+    <string name="faq">자주하는 질문</string>
+    <string name="privacy_policy">개인 정보 정책</string>
+    <string name="language">언어</string>
+
+    <string name="faq_des_1">이 기능을 사용하려면 \'가짜 메신저\'를 클릭한 다음 대화를 만들고 싶은 연락처를 선택하고 실제 메신저인 것처럼 대화하면 됩니다. 우리는 당신이 그것을 즐기시기 바랍니다!</string>
+    <string name="faq_des_2">예, 저희 애플리케이션은 수신 및 발신 화상 통화를 위조할 수 있는 기능을 제공합니다. 원하는 기능을 선택하고, 연락처를 선택하고, 통화 정보를 설정하고, 통화를 시작하기만 하면 됩니다.</string>
+    <string name="faq_des_3">수신 메시지 알림을 말풍선 또는 상태 표시줄 알림(선호도에 따라 다름)의 형태로 생성할 수 있는 기능입니다. 수신 메시지가 표시되는 방식을 사용자 정의할 수 있습니다. 이 기능은 여자 친구, 남자 친구 또는 연인에게 장난을 치거나 놀리는 데 매우 효과적입니다. 우리의 응용 프로그램으로 사랑하는 사람에게 유머러스한 순간을 가져다주세요.</string>
+    <string name="faq_des_4">아니요, 만들 수 있는 가짜 통화, 가짜 메시지 또는 가짜 화상 통화의 수에 제한을 두지 않습니다. 대신 채점 메커니즘을 구현했습니다. 기존 포인트를 사용하여 해당 기능을 활용할 수 있습니다. 가짜 메시지 기능은 제한 없이 사용할 수 있습니다. 단, 가짜통화나 영상통화는 \'포인트\'를 사용하여 생성해야 합니다. 유사하게 가짜 알림 기능의 경우 매우 효과적인 기능이므로 사용하려면 더 많은 포인트가 필요합니다.</string>
+    <string name="faq_des_5">선물 제공의 즐거움과 공정성을 높이기 위해 앱을 사용하는 각 회원에 대한 점수 매기기를 구현했습니다. 포인트를 사용하여 기능을 활용하게 됩니다. 각 기능은 사용 시 일정 수의 포인트를 소모합니다. 일일 로그인 또는 보상형 광고 시청을 통해 포인트를 적립할 수 있습니다. 더 많은 포인트를 적립하여 리더보드에서 순위를 높이는 것을 잊지 마세요. 여기에서 흥미진진한 월간 특전과 혜택을 받을 수 있습니다.</string>
+    <string name="faq_des_6">순위표는 다른 사용자와 비교하여 \'포인트\'를 기준으로 순위를 표시합니다. 점수가 높을수록 순위가 높아지며 그 반대도 마찬가지입니다. 높은 순위(상위 1~3위)를 달성한 사람은 매달 말에 값진 보상을 받게 됩니다. 보상에는 프리미엄 광고 없는 패키지에 대한 추가 포인트 또는 바우처가 포함될 수 있습니다.</string>
+
+    <string name="faq_1">가짜 메신저 메시지 기능은 어떻게 사용하나요?</string>
+    <string name="faq_2">응용 프로그램이 가짜 화상 통화를 지원합니까?</string>
+    <string name="faq_3">가짜 메시지 알림 기능은 무엇입니까?</string>
+    <string name="faq_4">애플리케이션에서 페이크 콜, 페이크 메시지, 페이크 화상 통화 횟수에 제한이 있나요?</string>
+    <string name="faq_5">이 애플리케이션의 \'포인트\'는 무엇입니까?</string>
+    <string name="faq_6">리더보드가 무엇인가요?</string>
+
+    <string name="title_privacy">데모 텍스트 제목 프라이버시</string>
+    <string name="content_privacy">
+    이 서비스는 당사가 무료로 제공하며 있는 그대로 사용하도록 되어 있습니다.
+    이 페이지는 누군가가 내 서비스를 사용하기로 결정한 경우 개인 정보의 수집, 사용 및 공개에 대한 내 정책을 방문자에게 알리는 데 사용됩니다.
+    내 서비스를 사용하기로 선택하면 이 정책과 관련된 정보 수집 및 사용에 동의하는 것입니다.
+    수집한 개인 정보는 서비스 제공 및 개선을 위해 사용됩니다. 본 개인 정보 보호 정책에 설명된 경우를 제외하고 귀하의 정보를 누구와도 사용하거나 공유하지 않습니다.
+    - 이미지: 이용자가 제작하거나 인터넷에서 검색한 이미지 내용에 대해서는 책임을 지지 않습니다.
+    - 스토리: 정치적, 공격적 또는 기만적인 목적으로 앱에서 사용자가 생성한 스토리.
+    - 사용자가 악의적인 목적, 정치적 목적, 투표 및 해당 국가의 법률을 위반하는 경우 당사는 책임을 지지 않습니다.
+
+    1. 정보 수집 및 이용
+    더 나은 경험을 위해 서비스를 사용하는 동안 특정 개인 식별 정보를 제공하도록 요구할 수 있습니다. 요청한 정보는 귀하의 장치에 보관되며 어떠한 방식으로도 수집되지 않습니다.
+    앱은 귀하를 식별하는 데 사용되는 정보를 수집할 수 있는 타사 서비스를 사용합니다.
+    타사 서비스 제공업체의 개인정보 보호정책에 대한 링크를 앱에서 사용할 수 있습니다.
+
+    2. 로그 데이터
+    귀하가 내 서비스를 사용할 때마다 앱에 오류가 있는 경우 로그 데이터라는 데이터와 정보(타사 제품을 통해)를 귀하의 휴대 전화에서 수집함을 알려드립니다.
+    이 로그 데이터에는 장치 인터넷 프로토콜("IP") 주소, 장치 이름, 운영 체제 버전, 내 서비스를 사용할 때 앱 구성, 서비스 사용 시간 및 날짜 및 기타 통계와 같은 정보가 포함될 수 있습니다. .
+
+    3. 쿠키
+    쿠키는 일반적으로 익명의 고유 식별자로 사용되는 소량의 데이터가 포함된 파일입니다.
+    이러한 정보는 귀하가 방문하는 웹사이트에서 귀하의 브라우저로 전송되며 기기의 내부 메모리에 저장됩니다.
+    이 서비스는 이러한 "쿠키"를 명시적으로 사용하지 않습니다. 그러나 앱은 정보를 수집하고 서비스를 개선하기 위해 "쿠키"를 사용하는 타사 코드 및 라이브러리를 사용할 수 있습니다.
+    귀하는 이러한 쿠키를 수락하거나 거부할 수 있으며 쿠키가 귀하의 장치로 전송되는 시기를 알 수 있습니다. 당사의 쿠키를 거부하도록 선택하면 이 서비스의 일부를 사용하지 못할 수 있습니다.
+
+
+    4. 서비스 제공자
+
+    애플리케이션에서 사용하는 권한:
+    android.permission.WRITE_EXTERNAL_STORAGE
+
+    android.permission.READ_EXTERNAL_STORAGE
+
+    android.permission.WAKE_LOCK
+
+    android.permission.VIBRATE
+
+    android.permission.INTERNET
+
+    android.permission.ACCESS_NETWORK_STATE
+
+    android.permission.RECEIVE_BOOT_COMPLETED
+
+    메모:
+    - 당사는 애플리케이션의 기능을 제공하기 위한 목적으로만 위의 권리를 사용하고 다른 목적이 아닌 Google Play 정책을 완전히 준수할 것을 약속합니다.
+
+    - 사용자가 제공한 모든 정보는 사용자의 장치에만 저장되며 당사는 어떠한 형태(서버 또는 클라우드 서비스 포함…)로도 수집 및 저장하지 않습니다.
+
+    - 사용자의 민감한 정보(이메일, 은행 계좌 등)를 공개, 저장 또는 공유하지 않습니다.
+
+    5. 서비스 제공자
+    본인은 다음과 같은 이유로 제3자 회사 및 개인을 고용할 수 있습니다.
+    당사 서비스를 용이하게 하기 위해
+    당사를 대신하여 서비스를 제공하기 위해
+    서비스 관련 서비스를 수행하기 위해
+    당사 서비스가 어떻게 사용되는지 분석하는 데 도움을 주기 위해.
+    본인은 이 서비스의 사용자에게 이러한 제3자가 귀하의 개인 정보에 액세스할 수 있음을 알리고 싶습니다.
+    그 이유는 당사를 대신하여 그들에게 부여된 업무를 수행하기 위함입니다. 그러나 그들은 정보를 다른 목적으로 공개하거나 사용하지 않을 의무가 있습니다.
+
+
+    6. 보안
+    귀하의 개인 정보 제공에 대한 귀하의 신뢰를 소중하게 생각하므로 상업적으로 허용되는 정보 보호 수단을 사용하기 위해 노력하고 있습니다.
+    그러나 인터넷을 통한 전송 방법이나 전자 저장 방법은 100% 안전하고 신뢰할 수 없으며 절대적인 보안을 보장할 수 없습니다.
+
+    7. 다른 사이트로의 링크
+    이 서비스에는 다른 사이트에 대한 링크가 포함될 수 있습니다. 타사 링크를 클릭하면 해당 사이트로 이동합니다.
+    이러한 외부 사이트는 제가 운영하는 사이트가 아닙니다. 따라서 이러한 웹사이트의 개인정보 보호정책을 검토하시기 바랍니다.
+
+    본인은 제3자 사이트나 서비스의 콘텐츠, 개인정보 보호정책 또는 관행에 대해 통제할 수 없으며 책임지지 않습니다.
+
+    8. 아동의 개인정보 보호
+    이 서비스는 13세 미만의 사람을 대상으로 하지 않습니다. 본인은 13세 미만의 어린이로부터 고의로 개인 식별 정보를 수집하지 않습니다.
+    13세 미만의 어린이가 나에게 개인 정보를 제공한 것을 발견한 경우, 나는 즉시 이를 우리 서버에서 삭제합니다.
+    귀하가 부모 또는 보호자이고 귀하의 자녀가 당사에 개인 정보를 제공한 사실을 알고 계시다면 필요한 조치를 취할 수 있도록 저에게 연락해 주십시오.
+
+    9. 본 개인정보 보호정책의 변경
+    개인 정보 보호 정책을 업데이트할 수 있습니다.따라서 주기적으로 이 페이지를 검토하여 변경 사항을 확인하는 것이 좋습니다.
+        이 페이지에 새 개인 정보 보호 정책을 게시하여 변경 사항을 알려드리겠습니다. 이러한 변경 사항은 이 페이지에 게시된 즉시 효력이 발생합니다.</string>
+    <string name="thank_you">감사합니다 !!!</string>
+    <string name="claim">주장하다</string>
+    <string name="daily_login">축하해요! 일일 로그인에 대한 보상을 받았습니다.</string>
+    <string name="received_a_reward">축하해요! 당신은 보상을 받았습니다.
+
+</string>
+
+
+</resources>

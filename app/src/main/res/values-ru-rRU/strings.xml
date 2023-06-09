@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Поддельный чат</string>
+    <string name="action_settings">Настройки</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Первый фрагмент</string>
+    <string name="second_fragment_label">Второй фрагмент</string>
+    <string name="next">Следующий</string>
+    <string name="previous">Предыдущий</string>
+
+    <string name="hello_first_fragment">Привет первый фрагмент</string>
+    <string name="hello_second_fragment">Здравствуй, второй фрагмент. Аргумент: %1$s</string>
+    <string name="confirm">Подтверждать</string>
+    <string name="cancel_dialog">Отмена</string>
+    <string name="agree_dialog">Соглашаться</string>
+    <string name="add_record">Добавить запись</string>
+    <string name="ok">Хорошо</string>
+    <string name="edit">Редактировать</string>
+
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <string name="txt_language_in" translatable="false">индонезийский</string>
+    <string name="txt_language_thai" translatable="false">Тайский</string>
+    <string name="txt_language_malay" translatable="false">малазийский</string>
+    <string name="txt_language_en">Английский</string>
+    <string name="txt_language_vi">вьетнамский</string>
+    <string name="txt_language_spanish">испанский</string>
+    <string name="txt_language_portuguese">португальский</string>
+    <string name="txt_language_russiane">Русский</string>
+    <string name="txt_language_ja">Японский</string>
+    <string name="txt_language_korean">Корейский</string>
+    <string name="txt_language_french">Французский</string>
+    <string name="txt_language_german">Немецкий</string>
+    <string name="txt_language_arabic" translatable="false">арабский</string>
+    <string name="txt_language_chi">Китайский</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">Китайский (упрощенный )</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">Китайский (традиционный)</string>
+
+    <!--flag-->
+    <string name="flag_name_english">Английский</string>
+    <string name="flag_name_japanese">Японский</string>
+    <string name="flag_name_chiness">Китайский</string>
+    <string name="flag_name_indonesian">индонезийский</string>
+    <string name="flag_name_rusian">Русский</string>
+    <string name="flag_name_spanish">испанский</string>
+    <string name="flag_name_french">Французский</string>
+    <string name="flag_name_portugese">португальский</string>
+    <string name="flag_name_korean">Корейский</string>
+    <string name="flag_name_vietnamese">вьетнамский</string>
+    <string name="flag_name_german">Немецкий</string>
+
+
+    <string name="content_about_app">
+Questions or feedback? We read every single email>
+Have suggestions? Please, feel free to reach us at support@realink.dev>
+</string>
+    <string name="loading_ads_text">Загрузка объявлений…</string>
+    <string name="facebook_app_id" translatable="false">1105959933462570</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">Поддельный\nвидеозвонок</string>
+    <string name="make_message">Поддельное\nСообщение</string>
+    <string name="make_message_title">Сделать сообщение</string>
+    <string name="make_notification">Поддельное\nуведомление</string>
+    <string name="make_notification_title">Сделать уведомление</string>
+    <string name="make_voice_call">Поддельный\nголосовой вызов</string>
+    <string name="make_voice_call_title">Сделать голосовой вызов</string>
+    <string name="title_make_video_call">Сделать видеозвонок</string>
+    <string name="call_now">Позвони сейчас</string>
+    <string name="call_type">Тип вызова</string>
+    <string name="notification_type">Тип уведомления</string>
+    <string name="incoming_call">Входящий звонок</string>
+    <string name="incoming_call_later">Входящий звонок позже:</string>
+    <string name="top">Вершина</string>
+    <string name="popup">Неожиданно возникнуть</string>
+    <string name="calling">Вызов</string>
+    <string name="name_your_friend">Имя</string>
+    <string name="education">Образование</string>
+    <string name="education_hint">пример: студент Гарвардского университета</string>
+    <string name="work">Работа</string>
+    <string name="work_hint">пример: Футбол в профессиональной лиге Саудовской Аравии</string>
+    <string name="live">Жить</string>
+    <string name="live_hint">пример: жить в Нью-Йорке</string>
+    <string name="lives_in">Живет в</string>
+    <string name="personal_info">Тип</string>
+    <string name="message">Мессенджер</string>
+    <string name="operation_status">Статус операции</string>
+    <string name="change_avatar">Изменить изображение профиля</string>
+    <string name="hint_text_name">Введите имя контакта</string>
+    <string name="hint_lives_in">Доктор Пьермонт, Альбукерке, Нью-Мексико</string>
+    <string name="enter_message">Введите сообщение</string>
+    <string name="incoming_call_picture">Изображение входящего звонка</string>
+    <string name="video_of_incoming_calls">Видео входящих звонков</string>
+    <string name="call_later">Позвони позже</string>
+    <string name="send_later">Отправить позже</string>
+    <string name="pick_up_later">Забрать позже</string>
+    <string name="voice_later">Озвучить позже</string>
+    <string name="pick_up_the_phone_later">Поднимите трубку позже</string>
+    <string name="now">Сейчас</string>
+    <string name="send_a_message_later">Отправить сообщение позже</string>
+    <string name="message_photo">Фото сообщения</string>
+    <string name="online">Статус онлайн</string>
+    <string name="verified">проверено</string>
+    <string name="friend_on_facebook">Друг на Facebook</string>
+    <string name="theme">Цвет</string>
+    <string name="create">Создавать</string>
+    <string name="online_5_minutes_ago">Онлайн 5 минут назад</string>
+    <string name="online_30_minutes_ago">Онлайн 30 минут назад</string>
+    <string name="online_1_hour_ago">Онлайн 1 час назад</string>
+    <string name="online_1_day_ago">Онлайн 1 день назад</string>
+    <string name="time_call_seconds">%s секунд</string>
+    <string name="time_call_minutes">%s минут</string>
+    <string name="time_call_one_minutes">1 минута</string>
+    <string name="video_call_on_messenger">Видеозвонок в мессенджере</string>
+    <string name="voice_call_on_messenger">Голосовой вызов в мессенджере</string>
+    <string name="refuse">ОТКЛОНИТЬ</string>
+    <string name="answer">ОТВЕЧАТЬ</string>
+    <string name="reply">ОТВЕЧАТЬ</string>
+    <string name="guide">Гид</string>
+    <string name="more_app">Больше приложений</string>
+    <string name="rate_app">Оценить приложение</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="contact_us">Связаться с нами</string>
+    <string name="content_by">Приложение разработано \nGfStudio</string>
+    <string name="body_name_app">Инструменты, образ жизни</string>
+    <string name="title_rate_app">Дайте нам 5 звезд, чтобы поощрить \nСпасибо за вашу поддержку!</string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">Мы поглотим и модернизируем намного больше! Спасибо!</string>
+    <string name="please_give_us_feedback">Пожалуйста, дайте нам обратную связь</string>
+    <string name="do_you_like_the_app">Вам нравится приложение?</string>
+    <string name="sent">Отправил</string>
+    <string name="change_picture">Изменить изображение</string>
+    <string name="outgoing_call_pictures">Фотографии исходящего звонка</string>
+    <string name="done">Сделанный</string>
+    <string name="please_fill_in_the_information">Пожалуйста, заполните информацию</string>
+    <string name="maxium_characters">Максимум 25 символов</string>
+    <string name="note">Примечание</string>
+    <string name="note_title_error">Пожалуйста, заполните \информацию полностью</string>
+    <string name="call_come_later">Звонок будет позже:</string>
+    <string name="noti_come_later">Уведомление придет позже:</string>
+    <string name="noti">Уведомление придет позже:</string>
+    <string name="another_task">Выполняется другая задача. Пожалуйста, дождитесь завершения задания.</string>
+
+    <string name="guide_info_1">Введите текст сообщения, которое вам нравится, чтобы создать поддельный чат.</string>
+    <string name="guide_info_2">Сделайте поддельный видеозвонок, заполнив информацию, доступную в функции.</string>
+    <string name="guide_info_3">Сделайте поддельный голосовой вызов, заполнив основную информацию, такую как: имя, фото в соответствии с вашими предпочтениями.</string>
+    <string name="guide_info_4">Заполните текст сообщения и выберите желаемый внешний вид (сверху или всплывающее окно).</string>
+    <string name="guide_info_5">Сохраняйте все созданные вами списки чатов.</string>
+    <string name="title_calling">Звонок…</string>
+    <string name="fake_messenger_title">Поддельный мессенджер</string>
+    <string name="content_empty_view">У вас еще нет списка чатов.\n Пожалуйста, добавьте новый чат</string>
+    <string name="active_now">Активно в настоящее время</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content">You can\'t reply to this conversation.</string>
+    <string name="change_information">Изменить информацию</string>
+    <string name="conversation_list">Список бесед</string>
+    <string name="select_sticker">Выберите наклейку</string>
+    <string name="send">Отправлять</string>
+    <string name="receive">Получать</string>
+    <string name="removed_a_message">%s удалил сообщение</string>
+    <string name="live_in">Проживает в %s</string>
+    <string name="you">Ты</string>
+    <string name="you_are_friends">Вы друзья на Facebook</string>
+    <string name="ask_save_image">Хотите сохранить скриншот?</string>
+    <string name="cancel">Отмена</string>
+    <string name="screenshort_success">Успех скриншота</string>
+    <string name="set_time">Установить время</string>
+    <string name="voice_message">Голосовое сообщение</string>
+    <string name="enter_data">Введите данные</string>
+    <string name="you_must_enter">Вы должны ввести %s</string>
+    <string name="full_data">полные данные</string>
+
+    <string name="monthly_package">Ежемесячный пакет</string>
+    <string name="get_premium_for_1_month">Получите Премиум привилегии на 1 месяц.</string>
+    <string name="save_20">Сохранить 20%</string>
+    <string name="year_package">Годовой пакет</string>
+    <string name="get_premium_for_1_year">Получите Премиум привилегии на 1 год.</string>
+    <string name="forever_package">Пакет навсегда</string>
+    <string name="get_premium_forever">Получите привилегии Премиум навсегда.</string>
+    <string name="month">/месяц</string>
+    <string name="year">/год</string>
+    <string name="forever">/навсегда</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9$</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">Не удается получить ссылку на видео.\n Выберите другое видео</string>
+    <string name="delete">Удалить</string>
+    <string name="delete_this_conversation">Удалить этот разговор</string>
+    <string name="please_turn_on_the_network">Пожалуйста, включите сеть\n для лучшего опыта</string>
+    <string name="thank_for_your_response">Спасибо за ваш ответ !</string>
+    <string name="we_will_listen_to_your_comments">Мы прислушаемся к вашим комментариям и\n поработаем над улучшением продукта!</string>
+
+    <string name="load_ads">Загрузить рекламу</string>
+    <string name="ads_are_loading">Объявления загружаются в ожидании\nэта функция обрабатывается</string>
+    <string name="remove_ads">Убрать рекламу</string>
+
+    // in app purchase
+    <string name="enjoy_your_premium_member">Наслаждайтесь своим премиум-членом</string>
+    <string name="continues">Продолжать</string>
+    <string name="in_app_month">/месяц</string>
+    <string name="in_app_forever">/навсегда</string>
+    <string name="in_app_year">/год</string>
+    <string name="save_in_app">Сохранить %s</string>
+
+    <string name="in_app_title_1_m">Ежемесячный пакет</string>
+    <string name="in_app_content_1_m">Получите Премиум привилегии на 1 месяц.</string>
+
+    <string name="in_app_title_n_m">%s месяцев пакет</string>
+    <string name="in_app_content_n_m">Получите привилегии Premium на %s мес.</string>
+
+    <string name="in_app_title_1_y">Годовой пакет</string>
+    <string name="in_app_content_1_y">Получите Премиум привилегии на 1 год.</string>
+
+    <string name="in_app_title_f_r">Пакет навсегда</string>
+    <string name="in_app_content_f_r">Получите премиум-привилегии навсегда</string>
+
+    <string name="unlimited_ess">Неограниченный беспорядок</string>
+    <string name="no_ads">Без рекламы</string>
+    <string name="high_quality_video_call">Видеозвонок высокого качества</string>
+    <string name="get">Получать</string>
+    <string name="premium">Премиум</string>
+    <string name="select_language">Выберите язык</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Привет пустой фрагмент</string>
+    <string name="chat_bubbles">чат пузыри</string>
+    <string name="navigation_bar">Панель навигации</string>
+    <string name="setup_fake_notiffication">Настроить поддельное уведомление</string>
+    <string name="setup_fake_video_call">Настройка поддельного видеозвонка</string>
+    <string name="setup_fake_call">Настройка поддельного голосового вызова</string>
+    <string name="in_coming_call">Входящий звонок</string>
+    <string name="out_coming_call">Отозвать</string>
+    <string name="contact">Контакт</string>
+    <string name="message_content">Содержание сообщения</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">Введите текст сообщения</string>
+    <string name="time_delay">Временная задержка</string>
+    <string name="message_sound">Звук сообщения</string>
+    <string name="dialog_description_time_delay">Время обратного отсчета, чтобы показать поддельный входящий вызов</string>
+    <string name="get_a_call_now">Позвоните сейчас</string>
+    <string name="five_seconds_later">5 секунд спустя</string>
+    <string name="ten_seconds_later">10 секунд спустя</string>
+    <string name="fifteen_seconds_later">15 секунд спустя</string>
+    <string name="twenty_seconds_later">20 секунд спустя</string>
+    <string name="recommend">Рекомендовать</string>
+    <string name="create_your_contact">Создайте свой контакт</string>
+    <string name="edit_your_contact">Изменить свой контакт</string>
+    <string name="pick_up_time">Время забирать</string>
+    <string name="des_pick_up_time">Это время обратного отсчета, пока получатель ответит на ваш фальшивый видеозвонок.</string>
+    <string name="video_fake">Видео Фейк</string>
+    <string name="des_upload_video">Рекомендуется \n выбирать видео \n с соотношением сторон \n по вертикали (9:16) для получения наилучших \n впечатлений.</string>
+    <string name="upload_video">Загрузить видео</string>
+    <string name="call_away">Отозвать</string>
+    <string name="pick_up_now">Забрать сейчас</string>
+    <string name="change_video">Изменить видео</string>
+
+    <!--    data default contact-->
+    <string name="data_default_name_1">Cristiano Ronaldo</string>
+    <string name="data_default_work_1">Капитан саудовского клуба Pro League Al Nassr</string>
+    <string name="data_default_live_1">Живет на Мадейре, Португалия.</string>
+
+    <string name="data_default_name_2">Leo Messi</string>
+    <string name="data_default_education_2">Учился в академии La Masia в Барселоне.</string>
+    <string name="data_default_work_2">Нападающий клуба «Пари Сен-Жермен».</string>
+    <string name="data_default_live_2">Живет в Париже, Франция</string>
+
+    <string name="data_default_name_3">Taylor Swift</string>
+    <string name="data_default_work_3">Певица, обладательница премии Грэмми</string>
+    <string name="data_default_live_3">Живет в Нэшвилле, Теннесси.</string>
+
+    <string name="data_default_name_4">Johnny Depp</string>
+    <string name="data_default_work_4">Известный актер</string>
+    <string name="data_default_live_4">Жить в Америке</string>
+
+    <string name="create_new">Создать\nновый</string>
+
+    <string name="choose_interface_color">Выберите цвет интерфейса</string>
+    <string name="your_chat_bubble_display_color">Цвет отображения пузырьков вашего чата</string>
+    <string name="close">Закрывать</string>
+    <string name="ok_dialog">ХОРОШО</string>
+    <string name="ads_video_call">Ваш фальшивый видеозвонок приближается…</string>
+    <string name="ads_voice_call">Ваш фальшивый голосовой вызов идет…</string>
+    <string name="ads_notification">Ваше фальшивое уведомление приходит…</string>
+    <string name="ads_done">Мы прислушаемся к вашим комментариям и поработаем над улучшением продукта!</string>
+    <string name="notify_declined">Пожалуйста, разрешите уведомление об использовании ложного вызова</string>
+
+    <string name="onboard_title_1">Приложение для реалистичных поддельных разговоров</string>
+    <string name="onboard_title_2">Контролируйте обе стороны разговора</string>
+    <string name="onboard_title_3">Разыграйте своего друга или партнера</string>
+
+    <string name="onboard_des_1">Создайте поддельный чат, поддельный звонок, поддельный видеозвонок и поддельное уведомление, полностью как в мессенджере.</string>
+    <string name="onboard_des_2">Легко установить время для отправки и получения сообщений.</string>
+    <string name="onboard_des_3">Создавайте знаменитостей, чтобы переписываться с ними, как с настоящими. Используйте его, чтобы троллить своих друзей.</string>
+
+    <string name="content_fake_messenger">Фейк\nСообщение</string>
+    <string name="content_fake_voice_call">Поддельный\nГолосовой вызов</string>
+    <string name="content_fake_video_call">Ложный \nвидеозвонок</string>
+    <string name="content_fake_noti">Поддельное \nУведомление</string>
+    <string name="free">Бесплатно</string>
+    <string name="one_hun_coin">-100 баллов</string>
+    <string name="two_hun_coin">-200 баллов</string>
+    <string name="three_hun_coin">-300 баллов</string>
+    <string name="one_extra_coin">+100 баллов</string>
+    <string name="two_extra_coin">+200 баллов</string>
+    <string name="three_extra_coin">+300 баллов</string>
+
+    <string name="conversation_suggestions">Предложения для разговора</string>
+    <string name="your_coin">Ваша точка зрения</string>
+    <string name="manage_conversation">Управление беседой</string>
+    <string name="suggest">Предлагать</string>
+    <string name="create_new_manager_suggest">Создавать новое</string>
+    <string name="your_conversation_manager_suggest">Ваш разговор</string>
+    <string name="asked_question">Часто задаваемые вопросы?</string>
+    <string name="faq">Часто задаваемые вопросы</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="language">Язык</string>
+
+    <string name="faq_des_1">Чтобы использовать эту функцию, вы просто нажимаете «Поддельный мессенджер», затем выбираете контакт, с которым хотите создать беседу и взаимодействовать, как если бы это был настоящий мессенджер. Надеемся, вам понравится!</string>
+    <string name="faq_des_2">Да, наше приложение предоставляет вам возможность подделывать как входящие, так и исходящие видеозвонки. Все, что вам нужно сделать, это выбрать нужную функцию, выбрать контакт, настроить информацию о вызове и инициировать вызов.</string>
+    <string name="faq_des_3">Это функция, которая позволяет создавать уведомления о входящих сообщениях в виде всплывающих окон чата или уведомлений в строке состояния (в зависимости от ваших предпочтений). Вы можете настроить способ отображения входящих сообщений. Эта функция очень эффективна для розыгрыша или поддразнивания вашей девушки, парня или романтического партнера. Принесите несколько юмористических моментов своим близким с нашим приложением.</string>
+    <string name="faq_des_4">Нет, мы не ограничиваем количество фальшивых звонков, фальшивых сообщений или фальшивых видеозвонков, которые можно создать. Вместо этого мы внедрили механизм подсчета очков. Используя имеющиеся баллы, вы можете использовать наши соответствующие функции. Функцию поддельного сообщения можно использовать без ограничений. Однако для поддельных звонков или видеозвонков вам нужно будет потратить «Очки», чтобы создать их. Точно так же для функции поддельных уведомлений это очень эффективная функция, поэтому для ее использования требуется больше очков.</string>
+    <string name="faq_des_5">Чтобы усилить волнение и справедливость при дарении подарков, мы внедрили механизм подсчета очков для каждого участника, использующего приложение. Вы будете использовать баллы, чтобы использовать наши функции. Каждая функция потребляет определенное количество очков при использовании. Вы можете зарабатывать очки, ежедневно входя в систему или просматривая рекламу с вознаграждением. Не забывайте накапливать больше очков, чтобы повысить свой рейтинг в таблице лидеров, где вы будете получать интересные ежемесячные привилегии и преимущества.</string>
+    <string name="faq_des_6">В таблице лидеров будет отображаться ваш рейтинг на основе ваших \'Очков\' по сравнению с другими пользователями. Чем выше ваши баллы, тем выше ваш рейтинг, и наоборот. Те, кто достигнет высокого рейтинга (1–3 лучших), получат ценные награды в конце каждого месяца. Награды могут включать в себя дополнительные баллы или ваучеры на наш премиальный пакет без рекламы.</string>
+
+    <string name="faq_1">Как использовать функцию поддельного сообщения в мессенджере?</string>
+    <string name="faq_2">Поддерживает ли приложение поддельные видеозвонки?</string>
+    <string name="faq_3">Какова функция поддельных уведомлений о сообщениях?</string>
+    <string name="faq_4">Есть ли ограничение на количество поддельных звонков, поддельных сообщений или поддельных видеозвонков в приложении?</string>
+    <string name="faq_5">Что такое «Очки» в этом приложении?</string>
+    <string name="faq_6">Что такое таблица лидеров?</string>
+
+    <string name="title_privacy">Конфиденциальность заголовка демо-текста</string>
+    <string name="content_privacy">
+    Эта УСЛУГА предоставляется Нами бесплатно и предназначена для использования как есть.
+    Эта страница используется для информирования посетителей о моих правилах сбора, использования и раскрытия Личной информации, если кто-то решил воспользоваться моей Службой.
+    Если вы решите использовать мой Сервис, вы соглашаетесь на сбор и использование информации в связи с этой политикой.
+    Личная информация, которую я собираю, используется для предоставления и улучшения Сервиса. Я не буду использовать или передавать вашу информацию кому-либо, кроме случаев, описанных в настоящей Политике конфиденциальности.
+    - Изображения: мы не несем ответственности за изображения, созданные пользователями или найденные в Интернете.
+    - Истории: созданные пользователями истории в приложении с политическими, оскорбительными или вводящими в заблуждение целями.
+    - Мы не несем ответственности, когда пользователи приложения в злонамеренных, политических целях голосуют и нарушают применимые национальные законы.
+
+    1. Сбор и использование информации
+    Для лучшего опыта использования нашего Сервиса я могу потребовать от вас предоставить нам определенную личную информацию. Информация, которую я запрашиваю, будет храниться на вашем устройстве и никоим образом не будет собираться мной.
+    Приложение использует сторонние сервисы, которые могут собирать информацию, используемую для вашей идентификации.
+    В приложении можно использовать ссылки на политики конфиденциальности сторонних поставщиков услуг.
+
+    2. Данные журнала
+    Я хочу сообщить вам, что всякий раз, когда вы используете мой Сервис, в случае ошибки в приложении я собираю данные и информацию (через сторонние продукты) на вашем телефоне под названием «Данные журнала».
+    Эти данные журнала могут включать в себя такую информацию, как адрес интернет-протокола («IP») вашего устройства, имя устройства, версия операционной системы, конфигурация приложения при использовании моего Сервиса, время и дата использования вами Сервиса и другие статистические данные. .
+
+    3. Файлы cookie
+    Файлы cookie — это файлы с небольшим объемом данных, которые обычно используются в качестве анонимных уникальных идентификаторов.
+    Они отправляются в ваш браузер с веб-сайтов, которые вы посещаете, и сохраняются во внутренней памяти вашего устройства.
+    Эта Служба не использует эти «куки» в явном виде. Однако приложение может использовать сторонний код и библиотеки, которые используют файлы cookie для сбора информации и улучшения своих услуг.
+    У вас есть возможность либо принять, либо отказаться от этих файлов cookie и узнать, когда файл cookie отправляется на ваше устройство. Если вы решите отказаться от наших файлов cookie, вы не сможете использовать некоторые части этой Услуги.
+
+
+    4. Поставщики услуг
+
+    Разрешения, которые мы используем в приложении:
+    android.permission.WRITE_EXTERNAL_STORAGE
+
+    android.permission.READ_EXTERNAL_STORAGE
+
+    android.permission.WAKE_LOCK
+
+    android.permission.VIBRATE
+
+    android.permission.ИНТЕРНЕТ
+
+    android.permission.ACCESS_NETWORK_STATE
+
+    android.permission.RECEIVE_BOOT_COMPLETED
+
+    ПРИМЕЧАНИЕ:
+    - Мы обязуемся использовать вышеуказанные права только для выполнения функций приложения и полностью соблюдать политику Google Play, а не для каких-либо других целей.
+
+    - Вся информация, предоставленная пользователями, будет храниться только на их устройстве, и мы не собираем и не храним ее ни в какой форме (в том числе на серверах или в облачных сервисах…).
+
+    - Мы не раскрываем, не храним и не передаем какую-либо конфиденциальную информацию пользователей (электронная почта, банковский счет…).
+
+    5. Поставщики услуг
+    Я могу нанимать сторонние компании и частных лиц по следующим причинам:
+    Для облегчения нашего Сервиса;
+    Для предоставления Сервиса от нашего имени;
+    Для оказания услуг, связанных с Сервисом;
+    Чтобы помочь нам проанализировать, как используется наш Сервис.
+    Я хочу сообщить пользователям этого Сервиса, что эти третьи лица имеют доступ к вашей Личной информации.
+    Причина в том, что они выполняют возложенные на них задачи от нашего имени. Однако они обязаны не раскрывать и не использовать информацию для каких-либо других целей.
+
+
+    6. Безопасность
+    Я ценю ваше доверие в предоставлении нам вашей личной информации, поэтому мы стремимся использовать коммерчески приемлемые средства ее защиты.
+    Но помните, что ни один метод передачи через Интернет или метод электронного хранения не является на 100% безопасным и надежным, и я не могу гарантировать его абсолютную безопасность.
+
+    7. Ссылки на другие сайты
+    Эта Служба может содержать ссылки на другие сайты. Если вы нажмете на стороннюю ссылку, вы будете перенаправлены на этот сайт.
+    Обратите внимание, что я не управляю этими внешними сайтами. Поэтому я настоятельно рекомендую вам ознакомиться с Политикой конфиденциальности этих сайтов.
+
+    Я не контролирую и не несу ответственности за содержание, политику конфиденциальности или действия любых сторонних сайтов или служб.
+
+    8. Конфиденциальность детей
+    Эти Услуги не предназначены для лиц моложе 13 лет. Я сознательно не собираю личную информацию от детей младше 13 лет.
+    Если я узнаю, что ребенок младше 13 лет предоставил мне личную информацию, я немедленно удаляю ее с наших серверов.
+    Если вы являетесь родителем или опекуном и знаете, что ваш ребенок предоставил нам личную информацию, свяжитесь со мной, чтобы я мог предпринять необходимые действия.
+
+    9. Изменения в настоящей Политике конфиденциальности
+    Я могу обновить нашу Политику конфиденциальностивремя от времени. Таким образом, вам рекомендуется периодически просматривать эту страницу на предмет любых изменений.
+Я сообщу вам о любых изменениях, опубликовав новую Политику конфиденциальности на этой странице. Эти изменения вступают в силу сразу после их публикации на этой странице.</string>
+    <string name="thank_you">Спасибо !!!</string>
+    <string name="claim">Требовать</string>
+    <string name="daily_login">Поздравляем! Вы получили вознаграждение за ежедневный вход в систему.</string>
+    <string name="received_a_reward">Поздравляем! Вы получили награду.</string>
+
+
+</resources>

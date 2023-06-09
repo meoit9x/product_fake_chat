@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tạo trò chuyện giả</string>
+    <string name="action_settings">Cài đặt</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">mảnh đầu tiên</string>
+    <string name="second_fragment_label">mảnh thứ hai</string>
+    <string name="next">Tiếp theo</string>
+    <string name="previous">Về trước</string>
+
+    <string name="hello_first_fragment">Xin chào đoạn đầu tiên</string>
+    <string name="hello_second_fragment">Xin chào mảnh thứ hai. Lập luận: %1$s</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="cancel_dialog">Hủy bỏ</string>
+    <string name="agree_dialog">Đồng ý</string>
+    <string name="add_record">Thêm bản ghi</string>
+    <string name="ok">OK</string>
+    <string name="edit">Sửa</string>
+
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <string name="txt_language_in" translatable="false">Tiếng Indonesia</string>
+    <string name="txt_language_thai" translatable="false">Tiếng Thái</string>
+    <string name="txt_language_malay" translatable="false">Tiếng Malaysia</string>
+    <string name="txt_language_en">Tiếng Anh</string>
+    <string name="txt_language_vi">Tiếng Việt</string>
+    <string name="txt_language_spanish">Tiếng Tây Ban Nha</string>
+    <string name="txt_language_portuguese">Tiếng Bồ Đào Nha</string>
+    <string name="txt_language_russiane">Tiếng Nga</string>
+    <string name="txt_language_ja">Tiếng Nhật</string>
+    <string name="txt_language_korean">Tiếng Hàn Quốc</string>
+    <string name="txt_language_french">Tiếng Pháp</string>
+    <string name="txt_language_german">Tiếng Đức</string>
+    <string name="txt_language_arabic" translatable="false">Tiếng Ả Rập</string>
+    <string name="txt_language_chi">Tiếng Trung Quốc</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">Tiếng Trung (Giản thể )</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">Tiếng Trung Hoa Truyền Thống</string>
+
+    <!--flag-->
+    <string name="flag_name_english">Tiếng Anh</string>
+    <string name="flag_name_japanese">tiếng Nhật</string>
+    <string name="flag_name_chiness">Tiếng Trung Quốc</string>
+    <string name="flag_name_indonesian">Tiếng Indonesia</string>
+    <string name="flag_name_rusian">Tiếng Nga</string>
+    <string name="flag_name_spanish">Tiếng Tây Ban Nha</string>
+    <string name="flag_name_french">Tiếng Pháp</string>
+    <string name="flag_name_portugese">Tiếng Bồ Đào Nha</string>
+    <string name="flag_name_korean">Tiếng Hàn Quốc</string>
+    <string name="flag_name_vietnamese">Tiếng Việt</string>
+    <string name="flag_name_german">Tiếng Đức</string>
+
+
+    <string name="content_about_app">
+Questions or feedback? We read every single email>
+Have suggestions? Please, feel free to reach us at support@realink.dev>
+</string>
+    <string name="loading_ads_text">Đang tải quảng cáo...</string>
+    <string name="facebook_app_id" translatable="false">1105959933462570</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">Tạo cuộc gọi \nvideo giả</string>
+    <string name="make_message">Tạo tin \nnhắn giả</string>
+    <string name="make_message_title">Tạo tin nhắn</string>
+    <string name="make_notification">Tạo \nthông báo giả</string>
+    <string name="make_notification_title">Tạo thông báo</string>
+    <string name="make_voice_call">Tạo cuộc gọi \nthoại giả</string>
+    <string name="make_voice_call_title">Thực hiện cuộc gọi thoại</string>
+    <string name="title_make_video_call">Thực hiện cuộc gọi video</string>
+    <string name="call_now">Gọi ngay bây giờ</string>
+    <string name="call_type">Loại cuộc gọi</string>
+    <string name="notification_type">Loại thông báo</string>
+    <string name="incoming_call">Cuộc gọi đến</string>
+    <string name="incoming_call_later">Cuộc gọi đến sau:</string>
+    <string name="top">Đứng đầu</string>
+    <string name="popup">Cửa sổ bật lên</string>
+    <string name="calling">Đang gọi</string>
+    <string name="name_your_friend">Tên</string>
+    <string name="education">Học vấn</string>
+    <string name="education_hint">ví dụ: Sinh viên tại Đại học Harvard</string>
+    <string name="work">Công việc</string>
+    <string name="work_hint">ví dụ: Bóng đá ở Saudi Pro League</string>
+    <string name="live">Nơi sống</string>
+    <string name="live_hint">ví dụ: Sống ở thành phố New York</string>
+    <string name="lives_in">Sống ở</string>
+    <string name="personal_info">Kiểu</string>
+    <string name="message">Tin nhắn</string>
+    <string name="operation_status">Tình trạng hoạt động</string>
+    <string name="change_avatar">Thay đổi hình ảnh đại diện</string>
+    <string name="hint_text_name">Nhập tên liên hệ</string>
+    <string name="hint_lives_in">Tiến sĩ Piermont, Albuquerque, New Mexico</string>
+    <string name="enter_message">Nhập tin nhắn</string>
+    <string name="incoming_call_picture">Hình ảnh cuộc gọi đến</string>
+    <string name="video_of_incoming_calls">Video cuộc gọi đến</string>
+    <string name="call_later">Gọi sau</string>
+    <string name="send_later">Gửi sau</string>
+    <string name="pick_up_later">Đặt sau</string>
+    <string name="voice_later">Gọi thoại sau</string>
+    <string name="pick_up_the_phone_later">Nhấc điện thoại sau</string>
+    <string name="now">Ngay bây giờ</string>
+    <string name="send_a_message_later">Gửi tin nhắn sau</string>
+    <string name="message_photo">Ảnh tin nhắn</string>
+    <string name="online">Trạng thái trực tuyến</string>
+    <string name="verified">Đã xác minh</string>
+    <string name="friend_on_facebook">Là bạn bè trên Facebook</string>
+    <string name="theme">Màu sắc</string>
+    <string name="create">Tạo</string>
+    <string name="online_5_minutes_ago">Trực tuyến 5 phút trước</string>
+    <string name="online_30_minutes_ago">Trực tuyến 30 phút trước</string>
+    <string name="online_1_hour_ago">Trực tuyến 1 giờ trước</string>
+    <string name="online_1_day_ago">Trực tuyến 1 ngày trước</string>
+    <string name="time_call_seconds">%s giây</string>
+    <string name="time_call_minutes">%s phút</string>
+    <string name="time_call_one_minutes">1 phút</string>
+    <string name="video_call_on_messenger">Gọi video trên messenger</string>
+    <string name="voice_call_on_messenger">Gọi thoại trên messenger</string>
+    <string name="refuse">TỪ CHỐI</string>
+    <string name="answer">TRẢ LỜI</string>
+    <string name="reply">ĐÁP LẠI</string>
+    <string name="guide">Hướng dẫn</string>
+    <string name="more_app">Nhiều ứng dụng hơn</string>
+    <string name="rate_app">Đánh giá ứng dụng</string>
+    <string name="feedback">Nhận xét</string>
+    <string name="contact_us">Liên hệ chúng tôi</string>
+    <string name="content_by">Ứng dụng được phát triển \nbởi GfStudio</string>
+    <string name="body_name_app">Công cụ, lối sống</string>
+    <string name="title_rate_app">Hãy cho chúng tôi 5 sao để khuyến khích \nCảm ơn sự hỗ trợ của bạn!</string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">Chúng tôi sẽ tiếp thu và nâng cấp hơn rất nhiều! Cảm ơn!</string>
+    <string name="please_give_us_feedback">Xin vui lòng cho chúng tôi thông tin phản hồi</string>
+    <string name="do_you_like_the_app">Bạn có thích ứng dụng này không?</string>
+    <string name="sent">Đã gửi</string>
+    <string name="change_picture">Đổi ảnh</string>
+    <string name="outgoing_call_pictures">Hình ảnh cuộc gọi đi</string>
+    <string name="done">Hoàn thành</string>
+    <string name="please_fill_in_the_information">Vui lòng điền thông tin</string>
+    <string name="maxium_characters">Tối đa 25 ký tự</string>
+    <string name="note">Ghi chú</string>
+    <string name="note_title_error">Vui lòng điền đầy đủ \nthông tin</string>
+    <string name="call_come_later">Cuộc gọi sẽ đến sau:</string>
+    <string name="noti_come_later">Thông báo sẽ đến sau:</string>
+    <string name="noti">Thông báo đến sau:</string>
+    <string name="another_task">Một nhiệm vụ khác đang chạy. Vui lòng chờ nhiệm vụ kết thúc.</string>
+
+    <string name="guide_info_1">Nhập nội dung tin nhắn bạn muốn để tạo một cuộc trò chuyện giả .</string>
+    <string name="guide_info_2">Thực hiện cuộc gọi video giả bằng cách điền thông tin có sẵn trong chức năng.</string>
+    <string name="guide_info_3">Thực hiện cuộc gọi giả bằng cách điền các thông tin cơ bản như: tên, ảnh theo sở thích của bạn.</string>
+    <string name="guide_info_4">Điền nội dung tin nhắn và chọn giao diện (trên cùng hoặc cửa sổ bật lên) mà bạn muốn.</string>
+    <string name="guide_info_5">Giữ tất cả các danh sách trò chuyện mà bạn đã tạo.</string>
+    <string name="title_calling">Đang gọi...</string>
+    <string name="fake_messenger_title">Fake messenger</string>
+    <string name="content_empty_view">Bạn chưa có danh sách trò chuyện.\n Vui lòng thêm một cuộc trò chuyện mới</string>
+    <string name="active_now">Đang hoạt động</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content">You can\'t reply to this conversation.</string>
+    <string name="change_information">Thay đổi thông tin</string>
+    <string name="conversation_list">danh sách hội thoại</string>
+    <string name="select_sticker">Chọn nhãn dán</string>
+    <string name="send">Gửi</string>
+    <string name="receive">Nhận</string>
+    <string name="removed_a_message">%s đã xóa một tin nhắn</string>
+    <string name="live_in">Sống ở %s</string>
+    <string name="you">Bạn</string>
+    <string name="you_are_friends">Bạn là bạn bè trên Facebook</string>
+    <string name="ask_save_image">Bạn có muốn lưu ảnh chụp màn hình không?</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="screenshort_success">Chụp màn hình thành công</string>
+    <string name="set_time">Cài đặt thời gian</string>
+    <string name="voice_message">Tin nhắn thoại</string>
+    <string name="enter_data">Nhập dữ liệu</string>
+    <string name="you_must_enter">Bạn phải nhập %s</string>
+    <string name="full_data">dữ liệu đầy đủ</string>
+
+    <string name="monthly_package">gói hàng tháng</string>
+    <string name="get_premium_for_1_month">Nhận đặc quyền Premium trong 1 tháng.</string>
+    <string name="save_20">Tiết kiệm 20%</string>
+    <string name="year_package">Gói năm</string>
+    <string name="get_premium_for_1_year">Nhận đặc quyền Premium trong 1 năm.</string>
+    <string name="forever_package">Gói mãi mãi</string>
+    <string name="get_premium_forever">Nhận đặc quyền Premium mãi mãi.</string>
+    <string name="month">/tháng</string>
+    <string name="year">/năm</string>
+    <string name="forever">/mãi mãi</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9$</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">Không thể lấy liên kết video.\n Vui lòng chọn một video khác</string>
+    <string name="delete">Xóa bỏ</string>
+    <string name="delete_this_conversation">Xóa cuộc trò chuyện này</string>
+    <string name="please_turn_on_the_network">Vui lòng bật mạng\n để có trải nghiệm tốt hơn</string>
+    <string name="thank_for_your_response">Cảm ơn phản hồi của bạn !</string>
+    <string name="we_will_listen_to_your_comments">Chúng tôi sẽ lắng nghe ý kiến của bạn và\n làm việc để cải thiện sản phẩm tốt hơn!</string>
+
+    <string name="load_ads">Tải quảng cáo</string>
+    <string name="ads_are_loading">Quảng cáo đang tải trong khi chờ\nchức năng này đang được xử lý</string>
+    <string name="remove_ads">Loại bỏ các quảng cáo</string>
+
+    // in app purchase
+    <string name="enjoy_your_premium_member">Tận hưởng thành viên cao cấp của bạn</string>
+    <string name="continues">Tiếp tục</string>
+    <string name="in_app_month">/tháng</string>
+    <string name="in_app_forever">/mãi mãi</string>
+    <string name="in_app_year">/năm</string>
+    <string name="save_in_app">Lưu %s</string>
+
+    <string name="in_app_title_1_m">Gói hàng tháng</string>
+    <string name="in_app_content_1_m">Nhận đặc quyền Premium trong 1 tháng.</string>
+
+    <string name="in_app_title_n_m">%s gói tháng</string>
+    <string name="in_app_content_n_m">Nhận đặc quyền Premium cho %s tháng.</string>
+
+    <string name="in_app_title_1_y">Gói năm</string>
+    <string name="in_app_content_1_y">Nhận đặc quyền Premium trong 1 năm.</string>
+
+    <string name="in_app_title_f_r">Gói mãi mãi</string>
+    <string name="in_app_content_f_r">Nhận đặc quyền Premium vĩnh viễn</string>
+
+    <string name="unlimited_ess">Không giới hạn lượng tin nhắn</string>
+    <string name="no_ads">Không quảng cáo</string>
+    <string name="high_quality_video_call">Cuộc Gọi Video Chất Lượng Cao</string>
+    <string name="get">Lấy</string>
+    <string name="premium">Phần thưởng</string>
+    <string name="select_language">Chọn ngôn ngữ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Xin chào đoạn trống</string>
+    <string name="chat_bubbles">Bong bóng trò chuyện</string>
+    <string name="navigation_bar">Thanh điều hướng</string>
+    <string name="setup_fake_notiffication">Thiết lập thông báo giả</string>
+    <string name="setup_fake_video_call">Thiết lập cuộc gọi video giả</string>
+    <string name="setup_fake_call">Thiết lập cuộc gọi thoại giả</string>
+    <string name="in_coming_call">Cuộc gọi đến</string>
+    <string name="out_coming_call">Gọi đi</string>
+    <string name="contact">Liên hệ</string>
+    <string name="message_content">Nội dung tin nhắn</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">Nhập nội dung tin nhắn</string>
+    <string name="time_delay">Thời gian trễ</string>
+    <string name="message_sound">Âm thanh tin nhắn</string>
+    <string name="dialog_description_time_delay">Là thời gian đếm ngược để hiển thị cuộc gọi đến giả</string>
+    <string name="get_a_call_now">Nhận cuộc gọi ngay bây giờ</string>
+    <string name="five_seconds_later">5 giây sau</string>
+    <string name="ten_seconds_later">10 giây sau</string>
+    <string name="fifteen_seconds_later">15 giây sau</string>
+    <string name="twenty_seconds_later">20 giây sau</string>
+    <string name="recommend">Gợi ý</string>
+    <string name="create_your_contact">Tạo liên hệ của bạn</string>
+    <string name="edit_your_contact">Chỉnh sửa liên hệ của bạn</string>
+    <string name="pick_up_time">Thời gian nhận</string>
+    <string name="des_pick_up_time">Là thời gian đếm ngược cho đến khi người nhận nhận cuộc gọi video giả của bạn</string>
+    <string name="video_fake">Video giả</string>
+    <string name="des_upload_video">Bạn nên \n chọn video \n có tỷ lệ khung hình dọc \n (9:16) để có \n trải nghiệm tốt nhất.</string>
+    <string name="upload_video">Tải video lên</string>
+    <string name="call_away">Gọi đi</string>
+    <string name="pick_up_now">Nhận ngay bây giờ</string>
+    <string name="change_video">Thay đổi video</string>
+
+    <!--    data default contact-->
+    <string name="data_default_name_1">Cristiano Ronaldo</string>
+    <string name="data_default_work_1">Đội trưởng tại câu lạc bộ Saudi Pro League Al Nassr</string>
+    <string name="data_default_live_1">Sống tại Madeira, Bồ Đào Nha</string>
+
+    <string name="data_default_name_2">Leo Messi</string>
+    <string name="data_default_education_2">Từng học tại Barcelona\'s La Masia Academy</string>
+    <string name="data_default_work_2">Tiền đạo tại câu lạc bộ Paris Saint-Germain</string>
+    <string name="data_default_live_2">Sống ở Paris, Pháp</string>
+
+    <string name="data_default_name_3">Taylor Swift</string>
+    <string name="data_default_work_3">Ca sĩ đoạt giải Grammy</string>
+    <string name="data_default_live_3">Sống ở Nashville, Tennessee</string>
+
+    <string name="data_default_name_4">Johnny Depp</string>
+    <string name="data_default_work_4">Diễn viên nổi tiếng</string>
+    <string name="data_default_live_4">sống ở Mỹ</string>
+
+    <string name="create_new">Tạo\nmới</string>
+
+    <string name="choose_interface_color">Chọn màu giao diện</string>
+    <string name="your_chat_bubble_display_color">Màu hiển thị bong bóng trò chuyện của bạn</string>
+    <string name="close">Đóng</string>
+    <string name="ok_dialog">OK</string>
+    <string name="ads_video_call">Cuộc gọi video giả của bạn đang đến…</string>
+    <string name="ads_voice_call">Cuộc gọi thoại giả của bạn đang đến…</string>
+    <string name="ads_notification">Thông báo giả của bạn đang đến…</string>
+    <string name="ads_done">Chúng tôi sẽ lắng nghe ý kiến của bạn và làm việc để cải thiện sản phẩm tốt hơn!</string>
+    <string name="notify_declined">Vui lòng cho phép thông báo sử dụng cuộc gọi giả</string>
+
+    <string name="onboard_title_1">Ứng dụng Cuộc trò chuyện giả thực tế</string>
+    <string name="onboard_title_2">Kiểm soát cả hai phía của cuộc trò chuyện</string>
+    <string name="onboard_title_3">Chơi khăm bạn bè hoặc đối tác của bạn</string>
+
+    <string name="onboard_des_1">Tạo trò chuyện giả, cuộc gọi giả, cuộc gọi video giả và thông báo giả hoàn toàn giống như trình nhắn tin.</string>
+    <string name="onboard_des_2">Dễ dàng cài đặt thời gian gửi và nhận tin nhắn.</string>
+    <string name="onboard_des_3">Tạo người nổi tiếng để nhắn tin với họ như thật. Sử dụng nó để troll bạn bè của bạn.</string>
+
+    <string name="content_fake_messenger">\nTin nhắn giả</string>
+    <string name="content_fake_voice_call">\nCuộc gọi thoại giả</string>
+    <string name="content_fake_video_call">\nCuộc gọi video giả</string>
+    <string name="content_fake_noti">\nThông báo giả</string>
+    <string name="free">Miễn phí</string>
+    <string name="one_hun_coin">-100 Điểm</string>
+    <string name="two_hun_coin">-200 điểm</string>
+    <string name="three_hun_coin">-300 điểm</string>
+    <string name="one_extra_coin">+100 Điểm</string>
+    <string name="two_extra_coin">+200 điểm</string>
+    <string name="three_extra_coin">+300 điểm</string>
+
+    <string name="conversation_suggestions">Gợi ý hội thoại</string>
+    <string name="your_coin">Điểm của bạn</string>
+    <string name="manage_conversation">Quản lý cuộc trò chuyện</string>
+    <string name="suggest">Gợi ý</string>
+    <string name="create_new_manager_suggest">Tạo mới</string>
+    <string name="your_conversation_manager_suggest">cuộc trò chuyện của bạn</string>
+    <string name="asked_question">Các câu hỏi thường gặp?</string>
+    <string name="faq">Câu hỏi thường gặp</string>
+    <string name="privacy_policy">Chính sách bảo mật</string>
+    <string name="language">Ngôn ngữ</string>
+
+    <string name="faq_des_1">Để sử dụng tính năng này, bạn chỉ cần nhấp vào \'Sứ giả giả \', sau đó chọn liên hệ mà bạn muốn tạo cuộc trò chuyện và tương tác như thể đó là một Messenger thật. Chúng tôi hy vọng bạn sẽ thích nó!</string>
+    <string name="faq_des_2">Có, ứng dụng của chúng tôi cung cấp cho bạn khả năng giả cả cuộc gọi video đến và đi. Tất cả những gì bạn cần làm là chọn chức năng mong muốn, chọn số liên lạc, thiết lập thông tin cuộc gọi và bắt đầu cuộc gọi.</string>
+    <string name="faq_des_3">Đây là tính năng cho phép bạn tạo thông báo tin nhắn đến dưới dạng bong bóng chat hoặc thông báo trên thanh trạng thái (tùy bạn). Bạn có thể tùy chỉnh cách hiển thị các tin nhắn đến. Chức năng này rất hiệu quả để chơi khăm hoặc trêu chọc bạn gái, bạn trai hoặc đối tác lãng mạn của bạn. Mang lại những khoảnh khắc hài hước cho những người thân yêu của bạn với ứng dụng của chúng tôi.</string>
+    <string name="faq_des_4">Không, chúng tôi không áp đặt giới hạn về số lượng cuộc gọi giả , tin nhắn giả hoặc cuộc gọi video giả có thể được tạo. Thay vào đó, chúng tôi đã thực hiện một cơ chế tính điểm. Bằng cách sử dụng các điểm hiện có của mình, bạn có thể sử dụng các tính năng tương ứng của chúng tôi. Chức năng tin nhắn giả có thể được sử dụng mà không có bất kỳ giới hạn nào. Tuy nhiên, đối với các cuộc gọi ảo hoặc cuộc gọi video, bạn sẽ cần tiêu \'Điểm\' để tạo chúng. Tương tự, đối với tính năng thông báo giả , đây là chức năng mang lại hiệu quả cao nên cần nhiều điểm hơn để sử dụng.</string>
+    <string name="faq_des_5">Để nâng cao tính thú vị và công bằng trong việc tặng quà, chúng tôi đã triển khai cơ chế tính điểm cho từng thành viên sử dụng ứng dụng. Bạn sẽ sử dụng điểm để sử dụng các tính năng của chúng tôi. Mỗi tính năng sẽ tiêu tốn một số điểm nhất định khi sử dụng. Bạn có thể kiếm điểm bằng cách đăng nhập hàng ngày hoặc bằng cách xem quảng cáo có thưởng. Đừng quên tích lũy thêm điểm để tăng thứ hạng của bạn trên bảng xếp hạng, nơi bạn sẽ nhận được các đặc quyền và lợi ích hàng tháng thú vị.</string>
+    <string name="faq_des_6">Bảng xếp hạng sẽ hiển thị xếp hạng của bạn dựa trên \'Điểm\' của bạn so với những người dùng khác. Điểm của bạn càng cao, thứ hạng của bạn càng cao và ngược lại. Những người đạt thứ hạng cao (top 1–3) sẽ nhận được phần thưởng giá trị vào cuối mỗi tháng. Phần thưởng có thể bao gồm điểm bổ sung hoặc phiếu thưởng cho gói không có quảng cáo cao cấp của chúng tôi.</string>
+
+    <string name="faq_1">Làm thế nào để sử dụng chức năng tin nhắn giả messenger?</string>
+    <string name="faq_2">Ứng dụng có hỗ trợ cuộc gọi video giả không?</string>
+    <string name="faq_3">Chức năng giả thông báo tin nhắn là gì?</string>
+    <string name="faq_4">Có giới hạn về số lượng cuộc gọi giả , tin nhắn giả hoặc cuộc gọi video giả trong ứng dụng không?</string>
+    <string name="faq_5">\'Điểm\' trong ứng dụng này là gì?</string>
+    <string name="faq_6">Bảng xếp hạng là gì?</string>
+
+    <string name="title_privacy">Bảo mật tiêu đề văn bản demo</string>
+    <string name="content_privacy">
+    DỊCH VỤ này do Chúng tôi cung cấp miễn phí và được thiết kế để sử dụng.
+    Trang này được sử dụng để thông báo cho khách truy cập về các chính sách của tôi với việc thu thập, sử dụng và tiết lộ Thông tin cá nhân nếu bất kỳ ai quyết định sử dụng Dịch vụ của tôi.
+    Nếu bạn chọn sử dụng Dịch vụ của tôi, thì bạn đồng ý với việc thu thập và sử dụng thông tin liên quan đến chính sách này.
+    Thông tin cá nhân mà tôi thu thập được sử dụng để cung cấp và cải thiện Dịch vụ. Tôi sẽ không sử dụng hoặc chia sẻ thông tin của bạn với bất kỳ ai trừ khi được mô tả trong Chính sách quyền riêng tư này.
+    - Hình ảnh: Chúng tôi không chịu trách nhiệm về nội dung hình ảnh do người dùng tự tạo hoặc tìm kiếm trên internet.
+    - Câu chuyện: Câu chuyện do người dùng tạo trong ứng dụng cho mục đích chính trị, xúc phạm hoặc lừa đảo.
+    - Chúng tôi không chịu trách nhiệm khi người sử dụng ứng dụng với mục đích xấu, mục đích chính trị, bình chọn và vi phạm pháp luật hiện hành của quốc gia.
+
+    1. Thu thập và Sử dụng Thông tin
+    Để có trải nghiệm tốt hơn, trong khi sử dụng Dịch vụ của chúng tôi, tôi có thể yêu cầu bạn cung cấp cho chúng tôi một số thông tin nhận dạng cá nhân nhất định. Thông tin mà tôi yêu cầu sẽ được lưu giữ trên thiết bị của bạn và không được tôi thu thập dưới bất kỳ hình thức nào.
+    Ứng dụng sử dụng các dịch vụ của bên thứ ba có thể thu thập thông tin được sử dụng để nhận dạng bạn.
+    Liên kết đến chính sách bảo mật của nhà cung cấp dịch vụ bên thứ ba có thể được sử dụng trong ứng dụng
+
+    2. Dữ liệu nhật ký
+    Tôi muốn thông báo với bạn rằng bất cứ khi nào bạn sử dụng Dịch vụ của tôi, trong trường hợp xảy ra lỗi trong ứng dụng, tôi sẽ thu thập dữ liệu và thông tin (thông qua các sản phẩm của bên thứ ba) trên điện thoại của bạn có tên là Dữ liệu nhật ký.
+    Dữ liệu Nhật ký này có thể bao gồm các thông tin như địa chỉ Giao thức Internet (“IP”) trên thiết bị của bạn, tên thiết bị, phiên bản hệ điều hành, cấu hình của ứng dụng khi sử dụng Dịch vụ của tôi, ngày giờ bạn sử dụng Dịch vụ và các số liệu thống kê khác .
+
+    3. Bánh quy
+    Cookie là các tệp có lượng dữ liệu nhỏ thường được sử dụng làm số nhận dạng duy nhất ẩn danh.
+    Chúng được gửi đến trình duyệt của bạn từ các trang web mà bạn truy cập và được lưu trữ trên bộ nhớ trong của thiết bị.
+    Dịch vụ này không sử dụng các “cookie” này một cách rõ ràng. Tuy nhiên, ứng dụng có thể sử dụng mã của bên thứ ba và các thư viện sử dụng “cookie” để thu thập thông tin và cải thiện dịch vụ của họ.
+    Bạn có tùy chọn chấp nhận hoặc từ chối các cookie này và biết khi nào cookie được gửi đến thiết bị của bạn. Nếu bạn chọn từ chối cookie của chúng tôi, bạn không thể sử dụng một số phần của Dịch vụ này.
+
+
+    4. Nhà cung cấp dịch vụ
+
+    Các quyền chúng tôi sử dụng trong ứng dụng:
+    android.permission.WRITE_EXTERNAL_STORAGE
+
+    android.permission.READ_EXTERNAL_STORAGE
+
+    android.permission.WAKE_LOCK
+
+    android.permission.VIBRATE
+
+    android.permission.INTERNET
+
+    android.permission.ACCESS_NETWORK_STATE
+
+    android.permission.RECEIVE_BOOT_COMPLETED
+
+    GHI CHÚ:
+    - Chúng tôi cam kết chỉ sử dụng các quyền trên với mục đích phục vụ chức năng của ứng dụng và tuân thủ đầy đủ các chính sách của google play chứ không nhằm mục đích nào khác.
+
+    - Mọi thông tin do người dùng cung cấp sẽ chỉ được lưu trữ trên thiết bị của họ và chúng tôi không thu thập và lưu trữ dưới mọi hình thức (kể cả trên máy chủ hay trên các dịch vụ đám mây…).
+
+    - Chúng tôi không tiết lộ, lưu trữ hay chia sẻ bất kỳ thông tin nhạy cảm nào của người dùng (email, tài khoản ngân hàng…).
+
+    5. Nhà cung cấp dịch vụ
+    Tôi có thể tuyển dụng các công ty và cá nhân bên thứ ba vì những lý do sau:
+    Để tạo điều kiện thuận lợi cho Dịch vụ của chúng tôi;
+    Để cung cấp Dịch vụ thay mặt chúng tôi;
+    Để thực hiện các dịch vụ liên quan đến Dịch vụ;
+    Để hỗ trợ chúng tôi phân tích cách Dịch vụ của chúng tôi được sử dụng.
+    Tôi muốn thông báo cho người dùng Dịch vụ này rằng các bên thứ ba này có quyền truy cập vào Thông tin cá nhân của bạn.
+    Lý do là để thay mặt chúng tôi thực hiện các nhiệm vụ được giao cho họ. Tuy nhiên, họ có nghĩa vụ không tiết lộ hoặc sử dụng thông tin cho bất kỳ mục đích nào khác.
+
+
+    6. Bảo mật
+    Tôi đánh giá cao sự tin tưởng của bạn trong việc cung cấp cho chúng tôi Thông tin cá nhân của bạn, do đó chúng tôi đang cố gắng sử dụng các phương tiện được chấp nhận về mặt thương mại để bảo vệ thông tin đó.
+    Nhưng hãy nhớ rằng không có phương thức truyền qua internet hoặc phương thức lưu trữ điện tử nào an toàn và đáng tin cậy 100% và tôi không thể đảm bảo tính bảo mật tuyệt đối của nó.
+
+    7. Liên kết đến các trang web khác
+    Dịch vụ này có thể chứa các liên kết đến các trang web khác. Nếu bạn nhấp vào liên kết của bên thứ ba, bạn sẽ được chuyển hướng đến trang web đó.
+    Lưu ý rằng các trang web bên ngoài này không do tôi điều hành. Vì vậy, tôi thực sự khuyên bạn nên xem lại Chính sách quyền riêng tư của các trang web này.
+
+    Tôi không kiểm soát và không chịu trách nhiệm về nội dung, chính sách bảo mật hoặc thông lệ của bất kỳ trang web hoặc dịch vụ của bên thứ ba nào.
+
+    8. Quyền riêng tư của trẻ em
+    Các Dịch vụ này không giải quyết bất kỳ ai dưới 13 tuổi. Tôi không cố ý thu thập thông tin nhận dạng cá nhân từ trẻ em dưới 13 tuổi.
+    Trong trường hợp tôi phát hiện ra rằng một đứa trẻ dưới 13 tuổi đã cung cấp thông tin cá nhân cho tôi, tôi sẽ ngay lập tức xóa thông tin này khỏi máy chủ của chúng tôi.
+    Nếu bạn là cha mẹ hoặc người giám hộ và bạn biết rằng con bạn đã cung cấp cho chúng tôi thông tin cá nhân, vui lòng liên hệ với tôi để tôi có thể thực hiện các hành động cần thiết.
+
+    9. Thay đổi Chính sách Bảo mật này
+    Tôi có thể cập nhật Chính sách quyền riêng tư của chúng tôitheo thời gian. Vì vậy, bạn nên xem lại trang này định kỳ để biết bất kỳ thay đổi nào.
+Tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đăng Chính sách quyền riêng tư mới trên trang này. Những thay đổi này có hiệu lực ngay sau khi chúng được đăng trên trang này.</string>
+    <string name="thank_you">Cảm ơn !!!</string>
+    <string name="claim">Khẳng định</string>
+    <string name="daily_login">Chúc mừng! Bạn đã nhận được phần thưởng cho việc đăng nhập hàng ngày.</string>
+    <string name="received_a_reward">Chúc mừng! Bạn đã nhận được một phần thưởng.</string>
+
+</resources>

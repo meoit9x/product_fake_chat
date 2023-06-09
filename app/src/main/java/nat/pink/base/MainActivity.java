@@ -2,6 +2,7 @@ package nat.pink.base;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -26,6 +27,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -51,6 +53,7 @@ import nat.pink.base.ui.splah.SplashFragment;
 import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.MyContextWrapper;
 import nat.pink.base.utils.PreferenceUtil;
 
 import android.view.Menu;
@@ -420,4 +423,13 @@ public class MainActivity extends AppCompatActivity {
         showNativeAd = true;
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String english = PreferenceUtil.getString(newBase, PreferenceUtil.KEY_CURRENT_LANGUAGE, "");
+        if(!TextUtils.isEmpty(english)) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, english));
+        } else {
+            super.attachBaseContext(newBase);
+        }
+    }
 }

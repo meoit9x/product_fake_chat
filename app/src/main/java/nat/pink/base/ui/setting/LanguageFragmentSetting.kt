@@ -50,16 +50,16 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             add(
                 Language(
                     getString(R.string.txt_language_chi),
-                    english.equals("cn"),
-                    "cn",
+                    english.equals("za"),
+                    "za",
                     R.drawable.flag_cn
                 )
             )
             add(
                 Language(
                     getString(R.string.txt_language_ja),
-                    english.equals("jp"),
-                    "jp",
+                    english.equals("ja"),
+                    "ja",
                     R.drawable.flag_jp
                 )
             )
@@ -98,8 +98,8 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
             add(
                 Language(
                     getString(R.string.txt_language_korean),
-                    english.equals("kr"),
-                    "kr",
+                    english.equals("ko"),
+                    "ko",
                     R.drawable.flag_kr
                 )
             )

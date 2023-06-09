@@ -18,9 +18,9 @@ public class LanguageViewModel extends BaseViewModel {
         ArrayList<ObjectLanguage> objectLanguages = new ArrayList<>();
         ObjectLanguage language = new ObjectLanguage(context.getString(R.string.flag_name_english), "en", R.drawable.flag_en);
         objectLanguages.add(language);
-        language = new ObjectLanguage(context.getString(R.string.flag_name_japanese), "jp", R.drawable.flag_jp);
+        language = new ObjectLanguage(context.getString(R.string.flag_name_japanese), "ja", R.drawable.flag_jp);
         objectLanguages.add(language);
-        language = new ObjectLanguage(context.getString(R.string.flag_name_chiness), "cn", R.drawable.flag_cn);
+        language = new ObjectLanguage(context.getString(R.string.flag_name_chiness), "za", R.drawable.flag_cn);
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_indonesian), "in", R.drawable.flag_in);
         objectLanguages.add(language);
@@ -32,7 +32,7 @@ public class LanguageViewModel extends BaseViewModel {
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_portugese), "pt", R.drawable.flag_pt);
         objectLanguages.add(language);
-        language = new ObjectLanguage(context.getString(R.string.flag_name_korean), "kr", R.drawable.flag_kr);
+        language = new ObjectLanguage(context.getString(R.string.flag_name_korean), "ko", R.drawable.flag_kr);
         objectLanguages.add(language);
         language = new ObjectLanguage(context.getString(R.string.flag_name_german), "de", R.drawable.flag_gr);
         objectLanguages.add(language);

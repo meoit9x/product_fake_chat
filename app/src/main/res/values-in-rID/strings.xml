@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Obrolan Palsu</string>
+    <string name="action_settings">Pengaturan</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Fragmen Pertama</string>
+    <string name="second_fragment_label">Fragmen Kedua</string>
+    <string name="next">Berikutnya</string>
+    <string name="previous">Sebelumnya</string>
+
+    <string name="hello_first_fragment">Halo fragmen pertama</string>
+    <string name="hello_second_fragment">Halo fragmen kedua. Arg: %1$s</string>
+    <string name="confirm">Mengonfirmasi</string>
+    <string name="cancel_dialog">Membatalkan</string>
+    <string name="agree_dialog">Setuju</string>
+    <string name="add_record">Tambahkan Rekam</string>
+    <string name="ok">Oke</string>
+    <string name="edit">Sunting</string>
+
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <string name="txt_language_in" translatable="false">bahasa Indonesia</string>
+    <string name="txt_language_thai" translatable="false">Thai</string>
+    <string name="txt_language_malay" translatable="false">Malaysia</string>
+    <string name="txt_language_en">Bahasa inggris</string>
+    <string name="txt_language_vi">Orang Vietnam</string>
+    <string name="txt_language_spanish">Orang Spanyol</string>
+    <string name="txt_language_portuguese">Portugis</string>
+    <string name="txt_language_russiane">Rusia</string>
+    <string name="txt_language_ja">Jepang</string>
+    <string name="txt_language_korean">Korea</string>
+    <string name="txt_language_french">Perancis</string>
+    <string name="txt_language_german">Jerman</string>
+    <string name="txt_language_arabic" translatable="false">Arab</string>
+    <string name="txt_language_chi">Cina</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">Bahasa Tiongkok yang disederhanakan )</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">Cina tradisional)</string>
+
+    <!--flag-->
+    <string name="flag_name_english">Bahasa inggris</string>
+    <string name="flag_name_japanese">Jepang</string>
+    <string name="flag_name_chiness">Cina</string>
+    <string name="flag_name_indonesian">bahasa Indonesia</string>
+    <string name="flag_name_rusian">Rusia</string>
+    <string name="flag_name_spanish">Orang Spanyol</string>
+    <string name="flag_name_french">Perancis</string>
+    <string name="flag_name_portugese">Portugis</string>
+    <string name="flag_name_korean">Korea</string>
+    <string name="flag_name_vietnamese">Orang Vietnam</string>
+    <string name="flag_name_german">Jerman</string>
+
+
+    <string name="content_about_app">
+Questions or feedback? We read every single email>
+Have suggestions? Please, feel free to reach us at support@realink.dev>
+</string>
+    <string name="loading_ads_text">Memuat iklan...</string>
+    <string name="facebook_app_id" translatable="false">1105959933462570</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">Panggilan Video\nPalsu</string>
+    <string name="make_message">Pesan\nPalsu</string>
+    <string name="make_message_title">Buat Pesan</string>
+    <string name="make_notification">Notifikasi\nPalsu</string>
+    <string name="make_notification_title">Buat Notifikasi</string>
+    <string name="make_voice_call">Palsu\nPanggilan Suara</string>
+    <string name="make_voice_call_title">Buat Panggilan Suara</string>
+    <string name="title_make_video_call">Lakukan Panggilan Video</string>
+    <string name="call_now">Telepon sekarang</string>
+    <string name="call_type">Jenis panggilan</string>
+    <string name="notification_type">Jenis pemberitahuan</string>
+    <string name="incoming_call">Panggilan masuk</string>
+    <string name="incoming_call_later">Panggilan masuk nanti:</string>
+    <string name="top">Atas</string>
+    <string name="popup">Muncul</string>
+    <string name="calling">Panggilan</string>
+    <string name="name_your_friend">Nama</string>
+    <string name="education">Pendidikan</string>
+    <string name="education_hint">contoh: Mahasiswa di Universitas Harvard</string>
+    <string name="work">Bekerja</string>
+    <string name="work_hint">mis: Sepak bola di Liga Pro Saudi</string>
+    <string name="live">Hidup</string>
+    <string name="live_hint">mis: Tinggal di Kota New York</string>
+    <string name="lives_in">Tinggal di</string>
+    <string name="personal_info">Jenis</string>
+    <string name="message">Kurir</string>
+    <string name="operation_status">Status Operasi</string>
+    <string name="change_avatar">Ganti gambar profil</string>
+    <string name="hint_text_name">Ketik nama kontak</string>
+    <string name="hint_lives_in">Piermont Dr, Albuquerque, New Mexico</string>
+    <string name="enter_message">Masukkan pesan</string>
+    <string name="incoming_call_picture">Gambar panggilan masuk</string>
+    <string name="video_of_incoming_calls">Video panggilan masuk</string>
+    <string name="call_later">Telepon nanti</string>
+    <string name="send_later">Kirim nanti</string>
+    <string name="pick_up_later">Ambil nanti</string>
+    <string name="voice_later">Suara nanti</string>
+    <string name="pick_up_the_phone_later">Angkat telepon nanti</string>
+    <string name="now">Sekarang</string>
+    <string name="send_a_message_later">Kirim pesan nanti</string>
+    <string name="message_photo">Foto pesan</string>
+    <string name="online">Status daring</string>
+    <string name="verified">Diverifikasi</string>
+    <string name="friend_on_facebook">Apakah teman di Facebook</string>
+    <string name="theme">Warna</string>
+    <string name="create">Membuat</string>
+    <string name="online_5_minutes_ago">Online 5 menit yang lalu</string>
+    <string name="online_30_minutes_ago">Daring 30 menit yang lalu</string>
+    <string name="online_1_hour_ago">Online 1 jam yang lalu</string>
+    <string name="online_1_day_ago">Online 1 hari yang lalu</string>
+    <string name="time_call_seconds">%s detik</string>
+    <string name="time_call_minutes">%s menit</string>
+    <string name="time_call_one_minutes">1 menit</string>
+    <string name="video_call_on_messenger">Panggilan video di messenger</string>
+    <string name="voice_call_on_messenger">Panggilan suara di messenger</string>
+    <string name="refuse">MENOLAK</string>
+    <string name="answer">MENJAWAB</string>
+    <string name="reply">MEMBALAS</string>
+    <string name="guide">Memandu</string>
+    <string name="more_app">Lebih banyak aplikasi</string>
+    <string name="rate_app">Beri peringkat aplikasi</string>
+    <string name="feedback">Masukan</string>
+    <string name="contact_us">Hubungi kami</string>
+    <string name="content_by">Aplikasi dikembangkan \noleh GfStudio</string>
+    <string name="body_name_app">Alat, gaya hidup</string>
+    <string name="title_rate_app">Beri kami 5 bintang untuk mendorong \nTerima kasih atas dukungan Anda!</string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">Kami akan menyerap dan meningkatkan lebih banyak lagi! Terima kasih!</string>
+    <string name="please_give_us_feedback">Tolong beri kami umpan balik</string>
+    <string name="do_you_like_the_app">Apakah Anda suka aplikasi ini?</string>
+    <string name="sent">Terkirim</string>
+    <string name="change_picture">Mengganti gambar</string>
+    <string name="outgoing_call_pictures">Gambar panggilan keluar</string>
+    <string name="done">Selesai</string>
+    <string name="please_fill_in_the_information">Silakan isi informasinya</string>
+    <string name="maxium_characters">Maksimal 25 karakter</string>
+    <string name="note">Catatan</string>
+    <string name="note_title_error">Harap isi \ninformasi dengan lengkap</string>
+    <string name="call_come_later">Panggilan akan datang nanti:</string>
+    <string name="noti_come_later">Pemberitahuan akan datang nanti:</string>
+    <string name="noti">Pemberitahuan datang nanti:</string>
+    <string name="another_task">Tugas lain sedang berjalan. Harap tunggu hingga tugas selesai.</string>
+
+    <string name="guide_info_1">Masukkan teks pesan yang Anda suka untuk membuat obrolan palsu.</string>
+    <string name="guide_info_2">Lakukan panggilan video palsu dengan mengisi informasi yang tersedia di fungsi.</string>
+    <string name="guide_info_3">Lakukan panggilan suara palsu dengan mengisi informasi dasar seperti: nama, foto sesuai dengan preferensi Anda.</string>
+    <string name="guide_info_4">Isi teks pesan dan pilih tampilan (atas atau popup) yang Anda inginkan.</string>
+    <string name="guide_info_5">Simpan semua daftar obrolan yang telah Anda buat.</string>
+    <string name="title_calling">Panggilan...</string>
+    <string name="fake_messenger_title">Utusan Palsu</string>
+    <string name="content_empty_view">Anda belum memiliki daftar obrolan.\n Harap tambahkan obrolan baru</string>
+    <string name="active_now">Aktif sekarang</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content">You can\'t reply to this conversation.</string>
+    <string name="change_information">Ubah Informasi</string>
+    <string name="conversation_list">Daftar percakapan</string>
+    <string name="select_sticker">Pilih Stiker</string>
+    <string name="send">Mengirim</string>
+    <string name="receive">Menerima</string>
+    <string name="removed_a_message">%s menghapus pesan</string>
+    <string name="live_in">Tinggal di %s</string>
+    <string name="you">Anda</string>
+    <string name="you_are_friends">Anda berteman di Facebook</string>
+    <string name="ask_save_image">Apakah Anda ingin menyimpan tangkapan layar?</string>
+    <string name="cancel">Membatalkan</string>
+    <string name="screenshort_success">Screenshort sukses</string>
+    <string name="set_time">Atur waktu</string>
+    <string name="voice_message">Pesan suara</string>
+    <string name="enter_data">Masukkan data</string>
+    <string name="you_must_enter">Anda harus memasukkan %s</string>
+    <string name="full_data">data lengkap</string>
+
+    <string name="monthly_package">Paket bulanan</string>
+    <string name="get_premium_for_1_month">Dapatkan hak istimewa Premium selama 1 bulan.</string>
+    <string name="save_20">Hemat 20%</string>
+    <string name="year_package">Paket tahun</string>
+    <string name="get_premium_for_1_year">Dapatkan hak istimewa Premium selama 1 tahun.</string>
+    <string name="forever_package">Paket selamanya</string>
+    <string name="get_premium_forever">Dapatkan hak istimewa Premium untuk selamanya.</string>
+    <string name="month">/bulan</string>
+    <string name="year">/tahun</string>
+    <string name="forever">/selamanya</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">Tidak dapat memperoleh tautan video.\n Harap pilih video lain</string>
+    <string name="delete">Menghapus</string>
+    <string name="delete_this_conversation">Hapus percakapan ini</string>
+    <string name="please_turn_on_the_network">Harap aktifkan jaringan\n untuk pengalaman yang lebih baik</string>
+    <string name="thank_for_your_response">Terimakasih atas tanggapan Anda !</string>
+    <string name="we_will_listen_to_your_comments">Kami akan mendengarkan komentar Anda dan\n bekerja untuk meningkatkan produk dengan lebih baik!</string>
+
+    <string name="load_ads">Muat Iklan</string>
+    <string name="ads_are_loading">Iklan dimuat sambil menunggu\nfungsi ini diproses</string>
+    <string name="remove_ads">Hilangkan iklan</string>
+
+    // in app purchase
+    <string name="enjoy_your_premium_member">Nikmati anggota premium Anda</string>
+    <string name="continues">Melanjutkan</string>
+    <string name="in_app_month">/bulan</string>
+    <string name="in_app_forever">/selamanya</string>
+    <string name="in_app_year">/tahun</string>
+    <string name="save_in_app">Hemat %s</string>
+
+    <string name="in_app_title_1_m">Paket bulanan</string>
+    <string name="in_app_content_1_m">Dapatkan hak istimewa Premium selama 1 bulan.</string>
+
+    <string name="in_app_title_n_m">%s paket bulan</string>
+    <string name="in_app_content_n_m">Dapatkan hak istimewa Premium selama %s bulan.</string>
+
+    <string name="in_app_title_1_y">Paket tahun</string>
+    <string name="in_app_content_1_y">Dapatkan hak istimewa Premium selama 1 tahun.</string>
+
+    <string name="in_app_title_f_r">Paket selamanya</string>
+    <string name="in_app_content_f_r">Dapatkan hak istimewa Premium untuk selamanya</string>
+
+    <string name="unlimited_ess">Kekacauan Tanpa Batas</string>
+    <string name="no_ads">Tanpa iklan</string>
+    <string name="high_quality_video_call">Panggilan Video Berkualitas Tinggi</string>
+    <string name="get">Mendapatkan</string>
+    <string name="premium">Premium</string>
+    <string name="select_language">Pilih bahasa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Halo fragmen kosong</string>
+    <string name="chat_bubbles">Gelembung Obrolan</string>
+    <string name="navigation_bar">Bilah navigasi</string>
+    <string name="setup_fake_notiffication">Siapkan Notifikasi Palsu</string>
+    <string name="setup_fake_video_call">Siapkan Panggilan Video Palsu</string>
+    <string name="setup_fake_call">Siapkan Panggilan Suara Palsu</string>
+    <string name="in_coming_call">Panggilan masuk</string>
+    <string name="out_coming_call">Memanggil keluar</string>
+    <string name="contact">Kontak</string>
+    <string name="message_content">Isi pesan</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">Masukkan teks pesan</string>
+    <string name="time_delay">Penundaan Waktu</string>
+    <string name="message_sound">Suara pesan</string>
+    <string name="dialog_description_time_delay">Apakah waktu hitung mundur untuk menampilkan panggilan masuk palsu</string>
+    <string name="get_a_call_now">Dapatkan panggilan sekarang</string>
+    <string name="five_seconds_later">5 detik kemudian</string>
+    <string name="ten_seconds_later">10 detik kemudian</string>
+    <string name="fifteen_seconds_later">15 detik kemudian</string>
+    <string name="twenty_seconds_later">20 detik kemudian</string>
+    <string name="recommend">Menyarankan</string>
+    <string name="create_your_contact">Buat kontak Anda</string>
+    <string name="edit_your_contact">Edit kontak Anda</string>
+    <string name="pick_up_time">Waktu penjemputan</string>
+    <string name="des_pick_up_time">Apakah waktu hitung mundur sampai penerima mengambil panggilan video palsu Anda</string>
+    <string name="video_fake">Video Palsu</string>
+    <string name="des_upload_video">Disarankan \n untuk memilih video \n dengan rasio aspek \n vertikal (9:16) untuk \n pengalaman terbaik.</string>
+    <string name="upload_video">Mengunggah video</string>
+    <string name="call_away">Memanggil keluar</string>
+    <string name="pick_up_now">Ambil sekarang</string>
+    <string name="change_video">Ubah Video</string>
+
+    <!--    data default contact-->
+    <string name="data_default_name_1">Cristiano Ronaldo</string>
+    <string name="data_default_work_1">Kapten di klub Liga Pro Saudi Al Nassr</string>
+    <string name="data_default_live_1">Tinggal di Madeira, Portugal</string>
+
+    <string name="data_default_name_2">Leo Messi</string>
+    <string name="data_default_education_2">Belajar di Akademi La Masia Barcelona</string>
+    <string name="data_default_work_2">Striker di klub Paris Saint-Germain</string>
+    <string name="data_default_live_2">Tinggal di Paris, Prancis</string>
+
+    <string name="data_default_name_3">Taylor Swift</string>
+    <string name="data_default_work_3">Penyanyi pemenang Grammy Award</string>
+    <string name="data_default_live_3">Tinggal di Nashville, Tennessee</string>
+
+    <string name="data_default_name_4">Johnny Depp</string>
+    <string name="data_default_work_4">Aktor terkenal</string>
+    <string name="data_default_live_4">Tinggal di Amerika</string>
+
+    <string name="create_new">Buat\nbaru</string>
+
+    <string name="choose_interface_color">Pilih warna antarmuka</string>
+    <string name="your_chat_bubble_display_color">Warna tampilan gelembung obrolan Anda</string>
+    <string name="close">Menutup</string>
+    <string name="ok_dialog">OKE</string>
+    <string name="ads_video_call">Panggilan video palsu Anda akan datang…</string>
+    <string name="ads_voice_call">Panggilan suara palsu Anda akan datang ...</string>
+    <string name="ads_notification">Notifikasi palsu Anda akan datang…</string>
+    <string name="ads_done">Kami akan mendengarkan komentar Anda dan bekerja untuk meningkatkan produk dengan lebih baik!</string>
+    <string name="notify_declined">Izinkan pemberitahuan untuk menggunakan panggilan palsu</string>
+
+    <string name="onboard_title_1">Aplikasi Percakapan Palsu Realistis</string>
+    <string name="onboard_title_2">Kontrol kedua sisi percakapan</string>
+    <string name="onboard_title_3">Prank teman atau pasangan Anda</string>
+
+    <string name="onboard_des_1">Buat obrolan palsu, panggilan palsu, panggilan video palsu, dan notifikasi palsu sepenuhnya seperti messenger.</string>
+    <string name="onboard_des_2">Mudah mengatur waktu untuk mengirim dan menerima pesan.</string>
+    <string name="onboard_des_3">Buat selebritas untuk mengirim pesan teks dengan mereka seperti aslinya. Gunakan untuk menjebak teman Anda.</string>
+
+    <string name="content_fake_messenger">\nPesan palsu</string>
+    <string name="content_fake_voice_call">\nPanggilan Suara Palsu</string>
+    <string name="content_fake_video_call">\nPanggilan Video Palsu</string>
+    <string name="content_fake_noti">Pemberitahuan \n Palsu</string>
+    <string name="free">Bebas</string>
+    <string name="one_hun_coin">-100 Poin</string>
+    <string name="two_hun_coin">-200 Poin</string>
+    <string name="three_hun_coin">-300 Poin</string>
+    <string name="one_extra_coin">+100 Poin</string>
+    <string name="two_extra_coin">+200 Poin</string>
+    <string name="three_extra_coin">+300 Poin</string>
+
+    <string name="conversation_suggestions">Saran percakapan</string>
+    <string name="your_coin">Poin Anda</string>
+    <string name="manage_conversation">Kelola Percakapan</string>
+    <string name="suggest">Menyarankan</string>
+    <string name="create_new_manager_suggest">Membuat baru</string>
+    <string name="your_conversation_manager_suggest">Percakapan Anda</string>
+    <string name="asked_question">Pertanyaan yang Sering Diajukan?</string>
+    <string name="faq">FAQ</string>
+    <string name="privacy_policy">Kebijakan pribadi</string>
+    <string name="language">Bahasa</string>
+
+    <string name="faq_des_1">Untuk menggunakan fitur ini, Anda cukup mengeklik \'Fake Messenger,\' lalu memilih kontak yang ingin Anda ajak mengobrol dan berinteraksi seolah-olah itu adalah Messenger sungguhan. Kami harap Anda menikmatinya!</string>
+    <string name="faq_des_2">Ya, aplikasi kami memberi Anda kemampuan untuk memalsukan panggilan video masuk dan keluar. Yang perlu Anda lakukan hanyalah memilih fungsi yang diinginkan, memilih kontak, mengatur informasi panggilan, dan memulai panggilan.</string>
+    <string name="faq_des_3">Ini adalah fitur yang memungkinkan Anda membuat notifikasi pesan masuk dalam bentuk gelembung obrolan atau notifikasi status bar (tergantung preferensi Anda). Anda dapat menyesuaikan bagaimana pesan masuk ditampilkan. Fungsi ini sangat efektif untuk mengerjai atau menggoda pacar, pacar, atau pasangan romantis Anda. Hadirkan beberapa momen lucu untuk orang yang Anda cintai dengan aplikasi kami.</string>
+    <string name="faq_des_4">Tidak, kami tidak membatasi jumlah panggilan palsu, pesan palsu, atau panggilan video palsu yang dapat dibuat. Sebaliknya, kami telah menerapkan mekanisme penilaian. Dengan menggunakan poin yang ada, Anda dapat memanfaatkan fitur terkait kami. Fungsi pesan palsu dapat digunakan tanpa batas. Namun, untuk panggilan palsu atau panggilan video, Anda harus membelanjakan \'Poin\' untuk membuatnya. Demikian pula, untuk fitur notifikasi palsu, ini adalah fungsi yang sangat efektif, sehingga membutuhkan lebih banyak poin untuk digunakan.</string>
+    <string name="faq_des_5">Untuk meningkatkan kegembiraan dan keadilan dalam pemberian hadiah, kami telah menerapkan mekanisme penilaian untuk setiap anggota yang menggunakan aplikasi. Anda akan menggunakan poin untuk memanfaatkan fitur kami. Setiap fitur akan mengkonsumsi sejumlah poin saat digunakan. Anda bisa mendapatkan poin dengan login harian atau dengan menonton iklan berhadiah. Jangan lupa kumpulkan lebih banyak poin untuk meningkatkan peringkat Anda di papan peringkat, di mana Anda akan menerima tunjangan dan keuntungan bulanan yang menarik.</string>
+    <string name="faq_des_6">Papan peringkat akan menampilkan peringkat Anda berdasarkan \'Poin\' Anda dibandingkan dengan pengguna lain. Semakin tinggi poin Anda, semakin tinggi peringkat Anda, dan sebaliknya. Mereka yang mencapai peringkat tinggi (1–3 teratas) akan menerima hadiah berharga di akhir setiap bulan. Hadiah dapat mencakup poin atau voucher tambahan untuk paket bebas iklan premium kami.</string>
+
+    <string name="faq_1">Bagaimana cara menggunakan fungsi pesan messenger palsu?</string>
+    <string name="faq_2">Apakah aplikasi mendukung panggilan video palsu?</string>
+    <string name="faq_3">Apa fungsi notifikasi pesan palsu?</string>
+    <string name="faq_4">Apakah ada batasan jumlah panggilan palsu, pesan palsu, atau panggilan video palsu dalam aplikasi?</string>
+    <string name="faq_5">Apa saja \'Poin\' yang ada di aplikasi ini?</string>
+    <string name="faq_6">Apa itu papan peringkat?</string>
+
+    <string name="title_privacy">Privasi tajuk teks demo</string>
+    <string name="content_privacy">
+    LAYANAN ini disediakan oleh Kami tanpa biaya dan dimaksudkan untuk digunakan sebagaimana adanya.
+    Halaman ini digunakan untuk memberi tahu pengunjung tentang kebijakan saya dengan pengumpulan, penggunaan, dan pengungkapan Informasi Pribadi jika ada yang memutuskan untuk menggunakan Layanan saya.
+    Jika Anda memilih untuk menggunakan Layanan saya, maka Anda menyetujui pengumpulan dan penggunaan informasi sehubungan dengan kebijakan ini.
+    Informasi Pribadi yang saya kumpulkan digunakan untuk menyediakan dan meningkatkan Layanan. Saya tidak akan menggunakan atau membagikan informasi Anda kepada siapa pun kecuali sebagaimana dijelaskan dalam Kebijakan Privasi ini.
+    - Gambar: Kami tidak bertanggung jawab atas konten gambar yang dibuat oleh pengguna atau dicari di internet.
+    - Cerita: Cerita buatan pengguna di aplikasi untuk tujuan politik, menyinggung, atau menipu.
+    - Kami tidak bertanggung jawab ketika pengguna aplikasi untuk tujuan jahat, tujuan politik, memilih, dan melanggar hukum nasional yang berlaku.
+
+    1. Pengumpulan dan Penggunaan Informasi
+    Untuk pengalaman yang lebih baik, saat menggunakan Layanan kami, saya mungkin meminta Anda untuk memberikan kami informasi identitas pribadi tertentu. Informasi yang saya minta akan disimpan di perangkat Anda dan tidak dikumpulkan oleh saya dengan cara apa pun.
+    Aplikasi memang menggunakan layanan pihak ketiga yang dapat mengumpulkan informasi yang digunakan untuk mengidentifikasi Anda.
+    Tautan ke kebijakan privasi penyedia layanan pihak ketiga dapat digunakan di aplikasi
+
+    2. Data Log
+    Saya ingin memberi tahu Anda bahwa setiap kali Anda menggunakan Layanan saya, jika terjadi kesalahan pada aplikasi, saya mengumpulkan data dan informasi (melalui produk pihak ketiga) di ponsel Anda yang disebut Data Log.
+    Data Log ini dapat mencakup informasi seperti alamat Protokol Internet (“IP”) perangkat Anda, nama perangkat, versi sistem operasi, konfigurasi aplikasi saat menggunakan Layanan saya, waktu dan tanggal penggunaan Layanan oleh Anda, dan statistik lainnya .
+
+    3. Cookie
+    Cookie adalah file dengan sejumlah kecil data yang biasanya digunakan sebagai pengidentifikasi unik anonim.
+    Ini dikirim ke browser Anda dari situs web yang Anda kunjungi dan disimpan di memori internal perangkat Anda.
+    Layanan ini tidak menggunakan “cookies” ini secara eksplisit. Namun, aplikasi dapat menggunakan kode dan pustaka pihak ketiga yang menggunakan “cookie” untuk mengumpulkan informasi dan meningkatkan layanan mereka.
+    Anda memiliki opsi untuk menerima atau menolak cookie ini dan mengetahui kapan cookie dikirim ke perangkat Anda. Jika Anda memilih untuk menolak cookie kami, Anda mungkin tidak dapat menggunakan beberapa bagian dari Layanan ini.
+
+
+    4. Penyedia Layanan
+
+    Izin yang kami gunakan dalam aplikasi:
+    android.permission.WRITE_EXTERNAL_STORAGE
+
+    android.permission.READ_EXTERNAL_STORAGE
+
+    android.permission.WAKE_LOCK
+
+    android.permission.VIBRATE
+
+    android.permission.INTERNET
+
+    android.permission.ACCESS_NETWORK_STATE
+
+    android.permission.RECEIVE_BOOT_COMPLETED
+
+    CATATAN:
+    - Kami berkomitmen untuk menggunakan hak di atas hanya untuk melayani fungsi aplikasi dan sepenuhnya mematuhi kebijakan google play dan bukan untuk tujuan lain.
+
+    - Semua informasi yang diberikan oleh pengguna hanya akan disimpan di perangkat mereka dan kami tidak mengumpulkan dan menyimpannya dalam bentuk apa pun (termasuk di server atau di layanan cloud…).
+
+    - Kami tidak mengungkapkan, menyimpan, atau membagikan informasi sensitif apa pun dari pengguna (email, rekening bank…).
+
+    5. Penyedia Layanan
+    Saya dapat mempekerjakan perusahaan dan individu pihak ketiga karena alasan berikut:
+    Untuk memfasilitasi Layanan kami;
+    Untuk menyediakan Layanan atas nama kami;
+    Untuk melakukan layanan terkait Layanan;
+    Untuk membantu kami menganalisis bagaimana Layanan kami digunakan.
+    Saya ingin memberi tahu pengguna Layanan ini bahwa pihak ketiga ini memiliki akses ke Informasi Pribadi Anda.
+    Alasannya adalah untuk melakukan tugas yang diberikan kepada mereka atas nama kami. Namun, mereka berkewajiban untuk tidak mengungkapkan atau menggunakan informasi tersebut untuk tujuan lain apa pun.
+
+
+    6. Keamanan
+    Saya menghargai kepercayaan Anda dalam memberikan Informasi Pribadi Anda kepada kami, oleh karena itu kami berusaha untuk menggunakan cara yang dapat diterima secara komersial untuk melindunginya.
+    Namun perlu diingat bahwa tidak ada metode transmisi melalui internet, atau metode penyimpanan elektronik yang 100% aman dan andal, dan saya tidak dapat menjamin keamanan mutlaknya.
+
+    7. Tautan ke Situs Lain
+    Layanan ini mungkin berisi tautan ke situs lain. Jika Anda mengklik tautan pihak ketiga, Anda akan diarahkan ke situs tersebut.
+    Perhatikan bahwa situs eksternal ini tidak dioperasikan oleh saya. Oleh karena itu, saya sangat menyarankan Anda untuk meninjau Kebijakan Privasi situs web ini.
+
+    Saya tidak memiliki kendali atas dan tidak bertanggung jawab atas konten, kebijakan privasi, atau praktik situs atau layanan pihak ketiga mana pun.
+
+    8. Privasi Anak
+    Layanan ini tidak ditujukan kepada siapa pun yang berusia di bawah 13 tahun. Saya tidak secara sadar mengumpulkan informasi identitas pribadi dari anak-anak di bawah 13 tahun.
+    Jika saya menemukan bahwa seorang anak di bawah 13 tahun telah memberi saya informasi pribadi, saya segera menghapusnya dari server kami.
+    Jika Anda adalah orang tua atau wali dan Anda mengetahui bahwa anak Anda telah memberi kami informasi pribadi, silakan hubungi saya sehingga saya dapat mengambil tindakan yang diperlukan.
+
+    9. Perubahan Kebijakan Privasi Ini
+    Saya dapat memperbarui Kebijakan Privasi kamidari waktu ke waktu. Dengan demikian, Anda disarankan untuk meninjau halaman ini secara berkala untuk setiap perubahan.
+Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijakan Privasi baru di halaman ini. Perubahan ini berlaku segera setelah diposting di halaman ini.</string>
+    <string name="thank_you">Terima kasih !!!</string>
+    <string name="claim">Mengeklaim</string>
+    <string name="daily_login">Selamat! Anda telah menerima hadiah untuk login harian.</string>
+    <string name="received_a_reward">Selamat! Anda telah menerima hadiah.</string>
+</resources>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">假聊天</string>
+    <string name="action_settings">设置</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">第一个片段</string>
+    <string name="second_fragment_label">第二个片段</string>
+    <string name="next">下一个</string>
+    <string name="previous">以前的</string>
+
+    <string name="hello_first_fragment">你好第一个片段</string>
+    <string name="hello_second_fragment">你好，第二个片段。 参数：%1$s</string>
+    <string name="confirm">确认</string>
+    <string name="cancel_dialog">取消</string>
+    <string name="agree_dialog">同意</string>
+    <string name="add_record">添加记录</string>
+    <string name="ok">好的</string>
+    <string name="edit">编辑</string>
+
+
+    <!--FONT-->
+    <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
+    <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>
+    <string name="font_regular" translatable="false">fonts/Roboto-Regular.ttf</string>
+    <string name="font_black" translatable="false">fonts/Roboto-Black.ttf</string>
+    <string name="font_medium" translatable="false">font/Roboto-Medium.ttf</string>
+    <string name="font_payone" translatable="false">fonts/payone.ttf</string>
+    <string name="font_carterone" translatable="false">fonts/carterone_regular.ttf</string>
+    <string name="font_calistoga" translatable="false">fonts/Calistoga-Regular.ttf</string>
+    <string name="font_baloo" translatable="false">fonts/Baloo-Regular.ttf</string>
+
+    <string name="txt_language_in" translatable="false">印度尼西亚</string>
+    <string name="txt_language_thai" translatable="false">泰国</string>
+    <string name="txt_language_malay" translatable="false">马来西亚人</string>
+    <string name="txt_language_en">英语</string>
+    <string name="txt_language_vi">越南语</string>
+    <string name="txt_language_spanish">西班牙语</string>
+    <string name="txt_language_portuguese">葡萄牙语</string>
+    <string name="txt_language_russiane">俄语</string>
+    <string name="txt_language_ja">日本人</string>
+    <string name="txt_language_korean">韩国人</string>
+    <string name="txt_language_french">法语</string>
+    <string name="txt_language_german">德语</string>
+    <string name="txt_language_arabic" translatable="false">阿拉伯</string>
+    <string name="txt_language_chi">中国人</string>
+    <string name="txt_language_chinese_Simplified" translatable="false">简体中文 ）</string>
+    <string name="txt_language_chinese_Traditional" translatable="false">中国传统的）</string>
+
+    <!--flag-->
+    <string name="flag_name_english">英语</string>
+    <string name="flag_name_japanese">日本人</string>
+    <string name="flag_name_chiness">中国人</string>
+    <string name="flag_name_indonesian">印度尼西亚</string>
+    <string name="flag_name_rusian">俄语</string>
+    <string name="flag_name_spanish">西班牙语</string>
+    <string name="flag_name_french">法语</string>
+    <string name="flag_name_portugese">葡萄牙语</string>
+    <string name="flag_name_korean">韩国人</string>
+    <string name="flag_name_vietnamese">越南语</string>
+    <string name="flag_name_german">德语</string>
+
+
+    <string name="content_about_app">
+Questions or feedback? We read every single email>
+Have suggestions? Please, feel free to reach us at support@realink.dev>
+</string>
+    <string name="loading_ads_text">加载广告...</string>
+    <string name="facebook_app_id" translatable="false">1105959933462570</string>
+    <string name="google_admob_app_id" translatable="false">ca-app-pub-2597972375786066~7367606821</string>
+
+
+    <string name="make_video_call">假\n视频通话</string>
+    <string name="make_message">假\n消息</string>
+    <string name="make_message_title">留言</string>
+    <string name="make_notification">假\n通知</string>
+    <string name="make_notification_title">发出通知</string>
+    <string name="make_voice_call">假\n语音通话</string>
+    <string name="make_voice_call_title">拨打语音电话</string>
+    <string name="title_make_video_call">进行视频通话</string>
+    <string name="call_now">现在打电话</string>
+    <string name="call_type">通话类型</string>
+    <string name="notification_type">通知类型</string>
+    <string name="incoming_call">来电</string>
+    <string name="incoming_call_later">稍后来电：</string>
+    <string name="top">顶部</string>
+    <string name="popup">弹出窗口</string>
+    <string name="calling">呼唤</string>
+    <string name="name_your_friend">姓名</string>
+    <string name="education">教育</string>
+    <string name="education_hint">例如：哈佛大学的学生</string>
+    <string name="work">工作</string>
+    <string name="work_hint">例如：沙特职业联赛中的足球</string>
+    <string name="live">居住</string>
+    <string name="live_hint">例如：住在纽约市</string>
+    <string name="lives_in">住在</string>
+    <string name="personal_info">类型</string>
+    <string name="message">信使</string>
+    <string name="operation_status">营运状况</string>
+    <string name="change_avatar">更改个人资料图片</string>
+    <string name="hint_text_name">输入联系人姓名</string>
+    <string name="hint_lives_in">Piermont Dr, 阿尔伯克基, 新墨西哥</string>
+    <string name="enter_message">输入消息</string>
+    <string name="incoming_call_picture">来电图片</string>
+    <string name="video_of_incoming_calls">来电视频</string>
+    <string name="call_later">待会儿再聊</string>
+    <string name="send_later">稍后发送</string>
+    <string name="pick_up_later">稍后自取</string>
+    <string name="voice_later">语音稍后</string>
+    <string name="pick_up_the_phone_later">稍后拿起电话</string>
+    <string name="now">现在</string>
+    <string name="send_a_message_later">稍后发送消息</string>
+    <string name="message_photo">留言照片</string>
+    <string name="online">在线状态</string>
+    <string name="verified">已验证</string>
+    <string name="friend_on_facebook">是 Facebook 上的好友</string>
+    <string name="theme">颜色</string>
+    <string name="create">创造</string>
+    <string name="online_5_minutes_ago">5分钟前在线</string>
+    <string name="online_30_minutes_ago">30分钟前在线</string>
+    <string name="online_1_hour_ago">1小时前在线</string>
+    <string name="online_1_day_ago">1天前在线</string>
+    <string name="time_call_seconds">%s 秒</string>
+    <string name="time_call_minutes">%s 分钟</string>
+    <string name="time_call_one_minutes">1分钟</string>
+    <string name="video_call_on_messenger">Messenger 视频通话</string>
+    <string name="voice_call_on_messenger">Messenger 语音通话</string>
+    <string name="refuse">衰退</string>
+    <string name="answer">回答</string>
+    <string name="reply">回复</string>
+    <string name="guide">指导</string>
+    <string name="more_app">更多应用</string>
+    <string name="rate_app">评价应用</string>
+    <string name="feedback">反馈</string>
+    <string name="contact_us">联系我们</string>
+    <string name="content_by">GfStudio \n开发的应用程序</string>
+    <string name="body_name_app">工具、生活方式</string>
+    <string name="title_rate_app">给我们5星鼓励\n感谢您的支持！</string>
+    <string name="we_will_absorb_and_upgrade_a_lot_more">我们会吸收和升级更多！ 谢谢你！</string>
+    <string name="please_give_us_feedback">请给我们反馈</string>
+    <string name="do_you_like_the_app">你喜欢这个应用程序吗？</string>
+    <string name="sent">发送</string>
+    <string name="change_picture">更换图片</string>
+    <string name="outgoing_call_pictures">去电图片</string>
+    <string name="done">完毕</string>
+    <string name="please_fill_in_the_information">请填写资料</string>
+    <string name="maxium_characters">最多 25 个字符</string>
+    <string name="note">笔记</string>
+    <string name="note_title_error">请完整填写\n信息</string>
+    <string name="call_come_later">电话稍后会来：</string>
+    <string name="noti_come_later">稍后会通知：</string>
+    <string name="noti">稍后通知：</string>
+    <string name="another_task">另一个任务正在运行。 请等待任务完成。</string>
+
+    <string name="guide_info_1">输入您喜欢的消息文本以创建虚假聊天。</string>
+    <string name="guide_info_2">通过填写功能中可用的信息来进行虚假视频通话。</string>
+    <string name="guide_info_3">根据您的喜好填写姓名、照片等基本信息，进行假语音通话。</string>
+    <string name="guide_info_4">填写消息文本并选择您想要的外观（顶部或弹出）。</string>
+    <string name="guide_info_5">保留您创建的所有聊天列表。</string>
+    <string name="title_calling">呼唤...</string>
+    <string name="fake_messenger_title">假使者</string>
+    <string name="content_empty_view">您还没有聊天列表。\n 请添加新聊天</string>
+    <string name="active_now">现在激活</string>
+    <string name="Aa">Aa</string>
+    <string name="block_content">You can\'t reply to this conversation.</string>
+    <string name="change_information">更改信息</string>
+    <string name="conversation_list">对话列表</string>
+    <string name="select_sticker">选择贴纸</string>
+    <string name="send">发送</string>
+    <string name="receive">收到</string>
+    <string name="removed_a_message">%s 删除了一条消息</string>
+    <string name="live_in">住在 %s</string>
+    <string name="you">你</string>
+    <string name="you_are_friends">你是 Facebook 上的朋友</string>
+    <string name="ask_save_image">您要保存屏幕截图吗？</string>
+    <string name="cancel">取消</string>
+    <string name="screenshort_success">截屏成功</string>
+    <string name="set_time">设置时间</string>
+    <string name="voice_message">语音留言</string>
+    <string name="enter_data">输入数据</string>
+    <string name="you_must_enter">您必须输入 %s</string>
+    <string name="full_data">完整数据</string>
+
+    <string name="monthly_package">包月套餐</string>
+    <string name="get_premium_for_1_month">获得 1 个月的高级特权。</string>
+    <string name="save_20">节省 20%</string>
+    <string name="year_package">年包</string>
+    <string name="get_premium_for_1_year">获得 1 年的 Premium 特权。</string>
+    <string name="forever_package">永远包</string>
+    <string name="get_premium_forever">永久获得高级特权。</string>
+    <string name="month">/月</string>
+    <string name="year">/年</string>
+    <string name="forever">/永远</string>
+    <string name="money_monthly">1$</string>
+    <string name="money_year">9$</string>
+    <string name="money_forever">29$</string>
+
+    <string name="error_link_video">无法获取视频链接。\n 请选择其他视频</string>
+    <string name="delete">删除</string>
+    <string name="delete_this_conversation">删除此对话</string>
+    <string name="please_turn_on_the_network">请打开网络\n以获得更好的体验</string>
+    <string name="thank_for_your_response">感谢您的答复 ！</string>
+    <string name="we_will_listen_to_your_comments">我们会听取您的意见，\n 努力改进产品！</string>
+
+    <string name="load_ads">加载广告</string>
+    <string name="ads_are_loading">广告正在加载，同时等待\n此功能正在处理</string>
+    <string name="remove_ads">移除广告</string>
+
+    // in app purchase
+    <string name="enjoy_your_premium_member">享受您的高级会员</string>
+    <string name="continues">继续</string>
+    <string name="in_app_month">/月</string>
+    <string name="in_app_forever">/永远</string>
+    <string name="in_app_year">/年</string>
+    <string name="save_in_app">保存 %s</string>
+
+    <string name="in_app_title_1_m">包月套餐</string>
+    <string name="in_app_content_1_m">获得 1 个月的高级特权。</string>
+
+    <string name="in_app_title_n_m">%s 个月包</string>
+    <string name="in_app_content_n_m">获得 %s 个月的高级特权。</string>
+
+    <string name="in_app_title_1_y">年包</string>
+    <string name="in_app_content_1_y">获得 1 年的 Premium 特权。</string>
+
+    <string name="in_app_title_f_r">永远包</string>
+    <string name="in_app_content_f_r">永久获得高级特权</string>
+
+    <string name="unlimited_ess">无限混乱</string>
+    <string name="no_ads">无广告</string>
+    <string name="high_quality_video_call">高质量视频通话</string>
+    <string name="get">得到</string>
+    <string name="premium">优质的</string>
+    <string name="select_language">选择语言</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">你好空白片段</string>
+    <string name="chat_bubbles">聊天气泡</string>
+    <string name="navigation_bar">导航栏</string>
+    <string name="setup_fake_notiffication">设置虚假通知</string>
+    <string name="setup_fake_video_call">设置假视频通话</string>
+    <string name="setup_fake_call">设置假语音通话</string>
+    <string name="in_coming_call">来电</string>
+    <string name="out_coming_call">转移，叫走</string>
+    <string name="contact">接触</string>
+    <string name="message_content">留言内容</string>
+    <string name="number_text_message_content">0/100</string>
+    <string name="hint_messsage_content">输入消息的文本</string>
+    <string name="time_delay">时间延迟</string>
+    <string name="message_sound">留言声音</string>
+    <string name="dialog_description_time_delay">是倒计时显示假来电</string>
+    <string name="get_a_call_now">现在打电话</string>
+    <string name="five_seconds_later">5秒后</string>
+    <string name="ten_seconds_later">10秒后</string>
+    <string name="fifteen_seconds_later">15秒后</string>
+    <string name="twenty_seconds_later">20秒后</string>
+    <string name="recommend">推荐</string>
+    <string name="create_your_contact">创建您的联系人</string>
+    <string name="edit_your_contact">编辑您的联系人</string>
+    <string name="pick_up_time">接送时间</string>
+    <string name="des_pick_up_time">是接收者接听你的假视频通话的倒计时时间</string>
+    <string name="video_fake">视频假的</string>
+    <string name="des_upload_video">建议\n 选择垂直宽高比 (9:16) \n 的视频，\n 以获得最佳体验。</string>
+    <string name="upload_video">上传视频</string>
+    <string name="call_away">转移，叫走</string>
+    <string name="pick_up_now">立即取货</string>
+    <string name="change_video">更改视频</string>
+
+    <!--    data default contact-->
+    <string name="data_default_name_1">Cristiano Ronaldo</string>
+    <string name="data_default_work_1">沙特职业联赛俱乐部 Al Nassr 的队长</string>
+    <string name="data_default_live_1">住在葡萄牙马德拉</string>
+
+    <string name="data_default_name_2">Leo Messi</string>
+    <string name="data_default_education_2">曾就读于巴塞罗那的拉玛西亚学院</string>
+    <string name="data_default_work_2">巴黎圣日耳曼俱乐部前锋</string>
+    <string name="data_default_live_2">住在法国巴黎</string>
+
+    <string name="data_default_name_3">Taylor Swift</string>
+    <string name="data_default_work_3">格莱美奖获奖歌手</string>
+    <string name="data_default_live_3">住在田纳西州纳什维尔</string>
+
+    <string name="data_default_name_4">Johnny Depp</string>
+    <string name="data_default_work_4">著名演员</string>
+    <string name="data_default_live_4">住在美国</string>
+
+    <string name="create_new">创建\n新的</string>
+
+    <string name="choose_interface_color">选择界面颜色</string>
+    <string name="your_chat_bubble_display_color">您的聊天气泡显示颜色</string>
+    <string name="close">关闭</string>
+    <string name="ok_dialog">好的</string>
+    <string name="ads_video_call">你的虚假视频通话来了……</string>
+    <string name="ads_voice_call">你的假语音电话来了……</string>
+    <string name="ads_notification">你的假通知来了......</string>
+    <string name="ads_done">我们会听取您的意见，努力改进产品！</string>
+    <string name="notify_declined">请允许通知使用假电话</string>
+
+    <string name="onboard_title_1">逼真的假对话应用程序</string>
+    <string name="onboard_title_2">控制对话的双方</string>
+    <string name="onboard_title_3">恶作剧你的朋友或你的伴侣</string>
+
+    <string name="onboard_des_1">完全像 Messenger 一样创建假聊天、假电话、假视频通话和假通知。</string>
+    <string name="onboard_des_2">轻松设置发送和接收消息的时间。</string>
+    <string name="onboard_des_3">创造名人与他们像真实的东西一样发短信。 用它来欺骗你的朋友。</string>
+
+    <string name="content_fake_messenger">假\n消息</string>
+    <string name="content_fake_voice_call">假\n语音通话</string>
+    <string name="content_fake_video_call">假\n视频通话</string>
+    <string name="content_fake_noti">假\n通知</string>
+    <string name="free">自由的</string>
+    <string name="one_hun_coin">-100点</string>
+    <string name="two_hun_coin">-200点</string>
+    <string name="three_hun_coin">-300 点</string>
+    <string name="one_extra_coin">+100 点</string>
+    <string name="two_extra_coin">+200 点</string>
+    <string name="three_extra_coin">+300 点</string>
+
+    <string name="conversation_suggestions">对话建议</string>
+    <string name="your_coin">你的观点</string>
+    <string name="manage_conversation">管理对话</string>
+    <string name="suggest">建议</string>
+    <string name="create_new_manager_suggest">创建新的</string>
+    <string name="your_conversation_manager_suggest">你的谈话</string>
+    <string name="asked_question">经常问的问题？</string>
+    <string name="faq">常问问题</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="language">语言</string>
+
+    <string name="faq_des_1">要使用此功能，您只需单击“假 Messenger”，然后选择您要与之创建对话的联系人，并像真正的 Messenger 一样进行互动。 我们希望你喜欢它！</string>
+    <string name="faq_des_2">是的，我们的应用程序为您提供了伪造传入和传出视频呼叫的能力。 您只需选择所需的功能、选择联系人、设置呼叫信息并发起呼叫即可。</string>
+    <string name="faq_des_3">此功能允许您以聊天气泡或状态栏通知的形式创建传入消息通知（取决于您的偏好）。 您可以自定义传入消息的显示方式。 此功能对于恶作剧或戏弄您的女朋友、男朋友或浪漫伴侣非常有效。 使用我们的应用程序为您的亲人带来一些幽默的时刻。</string>
+    <string name="faq_des_4">不，我们不限制可以创建的虚假电话、虚假消息或虚假视频通话的数量。 相反，我们实施了评分机制。 通过使用您现有的积分，您可以使用我们相应的功能。 可以无限制地使用假消息功能。 但是，对于假电话或视频电话，您需要花费“积分”来创建它们。 同样，对于虚假通知功能，它是一个非常有效的功能，因此需要更多的积分才能使用。</string>
+    <string name="faq_des_5">为了提高送礼的趣味性和公平性，我们为每个使用该应用程序的会员实施了评分机制。 您将使用积分来使用我们的功能。 每个特性在使用时都会消耗一定的点数。 您可以通过每日登录或观看奖励广告来赚取积分。 不要忘记积累更多积分以提高您在排行榜上的排名，您将在其中获得令人兴奋的每月津贴和福利。</string>
+    <string name="faq_des_6">排行榜将根据您与其他用户相比的“积分”显示您的排名。 您的积分越高，您的排名就越高，反之亦然。 获得高排名（前 1-3 名）的人将在每个月底获得宝贵的奖励。 奖励可能包括我们高级无广告套餐的额外积分或代金券。</string>
+
+    <string name="faq_1">如何使用假信使消息功能？</string>
+    <string name="faq_2">该应用程序是否支持虚假视频通话？</string>
+    <string name="faq_3">伪造消息通知有什么作用？</string>
+    <string name="faq_4">应用程序中的假电话、假消息或假视频通话的数量是否有限制？</string>
+    <string name="faq_5">此应用程序中的“要点”是什么？</string>
+    <string name="faq_6">什么是排行榜？</string>
+
+    <string name="title_privacy">演示文本标题隐私</string>
+    <string name="content_privacy">
+    本服务由我们免费提供，旨在按原样使用。
+    如果有人决定使用我的服务，此页面用于告知访问者有关我收集、使用和披露个人信息的政策。
+    如果您选择使用我的服务，则表示您同意收集和使用与本政策相关的信息。
+    我收集的个人信息用于提供和改进服务。我不会使用或与任何人共享您的信息，除非本隐私政策中所述。
+    - 图片：我们不对用户创建或在互联网上搜索到的图片内容负责。
+    - 故事：应用程序中用户生成的故事，用于政治、冒犯或欺骗目的。
+    - 当应用程序的用户出于恶意目的、政治目的、投票和违反适用的国家法律时，我们不承担任何责任。
+
+    一、信息收集与使用
+    为了获得更好的体验，在使用我们的服务时，我可能会要求您向我们提供某些个人身份信息。我要求的信息将保留在您的设备上，我不会以任何方式收集。
+    该应用程序确实使用第三方服务，这些服务可能会收集用于识别您身份的信息。
+    可以在应用程序中使用指向第三方服务提供商隐私政策的链接
+
+    2.日志数据
+    我想通知您，无论何时您使用我的服务，如果应用程序出现错误，我都会（通过第三方产品）在您的手机上收集名为日志数据的数据和信息。
+    此日志数据可能包括您的设备互联网协议（“IP”）地址、设备名称、操作系统版本、使用我的服务时应用程序的配置、您使用服务的时间和日期以及其他统计信息等信息 .
+
+    3. 饼干
+    Cookie 是包含少量数据的文件，通常用作匿名唯一标识符。
+    这些信息会从您访问的网站发送到您的浏览器，并存储在您设备的内存中。
+    本服务不明确使用这些“cookies”。 但是，该应用程序可能会使用第三方代码和使用“cookies”的库来收集信息并改进其服务。
+    您可以选择接受或拒绝这些 cookie，并知道何时将 cookie 发送到您的设备。 如果您选择拒绝我们的 cookie，您可能无法使用本服务的某些部分。
+
+
+    4. 服务商
+
+    我们在应用程序中使用的权限：
+    android.permission.WRITE_EXTERNAL_STORAGE
+
+    android.permission.READ_EXTERNAL_STORAGE
+
+    android.permission.WAKE_LOCK
+
+    android.permission.振动
+
+    android.permission.互联网
+
+    android.permission.ACCESS_NETWORK_STATE
+
+    android.permission.RECEIVE_BOOT_COMPLETED
+
+    笔记：
+    - 我们承诺仅将上述权利用于服务于应用程序的功能，并完全遵守 google play 的政策，不会用于任何其他目的。
+
+    - 用户提供的所有信息只会存储在他们的设备上，我们不会以任何形式收集和存储这些信息（包括服务器或云服务……）。
+
+    - 我们不披露、存储或共享用户的任何敏感信息（电子邮件、银行账户……）。
+
+    5.服务提供商
+    由于以下原因，我可能会雇用第三方公司和个人：
+    促进我们的服务；
+    代表我们提供服务；
+    执行与服务相关的服务；
+    协助我们分析我们的服务是如何被使用的。
+    我想通知此服务的用户，这些第三方可以访问您的个人信息。
+    原因是代表我们执行分配给他们的任务。但是，他们有义务不披露或将这些信息用于任何其他目的。
+
+
+    6. 安全
+    我重视您向我们提供您的个人信息的信任，因此我们正在努力使用商业上可接受的方式来保护它。
+    但请记住，没有一种网络传输方式或电子存储方式是 100% 安全可靠的，我无法保证其绝对安全。
+
+    7. 与其他网站的链接
+    本服务可能包含其他网站的链接。 如果您单击第三方链接，您将被定向到该站点。
+    请注意，这些外部网站不是由我运营的。因此，我强烈建议您查看这些网站的隐私政策。
+
+    我无法控制任何第三方网站或服务的内容、隐私政策或做法，也不承担任何责任。
+
+    8. 儿童隐私
+    这些服务不针对 13 岁以下的任何人。我不会故意收集 13 岁以下儿童的个人身份信息。
+    如果我发现 13 岁以下的儿童向我提供了个人信息，我会立即将其从我们的服务器中删除。
+    如果您是父母或监护人，并且知道您的孩子向我们提供了个人信息，请与我联系，以便我能够采取必要的行动。
+
+    9. 本隐私政策的变更
+    我可能会更新我们的隐私政策不时。因此，建议您定期查看此页面以了解任何更改。
+我将通过在此页面上发布新的隐私政策来通知您任何更改。这些更改在发布到此页面后立即生效。</string>
+    <string name="thank_you">谢谢 ！！！</string>
+    <string name="claim">宣称</string>
+    <string name="daily_login">恭喜！ 您已收到每日登录奖励。</string>
+    <string name="received_a_reward">恭喜！ 你得到了奖励。</string>
+
+</resources>
