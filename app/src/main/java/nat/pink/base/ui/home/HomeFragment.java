@@ -165,7 +165,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 
             @Override
             public void onAdClicked(MaxAd maxAd) {
-
+                if (requireActivity() instanceof MainActivity) {
+                    MainActivity mainActivity = (MainActivity) requireActivity();
+                    mainActivity.getFirebaseAnalytics().logEvent("ClickHomeNative", null);
+                }
             }
 
             @Override

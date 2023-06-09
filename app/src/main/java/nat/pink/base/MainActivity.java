@@ -20,6 +20,7 @@ import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private Consumer interstitialConsumer;
     private Consumer<MaxNativeAdView> nativeAdLoadedConsumer;
     private DatabaseReference firebaseDatabase;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,10 +163,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     public DatabaseReference getFirebaseDatabase() {
         return firebaseDatabase;
+    }
+    public FirebaseAnalytics getFirebaseAnalytics() {
+        return mFirebaseAnalytics;
     }
 
     @Override
@@ -255,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
                 createInterstitialAd(Const.KEY_ADS_GUIDE);
                 createNativeAd(Const.KEY_ADS_LANGUAGE);
                 //   Toast.makeText(getApplicationContext(), "done init", Toast.LENGTH_SHORT).show();
-                Log.d("adsDebug", "onSdkInitialized: ");
             }
         });
     }
@@ -298,6 +303,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onNativeAdClicked(MaxAd maxAd) {
                     super.onNativeAdClicked(maxAd);
+                    if (keyAds.equals(Const.KEY_ADS_LANGUAGE))
+                        getFirebaseAnalytics().logEvent("ClickLanguageNative",null);
                 }
 
                 @Override
@@ -335,7 +342,10 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onAdClicked(MaxAd maxAd) {
-                    Log.d("adsDebug", "onAdClicked: ");
+                    if (keyAds.equals(Const.KEY_ADS_GUIDE))
+                        getFirebaseAnalytics().logEvent("ClickGuideInter",null);
+                    if (keyAds.equals(Const.KEY_ADS_CREATE_CONTACT))
+                        getFirebaseAnalytics().logEvent("ClickCreateContact",null);
                 }
 
                 @Override
