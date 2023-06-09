@@ -22,3 +22,5 @@ local.properties
 .safedk/api/SafeDKAndroid-5.11.0.jar
 .safedk/dex/android-support-multidex.dex
 .safedk/dex/SafeDKAndroid-5.11.0.dex
+.safedk/api/SafeDKAndroid-5.11.1.jar
+.safedk/dex/SafeDKAndroid-5.11.1.dex
