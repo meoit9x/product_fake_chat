@@ -6,7 +6,6 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
-import nat.pink.base.App;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -31,9 +30,9 @@ public class RetrofitClient {
         return okHttpClient;
     }
 
-    public static Retrofit getInstance(String url) {
+    public static Retrofit getInstance(Context context,String url) {
         ourInstance = new Retrofit.Builder()
-                .client(okHttpClient(App.getInstance(), 30))
+                .client(okHttpClient(context, 30))
                 .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

@@ -19,6 +19,8 @@ import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
@@ -38,6 +40,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.room.Database;
 
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.ActivityMainBinding;
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean showNativeAd = false;
     private Consumer interstitialConsumer;
     private Consumer<MaxNativeAdView> nativeAdLoadedConsumer;
+    private DatabaseReference firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,14 +105,14 @@ public class MainActivity extends AppCompatActivity {
         initData();
         Intent intent = getIntent();
 
-        boolean isFromNoti = intent.getBooleanExtra(Const.ACTION_FORWARD_SCREEN,false);
-        if (isFromNoti){
+        boolean isFromNoti = intent.getBooleanExtra(Const.ACTION_FORWARD_SCREEN, false);
+        if (isFromNoti) {
             Intent serviceIntent = new Intent(this, CallingService.class);
             this.stopService(serviceIntent);
         }
 
-        if (intent.getAction() != null && intent.getAction().equals("android.intent.action.MAIN")){
-           // initView();
+        if (intent.getAction() != null && intent.getAction().equals("android.intent.action.MAIN")) {
+            // initView();
         }
         if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
             Gson gson = new Gson();
@@ -153,13 +157,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+    }
 
+    public DatabaseReference getFirebaseDatabase() {
+        return firebaseDatabase;
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if(intent != null) {
+        if (intent != null) {
             handleIntent(intent);
         }
     }
@@ -177,12 +185,12 @@ public class MainActivity extends AppCompatActivity {
             if (PreferenceUtil.getString(getApplicationContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, "").equals("")) {
                 replaceFragment(new LanguageFragment(), LanguageFragment.TAG);
             } else if (!PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.IS_INTRO_OPENED, false)) {
-                 replaceFragment(new OnboardFragment(), OnboardFragment.TAG);
+                replaceFragment(new OnboardFragment(), OnboardFragment.TAG);
             } else {
                 replaceFragment(new HomeFragment(), HomeFragment.TAG);
             }
-        } else{
-             replaceFragment(new HomeFragment(), HomeFragment.TAG);
+        } else {
+            replaceFragment(new HomeFragment(), HomeFragment.TAG);
         }
     }
 
@@ -228,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         for (Fragment item : getSupportFragmentManager().getFragments())
             item.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
     public void setLoadingAdsView(Boolean visible) {
         Log.d(TAG, "LoadingAdsView: " + visible);
         binding.loadingAdsLayout.loadingAdsLayout.bringToFront();
@@ -304,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAdLoaded(MaxAd maxAd) {
                     retryAttempt = 0;
-                  //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
                     Log.d("adsDebug", "onAdLoaded: ");
                     updateAdsRequest();
                 }
@@ -312,7 +321,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAdDisplayed(MaxAd maxAd) {
                     Log.d("adsDebug", "onAdDisplayed: ");
-                 //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -346,16 +355,16 @@ public class MainActivity extends AppCompatActivity {
         interstitialAd.loadAd();
     }
 
-    public void createBannerAd(String keyAds,ViewGroup rootView){
-        bannerAd = new MaxAdView(keyAds,MainActivity.this);
+    public void createBannerAd(String keyAds, ViewGroup rootView) {
+        bannerAd = new MaxAdView(keyAds, MainActivity.this);
         // Stretch to the width of the screen for banners to be fully functional
         int width = ViewGroup.LayoutParams.MATCH_PARENT;
         // Banner height on phones and tablets is 50 and 90, respectively
-        int heightPx = getResources().getDimensionPixelSize( R.dimen.banner_height );
-        bannerAd.setLayoutParams( new FrameLayout.LayoutParams( width, heightPx ) );
+        int heightPx = getResources().getDimensionPixelSize(R.dimen.banner_height);
+        bannerAd.setLayoutParams(new FrameLayout.LayoutParams(width, heightPx));
         // Set background or background color for banners to be fully functional
-        bannerAd.setBackgroundColor( Color.WHITE );
-        rootView.addView( bannerAd );
+        bannerAd.setBackgroundColor(Color.WHITE);
+        rootView.addView(bannerAd);
         // Load the ad
         bannerAd.loadAd();
         bannerAd.setListener(new MaxAdViewAdListener() {
@@ -371,7 +380,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAdLoaded(MaxAd maxAd) {
-                Log.d("adsDebug","failed");
+                Log.d("adsDebug", "failed");
                 bannerAd.loadAd();
             }
 
@@ -392,12 +401,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onAdLoadFailed(String s, MaxError maxError) {
-                Log.d("adsDebug","failed");
+                Log.d("adsDebug", "failed");
             }
 
             @Override
             public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
-                Log.d("adsDebug","failed");
+                Log.d("adsDebug", "failed");
             }
         });
     }
