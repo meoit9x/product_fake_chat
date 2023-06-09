@@ -142,11 +142,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
 
         public void bindData() {
             binding.llInfor.setVisibility(View.VISIBLE);
-            if (conversationModel.getAvatar().contains("R.drawable")) {
-                binding.imAvatar.setImageResource(Utils.convertStringToDrawable(mContext, conversationModel.getAvatar()));
-            } else {
-                Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(binding.imAvatar);
-            }
+            ImageUtils.loadImage(mContext,binding.imAvatar,conversationModel.getAvatar());
             if (!TextUtils.isEmpty(conversationModel.getName()))
                 binding.tvName2.setText(conversationModel.getName());
             if (!TextUtils.isEmpty(conversationModel.getLive()))
@@ -185,7 +181,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             textBinding.tvContent.setTextColor(messageModel.isSend() ? Color.WHITE : Color.BLACK);
             //todo
             textBinding.tvContent.setBackgroundTintList(ColorStateList.valueOf(messageModel.isSend()
-                    ? conversationModel.getColor()
+                    ? mContext.getResources().getColor(R.color.color_088)
                     : mContext.getResources().getColor(R.color.color_f1f1f1)));
 
 //            textBinding.tvContent.setBackgroundResource(Config.getBackgroundChatResoure(conversationModel, getAdapterPosition()));

@@ -177,15 +177,12 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
 
     private void loadUser() {
         getViewModel().objectMessenges.clear();
-        if (objectUser.getAvatar().contains("R.drawable")) {
-            binding.layoutTop.imInline.setImageResource(Utils.convertStringToDrawable(this, objectUser.getAvatar()));
-        } else
-            ImageUtils.loadImage(binding.layoutTop.imInline, objectUser.getAvatar());
+        ImageUtils.loadImage(this, binding.layoutTop.imInline, objectUser.getAvatar());
         if (objectUser.getName() != null)
             binding.layoutTop.tvName.setText(objectUser.getName());
         binding.layoutTop.tvContent.setText(Utils.getStringFromIndex(this, objectUser.getOnline() - 1));
-        binding.layoutTop.imStatus.setVisibility(objectUser.getOnline() == 1 ? View.VISIBLE : View.GONE);
-        binding.layoutTop.imStatusOff.setVisibility(objectUser.getOnline() == 1 ? View.GONE : View.VISIBLE);
+//        binding.layoutTop.imStatus.setVisibility(objectUser.getOnline() == 1 ? View.VISIBLE : View.GONE);
+//        binding.layoutTop.imStatusOff.setVisibility(objectUser.getOnline() == 1 ? View.GONE : View.VISIBLE);
 
     }
 
