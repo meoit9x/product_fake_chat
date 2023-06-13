@@ -27,16 +27,17 @@ public class SplashActivity extends AppCompatActivity {
     Handler handler = new Handler();
     Runnable runnable;
     private int progress = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         initAct();
     }
+
     protected void initAct() {
 
 //        Runnable update = new Runnable() {
@@ -62,23 +63,31 @@ public class SplashActivity extends AppCompatActivity {
 //                handler.post(update);
 //            }
 //        }, 5, 25);
+        if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE")) {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.setAction("android.intent.action.MAIN");
+            startActivity(i);
+            finish();
+        } else {
 
-       runnable = new Runnable() {
-            @Override
-            public void run() {
-                progress += 1;
-                Log.d("debug", "run: progress =" + progress);
-                binding.progress.setProgress(progress);
-                if (progress == 99) {
-                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                    i.setAction("android.intent.action.MAIN");
-                    startActivity(i);
-                    finish();
+
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    progress += 1;
+                    Log.d("debug", "run: progress =" + progress);
+                    binding.progress.setProgress(progress);
+                    if (progress == 99) {
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        i.setAction("android.intent.action.MAIN");
+                        startActivity(i);
+                        finish();
+                    }
+                    handler.postDelayed(this, 10);
                 }
-                handler.postDelayed(this, 10);
-            }
-        };
-        handler.postDelayed(runnable, 100);
+            };
+            handler.postDelayed(runnable, 100);
+        }
     }
 
     @Override
