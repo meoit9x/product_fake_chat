@@ -4,6 +4,7 @@ import static android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,10 +14,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.bumptech.glide.Glide;
@@ -61,6 +64,7 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
             binding.ivContent.setColorFilter(v);
         });
         binding.ivContent.setColorFilter(requireContext().getColor(R.color.color_6366F1));
+        setupUI(binding.getRoot());
     }
 
     @Override
@@ -194,6 +198,24 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
                 if (checked)
                     daoContact.setOnline(5);
                 break;
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void setupUI(View view) {
+
+        if (!(view instanceof EditText)) {
+            view.setOnTouchListener((v, event) -> {
+                Utils.hideKeyboard(v);
+                return false;
+            });
+        }
+
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView);
+            }
         }
     }
 }
