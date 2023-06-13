@@ -430,4 +430,6 @@ Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijaka
 
     <string name="select_contact">Pilih kontak</string>
     <string name="your_contact">Kontak Anda</string>
+
+    <string name="get_start">Mulai</string>
 </resources>

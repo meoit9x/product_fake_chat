@@ -48,7 +48,7 @@
 
     <!--flag-->
     <string name="flag_name_english">Tiếng Anh</string>
-    <string name="flag_name_japanese">tiếng Nhật</string>
+    <string name="flag_name_japanese">Tiếng Nhật</string>
     <string name="flag_name_chiness">Tiếng Trung Quốc</string>
     <string name="flag_name_indonesian">Tiếng Indonesia</string>
     <string name="flag_name_rusian">Tiếng Nga</string>
@@ -430,4 +430,6 @@ Tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đ
 
     <string name="select_contact">Chọn liên hệ</string>
     <string name="your_contact">Liên hệ của bạn</string>
+
+    <string name="get_start">Bắt đầu</string>
 </resources>

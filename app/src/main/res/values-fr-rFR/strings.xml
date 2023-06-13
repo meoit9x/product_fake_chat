@@ -429,4 +429,6 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
 
     <string name="select_contact">Sélectionner un contact</string>
     <string name="your_contact">Votre contact</string>
+
+    <string name="get_start">Commencer</string>
 </resources>

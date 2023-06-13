@@ -48,7 +48,7 @@
             android:textSize="14dp"
             android:padding="10px"
             android:id="@+id/skip"
-            android:text="Skip"
+            android:text="@string/tt_txt_skip"
             android:layout_marginLeft="36dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -102,7 +102,7 @@
               android:layout_centerVertical="true"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Get Started"
+              android:text="@string/get_start"
               /></RelativeLayout>
 
         </com.google.android.material.card.MaterialCardView>

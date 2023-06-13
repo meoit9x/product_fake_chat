@@ -430,4 +430,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
 
     <string name="select_contact">Выбрать контакт</string>
     <string name="your_contact">Ваш контакт</string>
+
+    <string name="get_start">Начать</string>
 </resources>

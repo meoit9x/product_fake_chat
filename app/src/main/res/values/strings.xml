@@ -432,4 +432,6 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="select_contact">Select contact</string>
     <string name="your_contact">Your Contact</string>
 
+    <string name="get_start">Get started</string>
+
 </resources>

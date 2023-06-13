@@ -432,4 +432,6 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
 
     <string name="select_contact">Kontakt auswählen</string>
     <string name="your_contact">Ihr Kontakt</string>
+
+    <string name="get_start">Erste Schritte</string>
 </resources>
