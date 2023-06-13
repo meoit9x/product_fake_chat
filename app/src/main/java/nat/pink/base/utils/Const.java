@@ -15,6 +15,7 @@ public class Const {
     public static final String KEY_ADS_LANGUAGE = "ec45a958f366f067";
     public static final String KEY_ADS_DONE = "89b5de9992a2828a";
     public static final String KEY_ADS_CREATE_CONTACT = "197e605cf2e0aa76";
+    public static final String KEY_ADS_REFRESH_CHAT = "bfb05294a38fd0dd";
     public static final String KEY_ADS_PRESENT_EVERYDAY = "KEY_ADS_PRESENT_EVERYDAY";
     public static final String KEY_ADS_PRESENT = "KEY_ADS_PRESENT";
 

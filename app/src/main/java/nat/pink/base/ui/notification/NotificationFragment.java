@@ -137,10 +137,7 @@ public class NotificationFragment extends BaseFragment<FragmentSetupNotification
         btChatBubbles.setOnClickListener(v -> setStateView(false));
         btNavigationBar.setOnClickListener(v -> setStateView(true));
 
-        if (user.getAvatar().contains("R.drawable")) {
-            binding.ivAvatarContact.setImageResource(Utils.convertStringToDrawable(requireContext(), user.getAvatar()));
-        } else
-            ImageUtils.loadImage(binding.ivAvatarContact, user.getAvatar());
+        ImageUtils.loadImage(requireContext(), binding.ivAvatarContact, user.getAvatar());
         binding.txtNameContact.setText(user.getName());
         if (user.isVerified()) {
             binding.ivCheckRank.setVisibility(View.VISIBLE);

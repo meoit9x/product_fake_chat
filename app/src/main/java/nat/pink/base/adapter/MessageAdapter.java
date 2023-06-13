@@ -487,11 +487,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             } else if (messageModel.getStatus() == Config.STATUS_NOT_RECEIVED) {
                 imStatus.setImageResource(R.drawable.ic_check);
             } else {
-                if(conversationModel.getAvatar().contains("R.drawable")) {
-                    imStatus.setImageResource(Utils.convertStringToDrawable(mContext, conversationModel.getAvatar()));
-                } else {
-                    Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(imStatus);
-                }
+                ImageUtils.loadImage(mContext,imStatus,conversationModel.getAvatar());
             }
         }
 

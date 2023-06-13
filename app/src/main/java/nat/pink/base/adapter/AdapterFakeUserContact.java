@@ -47,10 +47,7 @@ public class AdapterFakeUserContact extends RecyclerView.Adapter<AdapterFakeUser
         ItemFakeUserContactBinding binding = holder.binding;
         DaoContact user = fakeUsers.get(position);
 
-        if (user.getAvatar()!=null&& user.getAvatar().contains("R.drawable")) {
-            binding.avatar.setImageResource(Utils.convertStringToDrawable(context, user.getAvatar()));
-        } else
-            ImageUtils.loadImage(binding.avatar, user.getAvatar());
+        ImageUtils.loadImage(context, binding.avatar, user.getAvatar());
 
         binding.tvName.setText(user.getName());
 

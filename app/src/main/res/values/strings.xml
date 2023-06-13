@@ -308,15 +308,15 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="content_fake_video_call">Fake \nVideo Call</string>
     <string name="content_fake_noti">"Fake \nNotification"</string>
     <string name="free">Free</string>
-    <string name="one_hun_coin">-100 Poin</string>
-    <string name="two_hun_coin">-200 Poin</string>
-    <string name="three_hun_coin">-300 Poin</string>
-    <string name="one_extra_coin">+100 Poin</string>
-    <string name="two_extra_coin">+200 Poin</string>
-    <string name="three_extra_coin">+300 Poin</string>
+    <string name="one_hun_coin">-100 Point</string>
+    <string name="two_hun_coin">-200 Point</string>
+    <string name="three_hun_coin">-300 Point</string>
+    <string name="one_extra_coin">+100 Point</string>
+    <string name="two_extra_coin">+200 Point</string>
+    <string name="three_extra_coin">+300 Point</string>
 
     <string name="conversation_suggestions">Conversation suggestions</string>
-    <string name="your_coin">Your poin</string>
+    <string name="your_coin">Your point</string>
     <string name="manage_conversation">Manage Conversation</string>
     <string name="suggest">Suggest</string>
     <string name="create_new_manager_suggest">Create new</string>

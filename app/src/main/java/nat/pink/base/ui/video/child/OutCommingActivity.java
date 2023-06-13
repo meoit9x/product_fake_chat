@@ -89,15 +89,8 @@ public class OutCommingActivity extends AppCompatActivity {
 
     private void initData() {
         if (objectCalling != null) {
-            if (objectCalling.getPathImage().contains("R.drawable")) {
-                binding.ivCall.setImageResource(Utils.convertStringToDrawable(this, objectCalling.getPathImage()));
-                binding.ivContent.setImageResource(Utils.convertStringToDrawable(this, objectCalling.getPathImage()));
-            } else {
-                ImageUtils.loadImage(binding.ivCall, objectCalling.getPathImage());
-                ImageUtils.loadImage(binding.ivContent, objectCalling.getPathImage());
-            }
-//            Glide.with(this).load(Uri.parse(objectCalling.getPathImage())).into(binding.ivCall);
-//            Glide.with(this).load(Uri.parse(objectCalling.getPathImage())).fitCenter().into(binding.ivContent);
+            ImageUtils.loadImage(this, binding.ivCall, objectCalling.getPathImage());
+            ImageUtils.loadImage(this, binding.ivContent, objectCalling.getPathImage());
             binding.txtName.setText(objectCalling.getName());
             updateTime = () -> {
                 timeString = "" + getDurationString((int) mElapsedTime);
