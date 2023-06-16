@@ -74,7 +74,6 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
         });
         //default english
         PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, "en");
-        //createNativeAd(Const.KEY_ADS_LANGUAGE);
     }
 
     @Override

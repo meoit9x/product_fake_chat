@@ -92,19 +92,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         fragmentManager = getSupportFragmentManager();
 
-        //disable darkmode
-        // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        //use full taskbar
-/*        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);*/
         initView();
         initAds();
         initData();
@@ -323,15 +315,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAdLoaded(MaxAd maxAd) {
                     retryAttempt = 0;
-                    //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
-                    Log.d("adsDebug", "onAdLoaded: ");
                     updateAdsRequest();
                 }
 
                 @Override
                 public void onAdDisplayed(MaxAd maxAd) {
-                    Log.d("adsDebug", "onAdDisplayed: ");
-                    //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -350,8 +338,6 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onAdLoadFailed(String s, MaxError maxError) {
-                    // Interstitial ad failed to load
-                    // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
                     retryAttempt++;
                     long delayMillis = TimeUnit.SECONDS.toMillis(5);
 

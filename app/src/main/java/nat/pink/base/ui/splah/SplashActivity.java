@@ -39,38 +39,12 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     protected void initAct() {
-
-//        Runnable update = new Runnable() {
-//            int progress = 0;
-//
-//            public void run() {
-//                progress += 1;
-//                Log.d("debug", "run: progress =");
-//                binding.progress.setProgress(progress);
-//                if (progress == 99) {
-//                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-//                    i.setAction("android.intent.action.MAIN");
-//                    startActivity(i);
-//                    finish();
-//                }
-//            }
-//        };
-//
-//        timer = new Timer();
-//        timer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                handler.post(update);
-//            }
-//        }, 5, 25);
         if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE")) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             i.setAction("android.intent.action.MAIN");
             startActivity(i);
             finish();
         } else {
-
-
             runnable = new Runnable() {
                 @Override
                 public void run() {

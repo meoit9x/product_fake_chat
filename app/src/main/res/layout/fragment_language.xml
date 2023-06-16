@@ -64,7 +64,7 @@
         android:id="@+id/native_ads_language_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 
