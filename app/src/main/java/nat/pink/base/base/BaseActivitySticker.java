@@ -25,7 +25,7 @@ import java.util.concurrent.Callable;
 
 import nat.pink.base.utils.Toolbox;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivitySticker extends AppCompatActivity {
 
     private Callable<Void> callable;
     private SelectImageListener selectImageListener;

@@ -11,11 +11,11 @@ import java.util.List;
 
 import nat.pink.base.R;
 import nat.pink.base.adapter.StickerAdapter;
-import nat.pink.base.base.BaseActivity;
+import nat.pink.base.base.BaseActivitySticker;
 import nat.pink.base.databinding.ActivitySelectStickerBinding;
 import nat.pink.base.utils.Config;
 
-public class StickerActivity extends BaseActivity {
+public class StickerActivitySticker extends BaseActivitySticker {
 
     private ActivitySelectStickerBinding stickerBinding;
     private StickerAdapter stickerAdapter;
@@ -45,7 +45,7 @@ public class StickerActivity extends BaseActivity {
     protected void initControl() {
         stickerBinding.imBack.setOnClickListener(v -> finish());
         stickerAdapter.setItemClickListener((position, view) -> {
-            PopupMenu popup = new PopupMenu(StickerActivity.this, view);
+            PopupMenu popup = new PopupMenu(StickerActivitySticker.this, view);
             popup.getMenuInflater()
                     .inflate(R.menu.menu_send_message, popup.getMenu());
             popup.setOnMenuItemClickListener(item -> {

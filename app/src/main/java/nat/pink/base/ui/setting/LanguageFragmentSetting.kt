@@ -4,10 +4,6 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSmoothScroller
-import androidx.recyclerview.widget.RecyclerView
-import com.gun0912.tedpermission.provider.TedPermissionProvider
-import nat.pink.base.MainActivity
 import nat.pink.base.R
 import nat.pink.base.adapter.LanguageAdapter
 import nat.pink.base.base.BaseFragment

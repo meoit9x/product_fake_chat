@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import nat.pink.base.MainActivity;
+import nat.pink.base.ui.MainActivity;
 import nat.pink.base.R;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.utils.Const;

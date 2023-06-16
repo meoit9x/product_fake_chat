@@ -19,20 +19,17 @@ import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdViewAdListener;
 import com.applovin.mediation.MaxError;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import nat.pink.base.MainActivity;
+import nat.pink.base.base.App;
+import nat.pink.base.databinding.HomeFragmentBinding;
+import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
 import nat.pink.base.dialog.DialogFeedback;
 import nat.pink.base.dialog.DialogForceUpdate;
 import nat.pink.base.dialog.DialogLoading;
 import nat.pink.base.dialog.DialogNetworkFail;
-import nat.pink.base.model.DaoContact;
 import nat.pink.base.retrofit.RequestAPI;
 import nat.pink.base.retrofit.RetrofitClient;
 import nat.pink.base.ui.call.CallFragment;
@@ -41,9 +38,7 @@ import nat.pink.base.ui.create.CreateUserFragment;
 import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterFakeUser;
 import nat.pink.base.base.BaseFragment;
-import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogSelectChat;
-import nat.pink.base.ui.language.LanguageFragment;
 import nat.pink.base.ui.manager.ManagerContactFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.ui.setting.FaqFragment;
@@ -165,10 +160,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 
             @Override
             public void onAdClicked(MaxAd maxAd) {
-                if (requireActivity() instanceof MainActivity) {
-                    MainActivity mainActivity = (MainActivity) requireActivity();
-                    mainActivity.getFirebaseAnalytics().logEvent("ClickHomeNative", null);
-                }
+                App.getInstance().getFirebaseAnalytics().logEvent("ClickHomeNative", null);
             }
 
             @Override
@@ -204,7 +196,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             MainActivity activity = (MainActivity) requireActivity();
             if (!dialogLoading.isShowing())
                 dialogLoading.show();
-            getViewModel().foreUpdate(activity.getFirebaseDatabase(), requireContext());
+            getViewModel().foreUpdate(App.getInstance().getFirebaseDatabase(), requireContext());
             getViewModel().forceUpdate.observe(requireActivity(), v -> {
                 activity.runOnUiThread(() -> {
                     dialogLoading.dismiss();

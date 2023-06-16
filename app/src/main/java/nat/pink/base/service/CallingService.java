@@ -1,22 +1,15 @@
 package nat.pink.base.service;
 
-import static android.util.TypedValue.COMPLEX_UNIT_PX;
-
 import static nat.pink.base.utils.Utils.CHANNEL_ID;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import androidx.annotation.Nullable;
@@ -24,10 +17,9 @@ import androidx.core.app.NotificationCompat;
 
 import com.google.gson.Gson;
 
-import nat.pink.base.MainActivity;
+import nat.pink.base.ui.MainActivity;
 import nat.pink.base.R;
 import nat.pink.base.model.ObjectCalling;
-import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.Utils;

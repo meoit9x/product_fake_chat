@@ -4,29 +4,21 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.constraintlayout.widget.Constraints;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -46,9 +38,7 @@ import java.util.concurrent.TimeUnit;
 
 import nat.pink.base.R;
 import nat.pink.base.adapter.MessageAdapter;
-import nat.pink.base.base.BaseFragment;
 import nat.pink.base.dao.DatabaseController;
-import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.databinding.FragmentChatBinding;
 import nat.pink.base.dialog.DialogCreateRecord;
 import nat.pink.base.dialog.DialogDeleteMessenger;
@@ -252,7 +242,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
         }
         if (view.getId() == binding.layoutBottom.imEmoji.getId()) {
             // todo
-            Intent intentEmoji = new Intent(this, StickerActivity.class);
+            Intent intentEmoji = new Intent(this, StickerActivitySticker.class);
             startActivityForResult(intentEmoji, Config.REQUEST_CODE_ACT_STICKER);
         }
         if (view.getId() == binding.layoutBottom.imMore.getId()) {

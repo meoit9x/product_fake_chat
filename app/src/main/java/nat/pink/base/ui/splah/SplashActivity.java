@@ -10,16 +10,9 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
-import nat.pink.base.MainActivity;
-import nat.pink.base.R;
-import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.databinding.ActivitySplashBinding;
-import nat.pink.base.ui.home.HomeFragment;
-import nat.pink.base.ui.language.LanguageFragment;
-import nat.pink.base.ui.onboard.OnboardFragment;
-import nat.pink.base.utils.PreferenceUtil;
+import nat.pink.base.ui.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
     ActivitySplashBinding binding;

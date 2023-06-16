@@ -14,7 +14,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.RemoteViews;
 
 import androidx.annotation.Nullable;
@@ -30,11 +29,11 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.function.Consumer;
 
-import nat.pink.base.MainActivity;
+import nat.pink.base.databinding.FragmentSetupNotificationBinding;
+import nat.pink.base.ui.MainActivity;
 import nat.pink.base.R;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.custom.view.ExtButton;
-import nat.pink.base.databinding.FragmentSetupNotificationBinding;
 import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.dialog.DialogShowError;

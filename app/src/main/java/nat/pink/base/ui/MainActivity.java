@@ -1,12 +1,10 @@
-package nat.pink.base;
+package nat.pink.base.ui;
 
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
 
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
@@ -19,7 +17,6 @@ import com.applovin.mediation.nativeAds.MaxNativeAdLoader;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
 import com.applovin.sdk.AppLovinSdk;
 import com.applovin.sdk.AppLovinSdkConfiguration;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +24,6 @@ import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
 import android.text.TextUtils;
@@ -38,20 +34,15 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.room.Database;
 
-import nat.pink.base.base.BaseFragment;
+import nat.pink.base.R;
+import nat.pink.base.base.App;
+import nat.pink.base.base.BaseActivityForFragment;
 import nat.pink.base.databinding.ActivityMainBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.service.CallingService;
 import nat.pink.base.ui.home.HomeFragment;
 import nat.pink.base.ui.language.LanguageFragment;
-import nat.pink.base.ui.notification.NotificationFragment;
 import nat.pink.base.ui.onboard.OnboardFragment;
 import nat.pink.base.ui.splah.SplashFragment;
 import nat.pink.base.ui.video.child.OutCommingActivity;
@@ -60,17 +51,13 @@ import nat.pink.base.utils.Const;
 import nat.pink.base.utils.MyContextWrapper;
 import nat.pink.base.utils.PreferenceUtil;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivityForFragment {
 
     private ActivityMainBinding binding;
     private ArrayList<String> fragmentStates = new ArrayList<>();
@@ -85,23 +72,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean showNativeAd = false;
     private Consumer interstitialConsumer;
     private Consumer<MaxNativeAdView> nativeAdLoadedConsumer;
-    private DatabaseReference firebaseDatabase;
-    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    protected View getLayoutResource() {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        return binding.getRoot();
+    }
 
-        fragmentManager = getSupportFragmentManager();
-
-        initView();
-        initAds();
-        initData();
+    protected void initData() {
         Intent intent = getIntent();
-
         boolean isFromNoti = intent.getBooleanExtra(Const.ACTION_FORWARD_SCREEN, false);
         if (isFromNoti) {
             Intent serviceIntent = new Intent(this, CallingService.class);
@@ -153,16 +132,9 @@ public class MainActivity extends AppCompatActivity {
         handleIntent(intent);
     }
 
-    private void initData() {
-        firebaseDatabase = FirebaseDatabase.getInstance().getReference();
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-    }
+    @Override
+    protected void initEvent() {
 
-    public DatabaseReference getFirebaseDatabase() {
-        return firebaseDatabase;
-    }
-    public FirebaseAnalytics getFirebaseAnalytics() {
-        return mFirebaseAnalytics;
     }
 
     @Override
@@ -180,7 +152,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initView() {
+    protected void initView() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        fragmentManager = getSupportFragmentManager();
+
         boolean firstTime = PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.OPEN_APP_FIRST_TIME, true);
         if (firstTime) {
             if (PreferenceUtil.getString(getApplicationContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, "").equals("")) {
@@ -245,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         binding.content.setVisibility(View.VISIBLE == binding.content.getVisibility() ? View.GONE : View.VISIBLE);
     }
 
-    void initAds() {
+    protected void initAds() {
         AppLovinSdk.getInstance(this).setMediationProvider("max");
         AppLovinSdk.initializeSdk(this, new AppLovinSdk.SdkInitializationListener() {
             @Override
@@ -296,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onNativeAdClicked(MaxAd maxAd) {
                     super.onNativeAdClicked(maxAd);
                     if (keyAds.equals(Const.KEY_ADS_LANGUAGE))
-                        getFirebaseAnalytics().logEvent("ClickLanguageNative",null);
+                        App.getInstance().getFirebaseAnalytics().logEvent("ClickLanguageNative",null);
                 }
 
                 @Override
@@ -331,9 +306,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAdClicked(MaxAd maxAd) {
                     if (keyAds.equals(Const.KEY_ADS_GUIDE))
-                        getFirebaseAnalytics().logEvent("ClickGuideInter",null);
+                        App.getInstance().getFirebaseAnalytics().logEvent("ClickGuideInter",null);
                     if (keyAds.equals(Const.KEY_ADS_CREATE_CONTACT))
-                        getFirebaseAnalytics().logEvent("ClickCreateContact",null);
+                        App.getInstance().getFirebaseAnalytics().logEvent("ClickCreateContact",null);
                 }
 
                 @Override

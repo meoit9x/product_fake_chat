@@ -39,6 +39,7 @@
     </queries>
 
     <application
+        android:name=".base.App"
         tools:replace="android:allowBackup"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -70,7 +71,7 @@
             android:value="ca-app-pub-7203178372193503~8512505445" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:grantUriPermissions="true"
@@ -113,7 +114,7 @@
         <service android:name=".service.ChatHeadService" />
 
         <activity
-            android:name=".ui.chat.StickerActivity"
+            android:name=".ui.chat.StickerActivitySticker"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Base.NoActionBar" />
 

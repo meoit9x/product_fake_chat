@@ -1,12 +1,9 @@
 package nat.pink.base.base;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,18 +11,12 @@ import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 import androidx.viewbinding.ViewBinding;
 
-import com.applovin.mediation.MaxAd;
-import com.applovin.mediation.MaxAdListener;
-import com.applovin.mediation.MaxError;
-import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.applovin.mediation.nativeAds.MaxNativeAdView;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
-import java.util.concurrent.TimeUnit;
 
-import nat.pink.base.MainActivity;
-import nat.pink.base.model.DaoContact;
+import nat.pink.base.ui.MainActivity;
 
 public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewModel> extends Fragment {
 
