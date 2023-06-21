@@ -3,6 +3,10 @@ package nat.pink.base.ui.language;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.core.util.Consumer;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,6 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 //import com.applovin.mediation.nativeAds.MaxNativeAdView;
 //import com.applovin.mediation.nativeAds.MaxNativeAdViewBinder;
+
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.nativead.MediaView;
+import com.google.android.gms.ads.nativead.NativeAd;
+import com.google.android.gms.ads.nativead.NativeAdView;
 
 import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterLanguage;
@@ -53,7 +62,66 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
             }
 
         });
+        createNativeAdView();
+    }
 
+    private void createNativeAdView() {
+
+//        AdLoader.Builder builder = new AdLoader.Builder(getContext(), "ca-app-pub-3940256099942544/2247696110")
+//                .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+//                    @Override
+//                    public void onNativeAdLoaded(NativeAd nativeAd) {
+//                        // Assumes you have a placeholder FrameLayout in your View layout
+//                        // (with id fl_adplaceholder) where the ad is to be placed.
+//                        FrameLayout frameLayout = binding.nativeAdsLanguageHome;
+//                        // Assumes that your ad layout is in a file call native_ad_layout.xml
+//                        // in the res/layout folder
+//                        NativeAdView adView = (NativeAdView) getLayoutInflater()
+//                                .inflate(R.layout.native_custom_mob_ads_big, null);
+//                        // This method sets the text, images and the native ad, etc into the ad
+//                        // view.
+//                        populateNativeAdView(nativeAd, adView);
+//                        frameLayout.removeAllViews();
+//                        frameLayout.addView(adView);
+//                    }
+//                });
+//        builder.build();
+        createNativeAd(Const.KEY_ADMOB_NATIVE_TEST);
+        setNativeAdConsumer(new Consumer() {
+            @Override
+            public void accept(Object o) {
+                if (o instanceof String){
+                    return;
+                }
+                NativeAdView adView = (NativeAdView) getLayoutInflater().inflate(R.layout.native_custom_mob_ads_big, null);
+                populateNativeAdView((NativeAd) o, adView);
+                FrameLayout frameLayout = binding.nativeAdsLanguageHome;
+                frameLayout.removeAllViews();
+                frameLayout.addView(adView);
+            }
+        });
+    }
+
+    void populateNativeAdView(NativeAd nativeAd, NativeAdView adView) {
+        TextView headLine = adView.findViewById(R.id.txt_title);
+        TextView advertiser = adView.findViewById(R.id.txt_advertiser);
+        TextView body = adView.findViewById(R.id.txt_body);
+        ImageView icon = adView.findViewById(R.id.icon_image_view);
+        MediaView media = adView.findViewById(R.id.media_view_container);
+        Button action = adView.findViewById(R.id.cta_button);
+
+        headLine.setText(nativeAd.getHeadline());
+        adView.setHeadlineView(headLine);
+        advertiser.setText(nativeAd.getAdvertiser());
+        adView.setAdvertiserView(advertiser);
+        body.setText(nativeAd.getBody());
+        adView.setBodyView(body);
+        icon.setImageDrawable(nativeAd.getIcon().getDrawable());
+        action.setText(nativeAd.getStore());
+        adView.setCallToActionView(action);
+        media.setMediaContent(nativeAd.getMediaContent());
+        adView.setMediaView(media);
+        adView.setNativeAd(nativeAd);
     }
 
 //    private MaxNativeAdView createNativeAdView() {

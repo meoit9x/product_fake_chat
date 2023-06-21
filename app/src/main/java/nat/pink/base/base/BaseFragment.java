@@ -126,6 +126,13 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
 //            activity.setNativeAdView(view, loadedConsumer);
 //        }
 //    }
+    protected void setNativeAdConsumer(Consumer consumer){
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.setNativeAdView(consumer);
+        }
+    }
+
 
     protected void createBannerAd(String keyAds, ViewGroup rootView) {
         if (requireActivity() instanceof MainActivity) {

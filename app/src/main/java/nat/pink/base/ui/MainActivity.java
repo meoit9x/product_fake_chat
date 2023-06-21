@@ -17,13 +17,19 @@ import android.graphics.Color;
 //import com.applovin.mediation.nativeAds.MaxNativeAdView;
 //import com.applovin.sdk.AppLovinSdk;
 //import com.applovin.sdk.AppLovinSdkConfiguration;
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdOptions;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -64,6 +70,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends BaseActivityForFragment {
@@ -71,6 +78,7 @@ public class MainActivity extends BaseActivityForFragment {
     private ActivityMainBinding binding;
     private ArrayList<String> fragmentStates = new ArrayList<>();
     private FragmentManager fragmentManager;
+    private InterstitialAd interstitialAd;
     //    private MaxInterstitialAd interstitialAd;
 //    private MaxNativeAdLoader nativeAdLoader;
 //    private MaxNativeAdView nativeAdView;
@@ -102,42 +110,38 @@ public class MainActivity extends BaseActivityForFragment {
         if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, VideoCallActivity.class);
-            mIntent.putExtra(
-                    Const.PUT_EXTRAL_OBJECT_CALL,
-                    gson.fromJson(intent.getType(), ObjectCalling.class)
-            );
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
             startActivity(mIntent);
             finish();
         } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, OutCommingActivity.class);
-            mIntent.putExtra(
-                    Const.PUT_EXTRAL_OBJECT_CALL,
-                    gson.fromJson(intent.getType(), ObjectCalling.class)
-            );
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
             startActivity(mIntent);
             finish();
         } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, OutCommingActivity.class);
-            mIntent.putExtra(
-                    Const.PUT_EXTRAL_OBJECT_CALL,
-                    gson.fromJson(intent.getType(), ObjectCalling.class)
-            );
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
             mIntent.putExtra("show_icon_video", true);
             startActivity(mIntent);
             finish();
         } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
             Gson gson = new Gson();
             Intent mIntent = new Intent(this, VideoCallActivity.class);
-            mIntent.putExtra(
-                    Const.PUT_EXTRAL_OBJECT_CALL,
-                    gson.fromJson(intent.getType(), ObjectCalling.class)
-            );
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
             mIntent.putExtra("show_icon_video", true);
             startActivity(mIntent);
             finish();
         }
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                Log.d("adsDebug", "init Complete");
+                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("19F4C875114642E78629F2650F04AFD2"));
+                createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
+            }
+        });
         handleIntent(intent);
     }
 
@@ -164,7 +168,7 @@ public class MainActivity extends BaseActivityForFragment {
     protected void initView() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         fragmentManager = getSupportFragmentManager();
-        createNativeAd(Const.NATIVE_ADS);
+        //createNativeAd(Const.KEY_ADMOB_NATIVE_TEST);
 
         boolean firstTime = PreferenceUtil.getBoolean(getApplicationContext(), PreferenceUtil.OPEN_APP_FIRST_TIME, true);
         if (firstTime) {
@@ -180,30 +184,22 @@ public class MainActivity extends BaseActivityForFragment {
         }
     }
 
-    public void showAdsFail(Consumer<String> consumer){
+    public void showAdsFail(Consumer<String> consumer) {
         this.consumerAdsFaill = consumer;
     }
 
-    public void showAdsSuccess(Consumer<String> consumer){
+    public void showAdsSuccess(Consumer<NativeAd> consumer) {
         this.consumerAdsSuccess = consumer;
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
-        fragmentManager.beginTransaction()
-                .replace(R.id.content, fragment, tag)
-                .addToBackStack(tag)
-                .commit();
-        if (!fragmentStates.contains(tag))
-            fragmentStates.add(tag);
+        fragmentManager.beginTransaction().replace(R.id.content, fragment, tag).addToBackStack(tag).commit();
+        if (!fragmentStates.contains(tag)) fragmentStates.add(tag);
     }
 
     public void addFragment(Fragment fragment, String tag) {
-        fragmentManager.beginTransaction()
-                .add(R.id.content, fragment, tag)
-                .addToBackStack(tag)
-                .commit();
-        if (!fragmentStates.contains(tag))
-            fragmentStates.add(tag);
+        fragmentManager.beginTransaction().add(R.id.content, fragment, tag).addToBackStack(tag).commit();
+        if (!fragmentStates.contains(tag)) fragmentStates.add(tag);
     }
 
     @Override
@@ -238,7 +234,7 @@ public class MainActivity extends BaseActivityForFragment {
         binding.content.setVisibility(View.VISIBLE == binding.content.getVisibility() ? View.GONE : View.VISIBLE);
     }
 
-//    protected void updateAdsRequest() {
+    protected void updateAdsRequest() {
 //        if (showInterstitial && interstitialAd != null && interstitialAd.isReady()) {
 //            setLoadingAdsView(false);
 //            interstitialAd.showAd();
@@ -251,34 +247,34 @@ public class MainActivity extends BaseActivityForFragment {
 //            }
 //            showNativeAd = false;
 //        }
-//    }
 
-    private Consumer<String> consumerAdsFaill, consumerAdsSuccess;
+        if (showInterstitial && interstitialAd != null) {
+            setLoadingAdsView(false);
+            interstitialAd.show(this);
+            showInterstitial = false;
+        }
+    }
+
+    private Consumer<String> consumerAdsFaill;
+    private Consumer<NativeAd> consumerAdsSuccess;
     private AdLoader adLoader;
 
     public void showNativeAds() {
-        if (adLoader != null)
-            adLoader.loadAds(new AdRequest.Builder().build(), 3);
+        if (adLoader != null) adLoader.loadAds(new AdRequest.Builder().build(), 3);
     }
 
-
     public void createNativeAd(String keyAds) {
-        adLoader = new AdLoader.Builder(this, keyAds)
-                .forNativeAd(nativeAd -> {
-                    consumerAdsSuccess.accept(keyAds);
-                })
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(LoadAdError adError) {
-                        consumerAdsFaill.accept(keyAds);
-                    }
-                })
-                .withNativeAdOptions(new NativeAdOptions.Builder()
-                        // Methods in the NativeAdOptions.Builder class can be
-                        // used here to specify individual options settings.
-                        .build())
-                .build();
+        adLoader = new AdLoader.Builder(this, keyAds).forNativeAd(nativeAd -> {
+            consumerAdsSuccess.accept(nativeAd);
+        }).withAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                consumerAdsFaill.accept(keyAds);
+            }
+        }).withNativeAdOptions(new NativeAdOptions.Builder()
+                .build()).build();
 
+        showNativeAds();
 
 //        if (nativeAdLoader == null || nativeAdLoader.getAdUnitId() != keyAds) {
 //            nativeAdLoader = new MaxNativeAdLoader(keyAds, MainActivity.this);
@@ -315,7 +311,67 @@ public class MainActivity extends BaseActivityForFragment {
 //        }
     }
 
+    private void setCallbackInterstitial() {
+        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+            @Override
+            public void onAdClicked() {
+                // Called when a click is recorded for an ad.
+                Log.d(TAG, "Ad was clicked.");
+            }
+
+            @Override
+            public void onAdDismissedFullScreenContent() {
+                // Called when ad is dismissed.
+                // Set the ad reference to null so you don't show the ad a second time.
+                Log.d(TAG, "Ad dismissed fullscreen content.");
+                interstitialAd = null;
+                interstitialConsumer.accept(null);
+            }
+
+            @Override
+            public void onAdFailedToShowFullScreenContent(AdError adError) {
+                // Called when ad fails to show.
+                Log.e(TAG, "Ad failed to show fullscreen content.");
+                interstitialAd = null;
+            }
+
+            @Override
+            public void onAdImpression() {
+                // Called when an impression is recorded for an ad.
+                Log.d(TAG, "Ad recorded an impression.");
+            }
+
+            @Override
+            public void onAdShowedFullScreenContent() {
+                // Called when ad is shown.
+                Log.d(TAG, "Ad showed fullscreen content.");
+            }
+        });
+    }
+
     public void createInterstitialAd(String keyAds) {
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this, keyAds, adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd mInterstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                interstitialAd = mInterstitialAd;
+                setCallbackInterstitial();
+                updateAdsRequest();
+                Log.i(TAG, "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.d(TAG, loadAdError.toString());
+                interstitialAd = null;
+                // createInterstitialAd(keyAds);
+            }
+        });
+
 //        if (interstitialAd == null || interstitialAd.getAdUnitId() != keyAds) {
 //            interstitialAd = new MaxInterstitialAd(keyAds, this);
 //            interstitialAd.setListener(new MaxAdListener() {
@@ -415,6 +471,7 @@ public class MainActivity extends BaseActivityForFragment {
 //                Log.d("adsDebug", "failed");
 //            }
 //        });
+
     }
 
 
@@ -424,14 +481,23 @@ public class MainActivity extends BaseActivityForFragment {
 //            interstitialAd.showAd();
 //            return true;
 //        }
+        if (interstitialAd != null) {
+            interstitialAd.show(this);
+            return true;
+        }
         setLoadingAdsView(true);
         showInterstitial = true;
         return false;
     }
 
-//    public void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
+    //    public void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
 //        nativeAdLoadedConsumer = loadedConsumer;
 //        nativeAdView = view;
 //        showNativeAd = true;
 //    }
+    public void setNativeAdView(Consumer loadedConsumer) {
+        consumerAdsSuccess = loadedConsumer;
+        // nativeAdView = view;
+        showNativeAd = true;
+    }
 }

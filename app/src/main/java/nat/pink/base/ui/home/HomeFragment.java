@@ -19,6 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 //import com.applovin.mediation.MaxAdViewAdListener;
 //import com.applovin.mediation.MaxError;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Calendar;
 
 import nat.pink.base.base.App;
@@ -65,6 +68,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private DialogLoading dialogLoading;
     private DialogForceUpdate dialogForceUpdate;
     protected RequestAPI requestAPI;
+    private AdView mAdView;
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -132,6 +136,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.coinCount.setText(String.valueOf(totalCoin));
         });
         dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
+        mAdView = binding.adView;
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 //        binding.adsBannerView.setListener(new MaxAdViewAdListener() {
 //            @Override
 //            public void onAdExpanded(MaxAd maxAd) {
