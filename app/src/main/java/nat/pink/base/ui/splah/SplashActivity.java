@@ -9,6 +9,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import java.util.Timer;
 
 import nat.pink.base.databinding.ActivitySplashBinding;
@@ -45,10 +49,15 @@ public class SplashActivity extends AppCompatActivity {
                     Log.d("debug", "run: progress =" + progress);
                     binding.progress.setProgress(progress);
                     if (progress == 99) {
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.setAction("android.intent.action.MAIN");
-                        startActivity(i);
-                        finish();
+                        MobileAds.initialize(SplashActivity.this, new OnInitializationCompleteListener() {
+                            @Override
+                            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                i.setAction("android.intent.action.MAIN");
+                                startActivity(i);
+                                finish();
+                            }
+                        });
                     }
                     handler.postDelayed(this, 10);
                 }

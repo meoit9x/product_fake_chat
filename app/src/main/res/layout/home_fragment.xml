@@ -389,15 +389,6 @@
 
             </GridLayout>
 
-            <com.applovin.mediation.ads.MaxAdView
-                xmlns:maxads="http://schemas.applovin.com/android/1.0"
-                android:id="@+id/ads_banner_view"
-                maxads:adUnitId="23d414c3036c2431"
-                android:layout_weight="1.65"
-                android:layout_marginBottom="@dimen/_5sdp"
-                android:background="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/banner_height" />
         </LinearLayout>
 
 

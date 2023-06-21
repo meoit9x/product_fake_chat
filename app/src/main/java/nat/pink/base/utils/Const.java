@@ -22,6 +22,7 @@ public class Const {
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";
     public static final String PUT_EXTERNAL_ACTION = "PUT_EXTERNAL_ACTION";
     public static final String PUT_EXTRAL_OBJECT_MESSENGER = "PUT_EXTRAL_OBJECT_MESSENGER";
+    public static final String NATIVE_ADS = "ca-app-pub-7203178372193503/5348618615";
 
     public static final String KEY_DATA_CONTACT = "KEY_DATA_CONTACT";
 

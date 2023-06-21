@@ -24,10 +24,10 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.applovin.mediation.MaxAd;
-import com.applovin.mediation.MaxAdListener;
-import com.applovin.mediation.MaxError;
-import com.applovin.mediation.ads.MaxInterstitialAd;
+//import com.applovin.mediation.MaxAd;
+//import com.applovin.mediation.MaxAdListener;
+//import com.applovin.mediation.MaxError;
+//import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.bumptech.glide.Glide;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -77,7 +77,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     public FragmentChat() {
     }
 
-    private MaxInterstitialAd interstitialAd;
+//    private MaxInterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -311,10 +311,10 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
                     finish();
                     break;
                 case R.id.menu_clear_chat:
-                    if (interstitialAd != null && interstitialAd.isReady()) {
-                        interstitialAd.showAd();
-                        return true;
-                    }
+//                    if (interstitialAd != null && interstitialAd.isReady()) {
+//                        interstitialAd.showAd();
+//                        return true;
+//                    }
                     break;
             }
             return true;
@@ -453,57 +453,57 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     private int retryAttempt;
 
     public void createInterstitialAd(String keyAds) {
-        if (interstitialAd == null || interstitialAd.getAdUnitId() != keyAds) {
-            interstitialAd = new MaxInterstitialAd(keyAds, this);
-            interstitialAd.setListener(new MaxAdListener() {
-                @Override
-                public void onAdLoaded(MaxAd maxAd) {
-                    retryAttempt = 0;
-                    //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
-                    Log.d("adsDebug", "onAdLoaded: ");
-                }
-
-                @Override
-                public void onAdDisplayed(MaxAd maxAd) {
-                    Log.d("adsDebug", "onAdDisplayed: ");
-                    //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onAdHidden(MaxAd maxAd) {
-                    interstitialAd.loadAd();
-                    getViewModel().deleteMessByOwner(getBaseContext(), objectUser.getId(), v -> {
-                        if (getViewModel().objectMessenges.isEmpty() || getViewModel().objectMessenges.get(0).getType() != Config.TYPE_HEAEDER) {
-                            ObjectMessenge messageModel = new ObjectMessenge();
-                            messageModel.setType(Config.TYPE_HEAEDER);
-                            getViewModel().objectMessenges.add(0, messageModel);
-                        }
-                        messageAdapter.notifyDataSetChanged();
-                    });
-                }
-
-                @Override
-                public void onAdClicked(MaxAd maxAd) {
-                    mFirebaseAnalytics.logEvent("ClickRefreshChat", null);
-                }
-
-                @Override
-                public void onAdLoadFailed(String s, MaxError maxError) {
-                    // Interstitial ad failed to load
-                    // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
-                    retryAttempt++;
-                    long delayMillis = TimeUnit.SECONDS.toMillis(5);
-
-                    new Handler().postDelayed(() -> interstitialAd.loadAd(), delayMillis);
-                }
-
-                @Override
-                public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
-                    interstitialAd.loadAd();
-                }
-            });
-        }
-        // Load the first ad
-        interstitialAd.loadAd();
+//        if (interstitialAd == null || interstitialAd.getAdUnitId() != keyAds) {
+//            interstitialAd = new MaxInterstitialAd(keyAds, this);
+//            interstitialAd.setListener(new MaxAdListener() {
+//                @Override
+//                public void onAdLoaded(MaxAd maxAd) {
+//                    retryAttempt = 0;
+//                    //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
+//                    Log.d("adsDebug", "onAdLoaded: ");
+//                }
+//
+//                @Override
+//                public void onAdDisplayed(MaxAd maxAd) {
+//                    Log.d("adsDebug", "onAdDisplayed: ");
+//                    //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                @Override
+//                public void onAdHidden(MaxAd maxAd) {
+//                    interstitialAd.loadAd();
+//                    getViewModel().deleteMessByOwner(getBaseContext(), objectUser.getId(), v -> {
+//                        if (getViewModel().objectMessenges.isEmpty() || getViewModel().objectMessenges.get(0).getType() != Config.TYPE_HEAEDER) {
+//                            ObjectMessenge messageModel = new ObjectMessenge();
+//                            messageModel.setType(Config.TYPE_HEAEDER);
+//                            getViewModel().objectMessenges.add(0, messageModel);
+//                        }
+//                        messageAdapter.notifyDataSetChanged();
+//                    });
+//                }
+//
+//                @Override
+//                public void onAdClicked(MaxAd maxAd) {
+//                    mFirebaseAnalytics.logEvent("ClickRefreshChat", null);
+//                }
+//
+//                @Override
+//                public void onAdLoadFailed(String s, MaxError maxError) {
+//                    // Interstitial ad failed to load
+//                    // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
+//                    retryAttempt++;
+//                    long delayMillis = TimeUnit.SECONDS.toMillis(5);
+//
+//                    new Handler().postDelayed(() -> interstitialAd.loadAd(), delayMillis);
+//                }
+//
+//                @Override
+//                public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
+//                    interstitialAd.loadAd();
+//                }
+//            });
+//        }
+//        // Load the first ad
+//        interstitialAd.loadAd();
     }
 }

@@ -11,7 +11,7 @@ import androidx.core.util.Consumer;
 import androidx.fragment.app.Fragment;
 import androidx.viewbinding.ViewBinding;
 
-import com.applovin.mediation.nativeAds.MaxNativeAdView;
+//import com.applovin.mediation.nativeAds.MaxNativeAdView;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -120,12 +120,12 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         }
     }
 
-    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
-        if (requireActivity() instanceof MainActivity) {
-            MainActivity activity = (MainActivity) requireActivity();
-            activity.setNativeAdView(view, loadedConsumer);
-        }
-    }
+//    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
+//        if (requireActivity() instanceof MainActivity) {
+//            MainActivity activity = (MainActivity) requireActivity();
+//            activity.setNativeAdView(view, loadedConsumer);
+//        }
+//    }
 
     protected void createBannerAd(String keyAds, ViewGroup rootView) {
         if (requireActivity() instanceof MainActivity) {

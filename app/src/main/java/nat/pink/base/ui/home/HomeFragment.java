@@ -15,9 +15,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.applovin.mediation.MaxAd;
-import com.applovin.mediation.MaxAdViewAdListener;
-import com.applovin.mediation.MaxError;
+//import com.applovin.mediation.MaxAd;
+//import com.applovin.mediation.MaxAdViewAdListener;
+//import com.applovin.mediation.MaxError;
 
 import java.util.Calendar;
 
@@ -132,49 +132,49 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.coinCount.setText(String.valueOf(totalCoin));
         });
         dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
-        binding.adsBannerView.setListener(new MaxAdViewAdListener() {
-            @Override
-            public void onAdExpanded(MaxAd maxAd) {
-
-            }
-
-            @Override
-            public void onAdCollapsed(MaxAd maxAd) {
-
-            }
-
-            @Override
-            public void onAdLoaded(MaxAd maxAd) {
-                Log.d("adsDebug", "test");
-            }
-
-            @Override
-            public void onAdDisplayed(MaxAd maxAd) {
-                Log.d("adsDebug", "test");
-            }
-
-            @Override
-            public void onAdHidden(MaxAd maxAd) {
-                Log.d("adsDebug", "test");
-            }
-
-            @Override
-            public void onAdClicked(MaxAd maxAd) {
-                App.getInstance().getFirebaseAnalytics().logEvent("ClickHomeNative", null);
-            }
-
-            @Override
-            public void onAdLoadFailed(String s, MaxError maxError) {
-                new Handler().postDelayed(() -> binding.adsBannerView.loadAd(), 1000);
-            }
-
-            @Override
-            public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
-                binding.adsBannerView.loadAd();
-            }
-        });
-        binding.adsBannerView.loadAd();
-        binding.adsBannerView.startAutoRefresh();
+//        binding.adsBannerView.setListener(new MaxAdViewAdListener() {
+//            @Override
+//            public void onAdExpanded(MaxAd maxAd) {
+//
+//            }
+//
+//            @Override
+//            public void onAdCollapsed(MaxAd maxAd) {
+//
+//            }
+//
+//            @Override
+//            public void onAdLoaded(MaxAd maxAd) {
+//                Log.d("adsDebug", "test");
+//            }
+//
+//            @Override
+//            public void onAdDisplayed(MaxAd maxAd) {
+//                Log.d("adsDebug", "test");
+//            }
+//
+//            @Override
+//            public void onAdHidden(MaxAd maxAd) {
+//                Log.d("adsDebug", "test");
+//            }
+//
+//            @Override
+//            public void onAdClicked(MaxAd maxAd) {
+//                App.getInstance().getFirebaseAnalytics().logEvent("ClickHomeNative", null);
+//            }
+//
+//            @Override
+//            public void onAdLoadFailed(String s, MaxError maxError) {
+//                new Handler().postDelayed(() -> binding.adsBannerView.loadAd(), 1000);
+//            }
+//
+//            @Override
+//            public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
+//                binding.adsBannerView.loadAd();
+//            }
+//        });
+//        binding.adsBannerView.loadAd();
+//        binding.adsBannerView.startAutoRefresh();
         checkShowPresent();
         // createBannerAd(Const.KEY_ADS_HOME,binding.frAdsHome);
     }

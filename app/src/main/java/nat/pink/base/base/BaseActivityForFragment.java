@@ -1,11 +1,16 @@
 package nat.pink.base.base;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import nat.pink.base.utils.MyContextWrapper;
+import nat.pink.base.utils.PreferenceUtil;
 
 public abstract class BaseActivityForFragment extends AppCompatActivity {
 
@@ -19,7 +24,6 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
         initView();
         initData();
         initEvent();
-        initAds();
     }
 
     protected View getViewPadding() {
@@ -34,5 +38,13 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
 
     protected abstract void initEvent();
 
-    protected abstract void initAds();
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        String english = PreferenceUtil.getString(newBase, PreferenceUtil.KEY_CURRENT_LANGUAGE, "");
+        if(!TextUtils.isEmpty(english)) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, english));
+        } else {
+            super.attachBaseContext(newBase);
+        }
+    }
 }

@@ -63,9 +63,9 @@
 
         </activity>
 
-        <meta-data
-            android:name="applovin.sdk.key"
-            android:value="h4MnT3IKt4SmQgK4qMocaUBf20oH5Uz3klpc3w0cVvbAPHgsT9bl_f8O5oKbcw96pXpNrrKXx2wdM_qV7NqNpb" />
+<!--        <meta-data-->
+<!--            android:name="applovin.sdk.key"-->
+<!--            android:value="h4MnT3IKt4SmQgK4qMocaUBf20oH5Uz3klpc3w0cVvbAPHgsT9bl_f8O5oKbcw96pXpNrrKXx2wdM_qV7NqNpb" />-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7203178372193503~8512505445" />
