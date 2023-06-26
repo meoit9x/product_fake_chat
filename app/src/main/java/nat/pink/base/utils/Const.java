@@ -24,9 +24,9 @@ public class Const {
     public static final String PUT_EXTRAL_OBJECT_MESSENGER = "PUT_EXTRAL_OBJECT_MESSENGER";
     public static final String NATIVE_ADS = "ca-app-pub-7203178372193503/5348618615";
 
-    public static final String KEY_ADMOB_INTERSTITIAL_TEST = "ca-app-pub-3940256099942544/1033173712";
+    public static final String KEY_ADMOB_INTERSTITIAL_TEST = "ca-app-pub-6333075779989445/9332038537";
     public static final String KEY_ADMOB_BANNER_TEST = "ca-app-pub-3940256099942544/1033173712";
-    public static final String KEY_ADMOB_NATIVE_TEST = "ca-app-pub-3940256099942544/2247696110";
+    public static final String KEY_ADMOB_NATIVE_TEST = "ca-app-pub-6333075779989445/5183187763";
     public static final String KEY_DATA_CONTACT = "KEY_DATA_CONTACT";
 
     public static final int PICK_FROM_GALLERY = 1000;
