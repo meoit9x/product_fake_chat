@@ -15,6 +15,12 @@
     <string name="add_record">Add Record</string>
     <string name="ok">Ok</string>
     <string name="edit">Edit</string>
+    <string name="support_tool">Support tools</string>
+    <string name="screen_shot">Take a screenshot</string>
+    <string name="delete_chat">Refresh the chat</string>
+    <string name="back_to_home">Back to home page</string>
+
+
 
 
     <!--FONT-->

@@ -16,6 +16,8 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +40,7 @@ import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -233,7 +236,8 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
         if (view.getId() == binding.layoutTop.imVideo.getId()) {
         }
         if (view.getId() == binding.layoutTop.imInfor.getId()) {
-            showPopup(view);
+            showBottomSheetDialog();
+            //showPopup(view);
         }
         if (view.getId() == binding.layoutBottom.imEmoji.getId()) {
             // todo
@@ -450,5 +454,50 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
         } else {
             callable.call();
         }
+    }
+
+    private void showBottomSheetDialog() {
+
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog_layout);
+
+        LinearLayout screenShot = bottomSheetDialog.findViewById(R.id.screen_shot);
+        LinearLayout refresh = bottomSheetDialog.findViewById(R.id.refresh);
+        LinearLayout back = bottomSheetDialog.findViewById(R.id.back_to_home);
+        ImageView exit = bottomSheetDialog.findViewById(R.id.iv_exit);
+        back.setOnClickListener(v -> finish());
+
+        refresh.setOnClickListener(v -> showInterstitialAd(o -> {
+            //TODO delete conversation here
+            getViewModel().deleteMessByOwner(getBaseContext(), objectUser.getId(), v2 -> {
+                if (getViewModel().objectMessenges.isEmpty() || getViewModel().objectMessenges.get(0).getType() != Config.TYPE_HEAEDER) {
+                    ObjectMessenge messageModel = new ObjectMessenge();
+                    messageModel.setType(Config.TYPE_HEAEDER);
+                    getViewModel().objectMessenges.add(0, messageModel);
+                }
+                messageAdapter.notifyDataSetChanged();
+            });
+            bottomSheetDialog.dismiss();
+        }));
+
+        screenShot.setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                    .setMessage(getString(R.string.ask_save_image))
+                    .setPositiveButton(R.string.ok, (dialog, which) -> {
+                        dialog.cancel();
+                        bottomSheetDialog.dismiss();
+                        saveImage();
+                    })
+                    .setNegativeButton(R.string.cancel, (dialog, which) -> {
+                        dialog.cancel();
+                    })
+                    .show();
+        });
+
+        exit.setOnClickListener(v -> {
+            bottomSheetDialog.dismiss();
+        });
+
+        bottomSheetDialog.show();
     }
 }
