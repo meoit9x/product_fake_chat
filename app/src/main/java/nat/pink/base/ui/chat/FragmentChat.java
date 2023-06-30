@@ -97,7 +97,6 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
         softInputAssist = new SoftInputAssist(this);
         binding.tvBlock.setText(Html.fromHtml(getString(R.string.block_content), Html.FROM_HTML_MODE_COMPACT));
         binding.rcvMessage.setLayoutManager(new LinearLayoutManager(this));
-        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
     }
 
     public void initEvent() {
@@ -135,7 +134,7 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
 
     public void initData() {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
+        createInterstitialAd(Const.KEY_ADMOB_CLEAR_CHAT);
         Intent intent = getIntent();
         if (intent != null) {
             Object ob = intent.getExtras().get(Const.KEY_DATA_CONTACT);

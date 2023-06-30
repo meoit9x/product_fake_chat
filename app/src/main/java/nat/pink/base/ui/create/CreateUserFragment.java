@@ -98,7 +98,7 @@ public class CreateUserFragment extends BaseFragment<FragmentCreateUserBinding, 
         daoContact.setOnline(1);
         daoContact.setVerified(true);
         daoContact.setIs_friend(true);
-        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
+        createInterstitialAd(Const.KEY_ADMOB_CREATE_USER);
     }
 
 
