@@ -248,15 +248,15 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
     }
 
     public void createNativeAd(String keyAds) {
-        setLoadingAdsView(true);
+//        setLoadingAdsView(true);
         adLoader = new AdLoader.Builder(this, keyAds).forNativeAd(nativeAd -> {
             consumerAdsSuccess.accept(nativeAd);
-            setLoadingAdsView(false);
+//            setLoadingAdsView(false);
         }).withAdListener(new AdListener() {
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 consumerAdsFaill.accept(keyAds);
-                setLoadingAdsView(false);
+//                setLoadingAdsView(false);
             }
         }).withNativeAdOptions(new NativeAdOptions.Builder()
                 .build()).build();
