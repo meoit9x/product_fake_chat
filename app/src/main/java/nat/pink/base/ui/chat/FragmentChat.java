@@ -333,7 +333,14 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
                 case R.id.menu_clear_chat:
                     showInterstitialAd(o -> {
                         //TODO delete conversation here
-
+                        getViewModel().deleteMessByOwner(getBaseContext(), objectUser.getId(), v -> {
+                            if (getViewModel().objectMessenges.isEmpty() || getViewModel().objectMessenges.get(0).getType() != Config.TYPE_HEAEDER) {
+                                ObjectMessenge messageModel = new ObjectMessenge();
+                                messageModel.setType(Config.TYPE_HEAEDER);
+                                getViewModel().objectMessenges.add(0, messageModel);
+                            }
+                            messageAdapter.notifyDataSetChanged();
+                        });
                     });
 //                    if (interstitialAd != null && interstitialAd.isReady()) {
 //                        interstitialAd.showAd();
@@ -619,6 +626,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
             interstitialAd.show(this);
             return true;
         }
+        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
         setLoadingAdsView(true);
         showInterstitial = true;
         return false;
