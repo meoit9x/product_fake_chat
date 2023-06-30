@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-
+    <include
+        android:id="@+id/loading_ads_layout"
+        layout="@layout/loading_ads_layout" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -76,6 +78,8 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/_12sdp"
                 android:visibility="gone" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

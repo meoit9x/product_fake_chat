@@ -422,7 +422,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        android:elevation="@dimen/_3sdp"
+        android:elevation="@dimen/_40sdp"
         android:paddingHorizontal="@dimen/_16sdp"
         android:paddingVertical="@dimen/_10sdp">
 

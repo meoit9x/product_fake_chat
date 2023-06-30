@@ -1,5 +1,7 @@
 package nat.pink.base.ui.chat;
 
+import static android.content.ContentValues.TAG;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -21,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.util.Consumer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -29,6 +32,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 //import com.applovin.mediation.MaxError;
 //import com.applovin.mediation.ads.MaxInterstitialAd;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -73,6 +82,16 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     HomeViewModel homeViewModel;
     FirebaseAnalytics mFirebaseAnalytics;
     FragmentChatBinding binding;
+    private InterstitialAd interstitialAd;
+    //    private MaxInterstitialAd interstitialAd;
+//    private MaxNativeAdLoader nativeAdLoader;
+//    private MaxNativeAdView nativeAdView;
+//    private MaxAd nativeAd;
+//    private MaxAdView bannerAd;
+    private int retryAttempt;
+    private boolean showInterstitial = false;
+    private boolean showNativeAd = false;
+    private Consumer interstitialConsumer;
 
     public FragmentChat() {
     }
@@ -138,6 +157,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initData() {
+        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
         Intent intent = getIntent();
         if (intent != null) {
             Object ob = intent.getExtras().get(Const.KEY_DATA_CONTACT);
@@ -311,6 +331,10 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
                     finish();
                     break;
                 case R.id.menu_clear_chat:
+                    showInterstitialAd(o -> {
+                        //TODO delete conversation here
+
+                    });
 //                    if (interstitialAd != null && interstitialAd.isReady()) {
 //                        interstitialAd.showAd();
 //                        return true;
@@ -449,10 +473,67 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
             callable.call();
         }
     }
+    private void setCallbackInterstitial() {
+        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+            @Override
+            public void onAdClicked() {
+                // Called when a click is recorded for an ad.
+                Log.d(TAG, "Ad was clicked.");
+            }
 
-    private int retryAttempt;
+            @Override
+            public void onAdDismissedFullScreenContent() {
+                // Called when ad is dismissed.
+                // Set the ad reference to null so you don't show the ad a second time.
+                Log.d(TAG, "Ad dismissed fullscreen content.");
+                interstitialAd = null;
+                interstitialConsumer.accept(null);
+            }
 
+            @Override
+            public void onAdFailedToShowFullScreenContent(AdError adError) {
+                // Called when ad fails to show.
+                Log.e(TAG, "Ad failed to show fullscreen content.");
+                interstitialAd = null;
+            }
+
+            @Override
+            public void onAdImpression() {
+                // Called when an impression is recorded for an ad.
+                Log.d(TAG, "Ad recorded an impression.");
+            }
+
+            @Override
+            public void onAdShowedFullScreenContent() {
+                // Called when ad is shown.
+                Log.d(TAG, "Ad showed fullscreen content.");
+            }
+        });
+    }
     public void createInterstitialAd(String keyAds) {
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this, keyAds, adRequest, new InterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(@NonNull InterstitialAd mInterstitialAd) {
+                // The mInterstitialAd reference will be null until
+                // an ad is loaded.
+                interstitialAd = mInterstitialAd;
+                setCallbackInterstitial();
+                updateAdsRequest();
+                Log.i(TAG, "onAdLoaded");
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                // Handle the error
+                Log.d(TAG, loadAdError.toString());
+                interstitialAd = null;
+                // createInterstitialAd(keyAds);
+            }
+        });
+
 //        if (interstitialAd == null || interstitialAd.getAdUnitId() != keyAds) {
 //            interstitialAd = new MaxInterstitialAd(keyAds, this);
 //            interstitialAd.setListener(new MaxAdListener() {
@@ -505,5 +586,48 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
 //        }
 //        // Load the first ad
 //        interstitialAd.loadAd();
+    }
+
+    protected void updateAdsRequest() {
+//        if (showInterstitial && interstitialAd != null && interstitialAd.isReady()) {
+//            setLoadingAdsView(false);
+//            interstitialAd.showAd();
+//            showInterstitial = false;
+//        }
+//        if (showNativeAd && nativeAdView != null && nativeAd != null) {
+//            nativeAdLoader.render(nativeAdView, nativeAd);
+//            if (nativeAdLoadedConsumer != null) {
+//                nativeAdLoadedConsumer.accept(nativeAdView);
+//            }
+//            showNativeAd = false;
+//        }
+
+        if (showInterstitial && interstitialAd != null) {
+            setLoadingAdsView(false);
+            interstitialAd.show(this);
+            showInterstitial = false;
+        }
+    }
+
+    public boolean showInterstitialAd(Consumer doneConsumer) {
+        interstitialConsumer = doneConsumer;
+//        if (interstitialAd != null && interstitialAd.isReady()) {
+//            interstitialAd.showAd();
+//            return true;
+//        }
+        if (interstitialAd != null) {
+            interstitialAd.show(this);
+            return true;
+        }
+        setLoadingAdsView(true);
+        showInterstitial = true;
+        return false;
+    }
+
+    public void setLoadingAdsView(Boolean visible) {
+        Log.d(TAG, "LoadingAdsView: " + visible);
+        binding.loadingAdsLayout.loadingAdsLayout.bringToFront();
+        binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE == binding.loadingAdsLayout.loadingAdsLayout.getVisibility() ? View.GONE : View.VISIBLE);
+        binding.container.setVisibility(View.VISIBLE == binding.container.getVisibility() ? View.GONE : View.VISIBLE);
     }
 }
