@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import java.util.Arrays;
 import java.util.Timer;
 
 import nat.pink.base.base.App;
@@ -38,6 +40,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     protected void initAct() {
+
         if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE")) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             i.setAction("android.intent.action.MAIN");
@@ -50,15 +53,19 @@ public class SplashActivity extends AppCompatActivity {
                     progress += 1;
                     binding.progress.setProgress(progress);
                     if (progress == 99) {
-                        HomeViewModel.getAdsType(App.getInstance().getFirebaseDatabase(), v -> {
-                            App.getInstance().setTypeAds(v);
-                            SplashActivity.this.runOnUiThread(() -> {
-                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                i.setAction("android.intent.action.MAIN");
-                                startActivity(i);
-                                finish();
-                            });
+                        MobileAds.initialize(SplashActivity.this, initializationStatus -> {
+                            Log.d("adsDebug", "init Complete");
+                            new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("19F4C875114642E78629F2650F04AFD2"));
+                            HomeViewModel.getAdsType(App.getInstance().getFirebaseDatabase(), v -> {
+                                App.getInstance().setTypeAds(v);
+                                SplashActivity.this.runOnUiThread(() -> {
+                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                    i.setAction("android.intent.action.MAIN");
+                                    startActivity(i);
+                                    finish();
+                                });
 
+                            });
                         });
                     }
                     handler.postDelayed(this, 10);

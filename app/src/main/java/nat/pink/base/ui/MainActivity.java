@@ -123,11 +123,7 @@ public class MainActivity extends BaseActivityForFragment {
             startActivity(mIntent);
             finish();
         }
-        MobileAds.initialize(this, initializationStatus -> {
-            Log.d("adsDebug", "init Complete");
-            new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("19F4C875114642E78629F2650F04AFD2"));
-            createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
-        });
+        createInterstitialAd(Const.KEY_ADMOB_GUILDE);
         handleIntent(intent);
     }
 

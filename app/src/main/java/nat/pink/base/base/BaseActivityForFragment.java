@@ -31,12 +31,13 @@ import com.google.android.gms.ads.nativead.NativeAdOptions;
 import java.util.concurrent.TimeUnit;
 
 import nat.pink.base.R;
+import nat.pink.base.utils.Const;
 import nat.pink.base.utils.MyContextWrapper;
 import nat.pink.base.utils.PreferenceUtil;
 
 public abstract class BaseActivityForFragment extends AppCompatActivity {
 
-    private InterstitialAd interstitialAd;
+    private InterstitialAd interstitialAdsAdmob;
     private Consumer interstitialConsumer;
     private boolean showInterstitial = false;
     private View viewLoadingAds;
@@ -70,8 +71,11 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
     }
 
     protected abstract View getLayoutResource();
+
     protected abstract void initView();
+
     protected abstract void initData();
+
     protected abstract void initEvent();
 
     @Override
@@ -83,20 +87,21 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
             super.attachBaseContext(newBase);
         }
     }
+
     public void createInterstitialAd(String keyAds) {
         AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(this, keyAds, adRequest, new InterstitialAdLoadCallback() {
             @Override
             public void onAdLoaded(@NonNull InterstitialAd mInterstitialAd) {
-                interstitialAd = mInterstitialAd;
-                setCallbackInterstitial();
+                interstitialAdsAdmob = mInterstitialAd;
+                setCallbackInterstitial(keyAds);
                 updateAdsRequest();
             }
 
             @Override
             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 // Handle the error
-                interstitialAd = null;
+                interstitialAdsAdmob = null;
                 retryAttempt++;
                 long delayMillis = TimeUnit.SECONDS.toMillis(5);
                 new Handler().postDelayed(() -> {
@@ -152,12 +157,19 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
 //        interstitialAd.loadAd();
     }
 
-    private void setCallbackInterstitial() {
-        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+    private void setCallbackInterstitial(String keyAds) {
+        interstitialAdsAdmob.setFullScreenContentCallback(new FullScreenContentCallback() {
             @Override
             public void onAdClicked() {
-                // Called when a click is recorded for an ad.
-                Log.d(TAG, "Ad was clicked.");
+                if (keyAds.equals(Const.KEY_ADMOB_GUILDE)) {
+                    App.getInstance().getFirebaseAnalytics().logEvent("ClickGuideInter", null);
+                }
+                if (keyAds.equals(Const.KEY_ADMOB_CLEAR_CHAT)) {
+                    App.getInstance().getFirebaseAnalytics().logEvent("ClickClearChat", null);
+                }
+                if (keyAds.equals(Const.KEY_ADMOB_CREATE_USER)) {
+                    App.getInstance().getFirebaseAnalytics().logEvent("ClickCreateContact", null);
+                }
             }
 
             @Override
@@ -165,7 +177,7 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
                 // Called when ad is dismissed.
                 // Set the ad reference to null so you don't show the ad a second time.
                 Log.d(TAG, "Ad dismissed fullscreen content.");
-                interstitialAd = null;
+                interstitialAdsAdmob = null;
                 interstitialConsumer.accept(null);
             }
 
@@ -173,7 +185,7 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
             public void onAdFailedToShowFullScreenContent(AdError adError) {
                 // Called when ad fails to show.
                 Log.e(TAG, "Ad failed to show fullscreen content.");
-                interstitialAd = null;
+                interstitialAdsAdmob = null;
             }
 
             @Override
@@ -204,9 +216,9 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
 //            showNativeAd = false;
 //        }
 
-        if (showInterstitial && interstitialAd != null) {
+        if (showInterstitial && interstitialAdsAdmob != null) {
             setLoadingAdsView(false);
-            interstitialAd.show(this);
+            interstitialAdsAdmob.show(this);
             showInterstitial = false;
         }
     }
@@ -217,8 +229,8 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
 //            interstitialAd.showAd();
 //            return true;
 //        }
-        if (interstitialAd != null) {
-            interstitialAd.show(this);
+        if (interstitialAdsAdmob != null) {
+            interstitialAdsAdmob.show(this);
             return true;
         }
         setLoadingAdsView(true);
