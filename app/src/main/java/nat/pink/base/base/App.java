@@ -11,10 +11,13 @@ public class App extends Application {
     private static App sInstance = null;
     private DatabaseReference firebaseDatabase;
     private FirebaseAnalytics mFirebaseAnalytics;
-
     public static App getInstance() {
         return sInstance;
     }
+
+    // type 0 = admob
+    // type 1 = applovin
+    private String typeAds;
 
     @Override
     public void onCreate() {
@@ -27,9 +30,15 @@ public class App extends Application {
     public DatabaseReference getFirebaseDatabase() {
         return firebaseDatabase;
     }
-
     public FirebaseAnalytics getFirebaseAnalytics() {
         return mFirebaseAnalytics;
     }
 
+    public String getTypeAds() {
+        return typeAds;
+    }
+
+    public void setTypeAds(String typeAds) {
+        this.typeAds = typeAds;
+    }
 }

@@ -15,8 +15,10 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 
 import java.util.Timer;
 
+import nat.pink.base.base.App;
 import nat.pink.base.databinding.ActivitySplashBinding;
 import nat.pink.base.ui.MainActivity;
+import nat.pink.base.ui.home.HomeViewModel;
 
 public class SplashActivity extends AppCompatActivity {
     ActivitySplashBinding binding;
@@ -46,17 +48,17 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     progress += 1;
-                    Log.d("debug", "run: progress =" + progress);
                     binding.progress.setProgress(progress);
                     if (progress == 99) {
-                        MobileAds.initialize(SplashActivity.this, new OnInitializationCompleteListener() {
-                            @Override
-                            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                        HomeViewModel.getAdsType(App.getInstance().getFirebaseDatabase(), v -> {
+                            App.getInstance().setTypeAds(v);
+                            SplashActivity.this.runOnUiThread(() -> {
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 i.setAction("android.intent.action.MAIN");
                                 startActivity(i);
                                 finish();
-                            }
+                            });
+
                         });
                     }
                     handler.postDelayed(this, 10);

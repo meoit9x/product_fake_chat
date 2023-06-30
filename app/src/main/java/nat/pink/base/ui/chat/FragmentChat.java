@@ -47,6 +47,7 @@ import java.util.concurrent.TimeUnit;
 
 import nat.pink.base.R;
 import nat.pink.base.adapter.MessageAdapter;
+import nat.pink.base.base.BaseActivityForFragment;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.databinding.FragmentChatBinding;
 import nat.pink.base.dialog.DialogCreateRecord;
@@ -64,13 +65,7 @@ import nat.pink.base.utils.SoftInputAssist;
 import nat.pink.base.utils.Toolbox;
 import nat.pink.base.utils.Utils;
 
-public class FragmentChat extends AppCompatActivity implements View.OnClickListener {
-
-    @NonNull
-//    @Override
-//    public HomeViewModel getViewModel() {
-//        return new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
-//    }
+public class FragmentChat extends BaseActivityForFragment implements View.OnClickListener {
 
     public static final String TAG = "FragmentChat";
     private SoftInputAssist softInputAssist;
@@ -82,34 +77,13 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     HomeViewModel homeViewModel;
     FirebaseAnalytics mFirebaseAnalytics;
     FragmentChatBinding binding;
-    private InterstitialAd interstitialAd;
-    //    private MaxInterstitialAd interstitialAd;
-//    private MaxNativeAdLoader nativeAdLoader;
-//    private MaxNativeAdView nativeAdView;
-//    private MaxAd nativeAd;
-//    private MaxAdView bannerAd;
-    private int retryAttempt;
-    private boolean showInterstitial = false;
-    private boolean showNativeAd = false;
-    private Consumer interstitialConsumer;
 
     public FragmentChat() {
     }
-
-//    private MaxInterstitialAd interstitialAd;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
+    protected View getLayoutResource() {
         binding = FragmentChatBinding.inflate(getLayoutInflater());
-
-        setContentView(binding.getRoot());
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
-        initView();
-        initData();
-        initEvent();
+        return binding.getRoot();
     }
 
     private HomeViewModel getViewModel() {
@@ -120,7 +94,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
         softInputAssist = new SoftInputAssist(this);
         binding.tvBlock.setText(Html.fromHtml(getString(R.string.block_content), Html.FROM_HTML_MODE_COMPACT));
         binding.rcvMessage.setLayoutManager(new LinearLayoutManager(this));
-        createInterstitialAd(Const.KEY_ADS_CREATE_CONTACT);
+        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
     }
 
     public void initEvent() {
@@ -157,6 +131,7 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initData() {
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
         Intent intent = getIntent();
         if (intent != null) {
@@ -342,10 +317,6 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
                             messageAdapter.notifyDataSetChanged();
                         });
                     });
-//                    if (interstitialAd != null && interstitialAd.isReady()) {
-//                        interstitialAd.showAd();
-//                        return true;
-//                    }
                     break;
             }
             return true;
@@ -479,163 +450,5 @@ public class FragmentChat extends AppCompatActivity implements View.OnClickListe
         } else {
             callable.call();
         }
-    }
-    private void setCallbackInterstitial() {
-        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-            @Override
-            public void onAdClicked() {
-                // Called when a click is recorded for an ad.
-                Log.d(TAG, "Ad was clicked.");
-            }
-
-            @Override
-            public void onAdDismissedFullScreenContent() {
-                // Called when ad is dismissed.
-                // Set the ad reference to null so you don't show the ad a second time.
-                Log.d(TAG, "Ad dismissed fullscreen content.");
-                interstitialAd = null;
-                interstitialConsumer.accept(null);
-            }
-
-            @Override
-            public void onAdFailedToShowFullScreenContent(AdError adError) {
-                // Called when ad fails to show.
-                Log.e(TAG, "Ad failed to show fullscreen content.");
-                interstitialAd = null;
-            }
-
-            @Override
-            public void onAdImpression() {
-                // Called when an impression is recorded for an ad.
-                Log.d(TAG, "Ad recorded an impression.");
-            }
-
-            @Override
-            public void onAdShowedFullScreenContent() {
-                // Called when ad is shown.
-                Log.d(TAG, "Ad showed fullscreen content.");
-            }
-        });
-    }
-    public void createInterstitialAd(String keyAds) {
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        InterstitialAd.load(this, keyAds, adRequest, new InterstitialAdLoadCallback() {
-            @Override
-            public void onAdLoaded(@NonNull InterstitialAd mInterstitialAd) {
-                // The mInterstitialAd reference will be null until
-                // an ad is loaded.
-                interstitialAd = mInterstitialAd;
-                setCallbackInterstitial();
-                updateAdsRequest();
-                Log.i(TAG, "onAdLoaded");
-            }
-
-            @Override
-            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                // Handle the error
-                Log.d(TAG, loadAdError.toString());
-                interstitialAd = null;
-                // createInterstitialAd(keyAds);
-            }
-        });
-
-//        if (interstitialAd == null || interstitialAd.getAdUnitId() != keyAds) {
-//            interstitialAd = new MaxInterstitialAd(keyAds, this);
-//            interstitialAd.setListener(new MaxAdListener() {
-//                @Override
-//                public void onAdLoaded(MaxAd maxAd) {
-//                    retryAttempt = 0;
-//                    //  Toast.makeText(MainActivity.this, "ad loaded", Toast.LENGTH_SHORT).show();
-//                    Log.d("adsDebug", "onAdLoaded: ");
-//                }
-//
-//                @Override
-//                public void onAdDisplayed(MaxAd maxAd) {
-//                    Log.d("adsDebug", "onAdDisplayed: ");
-//                    //   Toast.makeText(MainActivity.this, "ad displayed", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onAdHidden(MaxAd maxAd) {
-//                    interstitialAd.loadAd();
-//                    getViewModel().deleteMessByOwner(getBaseContext(), objectUser.getId(), v -> {
-//                        if (getViewModel().objectMessenges.isEmpty() || getViewModel().objectMessenges.get(0).getType() != Config.TYPE_HEAEDER) {
-//                            ObjectMessenge messageModel = new ObjectMessenge();
-//                            messageModel.setType(Config.TYPE_HEAEDER);
-//                            getViewModel().objectMessenges.add(0, messageModel);
-//                        }
-//                        messageAdapter.notifyDataSetChanged();
-//                    });
-//                }
-//
-//                @Override
-//                public void onAdClicked(MaxAd maxAd) {
-//                    mFirebaseAnalytics.logEvent("ClickRefreshChat", null);
-//                }
-//
-//                @Override
-//                public void onAdLoadFailed(String s, MaxError maxError) {
-//                    // Interstitial ad failed to load
-//                    // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
-//                    retryAttempt++;
-//                    long delayMillis = TimeUnit.SECONDS.toMillis(5);
-//
-//                    new Handler().postDelayed(() -> interstitialAd.loadAd(), delayMillis);
-//                }
-//
-//                @Override
-//                public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
-//                    interstitialAd.loadAd();
-//                }
-//            });
-//        }
-//        // Load the first ad
-//        interstitialAd.loadAd();
-    }
-
-    protected void updateAdsRequest() {
-//        if (showInterstitial && interstitialAd != null && interstitialAd.isReady()) {
-//            setLoadingAdsView(false);
-//            interstitialAd.showAd();
-//            showInterstitial = false;
-//        }
-//        if (showNativeAd && nativeAdView != null && nativeAd != null) {
-//            nativeAdLoader.render(nativeAdView, nativeAd);
-//            if (nativeAdLoadedConsumer != null) {
-//                nativeAdLoadedConsumer.accept(nativeAdView);
-//            }
-//            showNativeAd = false;
-//        }
-
-        if (showInterstitial && interstitialAd != null) {
-            setLoadingAdsView(false);
-            interstitialAd.show(this);
-            showInterstitial = false;
-        }
-    }
-
-    public boolean showInterstitialAd(Consumer doneConsumer) {
-        interstitialConsumer = doneConsumer;
-//        if (interstitialAd != null && interstitialAd.isReady()) {
-//            interstitialAd.showAd();
-//            return true;
-//        }
-        if (interstitialAd != null) {
-            interstitialAd.show(this);
-            return true;
-        }
-        createInterstitialAd(Const.KEY_ADMOB_INTERSTITIAL_TEST);
-        setLoadingAdsView(true);
-        showInterstitial = true;
-        return false;
-    }
-
-    public void setLoadingAdsView(Boolean visible) {
-        Log.d(TAG, "LoadingAdsView: " + visible);
-        binding.loadingAdsLayout.loadingAdsLayout.bringToFront();
-        binding.loadingAdsLayout.loadingAdsLayout.setVisibility(View.VISIBLE == binding.loadingAdsLayout.loadingAdsLayout.getVisibility() ? View.GONE : View.VISIBLE);
-        binding.container.setVisibility(View.VISIBLE == binding.container.getVisibility() ? View.GONE : View.VISIBLE);
     }
 }

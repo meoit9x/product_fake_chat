@@ -36,6 +36,7 @@ public class HomeViewModel extends BaseViewModel {
     public MutableLiveData<Boolean> reloadDataMessenger = new MutableLiveData<>();
     public MutableLiveData<DaoContact> loadChatInfo = new MutableLiveData<>();
     public MutableLiveData<Boolean> forceUpdate = new MutableLiveData<>();
+    public MutableLiveData<String> typeAds = new MutableLiveData<>();
 
     public void getListContact(Context context) {
         List<DaoContact> daoContacts = DatabaseController.getInstance(context).getContact();
@@ -107,15 +108,22 @@ public class HomeViewModel extends BaseViewModel {
             String value = task.getResult().getValue().toString();
             if (value.equals("true")) {
                 databaseReference.child("config/ver").get().addOnCompleteListener(task1 -> {
-                    String ver =  String.valueOf(task1.getResult().getValue());
-                    ver = ver.replace(".","");
+                    String ver = String.valueOf(task1.getResult().getValue());
+                    ver = ver.replace(".", "");
                     String verNow = Utils.getVer(context);
-                    verNow = verNow.replace(".","");
+                    verNow = verNow.replace(".", "");
                     forceUpdate.postValue(Integer.parseInt(ver) < Integer.parseInt(verNow));
                 });
             } else {
                 forceUpdate.postValue(false);
             }
+        });
+    }
+
+    public static void getAdsType(DatabaseReference databaseReference, Consumer<String> consumer) {
+        databaseReference.child("config/type_ads").get().addOnCompleteListener(task -> {
+            String value = task.getResult().getValue().toString();
+            consumer.accept(value);
         });
     }
 }

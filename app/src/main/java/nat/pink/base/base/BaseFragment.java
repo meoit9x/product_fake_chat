@@ -40,15 +40,11 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
     public void setHideAds(boolean hideAds) {
         this.hideAds = hideAds;
     }
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
