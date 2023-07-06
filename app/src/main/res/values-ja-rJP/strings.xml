@@ -432,4 +432,14 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="your_contact">あなたの連絡先</string>
 
     <string name="get_start">始めましょう</string>
+
+    <string name="faq_des_7">ポイントを獲得するには 3 つの方法があります:\n方法 1: 毎日のログイン + 300 ポイント\n方法 2: リワード広告の視聴 (ホーム画面に 3 分ごとに表示) + 1 回の視聴につき 100 ポイント\n方法 3 : 月間リーダーボードで上位にランクインする\n方法 4: 購入パッケージを購入する (近日公開予定)</string>
+    <string name="faq_7">ポイントをさらに獲得するにはどうすればよいですか?</string>
+    <string name="point_ranking">ポイントランキング</string>
+    <string name="what_are_point_ranking">Poin ランキングとは何ですか?</string>
+    <string name="what_are_point_ranking_des">今月のトップポイントは 80% オフになります。アプリ上の広告なしでパッケージを購入したり、その他の魅力的なギフトを多数入手できます</string>
+    <string name="id_user">ID: %s</string>
+    <string name="get_more">もっと入手</string>
+    <string name="not_enough_points">ポイントが足りません</string>
+    <string name="not_enough_points_des">現在のポイントでは機能を使用するのに十分ではありません</string>
 </resources>

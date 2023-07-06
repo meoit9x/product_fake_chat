@@ -26,6 +26,7 @@ import java.util.Calendar;
 
 import nat.pink.base.base.App;
 import nat.pink.base.databinding.HomeFragmentBinding;
+import nat.pink.base.dialog.DialogEnoughPoints;
 import nat.pink.base.model.ResponseDevice;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
@@ -108,19 +109,28 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         startActivity(intent);
                         break;
                     case Const.KEY_ADS_VIDEO_CALL:
-                        addFragment(new VideoFragment(user, o -> {
-                            updateCountdown(Const.KEY_ADS_VIDEO_CALL);
-                        }), VideoFragment.TAG);
+                        if (checkPointEnough(200)){
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 200);
+                            addFragment(new VideoFragment(user, o -> {
+                                updateCountdown(Const.KEY_ADS_VIDEO_CALL);
+                            }), VideoFragment.TAG);
+                        }
                         break;
                     case Const.KEY_ADS_VOICE_CALL:
-                        addFragment(new CallFragment(user, o -> {
-                            updateCountdown(Const.KEY_ADS_VOICE_CALL);
-                        }), VideoFragment.TAG);
+                        if (checkPointEnough(100)) {
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 100);
+                            addFragment(new CallFragment(user, o -> {
+                                updateCountdown(Const.KEY_ADS_VOICE_CALL);
+                            }), VideoFragment.TAG);
+                        }
                         break;
                     case Const.KEY_ADS_NOTIFICATION:
-                        addFragment(new NotificationFragment(user, o -> {
-                            updateCountdown(Const.KEY_ADS_NOTIFICATION);
-                        }), VideoFragment.TAG);
+                        if(checkPointEnough(300)) {
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 300);
+                            addFragment(new NotificationFragment(user, o -> {
+                                updateCountdown(Const.KEY_ADS_NOTIFICATION);
+                            }), VideoFragment.TAG);
+                        }
                         break;
                 }
             }
@@ -189,6 +199,17 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         // createBannerAd(Const.KEY_ADS_HOME,binding.frAdsHome);
     }
 
+    private boolean checkPointEnough(int point) {
+        if(totalCoin - point < 0) {
+            new DialogEnoughPoints(requireContext(), o -> {
+                addFragment(new FaqFragment(true), FaqFragment.TAG);
+            }).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     @Override
     protected void initData() {
         super.initData();
@@ -227,6 +248,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         getViewModel().updateCoin.observe(this, responseUpdatePoint -> {
             if (responseUpdatePoint.getStatus() == 1) {
                 PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(responseUpdatePoint.getPoints()));
+                checkShowPresent();
             }
         });
 
@@ -249,7 +271,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
                         dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
                         dialogCountdownTime.show();
-                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
+                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
                     });
                 });
             } else {
@@ -259,7 +281,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                             PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
                             dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
                             dialogCountdownTime.show();
-                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
                         });
                     });
                 } else {

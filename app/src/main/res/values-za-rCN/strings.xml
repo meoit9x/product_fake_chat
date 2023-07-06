@@ -432,4 +432,14 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="your_contact">您的联系人</string>
 
     <string name="get_start">开始</string>
+
+    <string name="faq_des_7">有 3 种赚取积分的方式：\n方法 1：每日登录 + 300 积分\n方法 2：观看奖励广告（主屏幕上每 3 分钟出现一次）+每次观看 100 积分\n方法 3 ：在每月排行榜中获得高排名\n方法四：购买购买礼包（即将推出）</string>
+    <string name="faq_7">如何获得更多积分？</string>
+    <string name="point_ranking">积分排名</string>
+    <string name="what_are_point_ranking">什么是积分排名？</string>
+    <string name="what_are_point_ranking_des">本月最高点可享受 80% 的折扣 购买应用上没有广告的套餐以及许多其他有吸引力的礼物</string>
+    <string name="id_user">ID：%s</string>
+    <string name="get_more">获取更多</string>
+    <string name="not_enough_points">积分不足</string>
+    <string name="not_enough_points_des">您当前的积分不足以使用该功能</string>
 </resources>

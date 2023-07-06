@@ -338,6 +338,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="faq_des_4">No, we do not impose a limit on the number of fake calls, fake messages, or fake video calls that can be created. Instead, we have implemented a scoring mechanism. By using your existing points, you can utilize our corresponding features. The fake message function can be used without any limits. However, for the fake calls or video calls, you will need to spend \'Points\' to create them. Similarly, for the fake notification feature, it is a highly effective function, so it requires more points to use.</string>
     <string name="faq_des_5">To enhance excitement and fairness in gift-giving, we have implemented a scoring mechanism for each member using the app. You will use points to utilize our features. Each feature will consume a certain number of points when used. You can earn points by daily logins or by watching rewarded advertisements. Don\'t forget to accumulate more points to increase your ranking on the leaderboard, where you will receive exciting monthly perks and benefits.</string>
     <string name="faq_des_6">The leaderboard will display your ranking based on your \'Points\' compared to other users. The higher your points, the higher your ranking, and vice versa. Those who achieve high rankings (top 1–3) will receive valuable rewards at the end of each month. The rewards may include additional points or vouchers for our premium ad-free package.</string>
+    <string name="faq_des_7">There are 3 ways to earn Points:\nMethod 1: Daily login + 300 points\nMethod 2: Watch rewarded advertisements (appear every 3 minutes on the home screen) + 100 points per view\nMethod 3: Achieve a high ranking in the monthly leaderboard\nMethod 4: Purchase a Purchase package (coming soon)</string>
 
     <string name="faq_1">How to use the fake messenger message function?</string>
     <string name="faq_2">Does the application support fake video calls?</string>
@@ -345,6 +346,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="faq_4">Is there a limit to the number of fake calls, fake messages, or fake video calls in the application?</string>
     <string name="faq_5">What are the \'Points\' in this application?</string>
     <string name="faq_6">What is the leaderboard?</string>
+    <string name="faq_7">How to get more points?</string>
 
     <string name="title_privacy">Demo text heading privacy</string>
     <string name="content_privacy">
@@ -446,5 +448,8 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="what_are_point_ranking">What are Poin Rankings?</string>
     <string name="what_are_point_ranking_des">Top poin of the month will get 80% off Buy package without ads on the app and many other attractive gifts</string>
     <string name="id_user">ID: %s</string>
+    <string name="get_more">Get more</string>
+    <string name="not_enough_points">Not enough points</string>
+    <string name="not_enough_points_des">Your current point is not enough to use the function</string>
 
 </resources>

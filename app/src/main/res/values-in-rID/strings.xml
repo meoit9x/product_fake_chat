@@ -432,4 +432,14 @@ Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijaka
     <string name="your_contact">Kontak Anda</string>
 
     <string name="get_start">Mulai</string>
+
+    <string name="faq_des_7">Ada 3 cara untuk mendapatkan Poin:\nMetode 1: Login harian + 300 poin\nMetode 2: Tonton iklan reward (muncul setiap 3 menit di layar utama) + 100 poin per tampilan\nMetode 3 : Raih peringkat tinggi di papan peringkat bulanan\nMetode 4: Beli paket Pembelian (segera hadir)</string>
+    <string name="faq_7">Bagaimana cara mendapatkan lebih banyak poin?</string>
+    <string name="point_ranking">Peringkat poin</string>
+    <string name="what_are_point_ranking">Apakah itu Peringkat Poin?</string>
+    <string name="what_are_point_ranking_des">Poin teratas bulan ini akan mendapatkan diskon 80% Beli paket tanpa iklan di aplikasi dan banyak hadiah menarik lainnya</string>
+    <string name="id_user">ID: %s</string>
+    <string name="get_more">Dapatkan lebih banyak</string>
+    <string name="not_enough_points">Poin tidak cukup</string>
+    <string name="not_enough_points_des">Poin Anda saat ini tidak cukup untuk menggunakan fungsi</string>
 </resources>

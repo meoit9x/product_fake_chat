@@ -78,6 +78,7 @@ public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.ViewHolder> {
         Matrix matrix = new Matrix();
         textShader.setLocalMatrix(matrix);
         binding.txtTotalCoin.getPaint().setShader(textShader);
+        binding.txtTotalCoin.setSelected(true);
     }
 
     @Override

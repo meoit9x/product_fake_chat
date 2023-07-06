@@ -431,4 +431,14 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
     <string name="your_contact">Votre contact</string>
 
     <string name="get_start">Commencer</string>
+
+    <string name="faq_des_7">Il existe 3façons de gagner des points:\nMéthode1: connexion quotidienne + 300points\nMéthode2: regarder des publicités avec récompense (s\'affichent toutes les 3minutes sur l\'écran d\'accueil) + 100points par vue\nMéthode3 :Atteignez un classement élevé dans le classement mensuel\nMéthode4: Achetez un package d\'achat (bientôt disponible)</string>
+    <string name="faq_7">Comment obtenir plus de points?</string>
+    <string name="point_ranking">Classement par points</string>
+    <string name="what_are_point_ranking">Que sont les classements de points?</string>
+    <string name="what_are_point_ranking_des">Le meilleur point du mois bénéficiera d\'une réduction de 80% sur l\'achat d\'un package sans publicité sur l\'application et de nombreux autres cadeaux attrayants</string>
+    <string name="id_user">ID: %s</string>
+    <string name="get_more">Obtenir plus</string>
+    <string name="not_enough_points">Pas assez de points</string>
+    <string name="not_enough_points_des">Votre point actuel n\'est pas suffisant pour utiliser la fonction</string>
 </resources>

@@ -432,4 +432,14 @@ Notificarei você sobre quaisquer alterações publicando a nova Política de Pr
     <string name="your_contact">Seu contato</string>
 
     <string name="get_start">Primeiros passos</string>
+
+    <string name="faq_des_7">Existem 3 maneiras de ganhar pontos:\nMétodo 1: Login diário + 300 pontos\nMétodo 2: Assistir a anúncios premiados (aparecem a cada 3 minutos na tela inicial) + 100 pontos por visualização\nMétodo 3 : Consiga uma classificação alta na tabela de classificação mensal\nMétodo 4: compre um pacote de compra (em breve)</string>
+    <string name="faq_7">Como conseguir mais pontos?</string>
+    <string name="point_ranking">Classificação de pontos</string>
+    <string name="what_are_point_ranking">O que são classificações de pontos?</string>
+    <string name="what_are_point_ranking_des">O ponto mais alto do mês terá 80% de desconto Compre o pacote sem anúncios no aplicativo e muitos outros presentes atraentes</string>
+    <string name="id_user">ID: %s</string>
+    <string name="get_more">Obtenha mais</string>
+    <string name="not_enough_points">Não há pontos suficientes</string>
+    <string name="not_enough_points_des">Seu ponto atual não é suficiente para usar a função</string>
 </resources>
