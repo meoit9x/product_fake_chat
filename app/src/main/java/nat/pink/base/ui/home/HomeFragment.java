@@ -26,6 +26,7 @@ import java.util.Calendar;
 
 import nat.pink.base.base.App;
 import nat.pink.base.databinding.HomeFragmentBinding;
+import nat.pink.base.model.ResponseDevice;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
@@ -44,6 +45,7 @@ import nat.pink.base.base.BaseFragment;
 import nat.pink.base.dialog.DialogSelectChat;
 import nat.pink.base.ui.manager.ManagerContactFragment;
 import nat.pink.base.ui.notification.NotificationFragment;
+import nat.pink.base.ui.setting.CoinRankingFragment;
 import nat.pink.base.ui.setting.FaqFragment;
 import nat.pink.base.ui.setting.LanguageFragmentSetting;
 import nat.pink.base.ui.setting.PrivacyFragment;
@@ -132,9 +134,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             }
         });
         dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
-            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
             binding.coinCount.setText(String.valueOf(totalCoin));
         });
+        dialogCountdownTime.setCancelable(false);
         dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
         mAdView = binding.adView;
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -214,6 +217,18 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 });
             });
         }
+        getViewModel().getPoint(requestAPI, Utils.deviceId(requireContext()));
+        getViewModel().totalCoin.observe(this, totalCoin -> {
+            if (totalCoin.getStatus() == 1) {
+                PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin.getPoints()));
+                checkShowPresent();
+            }
+        });
+        getViewModel().updateCoin.observe(this, responseUpdatePoint -> {
+            if (responseUpdatePoint.getStatus() == 1) {
+                PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(responseUpdatePoint.getPoints()));
+            }
+        });
 
     }
 
@@ -226,29 +241,34 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.present.setOnClickListener(v -> {
             timePresent = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY);
             timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
-            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
             if (timePresent == 0) {
-                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
-                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
-                dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
-                dialogCountdownTime.show();
-                totalCoin += 200;
-                PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin));
+                showInterstitialAd(o -> {
+                    requireActivity().runOnUiThread(() -> {
+                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
+                        dialogCountdownTime.show();
+                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
+                    });
+                });
             } else {
                 if (isNewDateGreaterThanGiven(timePresent)) {
-                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
-                    dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
-                    dialogCountdownTime.show();
-                    totalCoin += 200;
-                    PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin));
+                    showInterstitialAd(o -> {
+                        requireActivity().runOnUiThread(() -> {
+                            PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                            dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
+                            dialogCountdownTime.show();
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
+                        });
+                    });
                 } else {
                     showInterstitialAd(o -> {
                         requireActivity().runOnUiThread(() -> {
                             PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
                             dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
                             dialogCountdownTime.show();
-                            totalCoin += 100;
-                            PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(totalCoin));
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 100);
                         });
                     });
                 }
@@ -272,6 +292,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         navMenu.findViewById(R.id.ll_manager_coin).setOnClickListener(v -> {
             binding.drawerLayout.closeDrawers();
             addFragment(new ManagerContactFragment(), ManagerContactFragment.TAG);
+        });
+        navMenu.findViewById(R.id.ll_guide).setOnClickListener(view -> {
+            binding.drawerLayout.closeDrawers();
+            addFragment(new CoinRankingFragment(), CoinRankingFragment.TAG);
         });
         navMenu.findViewById(R.id.ll_language).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
@@ -320,7 +344,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
             binding.present.setVisibility(View.GONE);
         }
-        totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "200"));
+        totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
         binding.coinCount.setText(String.valueOf(totalCoin));
     }
 

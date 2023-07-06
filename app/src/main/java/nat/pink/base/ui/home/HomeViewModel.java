@@ -20,7 +20,12 @@ import java.util.Objects;
 import nat.pink.base.base.BaseViewModel;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.model.DaoContact;
+import nat.pink.base.model.DeviceRequest;
 import nat.pink.base.model.ObjectMessenge;
+import nat.pink.base.model.ResponseDevice;
+import nat.pink.base.model.ResponseLeaderBoard;
+import nat.pink.base.model.ResponseUpdatePoint;
+import nat.pink.base.model.UpdatePointRequest;
 import nat.pink.base.retrofit.RequestAPI;
 import nat.pink.base.utils.Utils;
 import retrofit2.Call;
@@ -35,8 +40,11 @@ public class HomeViewModel extends BaseViewModel {
     public List<ObjectMessenge> objectMessenges = new ArrayList<>();
     public MutableLiveData<Boolean> reloadDataMessenger = new MutableLiveData<>();
     public MutableLiveData<DaoContact> loadChatInfo = new MutableLiveData<>();
+    public MutableLiveData<ResponseDevice> totalCoin = new MutableLiveData<>();
+    public MutableLiveData<ResponseUpdatePoint> updateCoin = new MutableLiveData<>();
     public MutableLiveData<Boolean> forceUpdate = new MutableLiveData<>();
     public MutableLiveData<String> typeAds = new MutableLiveData<>();
+    public final MutableLiveData<String> failed = new MutableLiveData<>();
 
     public void getListContact(Context context) {
         List<DaoContact> daoContacts = DatabaseController.getInstance(context).getContact();
@@ -102,6 +110,51 @@ public class HomeViewModel extends BaseViewModel {
             }
         });
     }
+
+    public void getPoint(RequestAPI requestAPI, String deviceId) {
+        DeviceRequest deviceRequest = new DeviceRequest(deviceId);
+        requestAPI.getPoint(deviceRequest).enqueue(new Callback<ResponseDevice>() {
+            @Override
+            public void onResponse(Call<ResponseDevice> call, Response<ResponseDevice> response) {
+                totalCoin.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseDevice> call, Throwable t) {
+                failed.postValue("Lỗi: " + t.getMessage());
+            }
+        });
+    }
+
+    public void updatePoint(RequestAPI requestAPI, String deviceId,int updateType, int adjustPoint) {
+        UpdatePointRequest updatePointRequest = new UpdatePointRequest(deviceId, updateType, adjustPoint);
+        requestAPI.updatePoint(updatePointRequest).enqueue(new Callback<ResponseUpdatePoint>() {
+            @Override
+            public void onResponse(Call<ResponseUpdatePoint> call, Response<ResponseUpdatePoint> response) {
+                updateCoin.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseUpdatePoint> call, Throwable t) {
+                failed.postValue("Lỗi: " + t.getMessage());
+            }
+        });
+    }
+
+    public void getLeaderBoard(RequestAPI requestAPI, Consumer<Object> consumer) {
+        requestAPI.getLeaderBoard().enqueue(new Callback<ResponseLeaderBoard>() {
+            @Override
+            public void onResponse(Call<ResponseLeaderBoard> call, Response<ResponseLeaderBoard> response) {
+                consumer.accept(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseLeaderBoard> call, Throwable t) {
+                consumer.accept(t);
+            }
+        });
+    }
+
 
     public void foreUpdate(DatabaseReference databaseReference, Context context) {
         databaseReference.child("config/force").get().addOnCompleteListener(task -> {

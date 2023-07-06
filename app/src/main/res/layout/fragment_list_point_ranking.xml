@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cst_coin_rank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_coin_rank">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingVertical="@dimen/_15sdp"
+                android:src="@drawable/ic_back_white" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="@string/point_ranking"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                app:textViewFontAssetName="@string/font_bold" />
+
+            <ImageView
+                android:id="@+id/img_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:src="@drawable/ic_ask" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_dot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/catelogy"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_height="@dimen/_104sdp"
+            android:src="@drawable/ic_catelogy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_top_one"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/catelogy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/crow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crow" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_avatar_one"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_1sdp"
+                android:src="@drawable/ava_user_coin" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/ext_id_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_6sdp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/ext_total_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_18sdp"
+                android:background="@color/transparent"
+                android:drawablePadding="@dimen/_1sdp"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/color_FFE989"
+                android:fontFamily="@font/sf_bold"
+                app:drawableStartCompat="@drawable/ic_coin_rank" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_top_two"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/ll_top_one"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/crow_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crow"
+                android:visibility="invisible" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_avatar_two"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_1sdp"
+                android:src="@drawable/ava_user_coin" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/ext_id_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_6sdp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/ext_total_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_18sdp"
+                android:background="@color/transparent"
+                android:drawablePadding="@dimen/_1sdp"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/color_FFE989"
+                android:fontFamily="@font/sf_bold"
+                app:drawableStartCompat="@drawable/ic_coin_rank" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_top_three"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/ll_top_one"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:id="@+id/crow_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_crow"
+                android:visibility="invisible" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_avatar_three"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_1sdp"
+                android:src="@drawable/ava_user_coin" />
+
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/ext_id_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textSize="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_6sdp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/ext_total_three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_18sdp"
+                android:background="@color/transparent"
+                android:drawablePadding="@dimen/_1sdp"
+                android:paddingHorizontal="@dimen/_3sdp"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/color_FFE989"
+                android:fontFamily="@font/sf_bold"
+                app:drawableStartCompat="@drawable/ic_coin_rank" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cst_next_button"
+        android:layout_below="@id/cst_coin_rank"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/view_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:listitem="@layout/item_coin_rank" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cst_next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_E7EFFF"
+        android:paddingVertical="@dimen/_10sdp">
+
+        <include
+            android:id="@+id/item_coin_rank"
+            layout="@layout/item_coin_rank" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

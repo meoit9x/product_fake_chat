@@ -442,4 +442,9 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
 
     <string name="tt_txt_skip">Skip</string>
 
+    <string name="point_ranking">Point ranking</string>
+    <string name="what_are_point_ranking">What are Poin Rankings?</string>
+    <string name="what_are_point_ranking_des">Top poin of the month will get 80% off Buy package without ads on the app and many other attractive gifts</string>
+    <string name="id_user">ID: %s</string>
+
 </resources>

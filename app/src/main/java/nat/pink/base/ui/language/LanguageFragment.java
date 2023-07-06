@@ -1,8 +1,10 @@
 package nat.pink.base.ui.language;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,21 +27,29 @@ import nat.pink.base.adapter.AdapterLanguage;
 import nat.pink.base.base.BaseFragment;
 import nat.pink.base.databinding.FragmentLanguageBinding;
 import nat.pink.base.model.ObjectLanguage;
+import nat.pink.base.model.ResponseDevice;
+import nat.pink.base.model.ResponseUpdatePoint;
+import nat.pink.base.retrofit.RequestAPI;
+import nat.pink.base.retrofit.RetrofitClient;
 import nat.pink.base.ui.onboard.OnboardFragment;
 import nat.pink.base.ui.splah.SplashActivity;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
+import nat.pink.base.utils.Utils;
+import retrofit2.Retrofit;
 
 public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, LanguageViewModel> {
 
     public static final String TAG = "LanguageFragment";
     private AdapterLanguage adapterLanguage;
     boolean isChanged = false;
+    protected RequestAPI requestAPI;
 
     @Override
     protected LanguageViewModel getViewModel() {
         return new ViewModelProvider(this).get(LanguageViewModel.class);
     }
+
 
     @Override
     protected void initView() {
@@ -88,7 +98,7 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
 //        builder.build();
         createNativeAd(Const.KEY_ADMOB_NATIVE_TEST);
         setNativeAdConsumer(o -> {
-            if (o instanceof String){
+            if (o instanceof String) {
                 return;
             }
             NativeAdView adView = (NativeAdView) getLayoutInflater().inflate(R.layout.native_custom_mob_ads_big, null);
@@ -113,6 +123,7 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
         adView.setAdvertiserView(advertiser);
         body.setText(nativeAd.getBody());
         adView.setBodyView(body);
+        if(nativeAd.getIcon() != null)
         icon.setImageDrawable(nativeAd.getIcon().getDrawable());
         action.setText(nativeAd.getStore());
         adView.setCallToActionView(action);
@@ -129,12 +140,28 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
     @Override
     protected void initData() {
         super.initData();
+        Retrofit retrofit = RetrofitClient.getInstance(requireContext(), Const.URL_REQUEST);
+        requestAPI = retrofit.create(RequestAPI.class);
         getViewModel().initData(requireContext());
         getViewModel().languages.observe(this, objectLanguages -> {
             adapterLanguage.setObjectLanguages(objectLanguages);
         });
         //default english
         PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, "en");
+        getViewModel().getPoint(requestAPI, Utils.deviceId(requireContext()), o -> {
+            if (o instanceof ResponseDevice) {
+                ResponseDevice responseDevice = (ResponseDevice) o;
+                PreferenceUtil.saveInt(requireContext(), PreferenceUtil.KEY_USER_ID, responseDevice.getUserId());
+                if(responseDevice.getFirstTime() && responseDevice.getPoints() == 0) {
+                    getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300, o1 -> {
+                        if(o1 instanceof ResponseUpdatePoint) {
+                            ResponseUpdatePoint responseUpdatePoint = (ResponseUpdatePoint) o1;
+                            PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(responseUpdatePoint.getPoints()));
+                        }
+                    });
+                }
+            }
+        });
     }
 
     @Override

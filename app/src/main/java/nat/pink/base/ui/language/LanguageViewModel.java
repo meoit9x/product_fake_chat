@@ -2,13 +2,22 @@ package nat.pink.base.ui.language;
 
 import android.content.Context;
 
+import androidx.core.util.Consumer;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
 import nat.pink.base.R;
 import nat.pink.base.base.BaseViewModel;
+import nat.pink.base.model.DeviceRequest;
 import nat.pink.base.model.ObjectLanguage;
+import nat.pink.base.model.ResponseDevice;
+import nat.pink.base.model.ResponseUpdatePoint;
+import nat.pink.base.model.UpdatePointRequest;
+import nat.pink.base.retrofit.RequestAPI;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LanguageViewModel extends BaseViewModel {
 
@@ -39,6 +48,36 @@ public class LanguageViewModel extends BaseViewModel {
         language = new ObjectLanguage(context.getString(R.string.flag_name_vietnamese), "vi", R.drawable.flag_vi);
         objectLanguages.add(language);
         languages.postValue(objectLanguages);
+    }
+
+    public void getPoint(RequestAPI requestAPI, String deviceId, Consumer<Object> consumer) {
+        DeviceRequest deviceRequest = new DeviceRequest(deviceId);
+        requestAPI.getPoint(deviceRequest).enqueue(new Callback<ResponseDevice>() {
+            @Override
+            public void onResponse(Call<ResponseDevice> call, Response<ResponseDevice> response) {
+                consumer.accept(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseDevice> call, Throwable t) {
+                consumer.accept(t);
+            }
+        });
+    }
+
+    public void updatePoint(RequestAPI requestAPI, String deviceId,int updateType, int adjustPoint, Consumer<Object> consumer) {
+        UpdatePointRequest updatePointRequest = new UpdatePointRequest(deviceId, updateType, adjustPoint);
+        requestAPI.updatePoint(updatePointRequest).enqueue(new Callback<ResponseUpdatePoint>() {
+            @Override
+            public void onResponse(Call<ResponseUpdatePoint> call, Response<ResponseUpdatePoint> response) {
+                consumer.accept(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseUpdatePoint> call, Throwable t) {
+                consumer.accept(t);
+            }
+        });
     }
 
 }

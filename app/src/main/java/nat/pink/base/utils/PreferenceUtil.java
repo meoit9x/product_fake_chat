@@ -32,6 +32,7 @@ public class PreferenceUtil {
     public static final String KEY_PRESENT_EVERYDAY = "KEY_PRESENT_EVERYDAY";
     public static final String KEY_PRESENT = "KEY_PRESENT";
     public static final String KEY_TOTAL_COIN = "KEY_TOTAL_COIN";
+    public static final String KEY_USER_ID = "KEY_USER_ID";
 
 
     public static void saveBoolean(Context context, String str, boolean z) {

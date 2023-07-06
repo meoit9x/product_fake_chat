@@ -26,4 +26,14 @@
         android:textSize="@dimen/_16sdp"
         app:textViewFontAssetName="@string/font_bold" />
 
+    <ImageView
+        android:id="@+id/img_ask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_15sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:visibility="gone"
+        android:src="@drawable/ic_ask" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

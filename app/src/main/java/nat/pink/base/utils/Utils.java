@@ -4,6 +4,7 @@ import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static nat.pink.base.utils.Const.MY_PERMISSIONS_REQUEST_STORAGE;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.KeyguardManager;
@@ -23,6 +24,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -72,6 +74,11 @@ public class Utils {
         if (checked == Const.CHECK_1_D)
             return context.getString(R.string.online_1_day_ago);
         return context.getString(R.string.online);
+    }
+
+    @SuppressLint("HardwareIds")
+    public static String deviceId(Context context){
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     public static int getStatusBarHeight(Context context) {

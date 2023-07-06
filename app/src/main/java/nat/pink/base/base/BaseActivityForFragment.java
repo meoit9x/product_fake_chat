@@ -63,6 +63,7 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
         LayoutInflater vi = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         viewLoadingAds = vi.inflate(R.layout.loading_ads_layout, null);
+        viewLoadingAds.setOnClickListener(view -> {});
         viewGroup.addView(viewLoadingAds);
 
         initView();

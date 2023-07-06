@@ -27,6 +27,18 @@ public class ImageUtils {
         }
     }
 
+    public static void loadImageCoin(Context context, ImageView imageView, String path) {
+        if (path == null) {
+            imageView.setImageResource(R.drawable.ava_user_coin);
+            return;
+        }
+        if (path.contains("R.drawable")) {
+            imageView.setImageResource(Utils.convertStringToDrawable(context, path));
+        } else {
+            loadImage(imageView, path);
+        }
+    }
+
     public static void loadImage(ImageView imageView, String path) {
         Glide.with(imageView)
                 .load(path)
