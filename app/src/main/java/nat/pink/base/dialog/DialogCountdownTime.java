@@ -80,7 +80,7 @@ public class DialogCountdownTime extends Dialog {
                 tvMsg = getContext().getString(R.string.ads_done);
                 break;
             case Const.KEY_ADS_PRESENT_EVERYDAY:
-                binding.tvTime.setText(getContext().getString(R.string.two_extra_coin));
+                binding.tvTime.setText(getContext().getString(R.string.three_extra_coin));
                 binding.tvTime.setTextColor(getContext().getColor(R.color.color_FE9923));
                 binding.tvTitle.setImageResource(R.drawable.ic_coin);
                 tvMsg = getContext().getString(R.string.daily_login);
