@@ -442,4 +442,5 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="get_more">더 보기</string>
     <string name="not_enough_points">포인트가 부족합니다</string>
     <string name="not_enough_points_des">현재 포인트가 부족하여 기능을 사용할 수 없습니다</string>
+    <string name="coin_rankings">코인 랭킹</string>
 </resources>

@@ -28,6 +28,7 @@ import nat.pink.base.base.App;
 import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogEnoughPoints;
 import nat.pink.base.model.ResponseDevice;
+import nat.pink.base.model.ResponseFeedback;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.dialog.DialogCountdownTime;
@@ -345,7 +346,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 }
                 getViewModel().feedback(requestAPI, requireActivity().getPackageName(), info.versionName, o, o1 -> {
                     dialogLoading.dismiss();
-                    if (o1 == 400) {
+                    if (o1 instanceof ResponseFeedback) {
                         dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
                         });
                         dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);

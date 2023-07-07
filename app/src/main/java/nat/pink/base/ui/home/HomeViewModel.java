@@ -21,8 +21,10 @@ import nat.pink.base.base.BaseViewModel;
 import nat.pink.base.dao.DatabaseController;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.DeviceRequest;
+import nat.pink.base.model.FeedbackRequest;
 import nat.pink.base.model.ObjectMessenge;
 import nat.pink.base.model.ResponseDevice;
+import nat.pink.base.model.ResponseFeedback;
 import nat.pink.base.model.ResponseLeaderBoard;
 import nat.pink.base.model.ResponseUpdatePoint;
 import nat.pink.base.model.UpdatePointRequest;
@@ -97,16 +99,17 @@ public class HomeViewModel extends BaseViewModel {
         getListContact(context);
     }
 
-    public void feedback(RequestAPI requestAPI, String pack, String version, String contentFeedback, Consumer<Integer> consumer) {
-        requestAPI.feedback(pack, version, contentFeedback).enqueue(new Callback<String>() {
+    public void feedback(RequestAPI requestAPI, String pack, String version, String contentFeedback, Consumer<Object> consumer) {
+        FeedbackRequest feedbackRequest = new FeedbackRequest(pack, version, contentFeedback);
+        requestAPI.feedback(feedbackRequest).enqueue(new Callback<ResponseFeedback>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                consumer.accept(response.code());
+            public void onResponse(Call<ResponseFeedback> call, Response<ResponseFeedback> response) {
+                consumer.accept(response.body());
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                consumer.accept(t.hashCode());
+            public void onFailure(Call<ResponseFeedback> call, Throwable t) {
+                consumer.accept(t);
             }
         });
     }

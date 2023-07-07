@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:fontFamily="@font/sf_pro_display"
-                android:text="Coin Rankings"
+                android:text="@string/coin_rankings"
                 android:textColor="@color/color_404040"
                 android:textFontWeight="400"
                 android:textSize="@dimen/_14sdp" />

@@ -437,9 +437,10 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="faq_7">Как получить больше баллов?</string>
     <string name="point_ranking">Рейтинг очков</string>
     <string name="what_are_point_ranking">Что такое рейтинг очков?</string>
-    <string name="what_are_point_ranking_des">Лучший участник месяца получит скидку 80 % на покупку пакета без рекламы в приложении и множество других привлекательных подарков</string>
+    <string name="what_are_point_ranking_des">Лучший участник месяца получит скидку 80% на покупку пакета без рекламы в приложении и множество других привлекательных подарков</string>
     <string name="id_user">ID: %s</string>
     <string name="get_more">Подробнее</string>
     <string name="not_enough_points">Недостаточно баллов</string>
     <string name="not_enough_points_des">Вашей текущей точки недостаточно для использования функции</string>
+    <string name="coin_rankings">Рейтинг монет</string>
 </resources>

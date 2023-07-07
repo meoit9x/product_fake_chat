@@ -451,5 +451,6 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="get_more">Get more</string>
     <string name="not_enough_points">Not enough points</string>
     <string name="not_enough_points_des">Your current point is not enough to use the function</string>
+    <string name="coin_rankings">Coin Rankings</string>
 
 </resources>

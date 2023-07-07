@@ -4,7 +4,9 @@ import androidx.annotation.RawRes;
 import androidx.room.RawQuery;
 
 import nat.pink.base.model.DeviceRequest;
+import nat.pink.base.model.FeedbackRequest;
 import nat.pink.base.model.ResponseDevice;
+import nat.pink.base.model.ResponseFeedback;
 import nat.pink.base.model.ResponseLeaderBoard;
 import nat.pink.base.model.ResponseUpdatePoint;
 import nat.pink.base.model.UpdatePointRequest;
@@ -15,7 +17,7 @@ import retrofit2.http.Query;
 
 public interface RequestAPI {
     @POST("api/feedback")
-    Call<String> feedback(@Query("package") String pack, @Query("version") String version, @Query("content") String content);
+    Call<ResponseFeedback> feedback(@Body FeedbackRequest feedbackRequest);
 
     @POST("api/point")
     Call<ResponseUpdatePoint> updatePoint(@Body UpdatePointRequest updatePointRequest);

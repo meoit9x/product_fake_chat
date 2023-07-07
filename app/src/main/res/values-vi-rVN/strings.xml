@@ -442,4 +442,5 @@ Tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đ
     <string name="get_more">Nhận thêm</string>
     <string name="not_enough_points">Không đủ điểm</string>
     <string name="not_enough_points_des">Điểm hiện tại của bạn không đủ để sử dụng chức năng</string>
+    <string name="coin_rankings">Xếp hạng xu</string>
 </resources>

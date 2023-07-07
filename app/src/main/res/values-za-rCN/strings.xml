@@ -442,4 +442,5 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="get_more">获取更多</string>
     <string name="not_enough_points">积分不足</string>
     <string name="not_enough_points_des">您当前的积分不足以使用该功能</string>
+    <string name="coin_rankings">代币排名</string>
 </resources>
