@@ -1,5 +1,6 @@
 package nat.pink.base.ui.home;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -23,6 +24,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import nat.pink.base.base.App;
 import nat.pink.base.databinding.HomeFragmentBinding;
@@ -277,7 +279,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 });
             });
             binding.present.setVisibility(View.GONE);
-            countDownPresent(Const.TOTAL_TIME_MS);
         });
         handler = new Handler();
         runnable = () -> {
@@ -355,10 +356,12 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
         if (areTimesThreeMinutesApart(System.currentTimeMillis(), timePresentReward)) {
             binding.present.setVisibility(View.VISIBLE);
+            binding.timeCountDown.setVisibility(View.GONE);
         } else {
             if(!isDaily) {
                 countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
                 binding.present.setVisibility(View.GONE);
+                binding.timeCountDown.setVisibility(View.VISIBLE);
             }
         }
         totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
@@ -512,6 +515,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             public void onTick(long millisUntilFinished) {
                 long minutes = millisUntilFinished / (60 * 1000);
                 long seconds = (millisUntilFinished % (60 * 1000)) / 1000;
+                String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
+                binding.timeCountDown.setText(timeLeftFormatted);
             }
 
             @Override

@@ -29,6 +29,7 @@ public class DialogCountdownTime extends Dialog {
     private long time = 0;
     private String type = "";
     private Consumer<Object> consumer;
+    private CountDownTimer countDownTimer;
 
     public DialogCountdownTime(@NonNull Context context, int themeResId, Consumer<Object> consumer) {
         super(context, themeResId);
@@ -48,7 +49,7 @@ public class DialogCountdownTime extends Dialog {
         setContentView(binding.getRoot());
 
         if (time > 0) {
-            CountDownTimer countDownTimer = new CountDownTimer(time - System.currentTimeMillis(), 1000) {
+            countDownTimer = new CountDownTimer(time - System.currentTimeMillis(), 1000) {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     String currentTime = Utils.formatDuration(millisUntilFinished / 1000, true);
@@ -108,5 +109,12 @@ public class DialogCountdownTime extends Dialog {
     public void setTimeAndTitle(long time, String key) {
         this.time = time;
         this.type = key;
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (countDownTimer != null)
+            countDownTimer.cancel();
     }
 }

@@ -76,7 +76,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_top_one"
-            android:layout_width="@dimen/_55sdp"
+            android:layout_width="@dimen/_60sdp"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:gravity="center"

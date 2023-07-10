@@ -39,6 +39,7 @@
                android:layout_marginTop="@dimen/_7sdp"
                android:layout_marginEnd="@dimen/_7sdp"
                android:layout_marginBottom="@dimen/_7sdp"
+               android:background="?attr/selectableItemBackgroundBorderless"
                android:src="@drawable/ic_cancel" />
 
            <nat.pink.base.custom.view.ExtTextView

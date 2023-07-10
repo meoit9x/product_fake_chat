@@ -130,6 +130,19 @@
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:src="@drawable/view_ads_icon" />
 
+                        <nat.pink.base.custom.view.ExtTextView
+                            android:visibility="gone"
+                            android:id="@+id/time_count_down"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:layout_toLeftOf="@id/menu"
+                            android:fontFamily="@font/sf_pro_display"
+                            android:text="@string/your_coin"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
