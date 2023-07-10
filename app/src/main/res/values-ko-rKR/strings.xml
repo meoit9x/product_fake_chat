@@ -433,7 +433,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
 
     <string name="get_start">시작하기</string>
 
-    <string name="faq_des_7">포인트를 얻는 방법에는 3가지가 있습니다:\n방법 1: 일일 로그인 + 300포인트\n방법 2: 보상형 광고 시청(홈 화면에 3분마다 표시) + 조회당 100포인트\n방법 3 : 월별 리더보드에서 높은 순위 달성\n방법 4: 구매 패키지 구매(출시 예정)</string>
+    <string name="faq_des_7">포인트를 얻는 방법에는 3가지가 있습니다:\n방법 1: 일일 로그인 + 300포인트\n방법 2: 보상형 광고 시청(홈 화면에 3분마다 표시) + 조회당 200포인트\n방법 3 : 월별 리더보드에서 높은 순위 달성\n방법 4: 구매 패키지 구매(출시 예정)</string>
     <string name="faq_7">더 많은 포인트를 얻는 방법</string>
     <string name="point_ranking">포인트 순위</string>
     <string name="what_are_point_ranking">포인트 랭킹이 무엇인가요?</string>

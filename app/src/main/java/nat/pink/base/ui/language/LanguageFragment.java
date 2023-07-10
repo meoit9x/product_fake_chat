@@ -153,7 +153,7 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
                 ResponseDevice responseDevice = (ResponseDevice) o;
                 PreferenceUtil.saveInt(requireContext(), PreferenceUtil.KEY_USER_ID, responseDevice.getUserId());
                 if(responseDevice.getFirstTime() && responseDevice.getPoints() == 0) {
-                    getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300, o1 -> {
+                    getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200, o1 -> {
                         if(o1 instanceof ResponseUpdatePoint) {
                             ResponseUpdatePoint responseUpdatePoint = (ResponseUpdatePoint) o1;
                             PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(responseUpdatePoint.getPoints()));

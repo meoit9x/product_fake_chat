@@ -73,6 +73,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private DialogForceUpdate dialogForceUpdate;
     protected RequestAPI requestAPI;
     private AdView mAdView;
+    private Handler handler;
+    private Runnable runnable;
+    private boolean isDaily = false;
+    private static final int DELAY_MILLIS = 5000;
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -98,6 +102,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.rcvFakeUser.setAdapter(adapterFakeUser);
         navMenu = binding.navView2.getHeaderView(0);
 
+        timePresent = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY);
+        timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
+
         dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
             dialog.dismiss();
             if (user.getId() == -1) {
@@ -110,7 +117,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         startActivity(intent);
                         break;
                     case Const.KEY_ADS_VIDEO_CALL:
-                        if (checkPointEnough(200)){
+                        if (checkPointEnough(200)) {
                             getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 200);
                             addFragment(new VideoFragment(user, o -> {
                                 updateCountdown(Const.KEY_ADS_VIDEO_CALL);
@@ -126,7 +133,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         }
                         break;
                     case Const.KEY_ADS_NOTIFICATION:
-                        if(checkPointEnough(300)) {
+                        if (checkPointEnough(300)) {
                             getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 300);
                             addFragment(new NotificationFragment(user, o -> {
                                 updateCountdown(Const.KEY_ADS_NOTIFICATION);
@@ -148,7 +155,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
             binding.coinCount.setText(String.valueOf(totalCoin));
         });
-        dialogCountdownTime.setCancelable(false);
         dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
         mAdView = binding.adView;
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -201,7 +207,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     }
 
     private boolean checkPointEnough(int point) {
-        if(totalCoin - point < 0) {
+        if (totalCoin - point < 0) {
             new DialogEnoughPoints(requireContext(), o -> {
                 addFragment(new FaqFragment(true), FaqFragment.TAG);
             }).show();
@@ -262,43 +268,29 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.openDrawer(GravityCompat.END);
         });
         binding.present.setOnClickListener(v -> {
-            timePresent = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY);
-            timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
-            totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
-            if (timePresent == 0) {
-                showInterstitialAd(o -> {
-                    requireActivity().runOnUiThread(() -> {
-                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
-                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
-                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
-                        dialogCountdownTime.show();
-                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
-                    });
+            showInterstitialAd(o -> {
+                requireActivity().runOnUiThread(() -> {
+                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                    dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
+                    dialogCountdownTime.show();
+                    getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
                 });
-            } else {
-                if (isNewDateGreaterThanGiven(timePresent)) {
-                    showInterstitialAd(o -> {
-                        requireActivity().runOnUiThread(() -> {
-                            PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
-                            dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
-                            dialogCountdownTime.show();
-                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
-                        });
-                    });
-                } else {
-                    showInterstitialAd(o -> {
-                        requireActivity().runOnUiThread(() -> {
-                            PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
-                            dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
-                            dialogCountdownTime.show();
-                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 100);
-                        });
-                    });
-                }
-            }
+            });
             binding.present.setVisibility(View.GONE);
             countDownPresent(Const.TOTAL_TIME_MS);
         });
+        handler = new Handler();
+        runnable = () -> {
+            if (timePresent == 0 || isNewDateGreaterThanGiven(timePresent)) {
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
+                dialogCountdownTime.show();
+                getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
+                isDaily = true;
+            }
+        };
+        handler.postDelayed(runnable, DELAY_MILLIS);
         binding.fakeMessage.setOnClickListener(v -> {
             showAction(Const.KEY_ADS_MESSAGE);
         });
@@ -364,11 +356,14 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         if (areTimesThreeMinutesApart(System.currentTimeMillis(), timePresentReward)) {
             binding.present.setVisibility(View.VISIBLE);
         } else {
-            countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
-            binding.present.setVisibility(View.GONE);
+            if(!isDaily) {
+                countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
+                binding.present.setVisibility(View.GONE);
+            }
         }
         totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
         binding.coinCount.setText(String.valueOf(totalCoin));
+        isDaily = false;
     }
 
     private void showMessage() {
@@ -527,4 +522,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         countDownTimer.start();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+    }
 }

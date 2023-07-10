@@ -433,7 +433,7 @@ Le notificaré cualquier cambio publicando la nueva Política de privacidad en e
 
     <string name="get_start">Empezar</string>
 
-    <string name="faq_des_7">Hay 3 formas de ganar puntos:\nMétodo 1: inicio de sesión diario + 300 puntos\nMétodo 2: ver anuncios recompensados (aparecen cada 3 minutos en la pantalla de inicio) + 100 puntos por visualización\nMétodo 3 : Consiga una clasificación alta en la clasificación mensual\nMétodo 4: Compre un paquete de compra (próximamente)</string>
+    <string name="faq_des_7">Hay 3 formas de ganar puntos:\nMétodo 1: inicio de sesión diario + 300 puntos\nMétodo 2: ver anuncios recompensados (aparecen cada 3 minutos en la pantalla de inicio) + 200 puntos por visualización\nMétodo 3 : Consiga una clasificación alta en la clasificación mensual\nMétodo 4: Compre un paquete de compra (próximamente)</string>
     <string name="faq_7">¿Cómo obtener más puntos?</string>
     <string name="point_ranking">Clasificación de puntos</string>
     <string name="what_are_point_ranking">¿Qué son las clasificaciones de puntos?</string>

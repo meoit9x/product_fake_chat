@@ -433,7 +433,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
 
     <string name="get_start">开始</string>
 
-    <string name="faq_des_7">有 3 种赚取积分的方式：\n方法 1：每日登录 + 300 积分\n方法 2：观看奖励广告（主屏幕上每 3 分钟出现一次）+每次观看 100 积分\n方法 3 ：在每月排行榜中获得高排名\n方法四：购买购买礼包（即将推出）</string>
+    <string name="faq_des_7">有 3 种赚取积分的方式：\n方法 1：每日登录 + 300 积分\n方法 2：观看奖励广告（主屏幕上每 3 分钟出现一次）+每次观看 200 积分\n方法 3 ：在每月排行榜中获得高排名\n方法四：购买购买礼包（即将推出）</string>
     <string name="faq_7">如何获得更多积分？</string>
     <string name="point_ranking">积分排名</string>
     <string name="what_are_point_ranking">什么是积分排名？</string>

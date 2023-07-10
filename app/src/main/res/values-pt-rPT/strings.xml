@@ -433,7 +433,7 @@ Notificarei você sobre quaisquer alterações publicando a nova Política de Pr
 
     <string name="get_start">Primeiros passos</string>
 
-    <string name="faq_des_7">Existem 3 maneiras de ganhar pontos:\nMétodo 1: Login diário + 300 pontos\nMétodo 2: Assistir a anúncios premiados (aparecem a cada 3 minutos na tela inicial) + 100 pontos por visualização\nMétodo 3 : Consiga uma classificação alta na tabela de classificação mensal\nMétodo 4: compre um pacote de compra (em breve)</string>
+    <string name="faq_des_7">Existem 3 maneiras de ganhar pontos:\nMétodo 1: Login diário + 300 pontos\nMétodo 2: Assistir a anúncios premiados (aparecem a cada 3 minutos na tela inicial) + 200 pontos por visualização\nMétodo 3 : Consiga uma classificação alta na tabela de classificação mensal\nMétodo 4: compre um pacote de compra (em breve)</string>
     <string name="faq_7">Como conseguir mais pontos?</string>
     <string name="point_ranking">Classificação de pontos</string>
     <string name="what_are_point_ranking">O que são classificações de pontos?</string>
