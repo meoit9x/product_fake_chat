@@ -270,13 +270,15 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.openDrawer(GravityCompat.END);
         });
         binding.present.setOnClickListener(v -> {
-            showInterstitialAd(o -> {
-                requireActivity().runOnUiThread(() -> {
-                    PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
-                    dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
-                    dialogCountdownTime.show();
-                    getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
-                });
+            createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                if (showInterstitialAd(o1 -> {
+                    requireActivity().runOnUiThread(() -> {
+                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
+                        dialogCountdownTime.show();
+                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
+                    });
+                })) ;
             });
             binding.present.setVisibility(View.GONE);
         });
@@ -284,7 +286,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         runnable = () -> {
             if (timePresent == 0 || isNewDateGreaterThanGiven(timePresent)) {
                 PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
-                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
                 dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
                 dialogCountdownTime.show();
                 getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
@@ -358,7 +359,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.present.setVisibility(View.VISIBLE);
             binding.timeCountDown.setVisibility(View.GONE);
         } else {
-            if(!isDaily) {
+            if (!isDaily) {
                 countDownPresent(Const.TOTAL_TIME_MS - Math.abs(System.currentTimeMillis() - timePresentReward));
                 binding.present.setVisibility(View.GONE);
                 binding.timeCountDown.setVisibility(View.VISIBLE);
@@ -515,7 +516,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             public void onTick(long millisUntilFinished) {
                 long minutes = millisUntilFinished / (60 * 1000);
                 long seconds = (millisUntilFinished % (60 * 1000)) / 1000;
-                String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
+                String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
                 binding.timeCountDown.setText(timeLeftFormatted);
             }
 

@@ -144,6 +144,13 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         }
     }
 
+    protected void createInterstitialAd(String key, Consumer loadDone) {
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            activity.createInterstitialAd(key, loadDone);
+        }
+    }
+
 
     //AppLovin Ads Integrate!!!
     protected void initInterstitialAd() {

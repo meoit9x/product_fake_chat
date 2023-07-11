@@ -96,33 +96,6 @@ public class MainActivity extends BaseActivityForFragment {
         if (intent.getAction() != null && intent.getAction().equals("android.intent.action.MAIN")) {
             // initView();
         }
-        if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
-            Gson gson = new Gson();
-            Intent mIntent = new Intent(this, VideoCallActivity.class);
-            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
-            startActivity(mIntent);
-            finish();
-        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
-            Gson gson = new Gson();
-            Intent mIntent = new Intent(this, OutCommingActivity.class);
-            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
-            startActivity(mIntent);
-            finish();
-        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
-            Gson gson = new Gson();
-            Intent mIntent = new Intent(this, OutCommingActivity.class);
-            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
-            mIntent.putExtra("show_icon_video", true);
-            startActivity(mIntent);
-            finish();
-        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
-            Gson gson = new Gson();
-            Intent mIntent = new Intent(this, VideoCallActivity.class);
-            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
-            mIntent.putExtra("show_icon_video", true);
-            startActivity(mIntent);
-            finish();
-        }
         createInterstitialAd(Const.KEY_ADMOB_GUILDE);
         handleIntent(intent);
     }
@@ -143,6 +116,28 @@ public class MainActivity extends BaseActivityForFragment {
     private void handleIntent(Intent intent) {
         if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CREAT_NOTIFICATION)) {
             addFragment(new HomeFragment(), HomeFragment.TAG);
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VIDEO)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, VideoCallActivity.class);
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
+            startActivity(mIntent);
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VIDEO)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, OutCommingActivity.class);
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
+            startActivity(mIntent);
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_CALL_VOICE)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, OutCommingActivity.class);
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
+            mIntent.putExtra("show_icon_video", true);
+            startActivity(mIntent);
+        } else if (intent.getAction() != null && intent.getAction().equals(Const.ACTION_COMMING_VOICE)) {
+            Gson gson = new Gson();
+            Intent mIntent = new Intent(this, VideoCallActivity.class);
+            mIntent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, gson.fromJson(intent.getType(), ObjectCalling.class));
+            mIntent.putExtra("show_icon_video", true);
+            startActivity(mIntent);
         }
     }
 

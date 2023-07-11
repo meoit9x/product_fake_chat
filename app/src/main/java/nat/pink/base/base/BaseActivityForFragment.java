@@ -63,7 +63,8 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
         LayoutInflater vi = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         viewLoadingAds = vi.inflate(R.layout.loading_ads_layout, null);
-        viewLoadingAds.setOnClickListener(view -> {});
+        viewLoadingAds.setOnClickListener(view -> {
+        });
         viewGroup.addView(viewLoadingAds);
 
         initView();
@@ -90,6 +91,10 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
     }
 
     public void createInterstitialAd(String keyAds) {
+        createInterstitialAd(keyAds, null);
+    }
+
+    public void createInterstitialAd(String keyAds, Consumer loadDone) {
         AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(this, keyAds, adRequest, new InterstitialAdLoadCallback() {
             @Override
@@ -97,6 +102,7 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
                 interstitialAdsAdmob = mInterstitialAd;
                 setCallbackInterstitial(keyAds);
                 updateAdsRequest();
+                loadDone.accept(null);
             }
 
             @Override
@@ -107,7 +113,7 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
                 long delayMillis = TimeUnit.SECONDS.toMillis(5);
                 new Handler().postDelayed(() -> {
                     if (retryAttempt < 3) {
-                        createNativeAd(keyAds);
+                        createInterstitialAd(keyAds);
                     }
                 }, delayMillis);
             }
@@ -249,15 +255,15 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
     }
 
     public void createNativeAd(String keyAds) {
-//        setLoadingAdsView(true);
+        setLoadingAdsView(true);
         adLoader = new AdLoader.Builder(this, keyAds).forNativeAd(nativeAd -> {
             consumerAdsSuccess.accept(nativeAd);
-//            setLoadingAdsView(false);
+            setLoadingAdsView(false);
         }).withAdListener(new AdListener() {
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 consumerAdsFaill.accept(keyAds);
-//                setLoadingAdsView(false);
+                setLoadingAdsView(false);
             }
         }).withNativeAdOptions(new NativeAdOptions.Builder()
                 .build()).build();

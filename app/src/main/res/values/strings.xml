@@ -20,9 +20,6 @@
     <string name="delete_chat">Refresh the chat</string>
     <string name="back_to_home">Back to home page</string>
 
-
-
-
     <!--FONT-->
     <string name="font_italic" translatable="false">fonts/Roboto-BlackItalic.ttf</string>
     <string name="font_bold" translatable="false">fonts/Roboto-Bold.ttf</string>

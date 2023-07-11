@@ -279,11 +279,8 @@ public class Utils {
     }
 
     public static void askPermissionStorage(Activity context, Callable<Void> callable) throws Exception {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(context,
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
-                            , Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
+        if (!checkPermission(context,Manifest.permission.READ_EXTERNAL_STORAGE) && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            context.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Const.ALBUM_REQUEST_CODE);
         } else {
             callable.call();
         }

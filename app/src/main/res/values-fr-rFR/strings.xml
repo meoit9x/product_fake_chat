@@ -432,6 +432,8 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
 
     <string name="get_start">Commencer</string>
 
+    <string name="tt_txt_skip">Ignorer</string>
+
     <string name="faq_des_7">Il existe 3façons de gagner des points:\nMéthode1: connexion quotidienne + 300points\nMéthode2: regarder des publicités avec récompense (s\'affichent toutes les 3minutes sur l\'écran d\'accueil) + 200points par vue\nMéthode3 :Atteignez un classement élevé dans le classement mensuel\nMéthode4: Achetez un package d\'achat (bientôt disponible)</string>
     <string name="faq_7">Comment obtenir plus de points?</string>
     <string name="point_ranking">Classement par points</string>

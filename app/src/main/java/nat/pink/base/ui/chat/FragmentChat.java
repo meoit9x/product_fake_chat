@@ -424,7 +424,7 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
 
     public void saveImage() {
         try {
-            askPermissionStorage(() -> {
+            Utils.askPermissionStorage(this, () -> {
                 File file = FileUtil.createFolder(this, getString(R.string.app_name));
                 String path = FileUtil.saveImageToGallery(this
                         , file
@@ -441,15 +441,11 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
     }
 
     public void askPermissionStorage(Callable<Void> callable) throws Exception {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
-                                , Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
-            } else {
-                callable.call();
-            }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE
+                            , Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_STORAGE);
         } else {
             callable.call();
         }

@@ -150,7 +150,6 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
                     PreferenceUtil.saveKey(requireContext(), PreferenceUtil.KEY_CALLING_VOICE);
                     Utils.startAlarmService(requireActivity(), Utils.getTimeFromKey(requireContext(), Utils.getIntTimeDelay(getContext(), changeType)), Const.ACTION_CALL_VOICE, objectCalling);
                     backStackFragment();
-
                 }
 
 

@@ -435,6 +435,8 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
 
     <string name="get_start">Erste Schritte</string>
 
+    <string name="tt_txt_skip">Überspringen</string>
+
     <string name="faq_des_7">Es gibt 3 Möglichkeiten, Punkte zu sammeln:\nMethode 1: Tägliche Anmeldung + 300 Punkte\nMethode 2: Belohnte Werbung ansehen (erscheint alle 3 Minuten auf dem Startbildschirm) + 200 Punkte pro Ansicht\nMethode 3 : Erreichen Sie einen hohen Rang in der monatlichen Bestenliste\nMethode 4: Kaufen Sie ein Kaufpaket (in Kürze erhältlich)</string>
     <string name="faq_7">Wie bekomme ich mehr Punkte?</string>
     <string name="point_ranking">Punkteranking</string>

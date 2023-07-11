@@ -443,4 +443,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="not_enough_points">ポイントが足りません</string>
     <string name="not_enough_points_des">現在のポイントでは機能を使用するのに十分ではありません</string>
     <string name="coin_rankings">コインランキング</string>
+
+    <string name="tt_txt_skip">スキップ</string>
 </resources>
