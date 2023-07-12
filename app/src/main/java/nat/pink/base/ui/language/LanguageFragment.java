@@ -72,7 +72,6 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
             }
 
         });
-        createNativeAdView();
     }
 
     private void createNativeAdView() {
@@ -96,17 +95,17 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
 //                    }
 //                });
 //        builder.build();
-        createNativeAd(Const.KEY_ADMOB_NATIVE_TEST);
-        setNativeAdConsumer(o -> {
-            if (o instanceof String) {
-                return;
-            }
-            NativeAdView adView = (NativeAdView) getLayoutInflater().inflate(R.layout.native_custom_mob_ads_big, null);
-            populateNativeAdView((NativeAd) o, adView);
-            FrameLayout frameLayout = binding.nativeAdsLanguageHome;
-            frameLayout.removeAllViews();
-            frameLayout.addView(adView);
-        });
+//        createNativeAd(Const.KEY_ADMOB_NATIVE_TEST);
+//        setNativeAdConsumer(o -> {
+//            if (o instanceof String) {
+//                return;
+//            }
+//            NativeAdView adView = (NativeAdView) getLayoutInflater().inflate(R.layout.native_custom_mob_ads_big, null);
+//            populateNativeAdView((NativeAd) o, adView);
+//            FrameLayout frameLayout = binding.nativeAdsLanguageHome;
+//            frameLayout.removeAllViews();
+//            frameLayout.addView(adView);
+//        });
     }
 
     void populateNativeAdView(NativeAd nativeAd, NativeAdView adView) {
