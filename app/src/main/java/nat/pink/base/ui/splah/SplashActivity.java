@@ -81,16 +81,15 @@ public class SplashActivity extends BaseActivityForFragment {
                             new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("19F4C875114642E78629F2650F04AFD2"));
                             HomeViewModel.getAdsType(App.getInstance().getFirebaseDatabase(), v -> {
                                 App.getInstance().setTypeAds(v);
-                                createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
-                                    showInterstitialAd(o1 -> {
-                                        SplashActivity.this.runOnUiThread(() -> {
-                                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                            i.setAction("android.intent.action.MAIN");
-                                            startActivity(i);
-                                            finish();
+                                if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE_SETTING")) {
+                                    newIntentMain();
+                                } else {
+                                    createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                                        showInterstitialAd(o1 -> {
+                                            newIntentMain();
                                         });
                                     });
-                                });
+                                }
                             });
                         });
                     }
@@ -105,5 +104,14 @@ public class SplashActivity extends BaseActivityForFragment {
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacks(runnable);
+    }
+
+    private void newIntentMain(){
+        SplashActivity.this.runOnUiThread(() -> {
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.setAction("android.intent.action.MAIN");
+            startActivity(i);
+            finish();
+        });
     }
 }

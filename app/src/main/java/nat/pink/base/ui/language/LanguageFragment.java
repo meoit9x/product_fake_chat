@@ -22,6 +22,8 @@ import com.google.android.gms.ads.nativead.MediaView;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdView;
 
+import java.util.Locale;
+
 import nat.pink.base.R;
 import nat.pink.base.adapter.AdapterLanguage;
 import nat.pink.base.base.BaseFragment;
@@ -42,7 +44,6 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
 
     public static final String TAG = "LanguageFragment";
     private AdapterLanguage adapterLanguage;
-    boolean isChanged = false;
     protected RequestAPI requestAPI;
 
     @Override
@@ -55,14 +56,13 @@ public class LanguageFragment extends BaseFragment<FragmentLanguageBinding, Lang
     protected void initView() {
         super.initView();
         adapterLanguage = new AdapterLanguage(requireContext(), data -> {
-            isChanged = true;
             PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, data.getValue());
             adapterLanguage.notifyDataSetChanged();
         });
         binding.rcvEnglish.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rcvEnglish.setAdapter(adapterLanguage);
         binding.txtSave.setOnClickListener(v -> {
-            if (isChanged) {
+            if (!PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_CURRENT_LANGUAGE, "").equals(Locale.getDefault().getLanguage())) {
                 Intent intent = new Intent(getContext(), SplashActivity.class);
                 intent.setAction("ACTION_CHANGE_LANGUAGE");
                 startActivity(intent);

@@ -153,6 +153,7 @@ class LanguageFragmentSetting : BaseFragment<FragmentLanguageSettingBinding, Emp
                         SplashActivity::class.java
                     )
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.action = "ACTION_CHANGE_LANGUAGE_SETTING"
                     requireActivity().startActivity(
                         intent
                     )
