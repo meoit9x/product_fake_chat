@@ -51,16 +51,34 @@
         android:id="@+id/progress"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
-        android:layout_height="@dimen/_7sdp"
+        android:layout_height="@dimen/_12sdp"
         android:layout_marginStart="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_50sdp"
-        android:progressDrawable="@drawable/customer_progressbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
+        android:indeterminate="true"
         tools:max="100"
-        tools:progress="1" />
+        tools:progress="1"
+        android:indeterminateTint="@color/color_6B5CF6"
+        android:indeterminateTintMode="src_in"/>
+
+    <nat.pink.base.custom.view.ExtTextView
+        android:id="@+id/txt_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:textColor="@color/color_415262"
+        android:textSize="@dimen/_11sdp"
+        android:text="@string/contain_ads"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress"
+        app:textViewFontAssetName="@string/font_bold" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

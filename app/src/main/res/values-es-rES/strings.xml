@@ -445,4 +445,6 @@ Le notificaré cualquier cambio publicando la nueva Política de privacidad en e
     <string name="not_enough_points">No hay suficientes puntos</string>
     <string name="not_enough_points_des">Tu punto actual no es suficiente para usar la función</string>
     <string name="coin_rankings">Clasificación de monedas</string>
+
+    <string name="contain_ads">Esta acción puede contener anuncios</string>
 </resources>

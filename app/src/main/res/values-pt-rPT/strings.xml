@@ -445,4 +445,6 @@ Notificarei você sobre quaisquer alterações publicando a nova Política de Pr
     <string name="not_enough_points">Não há pontos suficientes</string>
     <string name="not_enough_points_des">Seu ponto atual não é suficiente para usar a função</string>
     <string name="coin_rankings">Classificação de moedas</string>
+
+    <string name="contain_ads">Esta ação pode conter anúncios</string>
 </resources>

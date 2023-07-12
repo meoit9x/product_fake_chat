@@ -120,15 +120,17 @@
                             android:layout_marginRight="@dimen/_9sdp"
                             android:src="@drawable/menu_icon" />
 
-                        <ImageView
+                        <com.airbnb.lottie.LottieAnimationView
                             android:id="@+id/present"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_centerInParent="true"
                             android:layout_marginRight="@dimen/_15sdp"
                             android:layout_toLeftOf="@id/menu"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:src="@drawable/view_ads_icon" />
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/open_gif"
+                            android:background="?attr/selectableItemBackgroundBorderless"/>
 
                         <nat.pink.base.custom.view.ExtTextView
                             android:visibility="gone"

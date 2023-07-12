@@ -450,4 +450,6 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="not_enough_points_des">Your current point is not enough to use the function</string>
     <string name="coin_rankings">Coin Rankings</string>
 
+    <string name="contain_ads">This action can contain ads</string>
+
 </resources>

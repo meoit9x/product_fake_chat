@@ -447,4 +447,6 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
     <string name="not_enough_points">Nicht genügend Punkte</string>
     <string name="not_enough_points_des">Ihr aktueller Punkt reicht nicht aus, um die Funktion zu verwenden</string>
     <string name="coin_rankings">Münzrankings</string>
+
+    <string name="contain_ads">Diese Aktion kann Anzeigen enthalten</string>
 </resources>

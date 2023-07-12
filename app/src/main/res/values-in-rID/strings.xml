@@ -445,4 +445,6 @@ Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijaka
     <string name="not_enough_points">Poin tidak cukup</string>
     <string name="not_enough_points_des">Poin Anda saat ini tidak cukup untuk menggunakan fungsi</string>
     <string name="coin_rankings">Peringkat Koin</string>
+
+    <string name="contain_ads">Tindakan ini dapat berisi iklan</string>
 </resources>

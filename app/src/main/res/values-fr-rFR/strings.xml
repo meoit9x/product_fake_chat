@@ -444,4 +444,6 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
     <string name="not_enough_points">Pas assez de points</string>
     <string name="not_enough_points_des">Votre point actuel n\'est pas suffisant pour utiliser la fonction</string>
     <string name="coin_rankings">Clasificación de monedas</string>
+
+    <string name="contain_ads">Cette action peut contenir des publicités</string>
 </resources>
