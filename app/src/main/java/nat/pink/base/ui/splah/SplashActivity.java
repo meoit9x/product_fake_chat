@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.google.android.gms.ads.MobileAds;
@@ -18,11 +19,14 @@ import java.util.Arrays;
 import java.util.Timer;
 
 import nat.pink.base.base.App;
+import nat.pink.base.base.BaseActivityForFragment;
 import nat.pink.base.databinding.ActivitySplashBinding;
+import nat.pink.base.databinding.FragmentChatBinding;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.ui.home.HomeViewModel;
+import nat.pink.base.utils.Const;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivityForFragment {
     ActivitySplashBinding binding;
     private Timer timer;
     Handler handler = new Handler();
@@ -34,9 +38,28 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        binding = ActivitySplashBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
         initAct();
+    }
+
+    @Override
+    protected View getLayoutResource() {
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
+        return binding.getRoot();
+    }
+
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initEvent() {
+
     }
 
     protected void initAct() {
@@ -58,13 +81,16 @@ public class SplashActivity extends AppCompatActivity {
                             new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("19F4C875114642E78629F2650F04AFD2"));
                             HomeViewModel.getAdsType(App.getInstance().getFirebaseDatabase(), v -> {
                                 App.getInstance().setTypeAds(v);
-                                SplashActivity.this.runOnUiThread(() -> {
-                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                    i.setAction("android.intent.action.MAIN");
-                                    startActivity(i);
-                                    finish();
+                                createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                                    showInterstitialAd(o1 -> {
+                                        SplashActivity.this.runOnUiThread(() -> {
+                                            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                            i.setAction("android.intent.action.MAIN");
+                                            startActivity(i);
+                                            finish();
+                                        });
+                                    });
                                 });
-
                             });
                         });
                     }
