@@ -107,6 +107,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         timePresent = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY);
         timePresentReward = PreferenceUtil.getLong(requireContext(), PreferenceUtil.KEY_PRESENT);
 
+        binding.timeCountDown.animate().alpha(0.6f).setDuration(300);
+
         dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
             dialog.dismiss();
             if (user.getId() == -1) {
