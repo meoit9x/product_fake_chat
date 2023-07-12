@@ -274,6 +274,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 if (showInterstitialAd(o1 -> {
                     requireActivity().runOnUiThread(() -> {
                         PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                        dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
+                        });
                         dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
                         dialogCountdownTime.show();
                         getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
@@ -286,6 +288,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         runnable = () -> {
             if (timePresent == 0 || isNewDateGreaterThanGiven(timePresent)) {
                 PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
+                });
                 dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
                 dialogCountdownTime.show();
                 getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
