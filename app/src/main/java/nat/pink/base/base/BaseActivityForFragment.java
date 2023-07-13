@@ -2,7 +2,12 @@ package nat.pink.base.base;
 
 import static android.content.ContentValues.TAG;
 
+import static nat.pink.base.utils.Const.BROADCAST_NETWORK;
+
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +38,7 @@ import java.util.concurrent.TimeUnit;
 import nat.pink.base.R;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.MyContextWrapper;
+import nat.pink.base.utils.NetworkUtil;
 import nat.pink.base.utils.PreferenceUtil;
 
 public abstract class BaseActivityForFragment extends AppCompatActivity {
@@ -67,10 +73,24 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
         });
         viewGroup.addView(viewLoadingAds);
 
+        // register network change
+        IntentFilter intentFilter = new IntentFilter(BROADCAST_NETWORK);
+        registerReceiver(broadcastReceiver, intentFilter);
+
         initView();
         initData();
         initEvent();
     }
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int status = NetworkUtil.getConnectivityStatusString(context);
+            if (Const.BROADCAST_NETWORK.equals(intent.getAction())) {
+                stateNetWork(status != NetworkUtil.NETWORK_STATUS_NOT_CONNECTED);
+            }
+        }
+    };
+    protected abstract void stateNetWork(boolean isAvaiable);
 
     protected abstract View getLayoutResource();
 
@@ -88,6 +108,12 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
         } else {
             super.attachBaseContext(newBase);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(broadcastReceiver);
     }
 
     public void createInterstitialAd(String keyAds) {

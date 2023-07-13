@@ -80,6 +80,11 @@ public class MainActivity extends BaseActivityForFragment {
     private FragmentManager fragmentManager;
 
     @Override
+    protected void stateNetWork(boolean isAvaiable) {
+
+    }
+
+    @Override
     protected View getLayoutResource() {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         return binding.getRoot();

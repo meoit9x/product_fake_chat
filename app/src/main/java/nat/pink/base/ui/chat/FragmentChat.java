@@ -83,6 +83,12 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
 
     public FragmentChat() {
     }
+
+    @Override
+    protected void stateNetWork(boolean isAvaiable) {
+
+    }
+
     @Override
     protected View getLayoutResource() {
         binding = FragmentChatBinding.inflate(getLayoutInflater());
