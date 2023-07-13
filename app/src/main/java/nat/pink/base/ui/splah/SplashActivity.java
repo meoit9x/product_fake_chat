@@ -85,40 +85,23 @@ public class SplashActivity extends BaseActivityForFragment {
     }
 
     protected void initAct() {
-
         if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE")) {
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             i.setAction("android.intent.action.MAIN");
             startActivity(i);
             finish();
         } else {
-            runnable = new Runnable() {
-                @Override
-                public void run() {
-                    progress += 1;
-                    binding.progress.setProgress(progress);
-                    if (progress == 99) {
-                        MobileAds.initialize(SplashActivity.this, initializationStatus -> {
-                            Log.d("adsDebug", "init Complete");
-                            new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("19F4C875114642E78629F2650F04AFD2"));
-                            HomeViewModel.getAdsType(App.getInstance().getFirebaseDatabase(), v -> {
-                                App.getInstance().setTypeAds(v);
-                                if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE_SETTING")) {
-                                    newIntentMain();
-                                } else {
-                                    createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
-                                        showInterstitialAd(o1 -> {
-                                            newIntentMain();
-                                        });
-                                    });
-                                }
-                            });
+            MobileAds.initialize(SplashActivity.this, initializationStatus -> {
+                if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE_SETTING")) {
+                    newIntentMain();
+                } else {
+                    createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                        showInterstitialAd(o1 -> {
+                            newIntentMain();
                         });
-                    }
-                    handler.postDelayed(this, 10);
+                    });
                 }
-            };
-            handler.postDelayed(runnable, 100);
+            });
         }
     }
 
