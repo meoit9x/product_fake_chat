@@ -262,7 +262,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         getViewModel().updateCoin.observe(this, responseUpdatePoint -> {
             if (responseUpdatePoint.getStatus() == 1) {
                 PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(responseUpdatePoint.getPoints()));
-                checkShowPresent();
                 dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
                 });
                 switch (type_present) {
@@ -279,6 +278,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                     default:
                         break;
                 }
+                checkShowPresent();
             }
         });
         getViewModel().failed.observe(this, response -> {
