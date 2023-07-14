@@ -449,4 +449,6 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
     <string name="coin_rankings">Münzrankings</string>
 
     <string name="contain_ads">Diese Aktion kann Anzeigen enthalten</string>
+
+    <string name="network_error">Keine Netzwerkverbindung</string>
 </resources>

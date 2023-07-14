@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -54,6 +55,7 @@ import nat.pink.base.ui.setting.FaqFragment;
 import nat.pink.base.ui.setting.LanguageFragmentSetting;
 import nat.pink.base.ui.setting.PrivacyFragment;
 import nat.pink.base.ui.video.VideoFragment;
+import nat.pink.base.utils.Config;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
 import nat.pink.base.utils.Utils;
@@ -78,6 +80,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private Handler handler;
     private Runnable runnable;
     private boolean isDaily = false;
+    private int type_present = 0;
     private static final int DELAY_MILLIS = 5000;
 
     @Override
@@ -260,6 +263,27 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             if (responseUpdatePoint.getStatus() == 1) {
                 PreferenceUtil.saveString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, String.valueOf(responseUpdatePoint.getPoints()));
                 checkShowPresent();
+                dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
+                });
+                switch (type_present) {
+                    case Const.TYPE_PRESENT:
+                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
+                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
+                        dialogCountdownTime.show();
+                        break;
+                    case Const.TYPE_PRESENT_EVERYDAY:
+                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
+                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
+                        dialogCountdownTime.show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        getViewModel().failed.observe(this, response -> {
+            if (type_present == Const.TYPE_PRESENT && !binding.present.isShown()) {
+                binding.present.setVisibility(View.VISIBLE);
             }
         });
 
@@ -272,28 +296,24 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.openDrawer(GravityCompat.END);
         });
         binding.present.setOnClickListener(v -> {
-            createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
-                if (showInterstitialAd(o1 -> {
-                    requireActivity().runOnUiThread(() -> {
-                        PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT, System.currentTimeMillis());
-                        dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
+            if (stateNetWork()) {
+                createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                    showInterstitialAd(o1 -> {
+                        requireActivity().runOnUiThread(() -> {
+                            type_present = Const.TYPE_PRESENT;
+                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
                         });
-                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT);
-                        dialogCountdownTime.show();
-                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
                     });
-                })) ;
-            });
-            binding.present.setVisibility(View.GONE);
+                });
+                binding.present.setVisibility(View.GONE);
+            } else {
+                toast(getString(R.string.network_error));
+            }
         });
         handler = new Handler();
         runnable = () -> {
             if (timePresent == 0 || isNewDateGreaterThanGiven(timePresent)) {
-                PreferenceUtil.saveLong(requireContext(), PreferenceUtil.KEY_PRESENT_EVERYDAY, System.currentTimeMillis());
-                dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
-                });
-                dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
-                dialogCountdownTime.show();
+                type_present = Const.TYPE_PRESENT_EVERYDAY;
                 getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 300);
                 isDaily = true;
             }
@@ -318,7 +338,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         });
         navMenu.findViewById(R.id.ll_guide).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
-            addFragment(new CoinRankingFragment(), CoinRankingFragment.TAG);
+            if (stateNetWork()) {
+                addFragment(new CoinRankingFragment(), CoinRankingFragment.TAG);
+            } else {
+                toast(getString(R.string.network_error));
+            }
         });
         navMenu.findViewById(R.id.ll_language).setOnClickListener(view -> {
             binding.drawerLayout.closeDrawers();
@@ -336,25 +360,30 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.closeDrawers();
             new DialogFeedback(requireContext(), R.style.TransparentDialog, o -> {
                 dialogLoading.show();
-                PackageManager manager = requireContext().getPackageManager();
-                PackageInfo info;
-                try {
-                    info = manager.getPackageInfo(
-                            requireContext().getPackageName(), 0);
-                } catch (PackageManager.NameNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                getViewModel().feedback(requestAPI, requireActivity().getPackageName(), info.versionName, o, o1 -> {
-                    dialogLoading.dismiss();
-                    if (o1 instanceof ResponseFeedback) {
-                        dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
-                        });
-                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);
-                        dialogCountdownTime.show();
-                    } else {
-                        new DialogNetworkFail(requireContext(), R.style.MaterialDialogSheet, true).show();
+                if (stateNetWork()) {
+                    PackageManager manager = requireContext().getPackageManager();
+                    PackageInfo info;
+                    try {
+                        info = manager.getPackageInfo(
+                                requireContext().getPackageName(), 0);
+                    } catch (PackageManager.NameNotFoundException e) {
+                        throw new RuntimeException(e);
                     }
-                });
+                    getViewModel().feedback(requestAPI, requireActivity().getPackageName(), info.versionName, o, o1 -> {
+                        dialogLoading.dismiss();
+                        if (o1 instanceof ResponseFeedback) {
+                            dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o2 -> {
+                            });
+                            dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_DONE);
+                            dialogCountdownTime.show();
+                        } else {
+                            new DialogNetworkFail(requireContext(), R.style.MaterialDialogSheet, true).show();
+                        }
+                    });
+                } else {
+                    dialogLoading.dismiss();
+                    toast(getString(R.string.network_error));
+                }
             }).show();
         });
     }

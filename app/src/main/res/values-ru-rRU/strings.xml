@@ -447,4 +447,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="coin_rankings">Рейтинг монет</string>
 
     <string name="contain_ads">Это действие может содержать рекламу</string>
+
+    <string name="network_error">Нет сетевого подключения</string>
 </resources>

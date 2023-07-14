@@ -446,4 +446,6 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
     <string name="coin_rankings">Clasificación de monedas</string>
 
     <string name="contain_ads">Cette action peut contenir des publicités</string>
+
+    <string name="network_error">Pas de connexion réseau</string>
 </resources>

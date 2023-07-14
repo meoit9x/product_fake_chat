@@ -447,4 +447,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="tt_txt_skip">건너뛰기</string>
 
     <string name="contain_ads">이 작업에는 광고가 포함될 수 있습니다</string>
+
+    <string name="network_error">네트워크 연결 없음</string>
 </resources>

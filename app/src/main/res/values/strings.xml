@@ -452,4 +452,6 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
 
     <string name="contain_ads">This action can contain ads</string>
 
+    <string name="network_error">No network connection</string>
+
 </resources>

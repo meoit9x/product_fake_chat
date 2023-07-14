@@ -1,9 +1,11 @@
 package nat.pink.base.base;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,11 +42,13 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
     public void setHideAds(boolean hideAds) {
         this.hideAds = hideAds;
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -87,6 +91,20 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         }
     }
 
+    protected boolean stateNetWork() {
+        if (requireActivity() instanceof MainActivity) {
+            MainActivity activity = (MainActivity) requireActivity();
+            return activity.isConnect();
+        } else {
+            return false;
+        }
+    }
+
+    public void toast(String content) {
+        if (!TextUtils.isEmpty(content))
+            Toast.makeText(requireContext(), content, Toast.LENGTH_LONG).show();
+    }
+
     protected void replaceFragment(Fragment fragment, String tag) {
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();
@@ -116,13 +134,13 @@ public abstract class BaseFragment<VB extends ViewBinding, VM extends BaseViewMo
         }
     }
 
-//    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
+    //    protected void setNativeAdView(MaxNativeAdView view, Consumer loadedConsumer) {
 //        if (requireActivity() instanceof MainActivity) {
 //            MainActivity activity = (MainActivity) requireActivity();
 //            activity.setNativeAdView(view, loadedConsumer);
 //        }
 //    }
-    protected void setNativeAdConsumer(Consumer consumer){
+    protected void setNativeAdConsumer(Consumer consumer) {
         if (requireActivity() instanceof MainActivity) {
             MainActivity activity = (MainActivity) requireActivity();
             activity.setNativeAdView(consumer);

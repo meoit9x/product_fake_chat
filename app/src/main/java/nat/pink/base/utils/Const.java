@@ -71,6 +71,8 @@ public class Const {
     public static final int CHECK_TURN_OFF_VOICE_INCOMING = 1261;
     public static final long TOTAL_TIME_MS = 3 * 60 * 1000;
 
+    public static final int TYPE_PRESENT = 1001;
+    public static final int TYPE_PRESENT_EVERYDAY = 1002;
     public static final String BROADCAST_NETWORK = "android.net.conn.CONNECTIVITY_CHANGE";
 
 }

@@ -78,10 +78,11 @@ public class MainActivity extends BaseActivityForFragment {
     private ActivityMainBinding binding;
     private ArrayList<String> fragmentStates = new ArrayList<>();
     private FragmentManager fragmentManager;
+    private boolean isConnect = false;
 
     @Override
     protected void stateNetWork(boolean isAvaiable) {
-
+       setConnect(isAvaiable);
     }
 
     @Override
@@ -196,5 +197,13 @@ public class MainActivity extends BaseActivityForFragment {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         for (Fragment item : getSupportFragmentManager().getFragments())
             item.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    public boolean isConnect() {
+        return isConnect;
+    }
+
+    public void setConnect(boolean connect) {
+        isConnect = connect;
     }
 }

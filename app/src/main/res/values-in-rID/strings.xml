@@ -447,4 +447,6 @@ Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijaka
     <string name="coin_rankings">Peringkat Koin</string>
 
     <string name="contain_ads">Tindakan ini dapat berisi iklan</string>
+
+    <string name="network_error">Tidak ada koneksi jaringan</string>
 </resources>

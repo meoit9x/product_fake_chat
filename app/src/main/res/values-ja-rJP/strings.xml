@@ -447,4 +447,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="tt_txt_skip">スキップ</string>
 
     <string name="contain_ads">このアクションには広告を含めることができます</string>
+
+    <string name="network_error">ネットワーク接続がありません</string>
 </resources>
