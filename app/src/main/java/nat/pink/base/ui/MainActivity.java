@@ -54,6 +54,7 @@ import nat.pink.base.R;
 import nat.pink.base.base.App;
 import nat.pink.base.base.BaseActivityForFragment;
 import nat.pink.base.databinding.ActivityMainBinding;
+import nat.pink.base.dialog.DialogCountdownTime;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.service.CallingService;
 import nat.pink.base.ui.home.HomeFragment;
@@ -79,10 +80,15 @@ public class MainActivity extends BaseActivityForFragment {
     private ArrayList<String> fragmentStates = new ArrayList<>();
     private FragmentManager fragmentManager;
     private boolean isConnect = false;
+    private DialogCountdownTime dialogDisconnected;
 
     @Override
     protected void stateNetWork(boolean isAvaiable) {
        setConnect(isAvaiable);
+        if (!isAvaiable && !dialogDisconnected.isShowing())
+            dialogDisconnected.show();
+        else
+            dialogDisconnected.dismiss();
     }
 
     @Override
@@ -162,6 +168,9 @@ public class MainActivity extends BaseActivityForFragment {
         } else {
             replaceFragment(new HomeFragment(), HomeFragment.TAG);
         }
+        dialogDisconnected = new DialogCountdownTime(this, R.style.MaterialDialogSheet, o -> {
+        });
+        dialogDisconnected.setTimeAndTitle(0L, Const.KEY_DISCONNECTED);
     }
 
     public void replaceFragment(Fragment fragment, String tag) {
