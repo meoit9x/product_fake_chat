@@ -18,6 +18,7 @@ public class Const {
     public static final String KEY_ADS_REFRESH_CHAT = "bfb05294a38fd0dd";
     public static final String KEY_ADS_PRESENT_EVERYDAY = "KEY_ADS_PRESENT_EVERYDAY";
     public static final String KEY_ADS_PRESENT = "KEY_ADS_PRESENT";
+    public static final String KEY_DISCONNECTED = "KEY_DISCONNECTED";
 
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";
     public static final String PUT_EXTERNAL_ACTION = "PUT_EXTERNAL_ACTION";

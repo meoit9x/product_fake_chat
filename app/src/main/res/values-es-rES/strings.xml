@@ -449,4 +449,6 @@ Le notificaré cualquier cambio publicando la nueva Política de privacidad en e
     <string name="contain_ads">Esta acción puede contener anuncios</string>
 
     <string name="network_error">Sin conexión de red</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="disconnected_des">Habilite su conexión de red para usar el servicio</string>
 </resources>

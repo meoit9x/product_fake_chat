@@ -94,6 +94,12 @@ public class DialogCountdownTime extends Dialog {
                 tvMsg = getContext().getString(R.string.received_a_reward);
                 binding.txtDone.setText(getContext().getString(R.string.claim));
                 break;
+            case Const.KEY_DISCONNECTED:
+                binding.tvTime.setText(getContext().getString(R.string.disconnected));
+                binding.tvTitle.setImageResource(R.drawable.ic_no_wifi);
+                tvMsg = getContext().getString(R.string.disconnected_des);
+                binding.txtDone.setText(getContext().getString(R.string.ok));
+                break;
             default:
                 break;
 

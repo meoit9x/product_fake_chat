@@ -449,4 +449,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="contain_ads">此操作可以包含广告</string>
 
     <string name="network_error">没有网络连接</string>
+    <string name="disconnected">已断开连接</string>
+    <string name="disconnected_des">请启用您的网络连接才能使用该服务</string>
 </resources>

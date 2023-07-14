@@ -449,4 +449,6 @@ Notificarei você sobre quaisquer alterações publicando a nova Política de Pr
     <string name="contain_ads">Esta ação pode conter anúncios</string>
 
     <string name="network_error">Sem conexão de rede</string>
+    <string name="disconnected">Desconectado</string>
+    <string name="disconnected_des">Ative sua conexão de rede para usar o serviço</string>
 </resources>

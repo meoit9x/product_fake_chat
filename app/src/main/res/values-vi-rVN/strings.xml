@@ -447,4 +447,6 @@ Tôi sẽ thông báo cho bạn về bất kỳ thay đổi nào bằng cách đ
     <string name="contain_ads">Hành động này có thể chứa quảng cáo</string>
 
     <string name="network_error">Không có kết nối mạng</string>
+    <string name="disconnected">Đã ngắt kết nối</string>
+    <string name="disconnected_des">Vui lòng kích hoạt kết nối mạng của bạn để sử dụng dịch vụ</string>
 </resources>

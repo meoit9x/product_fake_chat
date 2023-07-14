@@ -449,4 +449,6 @@ Saya akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijaka
     <string name="contain_ads">Tindakan ini dapat berisi iklan</string>
 
     <string name="network_error">Tidak ada koneksi jaringan</string>
+    <string name="disconnected">Terputus</string>
+    <string name="disconnected_des">Harap aktifkan koneksi jaringan Anda untuk menggunakan layanan ini</string>
 </resources>

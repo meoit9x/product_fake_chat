@@ -307,7 +307,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 });
                 binding.present.setVisibility(View.GONE);
             } else {
-                toast(getString(R.string.network_error));
+                showDisconnected();
             }
         });
         handler = new Handler();
@@ -341,7 +341,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             if (stateNetWork()) {
                 addFragment(new CoinRankingFragment(), CoinRankingFragment.TAG);
             } else {
-                toast(getString(R.string.network_error));
+                showDisconnected();
             }
         });
         navMenu.findViewById(R.id.ll_language).setOnClickListener(view -> {
@@ -382,7 +382,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                     });
                 } else {
                     dialogLoading.dismiss();
-                    toast(getString(R.string.network_error));
+                    showDisconnected();
                 }
             }).show();
         });
@@ -524,6 +524,14 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             dialogCountdownTime.setTimeAndTitle(time, typeCountDown);
             dialogCountdownTime.show();
         }
+    }
+
+    private void showDisconnected() {
+        DialogCountdownTime dialogDisconnected = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
+        });
+        dialogDisconnected.setTimeAndTitle(0L, Const.KEY_DISCONNECTED);
+        if (!dialogDisconnected.isShowing())
+            dialogDisconnected.show();
     }
 
     public boolean isNewDateGreaterThanGiven(long givenTimeInMillis) {

@@ -451,4 +451,6 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
     <string name="contain_ads">Diese Aktion kann Anzeigen enthalten</string>
 
     <string name="network_error">Keine Netzwerkverbindung</string>
+    <string name="disconnected">Verbindung getrennt</string>
+    <string name="disconnected_des">Bitte aktivieren Sie Ihre Netzwerkverbindung, um den Dienst zu nutzen</string>
 </resources>

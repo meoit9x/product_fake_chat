@@ -449,4 +449,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="contain_ads">このアクションには広告を含めることができます</string>
 
     <string name="network_error">ネットワーク接続がありません</string>
+    <string name="disconnected">切断されました</string>
+    <string name="disconnected_des">サービスを使用するにはネットワーク接続を有効にしてください</string>
 </resources>

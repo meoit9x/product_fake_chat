@@ -449,4 +449,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="contain_ads">Это действие может содержать рекламу</string>
 
     <string name="network_error">Нет сетевого подключения</string>
+    <string name="disconnected">Отключено</string>
+    <string name="disconnected_des">Пожалуйста, включите сетевое подключение для использования службы</string>
 </resources>
