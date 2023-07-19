@@ -84,11 +84,13 @@ public class MainActivity extends BaseActivityForFragment {
 
     @Override
     protected void stateNetWork(boolean isAvaiable) {
-       setConnect(isAvaiable);
-        if (isAvaiable && dialogDisconnected.isShowing())
-            dialogDisconnected.dismiss();
-        else
+        setConnect(isAvaiable);
+        if (isAvaiable) {
+            if (dialogDisconnected.isShowing())
+                dialogDisconnected.dismiss();
+        } else {
             dialogDisconnected.show();
+        }
     }
 
     @Override
