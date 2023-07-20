@@ -114,6 +114,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
 
         dialog = new DialogSelectChat(requireContext(), R.style.MaterialDialogSheet, user -> {
             dialog.dismiss();
+            type_present = 0;
             if (user.getId() == -1) {
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
             } else {

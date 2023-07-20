@@ -19,20 +19,19 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_transparent" />
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/iv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_20sdp"
+    <include
         android:layout_marginTop="@dimen/_40sdp"
-        android:src="@drawable/ic_arrow_back" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_top_call"
+        layout="@layout/layout_top_call" />
 
     <nat.pink.base.custom.view.camera.RoundTextureView
         android:id="@+id/texture_preview"
         android:layout_width="@dimen/_110sdp"
         android:layout_height="@dimen/_100sdp"
         android:layout_gravity="end"
-        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginTop="@dimen/_90sdp"
         android:layout_marginEnd="@dimen/_20sdp" />
 
     <nat.pink.base.custom.view.camera.glsurface.RoundCameraGLSurfaceView

@@ -5,6 +5,7 @@ import static nat.pink.base.utils.Const.MY_PERMISSIONS_REQUEST_STORAGE;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.KeyguardManager;
@@ -50,7 +51,7 @@ import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.service.AlarmReceiver;
 
 public class Utils {
-    public  static String CHANNEL_ID = "xab_002_ntr";
+    public static String CHANNEL_ID = "xab_002_ntr";
 
     public static int getHeightScreen(Activity context) {
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -77,7 +78,7 @@ public class Utils {
     }
 
     @SuppressLint("HardwareIds")
-    public static String deviceId(Context context){
+    public static String deviceId(Context context) {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
@@ -279,7 +280,7 @@ public class Utils {
     }
 
     public static void askPermissionStorage(Activity context, Callable<Void> callable) throws Exception {
-        if (!checkPermission(context,Manifest.permission.READ_EXTERNAL_STORAGE) && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+        if (!checkPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             context.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Const.ALBUM_REQUEST_CODE);
         } else {
             callable.call();
@@ -350,7 +351,7 @@ public class Utils {
     }
 
     public static void openGallery(Activity activity, boolean isVideo) {
-        if (!checkPermission(activity,Manifest.permission.READ_EXTERNAL_STORAGE) && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+        if (!checkPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             activity.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, Const.ALBUM_REQUEST_CODE);
             return;
         }
@@ -368,13 +369,14 @@ public class Utils {
             return null;
         return ThumbnailUtils.createVideoThumbnail(picturePath, MediaStore.Video.Thumbnails.MICRO_KIND);
     }
-    public static int convertStringToDrawable(Context context, String uri){
+
+    public static int convertStringToDrawable(Context context, String uri) {
         String s = uri.replace("R.drawable.", "");
         return context.getResources().getIdentifier(s, "drawable", context.getPackageName());
     }
 
 
-    public static boolean checkPermission(Context context,String permission) {
+    public static boolean checkPermission(Context context, String permission) {
         if (ContextCompat.checkSelfPermission(context, permission)
                 == PackageManager.PERMISSION_GRANTED) {
             return true;
@@ -399,9 +401,9 @@ public class Utils {
         }
     }
 
-    public static String getVer(Context context){
+    public static String getVer(Context context) {
         try {
-            return context.getPackageManager().getPackageInfo(context.getPackageName(),0).versionName;
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
             return "";
         }

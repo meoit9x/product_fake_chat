@@ -15,16 +15,24 @@ import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
+import nat.pink.base.R;
 import nat.pink.base.custom.view.camera.CameraHelper;
 import nat.pink.base.custom.view.camera.CameraListener;
 import nat.pink.base.custom.view.camera.RoundTextureView;
@@ -57,7 +65,6 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
         super.onCreate(savedInstanceState);
 
         Utils.showFullScreen(this);
-
         final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         mReceiver = new ScreenReceiver();
@@ -86,10 +93,10 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
     }
 
     private void initEvent() {
-        binding.ivBack.setOnClickListener(v -> finish());
+        binding.layoutTopCall.imBack.setOnClickListener(v -> finish());
         binding.itemButtomFooter.llCancelCall.setOnClickListener(v -> finish());
         binding.view.setOnClickListener(v -> {
-            setAnimated(binding.ivBack.getVisibility() != View.VISIBLE);
+            setAnimated(binding.layoutTopCall.getRoot().getVisibility() != View.VISIBLE);
         });
     }
 
@@ -99,6 +106,7 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
             return;
         binding.videoView.setVideoURI(uri);
         binding.videoView.start();
+        binding.layoutTopCall.tvName.setText(objectCalling.getName());
     }
 
     void initCamera() {
@@ -277,11 +285,11 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
     }
 
     private void setAnimated(boolean hasChange) {
-        binding.ivBack.animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(hasChange ? 1.0f : 0.0f).scaleY(hasChange ? 1.0f : 0.0f).setDuration(180).start();
+        binding.layoutTopCall.getRoot().animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(hasChange ? 1.0f : 0.0f).scaleY(hasChange ? 1.0f : 0.0f).setDuration(180).start();
         binding.iconFitler.animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(hasChange ? 1.0f : 0.0f).scaleY(hasChange ? 1.0f : 0.0f).setDuration(180).start();
         binding.texturePreview.animate().alpha(1.0f).scaleX(hasChange ? 1.0f : 1.2f).scaleY(hasChange ? 1.0f : 1.2f).setDuration(180).translationY(hasChange ? 0 : -30).start();
         binding.itemButtomFooter.ctsBottomNavigation.animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(1.0f).scaleY(1.0f).setDuration(180).translationY(hasChange ? 1.0f : binding.itemButtomFooter.ctsBottomNavigation.getMeasuredHeight()).start();
-        binding.ivBack.setVisibility(hasChange ? View.VISIBLE : View.GONE);
+        binding.layoutTopCall.getRoot().setVisibility(hasChange ? View.VISIBLE : View.GONE);
         binding.iconFitler.setVisibility(hasChange ? View.VISIBLE : View.GONE);
         binding.itemButtomFooter.ctsBottomNavigation.setVisibility(hasChange ? View.VISIBLE : View.GONE);
         if (hasChange) {
