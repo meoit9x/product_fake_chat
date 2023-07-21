@@ -103,7 +103,8 @@ public class VideoFragment extends BaseFragment<FragmentSetupVideoCallBinding, H
         binding.txtTimer.setText(getString(R.string.ten_seconds_later));
         objectIncoming.setName(user.getName());
         objectIncoming.setPathImage(user.getAvatar());
-
+        objectCalling.setName(user.getName());
+        objectCalling.setPathImage(user.getAvatar());
     }
 
     @Override

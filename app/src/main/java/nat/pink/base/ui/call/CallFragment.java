@@ -23,7 +23,6 @@ import nat.pink.base.databinding.FragmentSetupCallBinding;
 import nat.pink.base.dialog.DialogChangeTime;
 import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ObjectCalling;
-import nat.pink.base.ui.incoming.CallScreenFragment;
 import nat.pink.base.ui.video.child.OutCommingActivity;
 import nat.pink.base.ui.video.child.VideoCallActivity;
 import nat.pink.base.utils.Config;

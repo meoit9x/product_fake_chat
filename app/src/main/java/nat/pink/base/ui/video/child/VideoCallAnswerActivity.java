@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
@@ -27,6 +28,7 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +60,33 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
     private boolean checkClickHideView = false;
     private Handler handler;
     private Runnable runnable;
+    private boolean isCheckClickHideView = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Utils.overLockScreen(this);
         super.onCreate(savedInstanceState);
 
-        Utils.showFullScreen(this);
+//        Utils.showFullScreen(this);
+
+        WindowInsetsControllerCompat windowInsetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        // Configure the behavior of the hidden system bars.
+        windowInsetsController.setSystemBarsBehavior(
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        );
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LOW_PROFILE
+        );
+
         final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         mReceiver = new ScreenReceiver();
@@ -97,6 +119,10 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
         binding.itemButtomFooter.llCancelCall.setOnClickListener(v -> finish());
         binding.view.setOnClickListener(v -> {
             setAnimated(binding.layoutTopCall.getRoot().getVisibility() != View.VISIBLE);
+        });
+        binding.itemButtomFooter.llAudio.setOnClickListener(view -> {
+            isCheckClickHideView = !isCheckClickHideView;
+            cameraHelper.switchCamera(this, isCheckClickHideView);
         });
     }
 
