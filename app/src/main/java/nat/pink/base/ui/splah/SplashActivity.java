@@ -2,6 +2,7 @@ package nat.pink.base.ui.splah;
 
 import static nat.pink.base.utils.Const.BROADCAST_NETWORK;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.BroadcastReceiver;
@@ -17,6 +18,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.ump.ConsentDebugSettings;
+import com.google.android.ump.ConsentForm;
+import com.google.android.ump.ConsentInformation;
+import com.google.android.ump.ConsentRequestParameters;
+import com.google.android.ump.FormError;
+import com.google.android.ump.UserMessagingPlatform;
 
 import java.util.Arrays;
 import java.util.Timer;
@@ -36,6 +43,10 @@ public class SplashActivity extends BaseActivityForFragment {
     Runnable runnable;
     private int progress = 0;
 
+    private ConsentInformation consentInformation;
+    private ConsentForm consentForm;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,9 +63,9 @@ public class SplashActivity extends BaseActivityForFragment {
 
     @Override
     protected void stateNetWork(boolean isAvaiable) {
-        if (isAvaiable){
+        if (isAvaiable) {
             initAct();
-        }else{
+        } else {
             isNetWorkNotAvaiable();
         }
     }
@@ -91,18 +102,22 @@ public class SplashActivity extends BaseActivityForFragment {
             startActivity(i);
             finish();
         } else {
-            MobileAds.initialize(SplashActivity.this, initializationStatus -> {
-                if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE_SETTING")) {
-                    newIntentMain();
-                } else {
-                    createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
-                        showInterstitialAd(o1 -> {
-                            newIntentMain();
-                        });
-                    });
-                }
-            });
+            showAds();
         }
+    }
+
+    private void showAds(){
+        MobileAds.initialize(SplashActivity.this, initializationStatus -> {
+            if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE_SETTING")) {
+                newIntentMain();
+            } else {
+                createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                    showInterstitialAd(o1 -> {
+                        newIntentMain();
+                    });
+                });
+            }
+        });
     }
 
     @Override
@@ -118,5 +133,57 @@ public class SplashActivity extends BaseActivityForFragment {
             startActivity(i);
             finish();
         });
+    }
+
+    public void initAds() {
+        ConsentDebugSettings debugSettings = new ConsentDebugSettings.Builder(this)
+                .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
+                .addTestDeviceHashedId("4EF6073B35F860FD3BFFAA0F8181AB49")
+                .build();
+
+        ConsentRequestParameters params = new ConsentRequestParameters
+                .Builder()
+                .setConsentDebugSettings(debugSettings)
+                .build();
+
+        consentInformation = UserMessagingPlatform.getConsentInformation(this);
+        consentInformation.requestConsentInfoUpdate(this,
+                params,
+                () -> {
+                    if (consentInformation.isConsentFormAvailable()) {
+                        loadForm();
+                    }
+                },
+                formError -> {
+                    showAds();
+                });
+    }
+
+    public void loadForm() {
+        // Loads a consent form. Must be called on the main thread.
+        UserMessagingPlatform.loadConsentForm(
+                this,
+                consentForm -> {
+                    SplashActivity.this.consentForm = consentForm;
+                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.REQUIRED) {
+                        consentForm.show(
+                                SplashActivity.this,
+                                formError -> {
+                                    int status = consentInformation.getConsentStatus();
+                                    Log.e("natruou",""+ status);
+//                                    if (consentInformation.getConsentStatus() == ConsentInformation.ConsentStatus.OBTAINED) {
+//                                        showAds();
+//                                        return;
+//                                    }
+//
+//                                    // Handle dismissal by reloading form.
+//                                    loadForm();
+                                });
+                    }
+                },
+                formError -> {
+                    showAds();
+                }
+        );
     }
 }
