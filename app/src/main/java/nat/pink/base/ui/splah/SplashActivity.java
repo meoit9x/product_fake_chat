@@ -117,7 +117,7 @@ public class SplashActivity extends BaseActivityForFragment {
             if (getIntent() != null && getIntent().getAction() != null && getIntent().getAction().equals("ACTION_CHANGE_LANGUAGE_SETTING")) {
                 newIntentMain();
             } else {
-                createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                createInterstitialAd(Const.KEY_ADMOB_OPEN_APP, o -> {
                     showInterstitialAd(o1 -> {
                         newIntentMain();
                     });

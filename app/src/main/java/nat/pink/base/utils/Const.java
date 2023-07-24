@@ -28,10 +28,8 @@ public class Const {
     public static final String KEY_ADMOB_GUILDE = "ca-app-pub-6333075779989445/9332038537";
     public static final String KEY_ADMOB_CLEAR_CHAT = "ca-app-pub-6333075779989445/7042585419";
     public static final String KEY_ADMOB_CREATE_USER = "ca-app-pub-6333075779989445/5781474636";
-    public static final String KEY_ADMOB_BANNER_TEST = "ca-app-pub-3940256099942544/1033173712";
-    public static final String KEY_ADMOB_NATIVE_TEST = "ca-app-pub-6333075779989445/5183187763";
-    public static final String KEY_ADMOB_POINT = "ca-app-pub-6333075779989445/1295434719";
-    public static final String KEY_ADMOB_SPLASH = "ca-app-pub-6333075779989445/9149874009";
+    public static final String KEY_ADMOB_OPEN_APP = "ca-app-pub-6333075779989445/1295434719";
+    public static final String KEY_ADMOB_GIFT = "ca-app-pub-6333075779989445/4823217422";
     public static final String KEY_DATA_CONTACT = "KEY_DATA_CONTACT";
 
     public static final int PICK_FROM_GALLERY = 1000;

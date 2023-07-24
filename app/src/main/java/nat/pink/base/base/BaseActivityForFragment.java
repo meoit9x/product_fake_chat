@@ -203,6 +203,12 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
                 if (keyAds.equals(Const.KEY_ADMOB_CREATE_USER)) {
                     App.getInstance().getFirebaseAnalytics().logEvent("ClickCreateContact", null);
                 }
+                if (keyAds.equals(Const.KEY_ADMOB_OPEN_APP)) {
+                    App.getInstance().getFirebaseAnalytics().logEvent("ClickOpenApp", null);
+                }
+                if (keyAds.equals(Const.KEY_ADMOB_GIFT)) {
+                    App.getInstance().getFirebaseAnalytics().logEvent("ClickGift", null);
+                }
             }
 
             @Override

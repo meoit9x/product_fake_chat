@@ -167,51 +167,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         mAdView = binding.adView;
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-//        binding.adsBannerView.setListener(new MaxAdViewAdListener() {
-//            @Override
-//            public void onAdExpanded(MaxAd maxAd) {
-//
-//            }
-//
-//            @Override
-//            public void onAdCollapsed(MaxAd maxAd) {
-//
-//            }
-//
-//            @Override
-//            public void onAdLoaded(MaxAd maxAd) {
-//                Log.d("adsDebug", "test");
-//            }
-//
-//            @Override
-//            public void onAdDisplayed(MaxAd maxAd) {
-//                Log.d("adsDebug", "test");
-//            }
-//
-//            @Override
-//            public void onAdHidden(MaxAd maxAd) {
-//                Log.d("adsDebug", "test");
-//            }
-//
-//            @Override
-//            public void onAdClicked(MaxAd maxAd) {
-//                App.getInstance().getFirebaseAnalytics().logEvent("ClickHomeNative", null);
-//            }
-//
-//            @Override
-//            public void onAdLoadFailed(String s, MaxError maxError) {
-//                new Handler().postDelayed(() -> binding.adsBannerView.loadAd(), 1000);
-//            }
-//
-//            @Override
-//            public void onAdDisplayFailed(MaxAd maxAd, MaxError maxError) {
-//                binding.adsBannerView.loadAd();
-//            }
-//        });
-//        binding.adsBannerView.loadAd();
-//        binding.adsBannerView.startAutoRefresh();
         checkShowPresent();
-        // createBannerAd(Const.KEY_ADS_HOME,binding.frAdsHome);
     }
 
     private boolean checkPointEnough(int point) {
@@ -298,7 +254,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         });
         binding.present.setOnClickListener(v -> {
             if (stateNetWork()) {
-                createInterstitialAd(Const.KEY_ADMOB_POINT, o -> {
+                createInterstitialAd(Const.KEY_ADMOB_GIFT, o -> {
                     showInterstitialAd(o1 -> {
                         requireActivity().runOnUiThread(() -> {
                             type_present = Const.TYPE_PRESENT;
