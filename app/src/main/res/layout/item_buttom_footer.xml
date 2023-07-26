@@ -29,7 +29,6 @@
             android:src="@drawable/ic_video_call" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_audio"
         android:layout_width="wrap_content"

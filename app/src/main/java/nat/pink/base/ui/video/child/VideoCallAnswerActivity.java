@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -22,11 +24,14 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
+
+import com.google.firebase.database.core.utilities.Utilities;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -43,6 +48,7 @@ import nat.pink.base.custom.view.camera.glsurface.RoundCameraGLSurfaceView;
 import nat.pink.base.databinding.ActivityVideoCallAnswerBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.utils.Const;
+import nat.pink.base.utils.Toolbox;
 import nat.pink.base.utils.Utils;
 
 public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTreeObserver.OnGlobalLayoutListener, CameraListener {
@@ -61,6 +67,7 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
     private Handler handler;
     private Runnable runnable;
     private boolean isCheckClickHideView = false;
+    private WindowInsetsControllerCompat windowInsetsController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,13 +76,12 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
 
 //        Utils.showFullScreen(this);
 
-        WindowInsetsControllerCompat windowInsetsController =
+        windowInsetsController =
                 WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         // Configure the behavior of the hidden system bars.
         windowInsetsController.setSystemBarsBehavior(
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         );
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
@@ -86,6 +92,10 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_LOW_PROFILE
         );
+
+        windowInsetsController.show(WindowInsetsCompat.Type.statusBars());
+        windowInsetsController.show(WindowInsetsCompat.Type.navigationBars());
+        getWindow().setStatusBarColor(getColor(R.color.color_white_33));
 
         final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -112,6 +122,7 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
         roundCameraGLSurfaceView = binding.cameraGlSurfaceView;
         roundCameraGLSurfaceView.setFragmentShaderCode(GLUtil.FRAG_SHADER_SCULPTURE);
         roundCameraGLSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        Toolbox.setMargins(binding.itemButtomFooter.getRoot(), Toolbox.dp(50), Toolbox.dp(150), Toolbox.dp(50), Toolbox.dp(150));
     }
 
     private void initEvent() {
@@ -320,9 +331,13 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
         binding.itemButtomFooter.ctsBottomNavigation.setVisibility(hasChange ? View.VISIBLE : View.GONE);
         if (hasChange) {
             setHandler();
+            windowInsetsController.show(WindowInsetsCompat.Type.statusBars());
+            windowInsetsController.show(WindowInsetsCompat.Type.navigationBars());
         } else {
             if (handler != null)
                 handler.removeCallbacksAndMessages(null);
+            windowInsetsController.hide(WindowInsetsCompat.Type.statusBars());
+            windowInsetsController.hide(WindowInsetsCompat.Type.navigationBars());
         }
     }
 

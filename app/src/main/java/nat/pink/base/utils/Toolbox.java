@@ -15,6 +15,7 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -37,6 +38,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Toolbox {
+    public static float density = 1;
     public static void setStatusBarHomeWhite(FragmentActivity activity) {
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = activity.getWindow();
@@ -278,6 +280,21 @@ public class Toolbox {
 
     public static float convertDpToPx(Context context, float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
+    }
+
+    public static void setMargins(View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
+
+    public static int dp(float value) {
+        if (value == 0) {
+            return 0;
+        }
+        return (int) Math.ceil(density * value);
     }
 
     public static Bitmap screenShortView(View view) {
