@@ -45,7 +45,6 @@ public class DialogSelectChat extends Dialog {
 
     public void setContactSuggest(List<DaoContact> fakeUsers) {
         contactSuggests = fakeUsers;
-
     }
 
     public void setContactNormar(List<DaoContact> fakeUsers) {

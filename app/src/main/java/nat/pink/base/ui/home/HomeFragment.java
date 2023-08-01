@@ -24,7 +24,9 @@ import java.util.Locale;
 import nat.pink.base.BuildConfig;
 import nat.pink.base.base.App;
 import nat.pink.base.databinding.HomeFragmentBinding;
+import nat.pink.base.dialog.DialogCreateChatGroup;
 import nat.pink.base.dialog.DialogEnoughPoints;
+import nat.pink.base.dialog.DialogSelectTypeChat;
 import nat.pink.base.model.ResponseFeedback;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
@@ -68,6 +70,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private DialogCountdownTime dialogCountdownTime;
     private DialogLoading dialogLoading;
     private DialogForceUpdate dialogForceUpdate;
+    private DialogSelectTypeChat dialogSelectTypeChat;
+    private DialogCreateChatGroup dialogCreateChatGroup;
     protected RequestAPI requestAPI;
     private AdView mAdView;
     private Handler handler;
@@ -143,6 +147,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         break;
                 }
             }
+            if(dialogSelectTypeChat.isShowing())
+                dialogSelectTypeChat.dismiss();
         });
         dialogForceUpdate = new DialogForceUpdate(requireContext(), R.style.MaterialDialogSheet, v -> {
             final String appPackageName = requireActivity().getPackageName();
@@ -155,6 +161,18 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         dialogCountdownTime = new DialogCountdownTime(requireContext(), R.style.MaterialDialogSheet, o -> {
             totalCoin = Integer.parseInt(PreferenceUtil.getString(requireContext(), PreferenceUtil.KEY_TOTAL_COIN, "0"));
             binding.coinCount.setText(String.valueOf(totalCoin));
+        });
+        dialogSelectTypeChat = new DialogSelectTypeChat(requireContext(), R.style.MaterialDialogSheet, o -> {
+            if(o.equals(getString(R.string.create_chat))){
+                dialog.setTypeAction(DialogSelectChat.TYPE_ACTION.ACTION_MESSAGE);
+                dialog.show();
+            } else {
+                dialogCreateChatGroup.show();
+            }
+        });
+        dialogCreateChatGroup = new DialogCreateChatGroup(requireContext(), R.style.MaterialDialogSheet, o -> {
+            if(dialogSelectTypeChat.isShowing())
+                dialogSelectTypeChat.dismiss();
         });
         dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
         mAdView = binding.adView;
@@ -187,7 +205,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             DatabaseController.getInstance(requireContext()).setupDataDefault();
         }
         getViewModel().getListContact(requireContext());
-        getViewModel().contacts.observe(this, fakeUsers -> adapterFakeUser.setFakeUsers(fakeUsers));
+        getViewModel().contacts.observe(this, fakeUsers -> {
+            adapterFakeUser.setFakeUsers(fakeUsers);
+            dialogCreateChatGroup.setContacts(fakeUsers);
+        });
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
 
@@ -355,8 +376,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     }
 
     private void showMessage() {
-        dialog.setTypeAction(DialogSelectChat.TYPE_ACTION.ACTION_MESSAGE);
-        dialog.show();
+        dialogSelectTypeChat.show();
     }
 
     private void showVoiceCall() {

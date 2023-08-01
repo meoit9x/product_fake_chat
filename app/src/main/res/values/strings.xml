@@ -461,4 +461,9 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="fcm_message">FCM Message</string>
     <string name="create_chat">Create chat</string>
     <string name="create_group_chat">Create group chat</string>
+    <string name="select_type_chat">Select the type of chat you want to create</string>
+    <string name="chat_group_name">Chat group name</string>
+    <string name="enter_group_name">Enter group name</string>
+    <string name="member">Member</string>
+    <string name="back">Back</string>
 </resources>
