@@ -18,7 +18,7 @@
         android:background="@drawable/bg_call_video"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ll_audio"
+        app:layout_constraintEnd_toStartOf="@+id/ll_record"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,6 +30,44 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_call_video"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ll_image"
+        app:layout_constraintStart_toEndOf="@id/ll_add"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_record" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_call_video"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ll_audio"
+        app:layout_constraintStart_toEndOf="@id/ll_record"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_image_incoming" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_audio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,8 +75,8 @@
         android:background="@drawable/bg_call_video"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ll_record"
-        app:layout_constraintStart_toEndOf="@id/ll_add"
+        app:layout_constraintEnd_toStartOf="@id/ll_cancel_call"
+        app:layout_constraintStart_toEndOf="@id/ll_image"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView
@@ -50,25 +88,6 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/ll_record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/bg_call_video"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/ll_cancel_call"
-        app:layout_constraintStart_toEndOf="@id/ll_audio"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_record" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_cancel_call"
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
@@ -77,7 +96,7 @@
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ll_record"
+        app:layout_constraintStart_toEndOf="@id/ll_audio"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.utils.widget.ImageFilterView

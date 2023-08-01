@@ -24,14 +24,14 @@ import nat.pink.base.databinding.DialogEnoughPointBinding;
 
 public class DialogEnoughPoints extends Dialog {
 
-    public DialogEnoughPoints(@NonNull Context context, Consumer<Object> consumer) {
+    public DialogEnoughPoints(@NonNull Context context, Consumer<String> consumer) {
         super(context);
         this.consumer = consumer;
         this.context = context;
     }
 
     private DialogEnoughPointBinding binding;
-    private Consumer<Object> consumer;
+    private Consumer<String> consumer;
     private Context context;
     private AdapterChangeColor adapterChangeColor;
 
@@ -47,9 +47,12 @@ public class DialogEnoughPoints extends Dialog {
         binding = DialogEnoughPointBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.txtClose.setOnClickListener(view -> dismiss());
+        binding.txtClose.setOnClickListener(view -> {
+            consumer.accept("Guide");
+            dismiss();
+        });
         binding.txtDone.setOnClickListener(view -> {
-            consumer.accept(new Object());
+            consumer.accept("Get more");
             dismiss();
         });
     }

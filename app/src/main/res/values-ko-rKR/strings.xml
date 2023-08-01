@@ -451,4 +451,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="network_error">네트워크 연결 없음</string>
     <string name="disconnected">연결 끊김</string>
     <string name="disconnected_des">서비스를 이용하시려면 네트워크 연결을 활성화해주세요</string>
+    <string name="create_chat">채팅 만들기</string>
+    <string name="create_group_chat">그룹 채팅 만들기</string>
 </resources>

@@ -451,4 +451,6 @@ Le notificaré cualquier cambio publicando la nueva Política de privacidad en e
     <string name="network_error">Sin conexión de red</string>
     <string name="disconnected">Desconectado</string>
     <string name="disconnected_des">Habilite su conexión de red para usar el servicio</string>
+    <string name="create_chat">Crear chat</string>
+    <string name="create_group_chat">Crear chat grupal</string>
 </resources>

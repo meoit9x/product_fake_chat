@@ -451,4 +451,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="network_error">Нет сетевого подключения</string>
     <string name="disconnected">Отключено</string>
     <string name="disconnected_des">Пожалуйста, включите сетевое подключение для использования службы</string>
+    <string name="create_chat">Создать чат</string>
+    <string name="create_group_chat">Создать групповой чат</string>
 </resources>

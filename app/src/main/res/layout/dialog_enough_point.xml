@@ -53,15 +53,16 @@
             android:id="@+id/tv_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="@string/not_enough_points_des"
-            android:textSize="@dimen/_12sdp"
             android:textColor="@color/color_666666"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -85,22 +86,24 @@
                 android:layout_gravity="center"
                 android:paddingVertical="@dimen/_8sdp"
                 android:paddingHorizontal="@dimen/_15sdp"
-                android:text="@string/cancel"
+                android:text="@string/guide"
                 android:textColor="@color/color_AF7CE4"
                 android:textSize="@dimen/_14sdp" />
 
             <nat.pink.base.custom.view.ExtTextView
                 android:id="@+id/txt_done"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_4sdp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_button_violen8"
                 android:gravity="center"
+                android:drawableStart="@drawable/ic_ads"
+                android:paddingHorizontal="@dimen/_5sdp"
                 android:paddingVertical="@dimen/_8sdp"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:layout_gravity="center"
                 android:text="@string/get_more"
+                android:drawablePadding="@dimen/_2sdp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
 

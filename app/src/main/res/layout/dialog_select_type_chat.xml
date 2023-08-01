@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="@dimen/_14sdp"
+    android:paddingBottom="@dimen/_10sdp"
+    android:backgroundTint="@color/white">
+
+    <androidx.cardview.widget.CardView
+       app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_6sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <nat.pink.base.custom.view.ExtTextView
+               android:id="@+id/select_contact"
+               android:fontFamily="@font/sf_pro_display"
+               android:textColor="@color/color_212121"
+               android:textFontWeight="500"
+               android:textSize="@dimen/_18sdp"
+               android:layout_marginTop="@dimen/_5sdp"
+               android:layout_marginLeft="@dimen/_10sdp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/select_contact"
+               />
+
+           <ImageView
+               android:id="@+id/iv_exit"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+               android:layout_marginStart="@dimen/_7sdp"
+               android:layout_marginTop="@dimen/_7sdp"
+               android:layout_marginEnd="@dimen/_7sdp"
+               android:layout_marginBottom="@dimen/_7sdp"
+               android:background="?attr/selectableItemBackgroundBorderless"
+               android:src="@drawable/ic_cancel" />
+
+           <nat.pink.base.custom.view.ExtTextView
+               android:id="@+id/tv_suggest"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/suggest"
+               android:layout_below="@+id/select_contact"
+               android:layout_marginTop="@dimen/_10sdp"
+               android:layout_marginLeft="@dimen/_10sdp"
+               />
+
+           <include
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/tv_suggest"
+               android:id="@+id/item_chat"
+               android:layout_marginTop="@dimen/_10sdp"
+               android:layout_marginHorizontal="@dimen/_10sdp"
+               layout="@layout/item_fake_user_contact" />
+
+           <include
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/item_chat"
+               android:id="@+id/item_group"
+               android:layout_margin="@dimen/_10sdp"
+               layout="@layout/item_fake_user_contact" />
+
+
+       </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

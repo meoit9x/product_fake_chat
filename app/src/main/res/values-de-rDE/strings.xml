@@ -453,4 +453,6 @@ Ich werde Sie über etwaige Änderungen informieren, indem ich die neue Datensch
     <string name="network_error">Keine Netzwerkverbindung</string>
     <string name="disconnected">Verbindung getrennt</string>
     <string name="disconnected_des">Bitte aktivieren Sie Ihre Netzwerkverbindung, um den Dienst zu nutzen</string>
+    <string name="create_chat">Chat erstellen</string>
+    <string name="create_group_chat">Gruppenchat erstellen</string>
 </resources>

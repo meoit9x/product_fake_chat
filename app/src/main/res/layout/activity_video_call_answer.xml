@@ -20,11 +20,11 @@
         android:background="@drawable/bg_transparent" />
 
     <include
-        android:layout_marginTop="@dimen/_30sdp"
+        android:id="@+id/layout_top_call"
+        layout="@layout/layout_top_call"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_top_call"
-        layout="@layout/layout_top_call" />
+        android:layout_marginTop="@dimen/_30sdp" />
 
     <nat.pink.base.custom.view.camera.RoundTextureView
         android:id="@+id/texture_preview"
@@ -33,6 +33,13 @@
         android:layout_gravity="end"
         android:layout_marginTop="@dimen/_90sdp"
         android:layout_marginEnd="@dimen/_20sdp" />
+
+    <FrameLayout
+        android:id="@+id/fr_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1A000000"
+        android:visibility="gone"/>
 
     <nat.pink.base.custom.view.camera.glsurface.RoundCameraGLSurfaceView
         android:id="@+id/camera_gl_surface_view"
@@ -75,6 +82,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_60sdp"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginHorizontal="@dimen/_30sdp"/>
+        android:layout_marginHorizontal="@dimen/_30sdp" />
 
 </FrameLayout>

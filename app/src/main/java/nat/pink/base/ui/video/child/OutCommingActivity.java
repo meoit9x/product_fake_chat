@@ -23,6 +23,7 @@ import nat.pink.base.databinding.ActivityVideoCallingBinding;
 import nat.pink.base.model.ObjectCalling;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.ImageUtils;
+import nat.pink.base.utils.Toolbox;
 import nat.pink.base.utils.Utils;
 
 public class OutCommingActivity extends AppCompatActivity {
@@ -74,12 +75,13 @@ public class OutCommingActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        binding.swCamera.setVisibility(showIconVideo ? View.VISIBLE : View.GONE);
         startCallTimer();
+        binding.iconFitler.setVisibility(showIconVideo ? View.GONE : View.VISIBLE);
+        Toolbox.setMargins(binding.itemButtomFooter.getRoot(), Toolbox.dp(50), Toolbox.dp(150), Toolbox.dp(50), Toolbox.dp(150));
     }
 
     private void initEvent() {
-        binding.ivBack.setOnClickListener(v -> {
+        binding.layoutTopCall.imBack.setOnClickListener(v -> {
             finish();
         });
         binding.itemButtomFooter.llCancelCall.setOnClickListener(v -> {
@@ -92,6 +94,7 @@ public class OutCommingActivity extends AppCompatActivity {
             ImageUtils.loadImage(this, binding.ivCall, objectCalling.getPathImage());
             ImageUtils.loadImage(this, binding.ivContent, objectCalling.getPathImage());
             binding.txtName.setText(objectCalling.getName());
+            binding.layoutTopCall.tvName.setText(objectCalling.getName());
             updateTime = () -> {
                 timeString = "" + getDurationString((int) mElapsedTime);
                 binding.extTimer.setText(timeString.isEmpty() && showIconVideo ? getResources().getText(R.string.title_calling) : !showIconVideo ? getResources().getText(R.string.title_calling) : timeString);
@@ -102,6 +105,7 @@ public class OutCommingActivity extends AppCompatActivity {
                 if (!showIconVideo) {
                     Intent intent = new Intent(this, VideoCallAnswerActivity.class);
                     intent.putExtra(Const.PUT_EXTRAL_OBJECT_CALL, objectCalling);
+                    intent.putExtra("show_icon_video", !showIconVideo);
                     startActivityForResult(intent, Const.CHECK_TURN_OFF_VOICE_INCOMING);
                 }
             };

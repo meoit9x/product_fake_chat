@@ -451,4 +451,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="network_error">ネットワーク接続がありません</string>
     <string name="disconnected">切断されました</string>
     <string name="disconnected_des">サービスを使用するにはネットワーク接続を有効にしてください</string>
+    <string name="create_chat">チャットを作成する</string>
+    <string name="create_group_chat">グループ チャットを作成する</string>
 </resources>

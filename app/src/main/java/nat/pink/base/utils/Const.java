@@ -18,6 +18,7 @@ public class Const {
     public static final String KEY_ADS_REFRESH_CHAT = "bfb05294a38fd0dd";
     public static final String KEY_ADS_PRESENT_EVERYDAY = "KEY_ADS_PRESENT_EVERYDAY";
     public static final String KEY_ADS_PRESENT = "KEY_ADS_PRESENT";
+    public static final String KEY_ADS_PRESENT_MORE = "KEY_ADS_PRESENT_MORE";
     public static final String KEY_DISCONNECTED = "KEY_DISCONNECTED";
 
     public static final String PUT_EXTRAL_OBJECT_CALL = "PUT_EXTRAL_OBJECT_CALL";
@@ -72,6 +73,7 @@ public class Const {
 
     public static final int TYPE_PRESENT = 1001;
     public static final int TYPE_PRESENT_EVERYDAY = 1002;
+    public static final int TYPE_PRESENT_ADS = 1003;
     public static final String BROADCAST_NETWORK = "android.net.conn.CONNECTIVITY_CHANGE";
 
 }

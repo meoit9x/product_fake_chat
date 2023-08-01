@@ -68,6 +68,7 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
     private Runnable runnable;
     private boolean isCheckClickHideView = false;
     private WindowInsetsControllerCompat windowInsetsController;
+    private boolean showVideo = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,6 +108,7 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
             if (serializable instanceof ObjectCalling) {
                 objectCalling = (ObjectCalling) serializable;
             }
+            showVideo = getIntent().getBooleanExtra("show_icon_video", false);
         }
 
         binding = ActivityVideoCallAnswerBinding.inflate(getLayoutInflater());
@@ -123,13 +125,14 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
         roundCameraGLSurfaceView.setFragmentShaderCode(GLUtil.FRAG_SHADER_SCULPTURE);
         roundCameraGLSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(this);
         Toolbox.setMargins(binding.itemButtomFooter.getRoot(), Toolbox.dp(50), Toolbox.dp(150), Toolbox.dp(50), Toolbox.dp(150));
+        binding.itemButtomFooter.getRoot().setVisibility(showVideo ? View.VISIBLE : View.GONE);
     }
 
     private void initEvent() {
         binding.layoutTopCall.imBack.setOnClickListener(v -> finish());
         binding.itemButtomFooter.llCancelCall.setOnClickListener(v -> finish());
         binding.view.setOnClickListener(v -> {
-            setAnimated(binding.layoutTopCall.getRoot().getVisibility() != View.VISIBLE);
+            setAnimated(binding.iconFitler.getVisibility() != View.VISIBLE);
         });
         binding.itemButtomFooter.llAudio.setOnClickListener(view -> {
             isCheckClickHideView = !isCheckClickHideView;
@@ -322,13 +325,18 @@ public class VideoCallAnswerActivity extends AppCompatActivity implements ViewTr
     }
 
     private void setAnimated(boolean hasChange) {
-        binding.layoutTopCall.getRoot().animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(hasChange ? 1.0f : 0.0f).scaleY(hasChange ? 1.0f : 0.0f).setDuration(180).start();
+        if(showVideo) {
+            binding.layoutTopCall.getRoot().animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(hasChange ? 1.0f : 0.0f).scaleY(hasChange ? 1.0f : 0.0f).setDuration(180).start();
+            binding.layoutTopCall.getRoot().setVisibility(hasChange ? View.VISIBLE : View.GONE);
+            binding.itemButtomFooter.getRoot().animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(1.0f).scaleY(1.0f).setDuration(180).translationY(hasChange ? 1.0f : binding.itemButtomFooter.ctsBottomNavigation.getMeasuredHeight()).start();
+            binding.itemButtomFooter.getRoot().setVisibility(hasChange ? View.VISIBLE : View.GONE);
+        } else {
+            binding.itemButtomFooter.getRoot().setVisibility(View.GONE);
+        }
         binding.iconFitler.animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(hasChange ? 1.0f : 0.0f).scaleY(hasChange ? 1.0f : 0.0f).setDuration(180).start();
         binding.texturePreview.animate().alpha(1.0f).scaleX(hasChange ? 1.0f : 1.2f).scaleY(hasChange ? 1.0f : 1.2f).setDuration(180).translationY(hasChange ? 0 : -30).start();
-        binding.itemButtomFooter.ctsBottomNavigation.animate().alpha(hasChange ? 1.0f : 0.0f).scaleX(1.0f).scaleY(1.0f).setDuration(180).translationY(hasChange ? 1.0f : binding.itemButtomFooter.ctsBottomNavigation.getMeasuredHeight()).start();
-        binding.layoutTopCall.getRoot().setVisibility(hasChange ? View.VISIBLE : View.GONE);
         binding.iconFitler.setVisibility(hasChange ? View.VISIBLE : View.GONE);
-        binding.itemButtomFooter.ctsBottomNavigation.setVisibility(hasChange ? View.VISIBLE : View.GONE);
+        binding.frSurface.setVisibility(hasChange ? View.VISIBLE : View.GONE);
         if (hasChange) {
             setHandler();
             windowInsetsController.show(WindowInsetsCompat.Type.statusBars());

@@ -1,25 +1,19 @@
 package nat.pink.base.ui.home;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-//import com.applovin.mediation.MaxAd;
-//import com.applovin.mediation.MaxAdViewAdListener;
-//import com.applovin.mediation.MaxError;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -27,10 +21,10 @@ import com.google.android.gms.ads.AdView;
 import java.util.Calendar;
 import java.util.Locale;
 
+import nat.pink.base.BuildConfig;
 import nat.pink.base.base.App;
 import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogEnoughPoints;
-import nat.pink.base.model.ResponseDevice;
 import nat.pink.base.model.ResponseFeedback;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
@@ -55,7 +49,6 @@ import nat.pink.base.ui.setting.FaqFragment;
 import nat.pink.base.ui.setting.LanguageFragmentSetting;
 import nat.pink.base.ui.setting.PrivacyFragment;
 import nat.pink.base.ui.video.VideoFragment;
-import nat.pink.base.utils.Config;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
 import nat.pink.base.utils.Utils;
@@ -173,7 +166,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private boolean checkPointEnough(int point) {
         if (totalCoin - point < 0) {
             new DialogEnoughPoints(requireContext(), o -> {
-                addFragment(new FaqFragment(true), FaqFragment.TAG);
+                if (o.equals("Guide")) {
+                    addFragment(new FaqFragment(true), FaqFragment.TAG);
+                } else {
+                    showAdsAndGetCoin(false);
+                }
             }).show();
             return false;
         } else {
@@ -232,6 +229,10 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_EVERYDAY);
                         dialogCountdownTime.show();
                         break;
+                    case Const.TYPE_PRESENT_ADS:
+                        dialogCountdownTime.setTimeAndTitle(0L, Const.KEY_ADS_PRESENT_MORE);
+                        dialogCountdownTime.show();
+                        break;
                     default:
                         break;
                 }
@@ -253,19 +254,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.drawerLayout.openDrawer(GravityCompat.END);
         });
         binding.present.setOnClickListener(v -> {
-            if (stateNetWork()) {
-                createInterstitialAd(Const.KEY_ADMOB_GIFT, o -> {
-                    showInterstitialAd(o1 -> {
-                        requireActivity().runOnUiThread(() -> {
-                            type_present = Const.TYPE_PRESENT;
-                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, 200);
-                        });
-                    });
-                });
-                binding.present.setVisibility(View.GONE);
-            } else {
-                toast(getString(R.string.network_error));
-            }
+            showAdsAndGetCoin(true);
         });
         handler = new Handler();
         runnable = () -> {
@@ -288,6 +277,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         binding.fakeVideo.setOnClickListener(view -> {
             showAction(Const.KEY_ADS_VIDEO_CALL);
         });
+        TextView txtVersion = navMenu.findViewById(R.id.txt_version);
+        txtVersion.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
+
         navMenu.findViewById(R.id.ll_home).setOnClickListener(v -> binding.drawerLayout.closeDrawers());
         navMenu.findViewById(R.id.ll_manager_coin).setOnClickListener(v -> {
             binding.drawerLayout.closeDrawers();
@@ -518,6 +510,22 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             }
         };
         countDownTimer.start();
+    }
+
+    private void showAdsAndGetCoin(boolean present) {
+        if (stateNetWork()) {
+            createInterstitialAd(Const.KEY_ADMOB_GIFT, o -> {
+                showInterstitialAd(o1 -> {
+                    requireActivity().runOnUiThread(() -> {
+                        type_present = present ? Const.TYPE_PRESENT : Const.TYPE_PRESENT_ADS;
+                        getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 1, present ? 200 : 100);
+                    });
+                });
+            });
+            binding.present.setVisibility(View.GONE);
+        } else {
+            toast(getString(R.string.network_error));
+        }
     }
 
     @Override

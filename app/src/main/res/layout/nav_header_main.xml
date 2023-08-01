@@ -291,16 +291,28 @@
         <RelativeLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:fitsSystemWindows="true">
+            android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/bg_nav_bottom"
-                android:visibility="invisible" />
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/bg_nav_bottom2"
+                android:scaleType="fitXY"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:id="@+id/txt_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/version"
+                android:textColor="@color/color_666666"
+                android:gravity="center"
+                android:textSize="@dimen/_10sdp" />
         </RelativeLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 

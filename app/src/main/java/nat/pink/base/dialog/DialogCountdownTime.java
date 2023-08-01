@@ -94,6 +94,13 @@ public class DialogCountdownTime extends Dialog {
                 tvMsg = getContext().getString(R.string.received_a_reward);
                 binding.txtDone.setText(getContext().getString(R.string.claim));
                 break;
+            case Const.KEY_ADS_PRESENT_MORE:
+                binding.tvTime.setText(getContext().getString(R.string.one_extra_coin));
+                binding.tvTime.setTextColor(getContext().getColor(R.color.color_FE9923));
+                binding.tvTitle.setImageResource(R.drawable.ic_coin);
+                tvMsg = getContext().getString(R.string.received_a_reward);
+                binding.txtDone.setText(getContext().getString(R.string.claim));
+                break;
             case Const.KEY_DISCONNECTED:
                 binding.tvTime.setText(getContext().getString(R.string.disconnected));
                 binding.tvTitle.setImageResource(R.drawable.ic_no_wifi);

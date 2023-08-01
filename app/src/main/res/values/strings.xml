@@ -430,6 +430,7 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
 
     <string name="home">Home</string>
     <string name="privacy">Privacy</string>
+    <string name="version">Version %s &#160; by Gf Studio</string>
     <string name="update_new_version">Update new version</string>
     <string name="update_new_version_des">Bringing new features, optimized performance, and bug fixes</string>
     <string name="update_now">Update now</string>
@@ -458,4 +459,6 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
 
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="fcm_message">FCM Message</string>
+    <string name="create_chat">Create chat</string>
+    <string name="create_group_chat">Create group chat</string>
 </resources>

@@ -451,4 +451,6 @@ Have suggestions? Please, feel free to reach us at support@realink.dev>
     <string name="network_error">没有网络连接</string>
     <string name="disconnected">已断开连接</string>
     <string name="disconnected_des">请启用您的网络连接才能使用该服务</string>
+    <string name="create_chat">创建聊天</string>
+    <string name="create_group_chat">创建群聊</string>
 </resources>

@@ -451,4 +451,6 @@ Notificarei você sobre quaisquer alterações publicando a nova Política de Pr
     <string name="network_error">Sem conexão de rede</string>
     <string name="disconnected">Desconectado</string>
     <string name="disconnected_des">Ative sua conexão de rede para usar o serviço</string>
+    <string name="create_chat">Criar bate-papo</string>
+    <string name="create_group_chat">Criar bate-papo em grupo</string>
 </resources>

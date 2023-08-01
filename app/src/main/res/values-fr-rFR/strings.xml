@@ -450,4 +450,6 @@ Je vous informerai de tout changement en publiant la nouvelle politique de confi
     <string name="network_error">Pas de connexion réseau</string>
     <string name="disconnected">Déconnecté</string>
     <string name="disconnected_des">Veuillez activer votre connexion réseau pour utiliser le service</string>
+    <string name="create_chat">Créer une discussion</string>
+    <string name="create_group_chat">Créer une discussion de groupe</string>
 </resources>
