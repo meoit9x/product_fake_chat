@@ -466,4 +466,5 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="enter_group_name">Enter group name</string>
     <string name="member">Member</string>
     <string name="back">Back</string>
+    <string name="convesation_name">conversation name</string>
 </resources>

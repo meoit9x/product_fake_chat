@@ -6,6 +6,8 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import io.realm.Realm;
+
 public class App extends Application {
 
     private static App sInstance = null;
@@ -25,6 +27,7 @@ public class App extends Application {
         sInstance = this;
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Realm.init(this);
     }
 
     public DatabaseReference getFirebaseDatabase() {

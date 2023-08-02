@@ -6,9 +6,15 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -17,6 +23,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import nat.pink.base.R;
@@ -25,43 +35,37 @@ import nat.pink.base.adapter.AdapterFakeUserGroup;
 import nat.pink.base.databinding.DialogCreateChatGroupBinding;
 import nat.pink.base.databinding.DialogSelectChatBinding;
 import nat.pink.base.model.DaoContact;
+import nat.pink.base.utils.Config;
 
 
-public class DialogCreateChatGroup extends Dialog {
-    private Consumer<List<DaoContact>> consumer;
+public class DialogCreateChatGroup extends BaseDialog<DialogCreateChatGroup.ExtendBuilder> {
     private DialogCreateChatGroupBinding binding;
     private AdapterFakeUserGroup adapterFakeUserGroup;
-    private List<DaoContact> contacts;
+    private ExtendBuilder extendBuilder;
+    private String urlAvatar;
+    private boolean isStatus;
 
-    public DialogCreateChatGroup(@NonNull Context context, int themeResId, Consumer<List<DaoContact>> consumer) {
-        super(context, themeResId);
-        this.consumer = consumer;
-    }
-
-    public void setContacts(List<DaoContact> fakeUsers) {
-        contacts = fakeUsers;
+    public DialogCreateChatGroup(ExtendBuilder builder) {
+        super(builder);
+        this.extendBuilder = builder;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        ColorDrawable back = new ColorDrawable(Color.TRANSPARENT);
-        InsetDrawable inset = new InsetDrawable(back, 100);
-        this.getWindow().setBackgroundDrawable(inset);
-        getWindow().setGravity(Gravity.CENTER);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        binding = DialogCreateChatGroupBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        initData();
-        initEvent();
+    protected void initControl() {
+        binding.ivExit.setOnClickListener(v -> dismiss());
+        binding.swStatus.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            setStatus(isChecked);
+        });
     }
 
-    void initData() {
+    @Override
+    protected void initData() {
+        List<DaoContact> contactList = new ArrayList<>(extendBuilder.contacts);
         adapterFakeUserGroup = new AdapterFakeUserGroup(getContext(), o -> {
-
+            contactList.remove((int) o);
+            adapterFakeUserGroup.setDataUser(contactList);
         });
-        adapterFakeUserGroup.setDataUser(contacts);
+        adapterFakeUserGroup.setDataUser(extendBuilder.contacts);
 
         LinearLayoutManager ln = new LinearLayoutManager(getContext());
         ln.setOrientation(RecyclerView.VERTICAL);
@@ -73,13 +77,88 @@ public class DialogCreateChatGroup extends Dialog {
         binding.rcvSuggest.setAdapter(adapterFakeUserGroup);
     }
 
-    void initEvent() {
-        binding.ivExit.setOnClickListener(v -> dismiss());
-        binding.txtClose.setOnClickListener(v -> dismiss());
-        binding.txtDone.setOnClickListener(v -> {
-            consumer.accept(contacts);
-            dismiss();
-        });
+    @Override
+    protected View getLayoutResource() {
+        binding = DialogCreateChatGroupBinding.inflate(LayoutInflater.from(getContext()));
+        return binding.getRoot();
+    }
+
+    @Override
+    protected TextView getTitle() {
+        return binding.selectContact;
+    }
+
+    @Override
+    protected TextView getNegativeButton() {
+        return binding.txtClose;
+    }
+
+    @Override
+    protected TextView getPositiveButton() {
+        return binding.txtDone;
+    }
+
+    @Override
+    protected void handleClickPositiveButton(HashMap<String, Object> datas) {
+        if (validate()) {
+            datas.put(Config.KEY_TITLE, binding.edtNameGroup.getText().toString());
+            datas.put(Config.KEY_AVATAR, urlAvatar);
+            datas.put(Config.KEY_GROUP, extendBuilder.isCreateGroup);
+            datas.put(Config.KEY_STATUS_ON, isStatus);
+            super.handleClickPositiveButton(datas);
+        }
+    }
+
+    private boolean validate() {
+        if (TextUtils.isEmpty(binding.edtNameGroup.getText().toString())) {
+            Toast.makeText(getContext()
+                    , getString(R.string.you_must_enter, getString(R.string.convesation_name))
+                    , Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public void setImageConversation(String url) {
+        this.urlAvatar = url;
+//        Glide.with(this)
+//                .load(urlAvatar)
+//                .skipMemoryCache(true)
+//                .placeholder(R.drawable.ic_user_default)
+//                .into(binding.imAvatar);
+    }
+
+    public static class ExtendBuilder extends BuilderDialog {
+
+        private SelectImageListener selectImageListener;
+        private boolean isCreateGroup;
+
+        public ExtendBuilder setCreateGroup(boolean createGroup) {
+            isCreateGroup = createGroup;
+            return this;
+        }
+
+        public interface SelectImageListener {
+            void onSelectImage(DialogCreateChatGroup dialog);
+        }
+
+        public ExtendBuilder onSelectImageListener(SelectImageListener selectImageListener) {
+            this.selectImageListener = selectImageListener;
+            return this;
+        }
+
+        @Override
+        public BaseDialog build() {
+            return new DialogCreateChatGroup(this);
+        }
+    }
+
+    public boolean isStatus() {
+        return isStatus;
+    }
+
+    public void setStatus(boolean status) {
+        isStatus = status;
     }
 
 }

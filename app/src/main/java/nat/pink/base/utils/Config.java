@@ -1,6 +1,10 @@
 package nat.pink.base.utils;
 
 
+import android.content.res.Resources;
+
+import nat.pink.base.base.App;
+import nat.pink.base.model.ConversationModel;
 import nat.pink.base.model.ObjectMessenge;
 
 public class Config {
@@ -25,11 +29,27 @@ public class Config {
     public static final int STATUS_NOT_SEND = 3;
     public static final int STATUS_NOT_RECEIVED = 4;
 
+    public static final String KEY_TITLE = "title conversation";
+    public static final String KEY_AVATAR = "avatar conversation";
+    public static final String KEY_GROUP = "conversation is group";
+    public static final String KEY_STATUS_ON = "status on";
+
     public static ObjectMessenge createMessage(String data, int type) {
         ObjectMessenge messageModel = new ObjectMessenge();
         messageModel.setChatContent(data);
         messageModel.setDateTime(System.currentTimeMillis());
         messageModel.setType(type);
         return messageModel;
+    }
+
+    public static ConversationModel setConverstationDefault() {
+        Resources resources = App.getInstance().getResources();
+        ConversationModel conversationModel = new ConversationModel();
+        conversationModel.setId(System.currentTimeMillis());
+        conversationModel.setLastTimeChat(System.currentTimeMillis());
+        conversationModel.setActive(true);
+        conversationModel.setStatus(STATUS_SEEN);
+        conversationModel.setColor("#0084f0");
+        return conversationModel;
     }
 }

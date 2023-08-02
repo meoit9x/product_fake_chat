@@ -24,9 +24,9 @@ public class AdapterFakeUserGroup extends RecyclerView.Adapter<AdapterFakeUserGr
 
     private List<DaoContact> fakeUsers;
     private Context context;
-    private Consumer<DaoContact> consumer;
+    private Consumer<Integer> consumer;
 
-    public AdapterFakeUserGroup(Context context, Consumer<DaoContact> consumer) {
+    public AdapterFakeUserGroup(Context context, Consumer<Integer> consumer) {
         this.context = context;
         this.consumer = consumer;
     }
@@ -53,8 +53,9 @@ public class AdapterFakeUserGroup extends RecyclerView.Adapter<AdapterFakeUserGr
         binding.ivVerify.setVisibility(View.GONE);
         binding.ivAction.setImageResource(R.drawable.ic_pen_new_square);
         binding.ivDelete.setVisibility(View.VISIBLE);
+        binding.onlineStatus.setVisibility(View.GONE);
 
-        binding.ivDelete.setOnClickListener(v -> consumer.accept(user));
+        binding.ivDelete.setOnClickListener(v -> consumer.accept(position));
     }
 
     @Override

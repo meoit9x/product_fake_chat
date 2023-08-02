@@ -3,7 +3,11 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'org.jetbrains.kotlin.kapt'
 }
+
+apply plugin: "realm-android"
+
 
 android {
 //    apply plugin: 'applovin-quality-service'
@@ -81,8 +85,8 @@ dependencies {
     // Room database
     def room_version = "2.4.2"
 
-    implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // Dot indicator
     implementation("com.tbuonomo:dotsindicator:4.3")
@@ -125,5 +129,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:22.2.0'
     implementation("com.google.firebase:firebase-messaging")
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation 'io.realm:realm-gradle-plugin:10.16.1'
+    implementation 'com.google.guava:guava:29.0-android'
 
 }

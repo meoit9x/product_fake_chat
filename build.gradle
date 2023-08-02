@@ -14,6 +14,8 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.15'
         // Add the Crashlytics Gradle plugin.
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.6'
+        classpath "io.realm:realm-gradle-plugin:10.16.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0"
     }
 }
 plugins {
@@ -21,6 +23,7 @@ plugins {
     id 'com.android.library' version '7.4.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.0' apply false
     id("com.google.gms.google-services") version "4.3.15" apply false
+    id "org.jetbrains.kotlin.kapt" version "1.6.20" apply false
 }
 
 task clean(type: Delete) {

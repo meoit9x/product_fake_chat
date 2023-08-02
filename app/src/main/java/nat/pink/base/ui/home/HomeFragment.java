@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import nat.pink.base.BuildConfig;
@@ -27,6 +30,7 @@ import nat.pink.base.databinding.HomeFragmentBinding;
 import nat.pink.base.dialog.DialogCreateChatGroup;
 import nat.pink.base.dialog.DialogEnoughPoints;
 import nat.pink.base.dialog.DialogSelectTypeChat;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.model.ResponseFeedback;
 import nat.pink.base.ui.MainActivity;
 import nat.pink.base.dao.DatabaseController;
@@ -37,6 +41,7 @@ import nat.pink.base.dialog.DialogLoading;
 import nat.pink.base.dialog.DialogNetworkFail;
 import nat.pink.base.retrofit.RequestAPI;
 import nat.pink.base.retrofit.RetrofitClient;
+import nat.pink.base.ui.MainPresenter;
 import nat.pink.base.ui.call.CallFragment;
 import nat.pink.base.ui.chat.FragmentChat;
 import nat.pink.base.ui.create.CreateUserFragment;
@@ -78,7 +83,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private Runnable runnable;
     private boolean isDaily = false;
     private int type_present = 0;
+    private List<DaoContact> contacts =  new ArrayList<>();
     private static final int DELAY_MILLIS = 5000;
+    private MainPresenter presenter;
 
     @Override
     protected HomeViewModel getViewModel() {
@@ -89,6 +96,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     protected void initView() {
         super.initView();
         requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        presenter = new MainPresenter(this);
         adapterFakeUser = new AdapterFakeUser(requireContext(), (position, user) -> {
             if (position == 0) {
                 addFragment(new CreateUserFragment(), CreateUserFragment.TAG);
@@ -167,12 +175,8 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 dialog.setTypeAction(DialogSelectChat.TYPE_ACTION.ACTION_MESSAGE);
                 dialog.show();
             } else {
-                dialogCreateChatGroup.show();
+                showDialogCreateChat(true);
             }
-        });
-        dialogCreateChatGroup = new DialogCreateChatGroup(requireContext(), R.style.MaterialDialogSheet, o -> {
-            if(dialogSelectTypeChat.isShowing())
-                dialogSelectTypeChat.dismiss();
         });
         dialogLoading = new DialogLoading(requireContext(), R.style.MaterialDialogSheet, o -> dialogLoading.dismiss());
         mAdView = binding.adView;
@@ -196,6 +200,24 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         }
     }
 
+    public void showDialogCreateChat(boolean isCreateGroup) {
+        new DialogCreateChatGroup.ExtendBuilder()
+                .setCreateGroup(isCreateGroup)
+                .setTitle(getString(isCreateGroup ? R.string.create_group_chat : R.string.create_chat))
+                .setContacts(contacts)
+                .onSetPositiveButton(getString(R.string.create), (baseDialog, data) -> {
+                    if(dialogSelectTypeChat.isShowing())
+                        dialogSelectTypeChat.dismiss();
+                    if (presenter != null) {
+                        presenter.createConvesation(data);
+                    }
+                    baseDialog.dismiss();
+                })
+                .onSetNegativeButton(getString(R.string.back), DialogFragment::dismiss)
+                .build()
+                .show(requireActivity().getSupportFragmentManager(), DialogCreateChatGroup.class.getName());
+    }
+
     @Override
     protected void initData() {
         super.initData();
@@ -207,7 +229,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         getViewModel().getListContact(requireContext());
         getViewModel().contacts.observe(this, fakeUsers -> {
             adapterFakeUser.setFakeUsers(fakeUsers);
-            dialogCreateChatGroup.setContacts(fakeUsers);
+            contacts.addAll(fakeUsers);
         });
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));
