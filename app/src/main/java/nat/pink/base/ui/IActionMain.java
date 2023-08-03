@@ -5,6 +5,7 @@ import android.view.View;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 import nat.pink.base.model.ConversationModel;
 
@@ -29,7 +30,7 @@ public interface IActionMain {
     }
 
     interface IPresenter {
-        void createConvesation(HashMap<String, Object> data);
+        void createConvesation(HashMap<String, Object> data, Consumer<ConversationModel> consumer);
 
         void getListConversation();
 

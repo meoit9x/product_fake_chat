@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -413,4 +414,8 @@ public abstract class BaseActivityForFragment extends AppCompatActivity {
 //        nativeAdView = view;
 //        showNativeAd = true;
 //    }
+    public void toast(String content) {
+        if (!TextUtils.isEmpty(content))
+            Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+    }
 }

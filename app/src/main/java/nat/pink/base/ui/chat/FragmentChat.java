@@ -76,7 +76,6 @@ public class FragmentChat extends BaseActivityForFragment implements View.OnClic
     private String pathImageSelect;
     private MessageAdapter messageAdapter;
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1001;
-
     HomeViewModel homeViewModel;
     FirebaseAnalytics mFirebaseAnalytics;
     FragmentChatBinding binding;

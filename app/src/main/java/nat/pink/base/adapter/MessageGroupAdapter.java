@@ -5,7 +5,6 @@ import android.content.res.ColorStateList;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -32,43 +30,29 @@ import nat.pink.base.databinding.ItemMessageRecordBinding;
 import nat.pink.base.databinding.ItemMessageRemoveBinding;
 import nat.pink.base.databinding.ItemMessageStickerBinding;
 import nat.pink.base.databinding.ItemMessageTextBinding;
+import nat.pink.base.model.ConversationModel;
 import nat.pink.base.model.DaoContact;
-import nat.pink.base.model.ObjectMessenge;
+import nat.pink.base.model.MessageModel;
+import nat.pink.base.model.UserMessageModel;
 import nat.pink.base.utils.Config;
 import nat.pink.base.utils.ImageUtils;
-import nat.pink.base.utils.Utils;
 
-public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, RecyclerView.ViewHolder> {
+public class MessageGroupAdapter extends BaseRecyclerAdapter<MessageModel, RecyclerView.ViewHolder> {
 
-    private DaoContact conversationModel;
+    private ConversationModel conversationModel;
     private ItemClickListener itemClickListener;
-    private OnItemLongClickListener itemLongClickListener;
 
     public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
-    }
-
-    public void setItemLongClickListener(OnItemLongClickListener itemLongClickListener) {
-        this.itemLongClickListener = itemLongClickListener;
-    }
-
-    public interface OnItemLongClickListener {
-        void onItemLongClickListener(int position, int itemType, View view);
     }
 
     public interface ItemClickListener {
         void onItemClickListener(int position, int itemType, View view);
     }
 
-    public MessageAdapter(Context context, DaoContact conversationModel, List<ObjectMessenge> list) {
+    public MessageGroupAdapter(Context context, ConversationModel conversationModel, List<MessageModel> list) {
         super(context, list);
         this.conversationModel = conversationModel;
-    }
-
-    public void setConversationModel(DaoContact conversationModel,List<ObjectMessenge> list) {
-        this.conversationModel = conversationModel;
-        this.setList(list);
-        notifyDataSetChanged();
     }
 
     @Override
@@ -142,25 +126,42 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
         }
 
         public void bindData() {
-            binding.llInfor.setVisibility(View.VISIBLE);
-            ImageUtils.loadImage(mContext,binding.imAvatar,conversationModel.getAvatar());
-            if (!TextUtils.isEmpty(conversationModel.getName()))
+            if (!conversationModel.isGroup()) {
+                binding.llInfor.setVisibility(View.VISIBLE);
+                ImageUtils.loadImage(mContext, binding.imAvatar, conversationModel.getImage());
+                if (!TextUtils.isEmpty(conversationModel.getName()))
+                    binding.tvName2.setText(conversationModel.getName());
+                if (!TextUtils.isEmpty(conversationModel.getLiveIn()))
+                    binding.tvLiveIn.setText(conversationModel.getLiveIn());
+                if (!TextUtils.isEmpty(conversationModel.getFriendOn()))
+                    binding.tvFriendOn.setText(conversationModel.getFriendOn());
+            } else {
+                binding.cstAction.setVisibility(View.VISIBLE);
                 binding.tvName2.setText(conversationModel.getName());
-            if (!TextUtils.isEmpty(conversationModel.getLive()))
-                binding.tvLiveIn.setText(mContext.getString(R.string.live_in, conversationModel.getLive()));
-            binding.tvFriendOn.setText(mContext.getText(R.string.you_are_friends));
-            // todo
-//            if (!TextUtils.isEmpty(conversationModel.getFriendOn()))
-//                binding.tvFriendOn.setText(conversationModel.getFriendOn());
+                binding.tvFriendOn.setText(mContext.getString(R.string.you_create_group));
+                binding.tvLiveIn.setText(mContext.getString(R.string.count_member_group, conversationModel.getUserMessageModels().size() + ""));
+                if (!TextUtils.isEmpty(conversationModel.getImage()) && !"null".equals(conversationModel.getImage())) {
+                    binding.imAvatar.setVisibility(View.VISIBLE);
+                    binding.llAvatarGroup.setVisibility(View.GONE);
+                    ImageUtils.loadImage(mContext, binding.imAvatar, conversationModel.getImage());
+//                    if (conversationModel.getUserMessageModels().size() > 0) {
+//                        ImageUtils.loadImage(mContext, binding.imAvaGroup2, conversationModel.getUserMessageModels().get(0).getAvatar());
+//                    }
+                } else {
+                    binding.imAvatar.setVisibility(View.GONE);
+                    binding.llAvatarGroup.setVisibility(View.VISIBLE);
+                    if (conversationModel.getUserMessageModels().size() > 0) {
+                        ImageUtils.loadImage(mContext, binding.imAvaGroup1, conversationModel.getUserMessageModels().get(0).getAvatar());
+                    }
+                    if (conversationModel.getUserMessageModels().size() > 1) {
+                        ImageUtils.loadImage(mContext, binding.imAvaGroup2, conversationModel.getUserMessageModels().get(1).getAvatar());
+                    }
+                }
+            }
 
             binding.llInfor.setOnClickListener(v -> {
                 if (itemClickListener != null)
                     itemClickListener.onItemClickListener(getAdapterPosition(), Config.TYPE_HEAEDER, binding.llInfor);
-            });
-            binding.llInfor.setOnLongClickListener(v -> {
-//                if (itemLongClickListener != null)
-//                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_HEAEDER, binding.llInfor);
-                return true;
             });
         }
     }
@@ -174,18 +175,17 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             textBinding = ItemMessageTextBinding.bind(itemView);
         }
 
-        public void bindData(ObjectMessenge messageModel) {
+        public void bindData(MessageModel messageModel) {
             if (messageModel == null)
                 return;
             if (!TextUtils.isEmpty(messageModel.getChatContent()))
                 textBinding.tvContent.setText(messageModel.getChatContent());
             textBinding.tvContent.setTextColor(messageModel.isSend() ? Color.WHITE : Color.BLACK);
-            //todo
             textBinding.tvContent.setBackgroundTintList(ColorStateList.valueOf(messageModel.isSend()
-                    ? (conversationModel.getColor() == 0 ?  mContext.getResources().getColor(R.color.color_088) : conversationModel.getColor())
+                    ? Color.parseColor(conversationModel.getColor())
                     : mContext.getResources().getColor(R.color.color_f1f1f1)));
 
-//            textBinding.tvContent.setBackgroundResource(Config.getBackgroundChatResoure(conversationModel, getAdapterPosition()));
+            textBinding.tvContent.setBackgroundResource(Config.getBackgroundChatResoure(conversationModel, getAdapterPosition()));
 
             setStatusCommon(textBinding.imAvatar, textBinding.imStatus, getAdapterPosition()
                     , textBinding.llContent, messageModel, textBinding.tvMember);
@@ -193,11 +193,6 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             textBinding.tvContent.setOnClickListener(v -> {
                 if (itemClickListener != null)
                     itemClickListener.onItemClickListener(getAdapterPosition(), Config.TYPE_TEXT, textBinding.tvContent);
-            });
-            textBinding.tvContent.setOnLongClickListener(v -> {
-                if (itemLongClickListener != null)
-                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_TEXT, textBinding.tvContent);
-                return true;
             });
         }
 
@@ -212,7 +207,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             datetimeBinding = ItemMessageDatetimeBinding.bind(itemView);
         }
 
-        public void bindData(ObjectMessenge messageModel) {
+        public void bindData(MessageModel messageModel) {
             if (messageModel == null)
                 return;
             if (!TextUtils.isEmpty(messageModel.getChatContent()))
@@ -221,11 +216,6 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             datetimeBinding.tvDatetime.setOnClickListener(v -> {
                 if (itemClickListener != null)
                     itemClickListener.onItemClickListener(getAdapterPosition(), Config.TYPE_DATETIME, datetimeBinding.tvDatetime);
-            });
-            datetimeBinding.tvDatetime.setOnLongClickListener(v -> {
-                if (itemLongClickListener != null)
-                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_DATETIME, datetimeBinding.tvDatetime);
-                return true;
             });
         }
 
@@ -240,29 +230,30 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             recordBinding = ItemMessageRecordBinding.bind(itemView);
         }
 
-        public void bindData(ObjectMessenge messageModel) {
+        public void bindData(MessageModel messageModel) {
             if (messageModel == null)
                 return;
 
             if (!TextUtils.isEmpty(messageModel.getChatContent()))
                 recordBinding.tvData.setText(messageModel.getChatContent());
+            String colorDefault = conversationModel.getColor();
             recordBinding.llContent.setBackgroundTintList(ColorStateList.valueOf(messageModel.isSend()
-                    ? Color.parseColor("#0084f0")
+                    ? Color.parseColor(colorDefault)
                     : mContext.getResources().getColor(R.color.color_f1f1f1)));
             recordBinding.tvData.setTextColor(messageModel.isSend()
-                    ? Color.parseColor("#0084f0")
+                    ? Color.parseColor(colorDefault)
                     : Color.WHITE);
             recordBinding.tvData.setBackgroundDrawable(mContext.getResources().getDrawable(messageModel.isSend()
                     ? R.drawable.bg_white_radius_50
                     : R.drawable.bg_8x8b90_radius_50));
             recordBinding.llTime.setBackgroundTintList(ColorStateList.valueOf(messageModel.isSend()
-                    ? Color.parseColor("#0084f0")
+                    ? Color.parseColor(colorDefault)
                     : mContext.getResources().getColor(R.color.color_e8e8e8)));
             recordBinding.imRecord.setColorFilter(messageModel.isSend()
-                    ? Color.parseColor("#0084f0")
+                    ? Color.parseColor(colorDefault)
                     : Color.WHITE, PorterDuff.Mode.SRC_IN);
             recordBinding.imRecord.setBackgroundDrawable(mContext.getResources().getDrawable(messageModel.isSend()
-                    ? R.drawable.bg_white_radius_50
+                    ? R.drawable.bg_round_white
                     : R.drawable.bg_round_8c8b90));
             recordBinding.seekbar.setBackgroundColor(messageModel.isSend()
                     ? Color.WHITE
@@ -277,11 +268,6 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
                 if (itemClickListener != null)
                     itemClickListener.onItemClickListener(getAdapterPosition(), Config.TYPE_RECORD, recordBinding.llTime);
             });
-            recordBinding.llTime.setOnLongClickListener(v -> {
-                if (itemLongClickListener != null)
-                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_RECORD, recordBinding.llTime);
-                return true;
-            });
         }
 
     }
@@ -295,15 +281,14 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             stickerBinding = ItemMessageStickerBinding.bind(itemView);
         }
 
-        public void bindData(ObjectMessenge messageModel) {
+        public void bindData(MessageModel messageModel) {
             if (messageModel == null)
                 return;
 
             int drawableResourceId = mContext.getResources().getIdentifier(messageModel.getChatContent(), "drawable", mContext.getPackageName());
             int imgageSize;
             if (messageModel.getChatContent().equals(Config.IC_LIKE_NAME)) {
-                //todo
-                stickerBinding.imSticker.setColorFilter(Color.parseColor("#0084f0"));
+                stickerBinding.imSticker.setColorFilter(Color.parseColor(conversationModel.getColor()));
                 imgageSize = mContext.getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._30sdp);
             } else {
                 stickerBinding.imSticker.clearColorFilter();
@@ -322,11 +307,6 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
                 if (itemClickListener != null)
                     itemClickListener.onItemClickListener(getAdapterPosition(), Config.TYPE_STICKER, stickerBinding.imSticker);
             });
-            stickerBinding.imSticker.setOnLongClickListener(v -> {
-                if (itemLongClickListener != null)
-                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_STICKER, stickerBinding.imSticker);
-                return true;
-            });
         }
 
     }
@@ -340,7 +320,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             imageBinding = ItemMessageImageBinding.bind(itemView);
         }
 
-        public void bindData(ObjectMessenge messageModel) {
+        public void bindData(MessageModel messageModel) {
             if (messageModel == null)
                 return;
 
@@ -374,11 +354,6 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
                     itemClickListener.onItemClickListener(getAdapterPosition()
                             , Config.TYPE_IMAGE, imageBinding.imImage);
             });
-            imageBinding.imImage.setOnLongClickListener(v -> {
-                if (itemLongClickListener != null)
-                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_IMAGE, imageBinding.imImage);
-                return true;
-            });
         }
 
     }
@@ -392,7 +367,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             removeBinding = ItemMessageRemoveBinding.bind(itemView);
         }
 
-        public void bindData(ObjectMessenge messageModel) {
+        public void bindData(MessageModel messageModel) {
             if (messageModel == null)
                 return;
             removeBinding.tvContent.setText(mContext.getString(R.string.removed_a_message
@@ -400,8 +375,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
                             ? mContext.getString(R.string.you)
                             : conversationModel.getName()));
 
-            // todo
-//            removeBinding.tvContent.setBackgroundResource(Config.getBackgroundRemoveResoure(conversationModel.getMessageModels(), getAdapterPosition()));
+            removeBinding.tvContent.setBackgroundResource(Config.getBackgroundRemoveResoure(conversationModel.getMessageModels(), getAdapterPosition()));
 
             setStatusCommon(removeBinding.imAvatar, removeBinding.imStatus, getAdapterPosition()
                     , removeBinding.llContent, messageModel, null);
@@ -411,76 +385,70 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
                     itemClickListener.onItemClickListener(getAdapterPosition()
                             , Config.TYPE_REMOVE, removeBinding.tvContent);
             });
-            removeBinding.tvContent.setOnLongClickListener(v -> {
-                if (itemLongClickListener != null)
-                    itemLongClickListener.onItemLongClickListener(getAdapterPosition(), Config.TYPE_REMOVE, removeBinding.tvContent);
-                return true;
-            });
 
         }
 
     }
 
     public void setStatusCommon(ImageView imAvatar, ImageView imStatus, int position
-            , LinearLayout llContent, ObjectMessenge messageModel, TextView tvMember) {
+            , LinearLayout llContent, MessageModel messageModel, TextView tvMember) {
         if (position == 0)
             /*0 là header*/
             return;
-        ImageUtils.loadImage(mContext, imAvatar, conversationModel.getAvatar());
-//        UserMessageModel userMessageCurrent = null;
-//        /** Xử lý logic ẩn hiện avatar trong đoạn chat */
-//        if (conversationModel.isGroup()) {
-//            userMessageCurrent = Config.getMemberSendMessage(messageModel.getUserOwn()
-//                    , conversationModel.getUserMessageModels());
-//            ImageUtils.loadImage(imAvatar, userMessageCurrent != null ? userMessageCurrent.getAvatar() : "");
-//        } else {
-//            ImageUtils.loadImage(imAvatar, conversationModel.getImage());
-//        }
+        DaoContact userMessageCurrent = null;
+        /** Xử lý logic ẩn hiện avatar trong đoạn chat */
+        if (conversationModel.isGroup()) {
+            userMessageCurrent = Config.getMemberSendMessage(messageModel.getUserOwn()
+                    , conversationModel.getUserMessageModels());
+            ImageUtils.loadImage(mContext, imAvatar, userMessageCurrent != null ? userMessageCurrent.getAvatar() : "");
+        } else {
+            ImageUtils.loadImage(mContext, imAvatar, conversationModel.getImage());
+        }
         llContent.setGravity(messageModel.isSend() ? Gravity.END : Gravity.START);
         imAvatar.setVisibility(messageModel.isSend() ? View.INVISIBLE : View.VISIBLE);
         if (position + 2 <= list.size()) {
-//            MessageModel itemNext = list.get(position + 1);
-//            if (itemNext.isSend() == messageModel.isSend() && !messageModel.isSend()) {
-//                if (!conversationModel.isGroup()) {
-//                    imAvatar.setVisibility(View.INVISIBLE);
-//                } else {
-//                    UserMessageModel userNext = Config.getMemberSendMessage(itemNext.getUserOwn()
-//                            , conversationModel.getUserMessageModels());
-//                    imAvatar.setVisibility(userNext.getId() == userMessageCurrent.getId() ? View.INVISIBLE : View.VISIBLE);
-//                }
-//            }
+            MessageModel itemNext = list.get(position + 1);
+            if (itemNext.isSend() == messageModel.isSend() && !messageModel.isSend()) {
+                if (!conversationModel.isGroup()) {
+                    imAvatar.setVisibility(View.INVISIBLE);
+                } else {
+                    DaoContact userNext = Config.getMemberSendMessage(itemNext.getUserOwn()
+                            , conversationModel.getUserMessageModels());
+                    imAvatar.setVisibility(userNext.getId() == userMessageCurrent.getId() ? View.INVISIBLE : View.VISIBLE);
+                }
+            }
         }
         /** Xử lý logic ẩn hiện tên member trong đoạn chat */
-//        if (tvMember != null) {
-//            if (messageModel.getType() != Config.TYPE_STICKER &&
-//                    messageModel.getType() != Config.TYPE_DATETIME
-//                    && conversationModel.isGroup() &&
-//                    !messageModel.isSend() && userMessageCurrent != null) {
-//                tvMember.setText(!TextUtils.isEmpty(userMessageCurrent.getName())
-//                        ? userMessageCurrent.getName().split(" ")[0]
-//                        : "");
-//                if (position == 1) {
-//                    tvMember.setVisibility(View.VISIBLE);
-//                } else {
-//                    MessageModel messagePreivous = list.get(position - 1);
-//                    if (messagePreivous.isSend() || messageModel.getType() == Config.TYPE_DATETIME) {
-//                        tvMember.setVisibility(View.VISIBLE);
-//                    } else {
-//                        UserMessageModel userPrevious = Config.getMemberSendMessage(messagePreivous.getUserOwn()
-//                                , conversationModel.getUserMessageModels());
-//                        tvMember.setVisibility(userPrevious.getId() == userMessageCurrent.getId() ? View.GONE : View.VISIBLE);
-//                    }
-//                }
-//            } else {
-//                tvMember.setVisibility(View.GONE);
-//            }
-//        }
+        if (tvMember != null) {
+            if (messageModel.getType() != Config.TYPE_STICKER &&
+                    messageModel.getType() != Config.TYPE_DATETIME
+                    && conversationModel.isGroup() &&
+                    !messageModel.isSend() && userMessageCurrent != null) {
+                tvMember.setText(!TextUtils.isEmpty(userMessageCurrent.getName())
+                        ? userMessageCurrent.getName().split(" ")[0]
+                        : "");
+                if (position == 1) {
+                    tvMember.setVisibility(View.VISIBLE);
+                } else {
+                    MessageModel messagePreivous = list.get(position - 1);
+                    if (messagePreivous.isSend() || messageModel.getType() == Config.TYPE_DATETIME) {
+                        tvMember.setVisibility(View.VISIBLE);
+                    } else {
+                        DaoContact userPrevious = Config.getMemberSendMessage(messagePreivous.getUserOwn()
+                                , conversationModel.getUserMessageModels());
+                        tvMember.setVisibility(userPrevious.getId() == userMessageCurrent.getId() ? View.GONE : View.VISIBLE);
+                    }
+                }
+            } else {
+                tvMember.setVisibility(View.GONE);
+            }
+        }
 
         /**Set status cho item gui*/
         if (messageModel.isSend()) {
             imStatus.setVisibility(View.VISIBLE);
             if (messageModel.getStatus() == Config.STATUS_SEEN) {
-                Glide.with(mContext).load(Uri.parse(conversationModel.getAvatar())).into(imStatus);
+                ImageUtils.loadImage(mContext, imStatus, conversationModel.getImage());
             } else if (messageModel.getStatus() == Config.STATUS_RECEIVED) {
                 imStatus.setImageResource(R.drawable.bg_round_0084f0);
             } else if (messageModel.getStatus() == Config.STATUS_NOT_SEND) {
@@ -488,7 +456,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
             } else if (messageModel.getStatus() == Config.STATUS_NOT_RECEIVED) {
                 imStatus.setImageResource(R.drawable.ic_check);
             } else {
-                ImageUtils.loadImage(mContext,imStatus,conversationModel.getAvatar());
+                ImageUtils.loadImage(mContext, imStatus, conversationModel.getImage());
             }
         }
 
@@ -500,5 +468,3 @@ public class MessageAdapter extends BaseRecyclerAdapter<ObjectMessenge, Recycler
         }
     }
 }
-
-

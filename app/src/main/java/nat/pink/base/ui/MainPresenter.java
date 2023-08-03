@@ -1,11 +1,15 @@
 package nat.pink.base.ui;
 
+import android.content.Intent;
+
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 import nat.pink.base.base.repository.AppDataRepository;
 import nat.pink.base.model.ConversationModel;
 import nat.pink.base.model.ConversationObject;
+import nat.pink.base.model.DaoContact;
 import nat.pink.base.ui.home.HomeFragment;
 import nat.pink.base.utils.Config;
 
@@ -20,13 +24,16 @@ public class MainPresenter implements IActionMain.IPresenter {
     }
 
     @Override
-    public void createConvesation(HashMap<String, Object> data) {
+    public void createConvesation(HashMap<String, Object> data, Consumer<ConversationModel> consumer) {
         ConversationModel model = Config.setConverstationDefault();
         model.setName(String.valueOf(data.get(Config.KEY_TITLE)));
         model.setImage(String.valueOf(data.get(Config.KEY_AVATAR)));
         model.setGroup((Boolean) data.get(Config.KEY_GROUP));
+        model.setActive((Boolean) data.get(Config.KEY_STATUS_ON));
+        model.setUserMessageModels((List<DaoContact>) data.get(Config.KEY_LIST_USER));
         repository.saveConversation(model);
-        getListConversation();
+        consumer.accept(model);
+//        getListConversation();
     }
 
     @Override

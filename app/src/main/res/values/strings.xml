@@ -467,4 +467,15 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="member">Member</string>
     <string name="back">Back</string>
     <string name="convesation_name">conversation name</string>
+
+    <string name="set_seen">Set Seen</string>
+    <string name="set_received">Set Received</string>
+    <string name="not_send">Not Send</string>
+    <string name="not_received">Not Received</string>
+    <string name="remove_message">Remove Message</string>
+    <string name="no_user_found">No user found! Please add user in the group.</string>
+    <string name="add">Add</string>
+    <string name="avatar">Avatar</string>
+    <string name="you_create_group">You created this group</string>
+    <string name="count_member_group">There are %s friends in this group</string>
 </resources>

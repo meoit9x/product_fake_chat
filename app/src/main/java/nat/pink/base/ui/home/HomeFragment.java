@@ -43,6 +43,7 @@ import nat.pink.base.retrofit.RequestAPI;
 import nat.pink.base.retrofit.RetrofitClient;
 import nat.pink.base.ui.MainPresenter;
 import nat.pink.base.ui.call.CallFragment;
+import nat.pink.base.ui.chat.ConversationDetailActivity;
 import nat.pink.base.ui.chat.FragmentChat;
 import nat.pink.base.ui.create.CreateUserFragment;
 import nat.pink.base.R;
@@ -56,6 +57,7 @@ import nat.pink.base.ui.setting.FaqFragment;
 import nat.pink.base.ui.setting.LanguageFragmentSetting;
 import nat.pink.base.ui.setting.PrivacyFragment;
 import nat.pink.base.ui.video.VideoFragment;
+import nat.pink.base.utils.Config;
 import nat.pink.base.utils.Const;
 import nat.pink.base.utils.PreferenceUtil;
 import nat.pink.base.utils.Utils;
@@ -209,7 +211,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                     if(dialogSelectTypeChat.isShowing())
                         dialogSelectTypeChat.dismiss();
                     if (presenter != null) {
-                        presenter.createConvesation(data);
+                        presenter.createConvesation(data, conversationModel -> {
+                            Intent intent = new Intent(requireActivity(), ConversationDetailActivity.class);
+                            intent.putExtra(ConversationDetailActivity.DATA_SELECT, conversationModel);
+                            startActivityForResult(intent, Config.REQUEST_CODE_ACT);
+                        });
                     }
                     baseDialog.dismiss();
                 })

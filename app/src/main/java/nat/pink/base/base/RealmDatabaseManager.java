@@ -29,9 +29,9 @@ public class RealmDatabaseManager<T extends RealmObject> implements DatabaseMana
 
     @Override
     public void update(T object) {
-        realm.executeTransaction(realmModel -> {
-            realmModel.insertOrUpdate(object);
-        });
+            realm.executeTransaction(realmModel -> {
+                realmModel.insertOrUpdate(object);
+            });
     }
 
     @Override

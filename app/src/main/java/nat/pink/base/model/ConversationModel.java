@@ -20,7 +20,7 @@ public class ConversationModel implements Serializable {
     /* 1: seeen - 2: Received - 3: Not seen - 4: Not received*/
     private int status;
     private List<MessageModel> messageModels = new ArrayList<>();
-    public static List<UserMessageModel> userMessageModels = new ArrayList<>();
+    public static List<DaoContact> userMessageModels = new ArrayList<>();
 
     public ConversationModel() {
     }
@@ -160,11 +160,11 @@ public class ConversationModel implements Serializable {
         this.image = image;
     }
 
-    public List<UserMessageModel> getUserMessageModels() {
+    public List<DaoContact> getUserMessageModels() {
         return userMessageModels;
     }
 
-    public void setUserMessageModels(List<UserMessageModel> userMessageModels) {
+    public void setUserMessageModels(List<DaoContact> userMessageModels) {
 //        this.userMessageModels.clear();
         this.userMessageModels.addAll(userMessageModels);
     }

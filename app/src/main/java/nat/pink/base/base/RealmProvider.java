@@ -22,6 +22,7 @@ public class RealmProvider {
             .schemaVersion(2)
             .modules(new RealmMessengerModule())
             .deleteRealmIfMigrationNeeded()
+            .allowWritesOnUiThread(true)
             .build();
 
     public static Realm realmMessenger = Realm.getInstance(fakeMessengereConfig);

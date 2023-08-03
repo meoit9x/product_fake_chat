@@ -13,7 +13,7 @@ public class UserMessageObject extends RealmObject {
     public UserMessageObject() {
     }
 
-    public UserMessageObject(UserMessageModel messengerModel) {
+    public UserMessageObject(DaoContact messengerModel) {
         this.id = messengerModel.getId();
         this.avatar = messengerModel.getAvatar();
         this.name = messengerModel.getName();

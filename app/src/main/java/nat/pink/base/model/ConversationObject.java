@@ -52,7 +52,7 @@ public class ConversationObject extends RealmObject {
 //                }
 //            }
 //        }
-        for (UserMessageModel userMessageModel : conversationModel.getUserMessageModels()) {
+        for (DaoContact userMessageModel : conversationModel.getUserMessageModels()) {
             this.userMessageObjects.add(new UserMessageObject(userMessageModel));
         }
 

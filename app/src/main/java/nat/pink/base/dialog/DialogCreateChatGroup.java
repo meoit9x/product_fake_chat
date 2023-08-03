@@ -43,7 +43,8 @@ public class DialogCreateChatGroup extends BaseDialog<DialogCreateChatGroup.Exte
     private AdapterFakeUserGroup adapterFakeUserGroup;
     private ExtendBuilder extendBuilder;
     private String urlAvatar;
-    private boolean isStatus;
+    private boolean isStatus = true;
+    private List<DaoContact> contactList;
 
     public DialogCreateChatGroup(ExtendBuilder builder) {
         super(builder);
@@ -60,7 +61,7 @@ public class DialogCreateChatGroup extends BaseDialog<DialogCreateChatGroup.Exte
 
     @Override
     protected void initData() {
-        List<DaoContact> contactList = new ArrayList<>(extendBuilder.contacts);
+        contactList = new ArrayList<>(extendBuilder.contacts);
         adapterFakeUserGroup = new AdapterFakeUserGroup(getContext(), o -> {
             contactList.remove((int) o);
             adapterFakeUserGroup.setDataUser(contactList);
@@ -105,6 +106,7 @@ public class DialogCreateChatGroup extends BaseDialog<DialogCreateChatGroup.Exte
             datas.put(Config.KEY_AVATAR, urlAvatar);
             datas.put(Config.KEY_GROUP, extendBuilder.isCreateGroup);
             datas.put(Config.KEY_STATUS_ON, isStatus);
+            datas.put(Config.KEY_LIST_USER, contactList);
             super.handleClickPositiveButton(datas);
         }
     }
