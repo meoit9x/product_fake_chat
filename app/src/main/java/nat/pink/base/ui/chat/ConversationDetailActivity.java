@@ -104,7 +104,6 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
         }
     }
 
-
     @Override
     protected void initData() {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);

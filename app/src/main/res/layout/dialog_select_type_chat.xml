@@ -69,7 +69,6 @@
                android:layout_marginEnd="@dimen/_10sdp"
                android:layout_marginBottom="@dimen/_10sdp" />
 
-
        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
