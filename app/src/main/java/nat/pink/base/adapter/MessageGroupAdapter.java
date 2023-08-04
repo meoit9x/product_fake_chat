@@ -140,6 +140,7 @@ public class MessageGroupAdapter extends BaseRecyclerAdapter<MessageModel, Recyc
                 binding.tvName2.setText(conversationModel.getName());
                 binding.tvFriendOn.setText(mContext.getString(R.string.you_create_group));
                 binding.tvLiveIn.setText(mContext.getString(R.string.count_member_group, conversationModel.getUserMessageModels().size() + ""));
+                binding.imStatus.setVisibility(conversationModel.isActive() ? View.VISIBLE : View.GONE);
                 if (!TextUtils.isEmpty(conversationModel.getImage()) && !"null".equals(conversationModel.getImage())) {
                     binding.imAvatar.setVisibility(View.VISIBLE);
                     binding.llAvatarGroup.setVisibility(View.GONE);
@@ -159,7 +160,7 @@ public class MessageGroupAdapter extends BaseRecyclerAdapter<MessageModel, Recyc
                 }
             }
 
-            binding.llInfor.setOnClickListener(v -> {
+            binding.llName.setOnClickListener(v -> {
                 if (itemClickListener != null)
                     itemClickListener.onItemClickListener(getAdapterPosition(), Config.TYPE_HEAEDER, binding.llInfor);
             });

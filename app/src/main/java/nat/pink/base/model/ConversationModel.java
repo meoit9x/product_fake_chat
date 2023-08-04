@@ -165,7 +165,7 @@ public class ConversationModel implements Serializable {
     }
 
     public void setUserMessageModels(List<DaoContact> userMessageModels) {
-//        this.userMessageModels.clear();
+        this.userMessageModels.clear();
         this.userMessageModels.addAll(userMessageModels);
     }
 }

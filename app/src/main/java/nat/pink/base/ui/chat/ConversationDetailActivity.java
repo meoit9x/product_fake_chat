@@ -12,10 +12,18 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -34,6 +42,7 @@ import nat.pink.base.databinding.LayoutDetailSelectImageBinding;
 import nat.pink.base.databinding.LayoutDetailTopBinding;
 import nat.pink.base.dialog.DialogCreateRecord;
 import nat.pink.base.dialog.DialogEditMessage;
+import nat.pink.base.dialog.DialogEditProfile;
 import nat.pink.base.dialog.DialogImageScreenshort;
 import nat.pink.base.model.ConversationModel;
 import nat.pink.base.model.DaoContact;
@@ -54,7 +63,6 @@ import nat.pink.base.utils.Utils;
 public class ConversationDetailActivity extends BaseActivityForFragment implements IActionDetail.IView, View.OnClickListener {
 
     public static final String DATA_SELECT = "data select";
-
     private FragmentChatBinding binding;
     private LayoutDetailTopBinding topBinding;
     private LayoutDetailBottomBinding bottomBinding;
@@ -65,6 +73,7 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
     private MessageGroupAdapter messageAdapter;
     private String pathImageSelect;
     private HomeViewModel homeViewModel;
+    private LinearLayoutManager ln;
 
     @Override
     protected void stateNetWork(boolean isAvaiable) {
@@ -125,6 +134,9 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
             messageModel.setType(Config.TYPE_HEAEDER);
             lstMessage.add(0, messageModel);
         }
+        ln = new LinearLayoutManager(getApplicationContext());
+        ln.setOrientation(RecyclerView.VERTICAL);
+        binding.rcvMessage.setLayoutManager(ln);
         messageAdapter = new MessageGroupAdapter(this, model, lstMessage);
         binding.rcvMessage.setAdapter(messageAdapter);
         messageAdapter.setItemClickListener((position, itemType, view) -> {
@@ -139,24 +151,24 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
 
     @Override
     public void showDialogEditInfor() {
-//        new DialogEditProfile.ExtendBuilder()
-//                .setFriendOn(model.getFriendOn())
-//                .setLiveIn(model.getLiveIn())
-//                .setTitle(getString(R.string.edit_profile))
-//                .onSetPositiveButton(getString(R.string.ok), (baseDialog, data) -> {
-//                    model.setFriendOn((String) data.get(Config.KEY_FRIEND_ON));
-//                    model.setLiveIn((String) data.get(Config.KEY_LIVE_IN));
-//                    if (messageAdapter != null)
-//                        messageAdapter.notifyItemChanged(0);
-//                    if (presenter != null)
-//                        presenter.updateConvesation(model);
-//                    baseDialog.dismiss();
-//                })
-//                .onSetNegativeButton(getString(R.string.cancel), baseDialog -> {
-//                    baseDialog.dismiss();
-//                })
-//                .build()
-//                .show(getSupportFragmentManager(), DialogEditProfile.class.getName());
+        new DialogEditProfile.ExtendBuilder()
+                .setNameGroup(model.getName())
+                .setLiveIn(model.getLiveIn())
+                .setTitle(getString(R.string.change_group_name))
+                .onSetPositiveButton(getString(R.string.ok), (baseDialog, data) -> {
+                    model.setName((String) data.get(Config.KEY_NAME_GROUP));
+                    topBinding.tvName.setText((String) data.get(Config.KEY_NAME_GROUP));
+                    if (messageAdapter != null)
+                        messageAdapter.notifyItemChanged(0);
+                    if (presenter != null)
+                        presenter.updateConvesation(model);
+                    baseDialog.dismiss();
+                })
+                .onSetNegativeButton(getString(R.string.cancel), baseDialog -> {
+                    baseDialog.dismiss();
+                })
+                .build()
+                .show(getSupportFragmentManager(), DialogEditProfile.class.getName());
     }
 
     @Override
@@ -237,8 +249,27 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
         popup.show();
     }
 
+    private int scrollPosition = 0;
+
     @Override
     protected void initEvent() {
+        binding.rcvMessage.getViewTreeObserver().addOnScrollChangedListener(() -> {
+            int firstVisiblePosition = ln.findFirstVisibleItemPosition();
+            if (firstVisiblePosition == 0) {
+                if (topBinding.tvName.getVisibility() == View.VISIBLE) {
+                    setAnimateViewGone(topBinding.tvName);
+                    setAnimateViewGone(topBinding.llAvatarGroup);
+                    setAnimateViewGone(topBinding.imStatus);
+                }
+            } else {
+                if (topBinding.tvName.getVisibility() != View.VISIBLE) {
+                    setAnimateViewVisible(topBinding.tvName);
+                    setAnimateViewVisible(topBinding.llAvatarGroup);
+                    if (model.isActive())
+                        setAnimateViewVisible(topBinding.imStatus);
+                }
+            }
+        });
         topBinding.imBack.setOnClickListener(this);
         topBinding.imCall.setOnClickListener(this);
         topBinding.imVideo.setOnClickListener(this);
@@ -449,9 +480,10 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
     public void setImageConversation() {
         if (model.isGroup()) {
 //            topBinding.imOutline.setVisibility(View.GONE);
-            topBinding.imStatus.setVisibility(model.isActive() ? View.VISIBLE : View.GONE);
             topBinding.imInline.setVisibility(View.GONE);
-            topBinding.llAvatarGroup.setVisibility(View.VISIBLE);
+            topBinding.tvName.setVisibility(View.GONE);
+            topBinding.llAvatarGroup.setVisibility(View.GONE);
+            topBinding.imStatus.setVisibility(View.GONE);
             topBinding.tvContent.setVisibility(View.GONE);
             List<DaoContact> lstMember = model.getUserMessageModels();
             if (!TextUtils.isEmpty(model.getImage()) && !"null".equals(model.getImage())) {
@@ -527,10 +559,10 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
         int color = Color.parseColor(model.getColor());
         binding.tvBlock.setBackgroundColor(color);
         /**/
-        topBinding.imBack.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        topBinding.imCall.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        topBinding.imVideo.setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        topBinding.imInfor.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+//        topBinding.imBack.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+//        topBinding.imCall.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+//        topBinding.imVideo.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+//        topBinding.imInfor.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         /**/
         bottomBinding.imSend.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         bottomBinding.imMore.setColorFilter(color, PorterDuff.Mode.SRC_IN);
@@ -669,5 +701,24 @@ public class ConversationDetailActivity extends BaseActivityForFragment implemen
         if (presenter != null) {
             presenter.updateConvesation(model);
         }
+    }
+
+    private void setAnimateViewGone(View view) {
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        fadeOut.setDuration(500); // Adjust duration as needed
+
+        view.startAnimation(fadeOut);
+        view.setVisibility(View.GONE);
+    }
+
+    private void setAnimateViewVisible(View view) {
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new DecelerateInterpolator());
+        fadeIn.setDuration(500);
+
+        view.startAnimation(fadeIn);
+        view.setVisibility(View.VISIBLE);
+
     }
 }

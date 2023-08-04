@@ -44,6 +44,7 @@ public class Config {
     public static final String KEY_GROUP = "conversation is group";
     public static final String KEY_STATUS_ON = "status on";
     public static final String KEY_LIST_USER = "list user";
+    public static final String KEY_NAME_GROUP = "name group";
 
     public static ObjectMessenge createMessage(String data, int type) {
         ObjectMessenge messageModel = new ObjectMessenge();

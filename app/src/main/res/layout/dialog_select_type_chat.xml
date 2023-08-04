@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="@dimen/_14sdp"
     android:paddingBottom="@dimen/_10sdp"
     android:backgroundTint="@color/white">
@@ -27,8 +26,7 @@
                android:layout_marginLeft="@dimen/_10sdp"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="@string/create_chat"
-               />
+               android:text="@string/create_chat" />
 
            <ImageView
                android:id="@+id/iv_exit"
@@ -49,8 +47,7 @@
                android:text="@string/select_type_chat"
                android:layout_below="@+id/select_contact"
                android:layout_marginTop="@dimen/_10sdp"
-               android:layout_marginLeft="@dimen/_10sdp"
-               />
+               android:layout_marginLeft="@dimen/_10sdp" />
 
            <include
                android:layout_width="match_parent"
@@ -62,12 +59,15 @@
                layout="@layout/item_fake_user_contact" />
 
            <include
+               android:id="@+id/item_group"
+               layout="@layout/item_fake_user_contact"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_below="@id/item_chat"
-               android:id="@+id/item_group"
-               android:layout_margin="@dimen/_10sdp"
-               layout="@layout/item_fake_user_contact" />
+               android:layout_marginStart="@dimen/_10sdp"
+               android:layout_marginTop="@dimen/_10sdp"
+               android:layout_marginEnd="@dimen/_10sdp"
+               android:layout_marginBottom="@dimen/_10sdp" />
 
 
        </RelativeLayout>

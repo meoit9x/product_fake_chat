@@ -41,8 +41,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:orientation="vertical"
-                android:overScrollMode="never"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:overScrollMode="never" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
