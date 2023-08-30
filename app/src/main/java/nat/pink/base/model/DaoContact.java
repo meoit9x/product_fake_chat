@@ -10,7 +10,7 @@ import java.util.Comparator;
 
 @Entity(tableName = "contact")
 public class DaoContact implements Serializable, Comparable<DaoContact> {
-    public DaoContact(int id, String name, int online, boolean verified, boolean is_friend, int color, String education, String work, String live, String avatar) {
+    public DaoContact(int id, String name, int online, boolean verified, boolean is_friend, int color, String education, String work, String live, String avatar, String background) {
         this.id = id;
         this.name = name;
         this.online = online;
@@ -21,6 +21,7 @@ public class DaoContact implements Serializable, Comparable<DaoContact> {
         this.work = work;
         this.live = live;
         this.avatar = avatar;
+        this.background = background;
     }
 
     public DaoContact(){
@@ -57,6 +58,17 @@ public class DaoContact implements Serializable, Comparable<DaoContact> {
 
     @ColumnInfo(name = "avatar")
     private String avatar;
+
+    @ColumnInfo(name = "background")
+    private String background;
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
 
     public String getAvatar() {
         return avatar;

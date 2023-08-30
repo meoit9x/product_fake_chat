@@ -101,8 +101,10 @@ public class CallFragment extends BaseFragment<FragmentSetupCallBinding, CallVie
         objectCalling.setCalling(true);
         objectCalling.setName(user.getName());
         objectCalling.setPathImage(user.getAvatar());
+        objectCalling.setPathBackground(user.getBackground());
         objectIncoming.setName(user.getName());
         objectIncoming.setPathImage(user.getAvatar());
+        objectIncoming.setPathBackground(user.getBackground());
 
     }
 

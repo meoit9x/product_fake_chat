@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -57,7 +58,13 @@ public class CallScreenFragment extends BaseFragment<FragmentCallScreenBinding, 
             }
             binding.txtName.setText(objectCalling.getName());
             ImageUtils.loadImage(binding.ivCall, objectCalling.getPathImage());
-            ImageUtils.loadImage(binding.ivContent, objectCalling.getPathImage());
+            if (TextUtils.isEmpty(objectCalling.getPathBackground())) {
+                binding.ivContent.setVisibility(View.VISIBLE);
+                ImageUtils.loadImage(binding.ivContent, objectCalling.getPathImage());
+            } else {
+                binding.ivContent.setVisibility(View.GONE);
+                binding.clContent.setBackgroundResource(Utils.convertStringToDrawable(requireContext(), objectCalling.getPathBackground()));
+            }
 
             showIconVideo = getArguments().getBoolean("show_icon_video",false);
             mElapsedTime = 0;

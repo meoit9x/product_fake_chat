@@ -9,6 +9,7 @@ public class ObjectCalling implements Serializable {
     private String message = "";
     private String pathImage;
     private String pathVideo;
+    private String pathBackground = "";
     private DialogChangeTime.CHANGE_TYPE timer = DialogChangeTime.CHANGE_TYPE.TEN_SECONDS;
     private boolean isCalling;
     private boolean isSound = true;
@@ -69,5 +70,12 @@ public class ObjectCalling implements Serializable {
 
     public void setSound(boolean sound) {
         isSound = sound;
+    }
+    public String getPathBackground() {
+        return pathBackground;
+    }
+
+    public void setPathBackground(String pathBackground) {
+        this.pathBackground = pathBackground;
     }
 }

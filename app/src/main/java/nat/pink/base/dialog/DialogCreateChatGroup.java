@@ -6,7 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +78,22 @@ public class DialogCreateChatGroup extends BaseDialog<DialogCreateChatGroup.Exte
         binding.rcvSuggest.setLayoutManager(ln);
         binding.rcvSuggest.addItemDecoration(dividerItemDecoration);
         binding.rcvSuggest.setAdapter(adapterFakeUserGroup);
+        binding.edtNameGroup.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                binding.tvError.setVisibility(charSequence.length() >= 25? View.VISIBLE : View.GONE);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override

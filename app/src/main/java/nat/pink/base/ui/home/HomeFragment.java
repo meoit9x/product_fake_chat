@@ -20,6 +20,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -85,7 +86,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
     private Runnable runnable;
     private boolean isDaily = false;
     private int type_present = 0;
-    private List<DaoContact> contacts =  new ArrayList<>();
+    private List<DaoContact> contacts = new ArrayList<>();
     private static final int DELAY_MILLIS = 5000;
     private MainPresenter presenter;
 
@@ -132,20 +133,20 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         startActivity(intent);
                         break;
                     case Const.KEY_ADS_VIDEO_CALL:
-                        if (checkPointEnough(200)) {
-                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 200);
-                            addFragment(new VideoFragment(user, o -> {
-                                updateCountdown(Const.KEY_ADS_VIDEO_CALL);
-                            }), VideoFragment.TAG);
-                        }
+//                        if (checkPointEnough(200)) {
+//                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 200);
+                        addFragment(new VideoFragment(user, o -> {
+                            updateCountdown(Const.KEY_ADS_VIDEO_CALL);
+                        }), VideoFragment.TAG);
+//                        }
                         break;
                     case Const.KEY_ADS_VOICE_CALL:
-                        if (checkPointEnough(100)) {
-                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 100);
-                            addFragment(new CallFragment(user, o -> {
-                                updateCountdown(Const.KEY_ADS_VOICE_CALL);
-                            }), VideoFragment.TAG);
-                        }
+//                        if (checkPointEnough(100)) {
+//                            getViewModel().updatePoint(requestAPI, Utils.deviceId(requireContext()), 2, 100);
+                        addFragment(new CallFragment(user, o -> {
+                            updateCountdown(Const.KEY_ADS_VOICE_CALL);
+                        }), VideoFragment.TAG);
+//                        }
                         break;
                     case Const.KEY_ADS_NOTIFICATION:
                         if (checkPointEnough(300)) {
@@ -157,7 +158,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                         break;
                 }
             }
-            if(dialogSelectTypeChat.isShowing())
+            if (dialogSelectTypeChat.isShowing())
                 dialogSelectTypeChat.dismiss();
         });
         dialogForceUpdate = new DialogForceUpdate(requireContext(), R.style.MaterialDialogSheet, v -> {
@@ -173,7 +174,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
             binding.coinCount.setText(String.valueOf(totalCoin));
         });
         dialogSelectTypeChat = new DialogSelectTypeChat(requireContext(), R.style.MaterialDialogSheet, o -> {
-            if(o.equals(getString(R.string.create_chat))){
+            if (o.equals(getString(R.string.create_chat))) {
                 dialog.setTypeAction(DialogSelectChat.TYPE_ACTION.ACTION_MESSAGE);
                 dialog.show();
             } else {
@@ -208,7 +209,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 .setTitle(getString(isCreateGroup ? R.string.create_group_chat : R.string.create_chat))
                 .setContacts(contacts)
                 .onSetPositiveButton(getString(R.string.create), (baseDialog, data) -> {
-                    if(dialogSelectTypeChat.isShowing())
+                    if (dialogSelectTypeChat.isShowing())
                         dialogSelectTypeChat.dismiss();
                     if (presenter != null) {
                         presenter.createConvesation(data, conversationModel -> {
@@ -235,7 +236,11 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
         getViewModel().getListContact(requireContext());
         getViewModel().contacts.observe(this, fakeUsers -> {
             adapterFakeUser.setFakeUsers(fakeUsers);
-            contacts.addAll(fakeUsers);
+            for (DaoContact daoContact : fakeUsers) {
+                if (daoContact.getName().contains(requireContext().getString(R.string.data_default_name_2)) || daoContact.getName().contains(requireContext().getString(R.string.data_default_name_1))) {
+                    contacts.add(daoContact);
+                }
+            }
         });
         getViewModel().contactSuggest.observe(this, items -> dialog.setContactSuggest(items));
         getViewModel().contactNormal.observe(this, items -> dialog.setContactNormar(items));

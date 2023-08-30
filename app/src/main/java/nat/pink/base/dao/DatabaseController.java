@@ -69,6 +69,7 @@ public class DatabaseController {
         daoContact.setWork(context.getString(R.string.data_default_work_1));
         daoContact.setLive(context.getString(R.string.data_default_live_1));
         daoContact.setAvatar("R.drawable.ronaldo");
+        daoContact.setBackground("R.drawable.bg_ronaldo");
         insertContact(daoContact);
 
         daoContact = new DaoContact();
@@ -81,6 +82,7 @@ public class DatabaseController {
         daoContact.setWork(context.getString(R.string.data_default_work_2));
         daoContact.setLive(context.getString(R.string.data_default_live_2));
         daoContact.setAvatar("R.drawable.messi2");
+        daoContact.setBackground("R.drawable.bg_messi2");
         DatabaseController.getInstance(context).insertContact(daoContact);
 
         daoContact = new DaoContact();
@@ -92,6 +94,7 @@ public class DatabaseController {
         daoContact.setEducation("");
         daoContact.setWork(context.getString(R.string.data_default_work_3));
         daoContact.setAvatar("R.drawable.taylor");
+        daoContact.setBackground("R.drawable.bg_taylor");
         daoContact.setLive(context.getString(R.string.data_default_live_3));
         DatabaseController.getInstance(context).insertContact(daoContact);
 
@@ -103,6 +106,7 @@ public class DatabaseController {
         daoContact.setColor(0);
         daoContact.setEducation("");
         daoContact.setAvatar("R.drawable.depp");
+        daoContact.setBackground("R.drawable.bg_depp");
         daoContact.setWork(context.getString(R.string.data_default_work_4));
         daoContact.setLive(context.getString(R.string.data_default_live_4));
         DatabaseController.getInstance(context).insertContact(daoContact);

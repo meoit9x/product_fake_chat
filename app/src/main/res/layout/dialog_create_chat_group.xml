@@ -59,7 +59,6 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/bg_edit_text"
                 android:hint="@string/enter_group_name"
                 android:inputType="textCapWords"
@@ -67,19 +66,30 @@
                 android:paddingStart="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_9E9E9E"
+                android:maxLength="25"
                 android:textSize="@dimen/_14sdp">
 
                 <requestFocus />
             </nat.pink.base.custom.view.ExtEditText>
 
+            <nat.pink.base.custom.view.ExtTextView
+                android:id="@+id/tv_error"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_name_group"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:textColor="@color/color_FE294D"
+                android:text="@string/maximum_25_characters" />
 
             <FrameLayout
                 android:id="@+id/fr_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/edt_name_group"
+                android:layout_below="@+id/tv_error"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_edit_options">
 
                 <nat.pink.base.custom.view.ExtTextView
@@ -154,7 +164,7 @@
                         android:nestedScrollingEnabled="false"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                        tools:itemCount="10"
+                        tools:itemCount="2"
                         tools:listitem="@layout/item_fake_user_contact" />
 
                 </RelativeLayout>

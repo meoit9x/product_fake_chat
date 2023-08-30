@@ -479,4 +479,6 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="you_create_group">You created this group</string>
     <string name="count_member_group">There are %s friends in this group</string>
     <string name="change_group_name">Change group name</string>
+
+    <string name="maximum_25_characters">Maximum 25 characters</string>
 </resources>

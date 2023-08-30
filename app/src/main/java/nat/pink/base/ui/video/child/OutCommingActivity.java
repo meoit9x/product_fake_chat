@@ -1,5 +1,6 @@
 package nat.pink.base.ui.video.child;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -78,6 +80,8 @@ public class OutCommingActivity extends AppCompatActivity {
         startCallTimer();
         binding.iconFitler.setVisibility(showIconVideo ? View.GONE : View.VISIBLE);
         Toolbox.setMargins(binding.itemButtomFooter.getRoot(), Toolbox.dp(50), Toolbox.dp(150), Toolbox.dp(50), Toolbox.dp(150));
+        binding.itemButtomFooter.imgVideo.setImageResource(R.drawable.ic_video_un_call);
+        binding.itemButtomFooter.imgPhoto.setImageResource(R.drawable.ic_audio_speaker);
     }
 
     private void initEvent() {
@@ -92,7 +96,13 @@ public class OutCommingActivity extends AppCompatActivity {
     private void initData() {
         if (objectCalling != null) {
             ImageUtils.loadImage(this, binding.ivCall, objectCalling.getPathImage());
-            ImageUtils.loadImage(this, binding.ivContent, objectCalling.getPathImage());
+            if (TextUtils.isEmpty(objectCalling.getPathBackground())) {
+                binding.ivContent.setVisibility(View.VISIBLE);
+                ImageUtils.loadImage(this, binding.ivContent, objectCalling.getPathImage());
+            } else {
+                binding.ivContent.setVisibility(View.GONE);
+                binding.clContent.setBackgroundResource(Utils.convertStringToDrawable(this, objectCalling.getPathBackground()));
+            }
             binding.txtName.setText(objectCalling.getName());
             binding.layoutTopCall.tvName.setText(objectCalling.getName());
             updateTime = () -> {

@@ -8,6 +8,8 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -88,8 +90,15 @@ public class VideoCallActivity extends AppCompatActivity {
                     .fitCenter().into(binding.ivContent);*/
             if (objectCalling.getPathImage() != null) {
                 ImageUtils.loadImage(this, binding.ivCall, objectCalling.getPathImage());
-                ImageUtils.loadImage(this, binding.ivContent, objectCalling.getPathImage());
             }
+            if (TextUtils.isEmpty(objectCalling.getPathBackground())) {
+                binding.ivContent.setVisibility(View.VISIBLE);
+                ImageUtils.loadImage(binding.ivContent, objectCalling.getPathImage());
+            } else {
+                binding.ivContent.setVisibility(View.GONE);
+                binding.clContent.setBackgroundResource(Utils.convertStringToDrawable(this, objectCalling.getPathBackground()));
+            }
+
 
             binding.txtName.setText(objectCalling.getName());
         }
