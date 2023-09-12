@@ -319,6 +319,7 @@ Have suggestions? Please, feel free to reach us at support@realink.dev
     <string name="three_extra_coin">+300 Point</string>
 
     <string name="conversation_suggestions">Conversation suggestions</string>
+
     <string name="your_coin">Your point</string>
     <string name="manage_conversation">Manage Conversation</string>
     <string name="suggest">Suggest</string>
@@ -461,4 +462,24 @@ I will notify you of any changes by posting the new Privacy Policy on this page.
     <string name="fcm_message">FCM Message</string>
     <string name="create_chat">Create chat</string>
     <string name="create_group_chat">Create group chat</string>
+
+    <string name="iap">In-app purchase</string>
+    <string name="title_iap">Build a great experience with our Purchase plan</string>
+    <string name="iap_benefits_coin_1m">+ 10.000 Point</string>
+    <string name="iap_benefits_coin_1y">+ 120.000 Point</string>
+    <string name="iap_benefits_ads_1m">One month of using the app without ads</string>
+    <string name="iap_benefits_ads_1y">One year of using the app without ads</string>
+    <string name="iap_benefits_rank">Increase your rank on the leaderboard</string>
+    <string name="iap_benefits_voucher">Have a chance to receive Purchase Voucher</string>
+    <string name="iap_benefits_smooth">Optimal, smooth application experience</string>
+    <string name="iap_benefits_chat_group">Increase the limit to 20 members when creating a chat group</string>
+    <string name="iap_title_1m">Monthly package</string>
+    <string name="iap_desc_1m">Get Premium privileges for 1 month.</string>
+    <string name="iap_title_1y">Yearly package</string>
+    <string name="iap_desc_1y">Get Premium privileges for 1 year.</string>
+    <string name="iap_prmo_1y">Save 50%</string>
+    <string name="iap_current_plan">Your current plan (%s-%s)</string>
+    <string name="month">/month</string>
+    <string name="year">/year</string>
+
 </resources>

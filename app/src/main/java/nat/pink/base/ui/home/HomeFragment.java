@@ -335,6 +335,9 @@ public class HomeFragment extends BaseFragment<HomeFragmentBinding, HomeViewMode
                 }
             }).show();
         });
+        navMenu.findViewById(R.id.ll_iap).setOnClickListener(v -> {
+
+        });
     }
 
     private void checkShowPresent() {
